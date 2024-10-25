@@ -1,5 +1,5 @@
 <?php
-include 'components/wine_map/header.php';
+include '/Users/simon/Documents/GitHub/GrapeMind/components/header.php';
 ?>
 
 
@@ -10,6 +10,7 @@ include 'components/wine_map/header.php';
     <meta name="viewport" content="initial-scale=1, width=device-width">
 
     <link rel="stylesheet"  href="/css/grenier.css" />
+    <link rel="stylesheet"  href="/css/main.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo:wght@400&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" />
@@ -25,12 +26,11 @@ include 'components/wine_map/header.php';
 <body>
 
 <div class="grenier">
-    <div class="slectionne-ta-rgion">Sélectionne ta région</div>
-    <div class="calendrier">Calendrier</div>
+
 
 
     <div class="grenier1">
-        <div class="slogan">GRENIER</div>
+
 
         <div class="menu2">
             <div class="menu-header">
@@ -190,7 +190,6 @@ include 'components/wine_map/header.php';
         </div>
         <img class="capture-d-ecran-2024-10-16-a-icon1" alt="" src="Capture_d_écran_2024-10-16_à_15.19.59-removebg-preview 2.png">
 
-        <img class="footer-icon1" alt="" src="footer.svg">
 
         <div class="pagination">
             <div class="pagination-previous">
@@ -321,106 +320,17 @@ include 'components/wine_map/header.php';
         				</span>
         </p>
     </div>
+
+
     <img class="capture-d-ecran-2024-10-16-a-icon3" alt="" src="Capture_d_écran_2024-10-16_à_15.19.59-removebg-preview 1.png">
 
     <img class="capture-d-ecran-2024-10-16-a-icon4" alt="" src="Capture_d_écran_2024-10-16_à_15.19.59-removebg-preview 2.png">
 
-</div>
-
-<div id="dropdownContainer" class="popup-overlay" style="display:none">
-
-    <div class="dropdown">
-        <div class="mon-profil" id="popupmONPROFILText">MON PROFIL</div>
-        <div class="statistiques" id="popupsTATISTIQUESText">STATISTIQUES</div>
-        <div class="parametres-du-compte" id="popuppARAMETRESDUCOMPTEText">
-            <p class="parametres-du">PARAMETRES DU</p>
-            <p class="parametres-du">COMPTE</p>
-        </div>
-    </div>
 
 
 </div>
 
 
 
-<script>
-    var popupmONPROFILText = document.getElementById("popupmONPROFILText");
-    if(popupmONPROFILText) {
-        popupmONPROFILText.addEventListener("click", function (e) {
-            // Add your code here
-        });
-    }
-
-    var popupsTATISTIQUESText = document.getElementById("popupsTATISTIQUESText");
-    if(popupsTATISTIQUESText) {
-        popupsTATISTIQUESText.addEventListener("click", function (e) {
-            // Add your code here
-        });
-    }
-
-    var popuppARAMETRESDUCOMPTEText = document.getElementById("popuppARAMETRESDUCOMPTEText");
-    if(popuppARAMETRESDUCOMPTEText) {
-        popuppARAMETRESDUCOMPTEText.addEventListener("click", function (e) {
-            // Add your code here
-        });
-    }
-
-    var vnementsText = document.getElementById("vnementsText");
-    if(vnementsText) {
-        vnementsText.addEventListener("click", function (e) {
-            // Add your code here
-        });
-    }
-
-    var accueilText = document.getElementById("accueilText");
-    if(accueilText) {
-        accueilText.addEventListener("click", function (e) {
-            // Add your code here
-        });
-    }
-
-    var carteDesVinsText = document.getElementById("carteDesVinsText");
-    if(carteDesVinsText) {
-        carteDesVinsText.addEventListener("click", function (e) {
-            // Add your code here
-        });
-    }
-
-    var buttonregistrationContainer = document.getElementById("buttonregistrationContainer");
-    if(buttonregistrationContainer) {
-        buttonregistrationContainer.addEventListener("click", function (e) {
-            // Add your code here
-        });
-    }
-
-    var seConnecterText = document.getElementById("seConnecterText");
-    if(seConnecterText) {
-        seConnecterText.addEventListener("click", function (e) {
-            // Add your code here
-        });
-    }
-
-    var menuFilledIcon = document.getElementById("menuFilledIcon");
-    if(menuFilledIcon) {
-        menuFilledIcon.addEventListener("click", function () {
-            var popup = document.getElementById("dropdownContainer");
-            if(!popup) return;
-            var popupStyle = popup.style;
-            if(popupStyle) {
-                popupStyle.display = "flex";
-                popupStyle.zIndex = 100;
-                popupStyle.backgroundColor = "rgba(113, 113, 113, 0.3)";
-                popupStyle.alignItems = "center";
-                popupStyle.justifyContent = "center";
-            }
-            popup.setAttribute("closable", "");
-
-            var onClick = popup.onClick || function(e) {
-                if(e.target === popup && popup.hasAttribute("closable")) {
-                    popupStyle.display = "none";
-                }
-            };
-            popup.addEventListener("click", onClick);
-        });
-    }</script></body>
+</body>
 </html>
