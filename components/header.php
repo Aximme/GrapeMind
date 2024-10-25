@@ -13,14 +13,14 @@
         <span class="logo-text">GrapeMind</span>
     </div>
     <nav class="navigation">
-        <a href="#">Accueil</a>
-        <a href="#">Carte</a>
-        <a href="#">Événements</a>
-        <a href="#">À propos</a>
+        <a href="../index.php">Accueil</a>
+        <a href="../components/wine_map/map-main.php">Carte</a>
+        <a href="../events.php">Événements</a>
+        <a href="../about.php">À propos</a>
     </nav>
     <div class="auth">
-        <a href="#" class="login">Se connecter</a>
-        <a href="#" class="signup">S'inscrire</a>
+        <a href="../login.php" class="login">Se connecter</a>
+        <a href="../registration.php" class="signup">S'inscrire</a>
     </div>
     <!-- Menu Déroulant -->
     <div class="menu-icon">
