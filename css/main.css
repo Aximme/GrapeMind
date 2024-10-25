@@ -103,3 +103,62 @@ body {
 }
 
 
+
+/* Container principal */
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Titre principal */
+.about-title {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+/* Conteneur des cartes */
+.cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Style de chaque carte */
+.card {
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 500px;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+/* Titre de chaque carte */
+.card-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
+}
+
+/* Informations de contact */
+.contact-info {
+    font-size: 1em;
+    line-height: 1.5;
+    color: #555;
+}
+
+/* Iframe Google Map ajusté */
+iframe {
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
