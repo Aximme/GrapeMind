@@ -102,6 +102,22 @@ body {
     border-radius: 5px;
 }
 
+body {
+    margin: 0;
+    line-height: normal;
+}
+
+.popup-overlay {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: 0;
+}
+
+
+
+
+
 
 /*page aPropos
 /* Container principal */
