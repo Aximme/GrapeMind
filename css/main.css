@@ -1,0 +1,105 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.navigation a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.auth {
+    display: flex;
+    align-items: center;
+}
+
+.login {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.signup {
+    padding: 5px 15px;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #900;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Style pour le bouton de menu hamburger */
+.menu-icon {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+.menu-icon span {
+    font-size: 24px;
+    color: #333;
+}
+
+/* Style du menu déroulant */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 10;
+    text-align: center;
+}
+
+/* Style des liens du menu déroulant */
+.dropdown-menu a {
+    display: block;
+    padding: 15px 0;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+
