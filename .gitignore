@@ -1,1 +1,30 @@
+# Ignorer les fichiers DS_Store (macOS)
 .DS_Store
+
+# Ignorer les fichiers de log
+*.log
+
+# Ignorer les fichiers de configuration d'environnement local
+.env
+.env.local
+.env.*.local
+
+# Ignorer les dépendances
+node_modules/
+vendor/
+
+# Ignorer les fichiers de compilation temporaire
+dist/
+build/
+
+# Ignorer les fichiers de caches IDE (ex: VSCode)
+.vscode/
+.idea/
+
+# Ignorer les fichiers système
+Thumbs.db
+.DS_Store
+
+# Ignorer les fichiers de configuration spécifiques au système
+*.swp
+*~
