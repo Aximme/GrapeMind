@@ -5,6 +5,7 @@ include 'components/header.php';
 <!DOCTYPE html>
 <html>
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, width=device-width">
     <link rel="stylesheet"  href="css/main.css" />
@@ -16,6 +17,9 @@ include 'components/header.php';
 
 
 </head>
+<header>
+    <h1> Se connecter</h1>
+</header>
 <body>
 
 <div class="parametres">
