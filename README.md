@@ -71,4 +71,5 @@ Embarquez dans un voyage à travers les vignobles de France ! 🇫🇷🍷
 
 1. Clonez le dépôt :
    ```bash
-   git clone https://github.com/username/repo.git
+   git clone https://github.com/Aximme/GrapeMind.git
+   ```
