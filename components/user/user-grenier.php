@@ -1,5 +1,5 @@
 <?php
-include '/Users/simon/Documents/GitHub/GrapeMind/components/header.php';
+include '../header.php';
 ?>
 
 
