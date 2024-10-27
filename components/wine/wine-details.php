@@ -32,12 +32,10 @@ include 'wine-details-2.php';
             <b class="acidit">ACIDITÉ</b>
             <div class="container">
             </div>
-            <img class="group-child" alt="" src="Group 9.svg">
+            <img class="group-child" alt="" src="../../assets/images/Group%209.png">
 
             <div class="tooltip">
-                <img class="beak-icon" alt="" src="Beak.svg">
 
-                <img class="beak-stroke-icon" alt="" src="Beak (Stroke).svg">
 
                 <b class="title">  <?php echo htmlspecialchars(isset($row['Acidity']) ? $row['Acidity'] : ''); ?></b>
 
@@ -51,10 +49,26 @@ include 'wine-details-2.php';
 
 
             <div class="container1">
+
             </div>
             <div class="group-item">
+                <img alt="" src="../../assets/images/Group%209.png">
+
             </div>
-            <img class="group-inner" alt="" src="Ellipse 2.svg">
+
+            <div class="degrs-alcool-parent">
+                <b class="degrs-alcool">DEGRÈS ALCOOL</b>
+                <b class="b"><?php echo htmlspecialchars(isset($row['ABV']) ? $row['ABV'] : ''); ?>°</b>
+
+                <div class="container1">
+                    <div class="group-item"></div>
+                    <img class="group-inner" alt="" src="Ellipse 2.svg">
+                </div>
+            </div>
+
+
+
+
 
         </div>
         <b class="cpages-pinot">Cépages :
@@ -190,10 +204,10 @@ include 'wine-details-2.php';
     </div>
     <div class="pomerol-chteau-ptrus-container">
 
-            <p class="avec-quoi-le">
-                <?php echo htmlspecialchars(isset($row['WineryName']) ? $row['WineryName'] : ''); ?>
-            </p>
-            <p class="chteau-ptrus-occitanie">
+        <p class="avec-quoi-le">
+            <?php echo htmlspecialchars(isset($row['WineryName']) ? $row['WineryName'] : ''); ?>
+        </p>
+        <p class="chteau-ptrus-occitanie">
             <span>
                 <span>
                     <?php
@@ -204,7 +218,7 @@ include 'wine-details-2.php';
 
 
             </span>
-            </p>
+        </p>
 
     </div>
 
@@ -218,7 +232,8 @@ include 'wine-details-2.php';
 
 </div>
 
-
+<script src="../../js/cursor_alcohol.js"></script>
+<script src="../../js/cursor_acidity.js"></script>
 
 
 </body>
