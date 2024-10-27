@@ -232,7 +232,7 @@ include 'wine-details-2.php';
 
 </div>
 
-<script src="../../js/cursor_alcohol.js"></script>
+
 <script src="../../js/cursor_acidity.js"></script>
 
 

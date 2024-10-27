@@ -28,19 +28,19 @@ document.addEventListener("DOMContentLoaded", function() {
         var acidityPercentage = 0;
         switch (acidityValue) {
             case 'low':
-                acidityPercentage = 0.25; // 25% de la barre
+                acidityPercentage = 0.25;
                 break;
             case 'medium':
-                acidityPercentage = 0.5; // 50% de la barre
+                acidityPercentage = 0.5;
                 break;
             case 'high':
-                acidityPercentage = 0.75; // 75% de la barre
+                acidityPercentage = 0.75;
                 break;
             default:
-                acidityPercentage = 0.5; // Valeur par défaut si non spécifiée
+                acidityPercentage = 0.5;
         }
 
-        // Calculer la position du curseur
+        // Ajuster la position du curseur pour l'acidité
         var acidityContainerWidth = acidityContainer.clientWidth;
         var acidityCursorPosition = acidityPercentage * acidityContainerWidth;
 
