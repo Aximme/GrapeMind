@@ -82,7 +82,7 @@ include 'wine-details-2.php';
         <b class="type">Type : </b>
         <b class="vin-conomique">
             <span>🌱</span>
-            <span class="vin-conomique1"> : Vin économique </span>
+
         </b>
         <b class="composition-100">Composition : <?php echo htmlspecialchars(isset($row['Elaborate']) ? $row['Elaborate'] : '100% variété'); ?></b>
 
@@ -96,7 +96,10 @@ include 'wine-details-2.php';
         </div>
         <div class="frame-inner">
         </div>
-        <div class="accord-mets">
+
+
+
+    <div class="accord-mets">
             <img class="winners-podium-icon-place-awar" alt="" src="../../assets/images/winners-podium-icon-place-awarding-260nw-2146796811jpg.jpg">
 
             <?php
@@ -121,7 +124,7 @@ include 'wine-details-2.php';
             if (isset($row['Harmonize'])) {
                 $harmonizeArray = explode(',', str_replace(array('[', ']', "'"), '', $row['Harmonize']));
                 $item1 = isset($harmonizeArray[1]) ? trim($harmonizeArray[1]) : '';
-                echo '<img class="capture-decran-2024-10-23-a2" src="../../assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . htmlspecialchars($item1) . '"> ';
+                echo '<img class="plat_2" src="../../assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . htmlspecialchars($item1) . '"> ';
 
             }
             ?>
@@ -165,38 +168,98 @@ include 'wine-details-2.php';
 
         <b class="prix-90">Prix <?php echo htmlspecialchars(isset($row['price']) ? $row['price'] : '90'); ?> €</b>
 
-        <img class="tempimagebgwhib-icon" alt="" src="tempImageBGwhIb.png">
 
-        <img class="tempimage1qw2ge-icon" alt="" src="tempImage1qw2gE.png">
+        <?php
+        if (isset($row['flavorGroup_1'])) {
+            $flavor = trim($row['flavorGroup_1']);
+
+            // Chemin de l'image basé sur le nom du goût
+            $flavorImagePath = '../../assets/gouts%20/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
+
+
+
+            // Affiche l'image avec la classe et l'attribut alt
+            echo '<img class="icon-flavor1" src="' . htmlspecialchars($flavorImagePath) . '" alt="' . htmlspecialchars($flavor) . '"> ';
+        }
+        ?>
+
+        <?php
+        if (isset($row['flavorGroup_2'])) {
+            $flavor = trim($row['flavorGroup_2']);
+
+            // Chemin de l'image basé sur le nom du goût
+            $flavorImagePath = '../../assets/gouts%20/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
+
+
+
+            // Affiche l'image avec la classe et l'attribut alt
+            echo '<img class="icon-flavor2" src="' . htmlspecialchars($flavorImagePath) . '" alt="' . htmlspecialchars($flavor) . '"> ';
+        }
+        ?>
+
+        <?php
+        if (isset($row['flavorGroup_3'])) {
+            $flavor = trim($row['flavorGroup_3']);
+
+            // Chemin de l'image basé sur le nom du goût
+            $flavorImagePath = '../../assets/gouts%20/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
+
+
+
+            // Affiche l'image avec la classe et l'attribut alt
+            echo '<img class="icon-flavor3" src="' . htmlspecialchars($flavorImagePath) . '" alt="' . htmlspecialchars($flavor) . '"> ';
+        }
+        ?>
+
+
+
+
         <div class="armes">ARÔMES</div>
         <div class="flavor-1">
-            <?php echo htmlspecialchars(isset($row['flavorGroup_1']) ? $row['flavorGroup_1'] : 'Fruits rouges'); ?>
+            <?php echo htmlspecialchars(isset($row['flavorGroup_1']) ? $row['flavorGroup_1'] : ''); ?>
         </div>
         <div class="flavor-2">
-            <?php echo htmlspecialchars(isset($row['flavorGroup_2']) ? $row['flavorGroup_2'] : 'Epices'); ?>
+            <?php echo htmlspecialchars(isset($row['flavorGroup_2']) ? $row['flavorGroup_2'] : ''); ?>
         </div>
         <div class="flavor-3">
-            <?php echo htmlspecialchars(isset($row['flavorGroup_3']) ? $row['flavorGroup_3'] : 'ARÔMES'); ?>
+            <?php echo htmlspecialchars(isset($row['flavorGroup_3']) ? $row['flavorGroup_3'] : ''); ?>
         </div>
 
 
 
     </div>
-    <img class="dtails-sur-un-vin-child" alt="" src="Group 16.svg">
+    <div class="dtails-sur-un-vin-child">
+        <?php
+        // Exemple d'initialisation de $rating
+        $rating = isset($row['average_rating']) ? floatval($row['average_rating']) : 0;
+
+        for ($i = 1; $i <= 5; $i++) {
+            if ($i <= floor($rating)) {
+                echo '<img src="../../assets/images/StarFilled.png" alt="filled star" class="star">';
+            } elseif ($i - 0.5 <= $rating) {
+                echo '<img src="../../assets/images/StarHalfFilled.png" alt="half-filled star" class="star">';
+            } else {
+                echo '<img src="../../assets/images/StarOutlineFilled.png" alt="empty star" class="star">';
+            }
+        }
+        ?>
+        <!-- Affichage de la note moyenne en chiffres -->
+        <span class="average-rating"><?php echo number_format($rating, 1); ?> / 5</span>
+    </div>
+
+
 
     <div class="tooltip1">
-        <img class="beak-icon1" alt="" src="Beak.svg">
 
-        <img class="beak-stroke-icon1" alt="" src="Beak (Stroke).svg">
+
+
 
         <div class="title">Ajouter à la cave</div>
         <div class="body-text">
         </div>
     </div>
     <div class="tooltip2">
-        <img class="beak-icon2" alt="" src="Beak.svg">
 
-        <img class="beak-stroke-icon2" alt="" src="Beak (Stroke).svg">
 
         <div class="title">Ajouter au grenier</div>
         <div class="body-text">
@@ -228,7 +291,7 @@ include 'wine-details-2.php';
 
     <img class="favorite-icon" alt="" src="../../assets/images/winecavestock-logo.png">
 
-    <img class="capture-d-ecran-2024-10-16-a-icon" alt="" src="../../assets/images/cave-logo.png">
+    <img class="logo_grenier" alt="" src="../../assets/images/cave-logo.png">
 
 </div>
 

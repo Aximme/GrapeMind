@@ -53,7 +53,7 @@
 }
 .title {
     position: relative;
-    line-height: 140%;
+    line-height: 100%;
     font-weight: 600;
     z-index: 2;
 }
@@ -164,14 +164,14 @@
 }
 .vin-conomique {
     position: absolute;
-    top: 162px;
-    left: 54px;
+    top:10px;
+    right:40px ;
     font-family: 'Baloo 2';
     font-size: 40px;
 }
 .composition-100 {
     position: absolute;
-    top: 216px;
+    top: 180px;
     left: 54px;
     font-size: 24px;
     display: inline-block;
@@ -181,7 +181,7 @@
 }
 .frame-child {
     position: absolute;
-    top: 271.5px;
+    top: 310px;
     left: -0.5px;
     border-top: 1px solid #000;
     box-sizing: border-box;
@@ -215,7 +215,7 @@
 }
 .frame-inner {
     position: absolute;
-    top: 271.5px;
+    top: 310px;
     left: 427.5px;
     border-right: 1px solid #000;
     box-sizing: border-box;
@@ -246,13 +246,14 @@
     height: 73px;
     object-fit: cover;
 }
-.capture-decran-2024-10-23-a2 {
+.plat_2 {
     position: absolute;
     top: 37px;
     left: 77px;
     width: 61px;
     height: 53px;
     object-fit: cover;
+
 }
 .accord-mets-child {
     position: absolute;
@@ -340,27 +341,39 @@
     width: 240px;
     height: 39px;
 }
-.tempimagebgwhib-icon {
+.icon-flavor2 {
     position: absolute;
-    top: 143px;
+    top: 180px;
     left: 527px;
     border-radius: 30px;
-    width: 42px;
-    height: 39px;
+    width: 30px;
+    height: 30px;
     object-fit: cover;
 }
-.tempimage1qw2ge-icon {
+.icon-flavor3 {
     position: absolute;
-    top: 202px;
+    top: 230px;
     left: 527px;
     border-radius: 30px;
-    width: 42.3px;
-    height: 39px;
+    width: 30px;
+    height: 30px;
     object-fit: cover;
+
+}
+
+.icon-flavor1 {
+    position: absolute;
+    top: 130px;
+    left: 527px;
+    border-radius: 30px;
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+
 }
 .flavor-1 {
     position: absolute;
-    top: 120px;
+    top: 130px;
     left: 584px;
     font-family: Baloo;
     text-align: center;
@@ -433,7 +446,27 @@
     left: 87px;
     width: 240px;
     height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
 }
+.average-rating {
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+.star {
+    width: 30px;
+    height: 30px;
+}
+
+
 .beak-icon1 {
     width: 11.3px;
     position: absolute;
@@ -464,7 +497,7 @@
     border: 1px solid #d9d9d9;
     box-sizing: border-box;
     width: 133px;
-    height: 37px;
+    height: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -501,7 +534,7 @@
     border: 1px solid #d9d9d9;
     box-sizing: border-box;
     width: 154px;
-    height: 37px;
+    height: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -532,15 +565,15 @@
 }
 .favorite-icon {
     position: absolute;
-    top: 239px;
+    top: 245px;
     left: 287px;
     width: 44px;
     height: 41px;
     overflow: hidden;
 }
-.capture-d-ecran-2024-10-16-a-icon {
+.logo_grenier {
     position: absolute;
-    top: 239px;
+    top: 245px;
     left: 68px;
     width: 42px;
     height: 41px;
