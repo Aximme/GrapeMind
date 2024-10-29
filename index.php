@@ -22,7 +22,7 @@ include 'components/header.php';
                 document.getElementById("age-popup").style.display = "none";
                 document.body.classList.remove("blur");
             } else {
-                window.location.href = "https://www.google.fr";
+                window.location.href = "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031927682";
             }
         }
     </script>
