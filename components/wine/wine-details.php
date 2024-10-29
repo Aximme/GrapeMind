@@ -45,7 +45,7 @@ include 'wine-details-2.php';
         </div>
         <div class="degrs-alcool-parent">
             <b class="degrs-alcool">DEGRÈS ALCOOL</b>
-            <b class="b"><?php echo htmlspecialchars(isset($row['ABV']) ? $row['ABV'] : ''); ?>°</b>
+            <b class="ABV"><?php echo htmlspecialchars(isset($row['ABV']) ? $row['ABV'] : ''); ?>°</b>
 
 
             <div class="container1">
@@ -56,22 +56,14 @@ include 'wine-details-2.php';
 
             </div>
 
-            <div class="degrs-alcool-parent">
-                <b class="degrs-alcool">DEGRÈS ALCOOL</b>
-                <b class="b"><?php echo htmlspecialchars(isset($row['ABV']) ? $row['ABV'] : ''); ?>°</b>
 
-                <div class="container1">
-                    <div class="group-item"></div>
-                    <img class="group-inner" alt="" src="Ellipse 2.svg">
-                </div>
-            </div>
 
 
 
 
 
         </div>
-        <b class="cpages-pinot">Cépages :
+        <b class="cepages">Cépages :
             <?php
             $grapes = isset($row['Grapes']) ? $row['Grapes'] : 'Pinot noir';
             $cleaned_grapes = str_replace(array('[', ']', "'"), '', $grapes);
@@ -89,18 +81,22 @@ include 'wine-details-2.php';
         <div class="frame-child">
         </div>
         <b class="avec-quoi-le-container">
-            <p class="avec-quoi-le">Avec quoi le manger?</p>
+            <p class="sous-titre">Avec quoi le manger?</p>
             <p class="p">                 </p>
         </b>
         <div class="frame-item">
         </div>
         <div class="frame-inner">
         </div>
+        <div class="new-vertical-bar"></div>
+        <div class="new-horizontal-bar"></div>
 
 
 
-    <div class="accord-mets">
-            <img class="winners-podium-icon-place-awar" alt="" src="../../assets/images/winners-podium-icon-place-awarding-260nw-2146796811jpg.jpg">
+
+
+        <div class="accord-mets">
+            <img class="winners-podium" alt="" src="../../assets/images/winner_podium.png">
 
             <?php
             if (isset($row['Harmonize'])) {
@@ -139,7 +135,6 @@ include 'wine-details-2.php';
 
 
         <?php
-        // Vérifier si Harmonize est défini et le traiter
         if (isset($row['Harmonize'])) {
             $harmonizeArray = explode(',', str_replace(array('[', ']', "'"), '', $row['Harmonize']));
             $item1 = isset($harmonizeArray[0]) ? trim($harmonizeArray[0]) : '';
@@ -164,7 +159,7 @@ include 'wine-details-2.php';
 
 
 
-        <img class="line-icon" alt="" src="Line 9.svg">
+
 
         <b class="prix-90">Prix <?php echo htmlspecialchars(isset($row['price']) ? $row['price'] : '90'); ?> €</b>
 
@@ -173,12 +168,7 @@ include 'wine-details-2.php';
         if (isset($row['flavorGroup_1'])) {
             $flavor = trim($row['flavorGroup_1']);
 
-            // Chemin de l'image basé sur le nom du goût
             $flavorImagePath = '../../assets/gouts%20/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
-
-
-
-            // Affiche l'image avec la classe et l'attribut alt
             echo '<img class="icon-flavor1" src="' . htmlspecialchars($flavorImagePath) . '" alt="' . htmlspecialchars($flavor) . '"> ';
         }
         ?>
@@ -186,13 +176,8 @@ include 'wine-details-2.php';
         <?php
         if (isset($row['flavorGroup_2'])) {
             $flavor = trim($row['flavorGroup_2']);
-
-            // Chemin de l'image basé sur le nom du goût
             $flavorImagePath = '../../assets/gouts%20/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
 
-
-
-            // Affiche l'image avec la classe et l'attribut alt
             echo '<img class="icon-flavor2" src="' . htmlspecialchars($flavorImagePath) . '" alt="' . htmlspecialchars($flavor) . '"> ';
         }
         ?>
@@ -201,12 +186,7 @@ include 'wine-details-2.php';
         if (isset($row['flavorGroup_3'])) {
             $flavor = trim($row['flavorGroup_3']);
 
-            // Chemin de l'image basé sur le nom du goût
             $flavorImagePath = '../../assets/gouts%20/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
-
-
-
-            // Affiche l'image avec la classe et l'attribut alt
             echo '<img class="icon-flavor3" src="' . htmlspecialchars($flavorImagePath) . '" alt="' . htmlspecialchars($flavor) . '"> ';
         }
         ?>
@@ -258,19 +238,21 @@ include 'wine-details-2.php';
         <div class="body-text">
         </div>
     </div>
+
     <div class="tooltip2">
+
 
 
         <div class="title">Ajouter au grenier</div>
         <div class="body-text">
         </div>
     </div>
-    <div class="pomerol-chteau-ptrus-container">
+    <div class="titre-vin">
 
-        <p class="avec-quoi-le">
+        <p class="sous-titre">
             <?php echo htmlspecialchars(isset($row['WineryName']) ? $row['WineryName'] : ''); ?>
         </p>
-        <p class="chteau-ptrus-occitanie">
+        <p class="pays-region">
             <span>
                 <span>
                     <?php

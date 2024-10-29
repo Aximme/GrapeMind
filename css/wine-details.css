@@ -8,7 +8,7 @@
 }
 .acidit {
     position: absolute;
-    top: 0px;
+    top: 30px;
     left: 6.03px;
     line-height: 48px;
     display: inline-block;
@@ -17,7 +17,7 @@
 }
 .container {
     position: absolute;
-    top: 42.64px;
+    top: 86.64px;
     left: 0px;
     border-radius: 24px;
     background: linear-gradient(90deg, #fbff04, #ff8c00 50%, #ee0606);
@@ -26,7 +26,7 @@
 }
 .group-child {
     position: absolute;
-    top: 39.16px;
+    top: 81.16px;
     left: 174.09px;
     width: 29.3px;
     height: 27.8px;
@@ -65,7 +65,7 @@
 }
 .tooltip {
     position: absolute;
-    top: 1.74px;
+    top: 40px;
     left: 151.68px;
     box-shadow: 0px 1px 4px rgba(12, 12, 13, 0.1), 0px 1px 4px rgba(12, 12, 13, 0.05);
     border-radius: 8px;
@@ -92,16 +92,16 @@
 }
 .degrs-alcool {
     position: absolute;
-    top: 7.13px;
+    top: 60px;
     left: 8.58px;
     line-height: 48px;
     display: inline-block;
     width: 187.9px;
     height: 23.5px;
 }
-.b {
+.ABV {
     position: absolute;
-    top: 0px;
+    top: 49px;
     left: 298.52px;
     line-height: 72px;
     display: inline-block;
@@ -110,7 +110,7 @@
 }
 .container1 {
     position: absolute;
-    top: 58.02px;
+    top: 120px;
     left: 0px;
     border-radius: 24px;
     background: linear-gradient(90deg, #ff0408, #b10b0d 50%, #761414);
@@ -119,7 +119,7 @@
 }
 .group-item {
     position: absolute;
-    top: 54.75px;
+    top: 118px;
     left: 102.08px;
 
     width: 29.3px;
@@ -134,12 +134,23 @@
 }
 .degrs-alcool-parent {
     position: absolute;
-    top: 379px;
+    top: 400px;
     left: 37px;
     width: 362px;
     height: 82.6px;
 }
-.cpages-pinot {
+.line-icon {
+    width: 100%;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    height: 247px;
+    object-fit: contain;
+}
+
+
+
+.cepages {
     position: absolute;
     top: 107px;
     left: 54px;
@@ -188,7 +199,7 @@
     width: 880px;
     height: 1px;
 }
-.avec-quoi-le {
+.sous-titre {
     margin: 0;
 }
 .p {
@@ -222,7 +233,33 @@
     width: 1px;
     height: 338px;
 }
-.winners-podium-icon-place-awar {
+
+.new-vertical-bar {
+    position: absolute;
+    top: 0px; /* ajustez en fonction de votre besoin */
+    left: 475px; /* ajustez en fonction de votre besoin */
+    border-right: 1px solid #000; /* style de la barre */
+    box-sizing: border-box;
+    height: 310px; /* hauteur de la barre */
+}
+.new-horizontal-bar {
+    position: absolute;
+    top: 75px; /* ajustez en fonction de votre besoin */
+    left: 475px; /* ajustez en fonction de votre besoin */
+    border-top: 1px solid #000; /* style de la barre */
+    box-sizing: border-box;
+    width: 450px; /* largeur de la barre */
+}
+
+{
+    position: absolute;
+    top: 0px; /* ajustez en fonction de votre besoin */
+    left: 475px; /* ajustez en fonction de votre besoin */
+    border-right: 1px solid #000; /* style de la barre */
+    box-sizing: border-box;
+    height: 310px; /* hauteur de la barre */
+}
+.winners-podium {
     position: absolute;
     top: 12px;
     left: 0px;
@@ -544,12 +581,12 @@
 .span {
     font-size: 36px;
 }
-.chteau-ptrus-occitanie {
+.pays-region {
     margin: 0;
     font-size: 32px;
     font-family: 'Baloo 2';
 }
-.pomerol-chteau-ptrus-container {
+.titre-vin {
     position: absolute;
     top: 95px;
     left: 758px;
