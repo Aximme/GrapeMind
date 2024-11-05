@@ -1,0 +1,630 @@
+.image-detail-vin-icon {
+    position: absolute;
+    top: 198px;
+    left: 135px;
+    width: 125px;
+    height: 472px;
+    object-fit: cover;
+}
+.acidit {
+    position: absolute;
+    top: 30px;
+    left: 6.03px;
+    line-height: 48px;
+    display: inline-block;
+    width: 125.8px;
+    height: 23.5px;
+}
+.container {
+    position: absolute;
+    top: 86.64px;
+    left: 0px;
+    border-radius: 24px;
+    background: linear-gradient(90deg, #fbff04, #ff8c00 50%, #ee0606);
+    width: 368px;
+    height: 20px;
+}
+.group-child {
+    position: absolute;
+    top: 81.16px;
+    left: 174.09px;
+    width: 29.3px;
+    height: 27.8px;
+}
+.beak-icon {
+    width: 11.3px;
+    position: absolute;
+    margin: 0 !important;
+    bottom: -5.15px;
+    left: calc(50% - 5.71px);
+    height: 11.3px;
+    object-fit: contain;
+    z-index: 0;
+}
+.beak-stroke-icon {
+    width: 11.3px;
+    position: absolute;
+    margin: 0 !important;
+    bottom: -5.15px;
+    left: calc(50% - 5.71px);
+    height: 11.3px;
+    object-fit: contain;
+    z-index: 1;
+}
+.title {
+    position: relative;
+    line-height: 100%;
+    font-weight: 600;
+    z-index: 2;
+}
+.body-text {
+    position: relative;
+    font-size: 14px;
+    line-height: 140%;
+    z-index: 3;
+}
+.tooltip {
+    position: absolute;
+    top: 40px;
+    left: 151.68px;
+    box-shadow: 0px 1px 4px rgba(12, 12, 13, 0.1), 0px 1px 4px rgba(12, 12, 13, 0.05);
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    box-sizing: border-box;
+    width: 74.1px;
+    height: 32.2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px 12px;
+    text-align: center;
+    font-size: 16px;
+    font-family: Inter;
+}
+.acidit-parent {
+    position: absolute;
+    top: 316px;
+    left: 31px;
+    width: 368px;
+    height: 67px;
+}
+.degrs-alcool {
+    position: absolute;
+    top: 60px;
+    left: 8.58px;
+    line-height: 48px;
+    display: inline-block;
+    width: 187.9px;
+    height: 23.5px;
+}
+.ABV {
+    position: absolute;
+    top: 49px;
+    left: 298.52px;
+    line-height: 72px;
+    display: inline-block;
+    width: 63.5px;
+    height: 35.6px;
+}
+.container1 {
+    position: absolute;
+    top: 120px;
+    left: 0px;
+    border-radius: 24px;
+    background: linear-gradient(90deg, #ff0408, #b10b0d 50%, #761414);
+    width: 361.6px;
+    height: 24.5px;
+}
+.group-item {
+    position: absolute;
+    top: 118px;
+    left: 102.08px;
+
+    width: 29.3px;
+    height: 27.8px;
+}
+.group-inner {
+    position: absolute;
+    top: 61.7px;
+    left: 108.94px;
+    width: 15.4px;
+    height: 14.3px;
+}
+.degrs-alcool-parent {
+    position: absolute;
+    top: 400px;
+    left: 37px;
+    width: 362px;
+    height: 82.6px;
+}
+.line-icon {
+    width: 100%;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    height: 247px;
+    object-fit: contain;
+}
+
+
+
+.cepages {
+    position: absolute;
+    top: 107px;
+    left: 54px;
+    font-size: 24px;
+    display: inline-block;
+    font-family: 'Baloo 2';
+    width: 240px;
+    height: 39px;
+}
+.type {
+    position: absolute;
+    top: 57px;
+    left: 54px;
+    font-size: 24px;
+    display: inline-block;
+    font-family: 'Baloo 2';
+    width: 82px;
+    height: 39px;
+}
+.vin-conomique1 {
+    font-size: 24px;
+}
+.vin-conomique {
+    position: absolute;
+    top:10px;
+    right:40px ;
+    font-family: 'Baloo 2';
+    font-size: 40px;
+}
+.composition-100 {
+    position: absolute;
+    top: 180px;
+    left: 54px;
+    font-size: 24px;
+    display: inline-block;
+    font-family: 'Baloo 2';
+    width: 325px;
+    height: 39px;
+}
+.frame-child {
+    position: absolute;
+    top: 310px;
+    left: -0.5px;
+    border-top: 1px solid #000;
+    box-sizing: border-box;
+    width: 880px;
+    height: 1px;
+}
+.sous-titre {
+    margin: 0;
+}
+.p {
+    margin: 0;
+    font-size: 64px;
+    white-space: pre-wrap;
+}
+.avec-quoi-le-container {
+    position: absolute;
+    top: 328px;
+    left: 456px;
+    display: inline-block;
+    width: 423px;
+    height: 153px;
+}
+.frame-item {
+    position: absolute;
+    top: 61px;
+    left: 136px;
+    border-radius: 50%;
+    background-color: #b01f1f;
+    width: 32px;
+    height: 30px;
+}
+.frame-inner {
+    position: absolute;
+    top: 310px;
+    left: 427.5px;
+    border-right: 1px solid #000;
+    box-sizing: border-box;
+    width: 1px;
+    height: 338px;
+}
+
+.new-vertical-bar {
+    position: absolute;
+    top: 0px; /* ajustez en fonction de votre besoin */
+    left: 475px; /* ajustez en fonction de votre besoin */
+    border-right: 1px solid #000; /* style de la barre */
+    box-sizing: border-box;
+    height: 310px; /* hauteur de la barre */
+}
+.new-horizontal-bar {
+    position: absolute;
+    top: 75px; /* ajustez en fonction de votre besoin */
+    left: 475px; /* ajustez en fonction de votre besoin */
+    border-top: 1px solid #000; /* style de la barre */
+    box-sizing: border-box;
+    width: 450px; /* largeur de la barre */
+}
+
+{
+    position: absolute;
+    top: 0px; /* ajustez en fonction de votre besoin */
+    left: 475px; /* ajustez en fonction de votre besoin */
+    border-right: 1px solid #000; /* style de la barre */
+    box-sizing: border-box;
+    height: 310px; /* hauteur de la barre */
+}
+.winners-podium {
+    position: absolute;
+    top: 12px;
+    left: 0px;
+    width: 378px;
+    height: 174px;
+    object-fit: cover;
+}
+.capture-decran-2024-10-23-a {
+    position: absolute;
+    top: 40px;
+    left: 241px;
+    width: 73px;
+    height: 66px;
+    object-fit: cover;
+}
+.capture-decran-2024-10-23-a1 {
+    position: absolute;
+    top: 0px;
+    left: 155px;
+    width: 69px;
+    height: 73px;
+    object-fit: cover;
+}
+.plat_2 {
+    position: absolute;
+    top: 37px;
+    left: 77px;
+    width: 61px;
+    height: 53px;
+    object-fit: cover;
+
+}
+.accord-mets-child {
+    position: absolute;
+    top: 109px;
+    left: 83px;
+    background-color: #d9d9d9;
+    width: 40px;
+    height: 43px;
+}
+.accord-mets-item {
+    position: absolute;
+    top: 91px;
+    left: 177px;
+    background-color: #d9d9d9;
+    width: 34px;
+    height: 40px;
+}
+.accord-mets-inner {
+    position: absolute;
+    top: 132px;
+    left: 259px;
+    background-color: #d9d9d9;
+    width: 38px;
+    height: 28px;
+}
+.accord-mets {
+    position: absolute;
+    top: 383px;
+    left: 456px;
+    width: 378px;
+    height: 186px;
+}
+.plats2 {
+    position: absolute;
+    top: 507px;
+    left: 534px;
+    font-size: 12px;
+    display: inline-block;
+    width: 45px;
+    height: 21px;
+}
+.plats3 {
+    position: absolute;
+    top: 518px;
+    left: 703px;
+    font-size: 12px;
+    display: inline-block;
+    width: 62px;
+    height: 22px;
+}
+.plats1 {
+    position: absolute;
+    top: 493px;
+    left: calc(50% + 162.5px);
+    font-size: 12px;
+    display: inline-block;
+    text-align: center;
+    width: 87px;
+    height: 46px;
+}
+.image-6-icon {
+    position: absolute;
+    top: 25px;
+    left: 731px;
+    width: 34px;
+    height: 34px;
+    object-fit: cover;
+}
+.line-icon {
+    position: absolute;
+    top: 25px;
+    left: 503px;
+    width: 1px;
+    height: 247px;
+    object-fit: contain;
+}
+.prix-90 {
+    position: absolute;
+    top: 22px;
+    left: 548px;
+    font-size: 24px;
+    display: inline-block;
+    font-family: 'Baloo 2';
+    white-space: pre-wrap;
+    width: 240px;
+    height: 39px;
+}
+.icon-flavor2 {
+    position: absolute;
+    top: 180px;
+    left: 527px;
+    border-radius: 30px;
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+}
+.icon-flavor3 {
+    position: absolute;
+    top: 230px;
+    left: 527px;
+    border-radius: 30px;
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+
+}
+
+.icon-flavor1 {
+    position: absolute;
+    top: 130px;
+    left: 527px;
+    border-radius: 30px;
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+
+}
+.flavor-1 {
+    position: absolute;
+    top: 130px;
+    left: 584px;
+    font-family: Baloo;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 149px;
+    height: 31px;
+}
+.flavor-2 {
+    position: absolute;
+    top: 180px;
+    left: 585px;
+    font-family: Baloo;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 148px;
+    height: 28px;
+}
+.flavor-3 {
+    position: absolute;
+    top: 230px;
+    left: 585px;
+    font-family: Baloo;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 148px;
+    height: 28px;
+}
+.armes {
+    position: absolute;
+    top: 80px;
+    left: 570px;
+    font-family: Baloo;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 183px;
+    height: 33px;
+}
+.vector-icon {
+    position: absolute;
+    top: 75.5px;
+    left: 509.5px;
+    max-height: 100%;
+    width: 366px;
+}
+.group-parent {
+    position: absolute;
+    top: 181px;
+    left: 531px;
+    box-shadow: 0px 16px 32px -8px rgba(12, 12, 13, 0.4);
+    border-radius: 24px;
+    background-color: rgba(176, 31, 31, 0.02);
+    width: 879px;
+    height: 615px;
+    overflow: hidden;
+    text-align: left;
+    font-size: 20px;
+    font-family: Poppins;
+}
+.dtails-sur-un-vin-child {
+    position: absolute;
+    top: 714px;
+    left: 87px;
+    width: 240px;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.average-rating {
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+.star {
+    width: 30px;
+    height: 30px;
+}
+
+
+.beak-icon1 {
+    width: 11.3px;
+    position: absolute;
+    margin: 0 !important;
+    bottom: -5.35px;
+    left: calc(50% - 5.16px);
+    height: 11.3px;
+    object-fit: contain;
+    z-index: 0;
+}
+.beak-stroke-icon1 {
+    width: 11.3px;
+    position: absolute;
+    margin: 0 !important;
+    bottom: -5.35px;
+    left: calc(50% - 5.16px);
+    height: 11.3px;
+    object-fit: contain;
+    z-index: 1;
+}
+.tooltip1 {
+    position: absolute;
+    top: 192px;
+    left: 243px;
+    box-shadow: 0px 1px 4px rgba(12, 12, 13, 0.1), 0px 1px 4px rgba(12, 12, 13, 0.05);
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    box-sizing: border-box;
+    width: 133px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px 12px;
+}
+.beak-icon2 {
+    width: 11.3px;
+    position: absolute;
+    margin: 0 !important;
+    bottom: -5.35px;
+    left: calc(50% - 5.66px);
+    height: 11.3px;
+    object-fit: contain;
+    z-index: 0;
+}
+.beak-stroke-icon2 {
+    width: 11.3px;
+    position: absolute;
+    margin: 0 !important;
+    bottom: -5.35px;
+    left: calc(50% - 5.66px);
+    height: 11.3px;
+    object-fit: contain;
+    z-index: 1;
+}
+.tooltip2 {
+    position: absolute;
+    top: 192px;
+    left: 12px;
+    box-shadow: 0px 1px 4px rgba(12, 12, 13, 0.1), 0px 1px 4px rgba(12, 12, 13, 0.05);
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    box-sizing: border-box;
+    width: 154px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px 12px;
+}
+.span {
+    font-size: 36px;
+}
+.pays-region {
+    margin: 0;
+    font-size: 32px;
+    font-family: 'Baloo 2';
+}
+.titre-vin {
+    position: absolute;
+    top: 95px;
+    left: 758px;
+    font-size: 40px;
+    font-family: Aclonica;
+}
+.footer-icon {
+    position: absolute;
+    top: 829px;
+    left: 0px;
+    width: 1452px;
+    height: 195px;
+}
+.favorite-icon {
+    position: absolute;
+    top: 245px;
+    left: 287px;
+    width: 44px;
+    height: 41px;
+    overflow: hidden;
+}
+.logo_grenier {
+    position: absolute;
+    top: 245px;
+    left: 68px;
+    width: 42px;
+    height: 41px;
+    object-fit: cover;
+}
+.dtails-sur-un-vin {
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+    height: 1024px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 16px;
+    color: #000;
+    font-family: Inter;
+}
+
