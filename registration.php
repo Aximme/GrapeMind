@@ -1,52 +1,36 @@
-
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="">
-    <title>Formulaire d'Enregistrement</title>
+    <title>Créer un compte</title>
+    <link rel="stylesheet" href="css/registration.css">
 </head>
 <body>
-
-<header>
-    <h1>Bienvenue sur notre site</h1>
-</header>
-
 <main>
-    <section>
-        <form action="" method="post" onsubmit="return validateForm()">
-            <h2>Inscription</h2>
+    <div class="form-container">
+        <h2>Créer un compte</h2>
+        <p>pour profiter pleinement de l'expérience !</p>
+        <form action="" method="post">
+            <label for="username">Nom d'Utilisateur</label>
+            <input type="text" id="username" name="username" required>
 
-            <label for="nom">Nom:</label>
-            <input type="text" id="nom" name="n" required><br><br>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
 
-            <label for="prenom">Prénom:</label>
-            <input type="text" id="prenom" name="p" required><br><br>
+            <label for="address">Adresse Postale</label>
+            <input type="text" id="address" name="address" required>
 
-            <label for="adresse">Adresse:</label>
-            <input type="text" id="adresse" name="adr" required><br><br>
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" name="password" required>
 
-            <label for="numero">Numéro de téléphone:</label>
-            <input type="tel" id="numero" name="num" required><br><br>
+            <button type="submit">Envoyer</button>
 
-            <label for="email">Adresse e-mail:</label>
-            <input type="email" id="email" name="mail" required><br><br>
-
-            <label for="mdp1">Mot de passe:</label>
-            <input type="password" id="mdp1" name="mdp1" required><br><br>
-
-            <label for="mdp2">Confirmer votre mot de passe:</label>
-            <input type="password" id="mdp2" name="mdp2" required><br><br>
-
-            <input type="submit" value="S'inscrire">
+            <p class="log-in">
+                Déjà un compte?<a href="#">Connectez-vous</a>
+            </p>
         </form>
-    </section>
+    </div>
 </main>
 </body>
 </html>
-
-
-
