@@ -9,7 +9,7 @@
 <body>
 <header class="header">
     <div class="logo">
-        <img src="../assets/images/main-logo.png" alt="GrapeMind Logo">
+        <img src="assets/images/image_header.png" alt="GrapeMind Logo">
         <span class="logo-text">GrapeMind</span>
     </div>
     <nav class="navigation">
