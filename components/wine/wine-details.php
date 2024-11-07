@@ -1,6 +1,7 @@
 <?php
 include '../header.php';
 include 'wine-details-2.php';
+
 ?>
 
 
@@ -9,9 +10,14 @@ include 'wine-details-2.php';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, width=device-width">
-    <link rel="stylesheet"  href="/css/main.css" />
+    <link rel="stylesheet"  href="/GrapeMind/css/main.css" />
 
-    <link rel="stylesheet"  href="/css/wine-details.css" />
+
+
+
+
+
+    <link rel="stylesheet"  href="/GrapeMind/css/wine-details.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo 2:wght@400;700&display=swap" />
@@ -20,8 +26,10 @@ include 'wine-details-2.php';
 
 
 
+
 </head>
 <body>
+
 
 <div class="dtails-sur-un-vin">
     <img class="image-detail-vin-icon" alt="" src="<?php echo htmlspecialchars(isset($row['thumb']) ? $row['thumb'] : 'image_detail_vin.png'); ?>">
@@ -279,6 +287,7 @@ include 'wine-details-2.php';
 
 
 <script src="../../js/cursor_acidity.js"></script>
+
 
 
 </body>

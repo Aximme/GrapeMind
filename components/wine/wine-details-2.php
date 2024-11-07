@@ -1,8 +1,10 @@
 <?php
+session_start();
+
 global $conn;
 require_once '../../db.php';
 
-$vin_id = isset($_GET['id']) ? intval($_GET['id']) : 111530;
+$vin_id = isset($_SESSION['vin_id']) ? $_SESSION['vin_id'] : 111630;
 
 $sql = "
     SELECT 

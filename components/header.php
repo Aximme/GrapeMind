@@ -9,7 +9,9 @@
 <body>
 <header class="header">
     <div class="logo">
+
         <img src="assets/images/image_header.png" alt="GrapeMind Logo">
+
         <span class="logo-text">GrapeMind</span>
     </div>
     <nav class="navigation">
@@ -31,5 +33,5 @@
         <a href="#">STATISTIQUES</a>
         <a href="#">PARAMÈTRES DU COMPTE</a>
     </div>
-    <script src="../js/menu_header.js"></script>
+    <script src="/js/menu_header.js"></script>
 </header>
