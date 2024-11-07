@@ -1,5 +1,6 @@
 <?php
 include 'components/header.php';
+include 'components/search_bar.php'
 
 /*include 'components/footer.php';*/
 
@@ -11,6 +12,9 @@ include 'components/header.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/index-main.css">
+    <link rel="stylesheet" href="css/checkAdult.css">
 
 </head>
 <body class="blur">
@@ -27,6 +31,7 @@ include 'components/header.php';
         <button class="button-no" id="no-button">Non</button>
     </div>
 </div>
+
 
 <script async src="https://unpkg.com/es-module-shims/dist/es-module-shims.js"></script>
 <script type="importmap">
