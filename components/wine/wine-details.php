@@ -5,6 +5,7 @@ include '../search_bar.php';
 ?>
 
 
+
 <!DOCTYPE html>
 <html>
 <head>
