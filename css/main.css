@@ -178,3 +178,10 @@ iframe {
     margin-top: 15px;
 }
 
+/* Bouteille 3D */
+#scene-container {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
