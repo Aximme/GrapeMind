@@ -1,4 +1,4 @@
-body.blur *:not(.age-popup-content) {
+body.blur > *:not(#age-popup) {
     filter: blur(1px);
 }
 
