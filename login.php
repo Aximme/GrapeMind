@@ -3,28 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="">
-    <title>Se connecter</title>
+    <title>Connexion</title>
+    <link rel="stylesheet" href="css/registration.css">
 </head>
-<header>
-    <h1>Se connecter</h1>
-</header>
 <body>
+<main>
+    <div class="form-container">
+        <h2>Connectez-vous</h2>
+        <form action="" method="post">
+            <label for="email">Adresse mail ou nom utilisateur</label>
+            <input type="text" id="email" name="email" required>
 
-<!-- Formulaire de connexion -->
-<form action="" method="post">
-    <label for="email">Adresse e-mail :</label>
-    <input type="email" id="email" name="email" required><br><br>
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" name="password" required>
 
-    <label for="password">Mot de passe :</label>
-    <input type="password" id="password" name="password" required><br><br>
+            <div class="remember-me">
+                <input type="checkbox" id="remember" name="remember">
+                <label for="remember">Se souvenir de moi</label>
+            </div>
 
+            <button type="submit">Se connecter</button>
 
-    <input type="submit" value="Se connecter">
-
-
-    <p>Vous n'avez pas encore de compte ? <a href="">Créez un compte ici</a>.</p>
-</form>
-
+            <p class="forgot-password">
+                <a href="#">Mot de passe oublié?</a>
+            </p>
+            <p class="sign-up">
+                Vous n'avez pas de compte ? <a href="#">Inscrivez-vous ici</a>
+            </p>
+        </form>
+    </div>
+</main>
 </body>
 </html>
