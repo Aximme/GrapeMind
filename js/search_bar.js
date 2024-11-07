@@ -1,26 +1,38 @@
-
-    function fetchSuggestions(query) {
+function fetchSuggestions(query) {
     if (query.length < 2) {
-    document.getElementById("search-suggestions").innerHTML = "";
-    return;
+        document.getElementById("search-suggestions").innerHTML = "";
+        return;
+    }
+
+    fetch(`/GrapeMind/components/wine_map/search_bar_server.php?query=${encodeURIComponent(query)}`)
+        .then(response => response.json())
+        .then(data => {
+            let suggestions = "";
+            data.slice(0, 4).forEach(item => {
+                suggestions += `
+                    <div class='search-suggestion-item' onclick="selectSuggestion(${item.idwine})">
+                        <img src="${item.thumb}" alt="${item.name}" style="width: 30px; height: 30px; margin-right: 10px;">
+                        ${item.name}
+                    </div>`;
+            });
+            document.getElementById("search-suggestions").innerHTML = suggestions;
+        })
+        .catch(error => console.error('Erreur lors de la récupération des suggestions:', error));
 }
 
-    fetch(`/components/wine_map/search_bar_server.php?query=${encodeURIComponent(query)}`)
-    .then(response => response.json())
-    .then(data => {
-    let suggestions = "";
-    data.slice(0, 4).forEach(item => {
-    suggestions += `
-                        <div class='search-suggestion-item' onclick="selectSuggestion('${item.name}')">
-                            <img src="${item.thumb}" alt="${item.name}" style="width: 30px; height: 30px; margin-right: 10px;">
-                            ${item.name}
-                        </div>`;
-});
-    document.getElementById("search-suggestions").innerHTML = suggestions;
-});
-}
-
-    function selectSuggestion(value) {
-    document.querySelector('.search-bar').value = value;
-    document.getElementById("search-suggestions").innerHTML = "";
+function selectSuggestion(vinId) {
+    // Envoie l'ID du vin sélectionné à `set_vin_id.php` pour le stocker en session
+    fetch("/GrapeMind/components/wine/set_vin_id.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: `vin_id=${vinId}`
+    })
+        .then(response => response.text())
+        .then(data => {
+            console.log(data);
+            window.location.href = "/GrapeMind/components/wine/wine-details.php";
+        })
+        .catch(error => console.error("Erreur lors de l'envoi de l'ID :", error));
 }

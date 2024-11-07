@@ -1,7 +1,7 @@
 <?php
 include '../header.php';
 include 'wine-details-2.php';
-include '../search_bar.php';
+
 ?>
 
 
@@ -10,11 +10,14 @@ include '../search_bar.php';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, width=device-width">
-    <link rel="stylesheet"  href="/css/main.css" />
+    <link rel="stylesheet"  href="/GrapeMind/css/main.css" />
 
 
 
-    <link rel="stylesheet"  href="/css/wine-details.css" />
+
+
+
+    <link rel="stylesheet"  href="/GrapeMind/css/wine-details.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo 2:wght@400;700&display=swap" />
