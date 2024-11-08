@@ -1,0 +1,116 @@
+/* Conteneur principal pour les résultats de recherche */
+.search-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Style pour chaque carte de résultat */
+.result-item {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.result-item:hover {
+    transform: scale(1.05);
+}
+
+/* Image de vignette du vin */
+.wine-thumbnail {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Titre du vin */
+.result-item h2 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin: 10px 0;
+    padding: 0 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Lien vers les détails */
+.details-link {
+    display: inline-block;
+    margin: 10px 0 20px;
+    padding: 8px 16px;
+    background-color: #900; /* Couleur principale en accord avec la base */
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.details-link:hover {
+    background-color: #700;
+}
+/* Style pour le titre principal */
+h1 {
+    font-size: 2.5em;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    position: relative;
+    font-family: 'Poppins', sans-serif; /* Utilisez une police cohérente avec votre site */
+}
+
+/* Ajout d'une ligne décorative en dessous du titre */
+h1::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: #900; /* Couleur principale */
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+/* Conteneur de la pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+/* Liens de pagination */
+.pagination-link {
+    margin: 0 5px;
+    padding: 8px 12px;
+    color: #333;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.pagination-link:hover {
+    background-color: #900;
+    color: #fff;
+}
+
+/* Lien actif */
+.pagination-link.active {
+    background-color: #900;
+    color: #fff;
+    cursor: default;
+}

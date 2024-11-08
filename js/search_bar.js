@@ -36,3 +36,12 @@ function selectSuggestion(vinId) {
         })
         .catch(error => console.error("Erreur lors de l'envoi de l'ID :", error));
 }
+
+// Fonction pour rediriger vers la page de résultats lors du clic sur le bouton "Rechercher"
+document.getElementById('searchButton').addEventListener('click', function(event) {
+    event.preventDefault(); // Empêche le rechargement de la page
+    const query = document.querySelector('.search-bar').value;
+    if (query) {
+        window.location.href = `/GrapeMind/components/wine_map/search_results.php?query=${encodeURIComponent(query)}`;
+    }
+});
