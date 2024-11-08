@@ -37,10 +37,6 @@ include 'components/header.php';
         </div>
     </div>
 </main>
-
-<?php
-include 'components/footer.php';
-?>
 </body>
 </html>
 
