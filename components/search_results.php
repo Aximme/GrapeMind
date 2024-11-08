@@ -49,7 +49,9 @@ $conn->close();
             <div class="result-item">
                 <img src="<?php echo htmlspecialchars($wine['thumb']); ?>" alt="<?php echo htmlspecialchars($wine['name']); ?>" class="wine-thumbnail">
                 <h2><?php echo htmlspecialchars($wine['name']); ?></h2>
-                <a href="/GrapeMind/components/wine/wine-details.php?idwine=<?php echo $wine['idwine']; ?>" class="details-link">Voir les détails</a>
+                <a href="javascript:void(0);" onclick="setVinId(<?php echo $wine['idwine']; ?>)" class="details-link">Voir les détails</a>
+
+
             </div>
         <?php endforeach; ?>
     <?php else: ?>
@@ -60,3 +62,21 @@ $conn->close();
 <?php include 'pagination.php'; ?>
 </body>
 </html>
+<script>
+    function setVinId(vinId) {
+        fetch("/GrapeMind/components/wine/set_vin_id.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: `vin_id=${vinId}`
+        })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data); // Affiche un message de confirmation
+                window.location.href = "/GrapeMind/components/wine/wine-details.php"; // Redirige vers la page de détails
+            })
+            .catch(error => console.error("Erreur lors de l'envoi de l'ID :", error));
+    }
+</script>
+
