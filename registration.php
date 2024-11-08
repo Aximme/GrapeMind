@@ -1,3 +1,6 @@
+<?php
+include 'components/header.php';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,7 +13,7 @@
 <main>
     <div class="form-container">
         <h2>Créer un compte</h2>
-        <p>pour profiter pleinement de l'expérience !</p>
+        <p>Pour profiter pleinement de l'expérience !</p>
         <form action="" method="post">
             <label for="username">Nom d'Utilisateur</label>
             <input type="text" id="username" name="username" required>
@@ -24,10 +27,10 @@
             <label for="password">Mot de passe</label>
             <input type="password" id="password" name="password" required>
 
-            <button type="submit">Envoyer</button>
+            <button type="submit">Nous Rejoindre</button>
 
             <p class="log-in">
-                Déjà un compte?<a href="#">Connectez-vous</a>
+                Déjà un compte ?<a href="/GrapeMind/login.php"> Connectez-vous</a>
             </p>
         </form>
     </div>

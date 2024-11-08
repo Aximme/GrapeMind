@@ -22,7 +22,7 @@
         <a href="/GrapeMind/about.php">À propos</a>
     </nav>
     <div class="auth">
-        <a href="login.php" class="login">Se connecter</a>
+        <a href="/GrapeMind/login.php" class="login">Se connecter</a>
         <a href="/GrapeMind/registration.php" class="signup">S'inscrire</a>
     </div>
     <!-- Menu Déroulant -->
