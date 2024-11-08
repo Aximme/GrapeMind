@@ -1,8 +1,7 @@
 <?php
-include 'components/header.php';
-include 'components/search_bar.php'
 
-/*include 'components/footer.php';*/
+include 'components/header.php';
+include 'components/footer.php'
 
 
 ?>
@@ -21,6 +20,11 @@ include 'components/search_bar.php'
 
 <div id="scene-container">
     <div id="loading">Chargement du modèle...</div>
+</div>
+<div class="search-bar-wrapper">
+    <div class="search-bar-container">
+        <?php include 'components/search_bar.php'; ?>
+    </div>
 </div>
 
 <div class="age-popup" id="age-popup">

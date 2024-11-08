@@ -14,6 +14,18 @@
     padding: 0 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+.search-bar-wrapper {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 100vh;
+    position: fixed; /* La fixe au centre de la fenêtre */
+    width: 100%;
+    top: 0;
+    left: 100px;
+    z-index: 10; /* Assure-toi qu'elle est au-dessus d'autres éléments */
+}
+
 
 .search-bar {
     flex: 1;
@@ -60,6 +72,7 @@
     overflow: hidden;
     z-index: 1000;
     margin-top: 5px;
+
 }
 
 .search-suggestion-item {
