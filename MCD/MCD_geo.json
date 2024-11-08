@@ -1,0 +1,47 @@
+{
+  "width": 989,
+  "height": 483,
+  "cx": [
+    [ "IS_INTERESTED_IN", 73 ],
+    [ "CLIENTS", 216 ],
+    [ "HAVE", 319 ],
+    [ "GRENIER", 426 ],
+    [ "BELONGS_TO_REGION", 574 ],
+    [ "REGION", 764 ],
+    [ "EVENEMENTS", 73 ],
+    [ "CAVE", 319 ],
+    [ "CONTENT", 426 ],
+    [ "WINES", 574 ],
+    [ "PRODUCED_BY_WINERY", 764 ],
+    [ "WINERY", 929 ]
+  ],
+  "cy": [
+    [ "IS_INTERESTED_IN", 68 ],
+    [ "CLIENTS", 68 ],
+    [ "HAVE", 68 ],
+    [ "GRENIER", 68 ],
+    [ "BELONGS_TO_REGION", 68 ],
+    [ "REGION", 68 ],
+    [ "EVENEMENTS", 296 ],
+    [ "CAVE", 296 ],
+    [ "CONTENT", 296 ],
+    [ "WINES", 296 ],
+    [ "PRODUCED_BY_WINERY", 296 ],
+    [ "WINERY", 296 ]
+  ],
+  "shift": [
+    [ "IS_INTERESTED_IN,CLIENTS,0", 0 ],
+    [ "IS_INTERESTED_IN,EVENEMENTS,0", 0 ],
+    [ "HAVE,CLIENTS,0", 0 ],
+    [ "HAVE,CAVE,0", 0 ],
+    [ "HAVE,GRENIER,0", 0 ],
+    [ "BELONGS_TO_REGION,WINES,0", 0 ],
+    [ "BELONGS_TO_REGION,REGION,0", 0 ],
+    [ "CONTENT,CAVE,0", 0 ],
+    [ "CONTENT,GRENIER,0", 0 ],
+    [ "CONTENT,WINES,0", 0 ],
+    [ "PRODUCED_BY_WINERY,WINES,0", 0 ],
+    [ "PRODUCED_BY_WINERY,WINERY,0", 0 ]
+  ],
+  "ratio": []
+}

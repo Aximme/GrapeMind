@@ -1,0 +1,15 @@
+IS INTERESTED IN, 0N CLIENTS, 0N EVENEMENTS
+CLIENTS: ClientID, Name, Surname, Email, postal_adress
+HAVE, 11 CLIENTS, 11 CAVE, 11 GRENIER
+GRENIER: GrenierID, WineID, ClientID, AddedOn, WineSheet
+BELONGS_TO_REGION, 11 WINES, 1N REGION
+REGION: RegionID, RegionName, Country
+:
+
+EVENEMENTS: EvenementID, Date, Location, Time, Price, Contact
+:
+CAVE: CaveID, WineID, ClientID, AddedOn, WineSheet
+CONTENT, 0N CAVE,0N GRENIER, 0N WINES
+WINES: WineID, Type, Elaborate, Grapes, Harmonize, ABV, Body, Acidity, RegionID, RegionName, WineryID, WineryName, WineryWebsite, Vintages, NameWine_withWinery, AverageRating, Ratings, Price, FlavorGroup
+PRODUCED_BY_WINERY, 11 WINES, 1N WINERY
+WINERY: WineryID, WineryName, WineryWebsite
