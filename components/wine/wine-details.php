@@ -103,6 +103,7 @@ include 'wine-details-2.php';
 
 
 
+
         <div class="accord-mets">
             <img class="winners-podium" alt="" src="../../assets/images/winner_podium.png">
 
@@ -110,8 +111,9 @@ include 'wine-details-2.php';
             if (isset($row['Harmonize'])) {
                 $harmonizeArray = explode(',', str_replace(array('[', ']', "'"), '', $row['Harmonize']));
                 $item1 = isset($harmonizeArray[0]) ? trim($harmonizeArray[0]) : '';
-                echo '<img class="capture-decran-2024-10-23-a1" src="/GrapeMind/assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . htmlspecialchars($item1) . '"> ';
-
+                if (!empty($item1)) {
+                    echo '<img class="plat_1" src="/GrapeMind/assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . htmlspecialchars($item1) . '">';
+                }
             }
             ?>
 
@@ -119,8 +121,9 @@ include 'wine-details-2.php';
             if (isset($row['Harmonize'])) {
                 $harmonizeArray = explode(',', str_replace(array('[', ']', "'"), '', $row['Harmonize']));
                 $item1 = isset($harmonizeArray[2]) ? trim($harmonizeArray[2]) : '';
-                echo '<img class="capture-decran-2024-10-23-a" src="/GrapeMind/assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . htmlspecialchars($item1) . '"> ';
-
+                if (!empty($item1)) {
+                    echo '<img class="plat_3" src="/GrapeMind/assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . htmlspecialchars($item1) . '">';
+                }
             }
             ?>
 
@@ -128,10 +131,12 @@ include 'wine-details-2.php';
             if (isset($row['Harmonize'])) {
                 $harmonizeArray = explode(',', str_replace(array('[', ']', "'"), '', $row['Harmonize']));
                 $item1 = isset($harmonizeArray[1]) ? trim($harmonizeArray[1]) : '';
-                echo '<img class="plat_2" src="/GrapeMind/assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . htmlspecialchars($item1) . '"> ';
-
+                if (!empty($item1)) {
+                    echo '<img class="plat_2" src="/GrapeMind/assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . htmlspecialchars($item1) . '">';
+                }
             }
             ?>
+
 
             <div class="accord-mets-child">
             </div>
@@ -173,31 +178,28 @@ include 'wine-details-2.php';
 
 
         <?php
-        if (isset($row['flavorGroup_1'])) {
+        // Flavor Group 1
+        if (!empty($row['flavorGroup_1'])) {
             $flavor = trim($row['flavorGroup_1']);
-
             $flavorImagePath = '/GrapeMind/assets/gouts/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
             echo '<img class="icon-flavor1" src="' . htmlspecialchars($flavorImagePath) . '" alt="' . htmlspecialchars($flavor) . '"> ';
         }
-        ?>
 
-        <?php
-        if (isset($row['flavorGroup_2'])) {
+        // Flavor Group 2
+        if (!empty($row['flavorGroup_2'])) {
             $flavor = trim($row['flavorGroup_2']);
             $flavorImagePath = '/GrapeMind/assets/gouts/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
-
             echo '<img class="icon-flavor2" src="' . htmlspecialchars($flavorImagePath) . '" alt="' . htmlspecialchars($flavor) . '"> ';
         }
-        ?>
 
-        <?php
-        if (isset($row['flavorGroup_3'])) {
+        // Flavor Group 3
+        if (!empty($row['flavorGroup_3'])) {
             $flavor = trim($row['flavorGroup_3']);
-
             $flavorImagePath = '/GrapeMind/assets/gouts/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
             echo '<img class="icon-flavor3" src="' . htmlspecialchars($flavorImagePath) . '" alt="' . htmlspecialchars($flavor) . '"> ';
         }
         ?>
+
 
 
 
