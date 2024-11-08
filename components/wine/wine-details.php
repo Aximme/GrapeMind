@@ -40,7 +40,7 @@ include 'wine-details-2.php';
             <b class="acidit">ACIDITÉ</b>
             <div class="container">
             </div>
-            <img class="group-child" alt="" src="../../assets/images/Group%209.png">
+            <img class="group-child" alt="" src="/GrapeMind/assets/images/Group%209.png">
 
             <div class="tooltip">
 
@@ -110,7 +110,7 @@ include 'wine-details-2.php';
             if (isset($row['Harmonize'])) {
                 $harmonizeArray = explode(',', str_replace(array('[', ']', "'"), '', $row['Harmonize']));
                 $item1 = isset($harmonizeArray[0]) ? trim($harmonizeArray[0]) : '';
-                echo '<img class="capture-decran-2024-10-23-a1" src="../../assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . htmlspecialchars($item1) . '"> ';
+                echo '<img class="capture-decran-2024-10-23-a1" src="/GrapeMind/assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . htmlspecialchars($item1) . '"> ';
 
             }
             ?>
@@ -119,7 +119,7 @@ include 'wine-details-2.php';
             if (isset($row['Harmonize'])) {
                 $harmonizeArray = explode(',', str_replace(array('[', ']', "'"), '', $row['Harmonize']));
                 $item1 = isset($harmonizeArray[2]) ? trim($harmonizeArray[2]) : '';
-                echo '<img class="capture-decran-2024-10-23-a" src="../../assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . htmlspecialchars($item1) . '"> ';
+                echo '<img class="capture-decran-2024-10-23-a" src="/GrapeMind/assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . htmlspecialchars($item1) . '"> ';
 
             }
             ?>
@@ -128,7 +128,7 @@ include 'wine-details-2.php';
             if (isset($row['Harmonize'])) {
                 $harmonizeArray = explode(',', str_replace(array('[', ']', "'"), '', $row['Harmonize']));
                 $item1 = isset($harmonizeArray[1]) ? trim($harmonizeArray[1]) : '';
-                echo '<img class="plat_2" src="../../assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . htmlspecialchars($item1) . '"> ';
+                echo '<img class="plat_2" src="/GrapeMind/assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . htmlspecialchars($item1) . '"> ';
 
             }
             ?>
@@ -176,7 +176,7 @@ include 'wine-details-2.php';
         if (isset($row['flavorGroup_1'])) {
             $flavor = trim($row['flavorGroup_1']);
 
-            $flavorImagePath = '../../assets/gouts%20/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
+            $flavorImagePath = '/GrapeMind/assets/gouts/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
             echo '<img class="icon-flavor1" src="' . htmlspecialchars($flavorImagePath) . '" alt="' . htmlspecialchars($flavor) . '"> ';
         }
         ?>
@@ -184,7 +184,7 @@ include 'wine-details-2.php';
         <?php
         if (isset($row['flavorGroup_2'])) {
             $flavor = trim($row['flavorGroup_2']);
-            $flavorImagePath = '../../assets/gouts%20/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
+            $flavorImagePath = '/GrapeMind/assets/gouts/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
 
             echo '<img class="icon-flavor2" src="' . htmlspecialchars($flavorImagePath) . '" alt="' . htmlspecialchars($flavor) . '"> ';
         }
@@ -194,7 +194,7 @@ include 'wine-details-2.php';
         if (isset($row['flavorGroup_3'])) {
             $flavor = trim($row['flavorGroup_3']);
 
-            $flavorImagePath = '../../assets/gouts%20/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
+            $flavorImagePath = '/GrapeMind/assets/gouts/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
             echo '<img class="icon-flavor3" src="' . htmlspecialchars($flavorImagePath) . '" alt="' . htmlspecialchars($flavor) . '"> ';
         }
         ?>
