@@ -20,10 +20,10 @@
     align-items: center;
     height: 100vh;
     position: fixed; /* La fixe au centre de la fenêtre */
-    width: 100%;
+    width: 30%;
     top: 0;
     left: 100px;
-    z-index: 10; /* Assure-toi qu'elle est au-dessus d'autres éléments */
+
 }
 
 
