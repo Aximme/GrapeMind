@@ -1,8 +1,13 @@
 function fetchSuggestions(query) {
+    const suggestionsContainer = document.getElementById("search-suggestions");
+
     if (query.length < 2) {
-        document.getElementById("search-suggestions").innerHTML = "";
+        suggestionsContainer.innerHTML = "";
+        suggestionsContainer.style.display = 'none';
         return;
     }
+
+    suggestionsContainer.style.display = 'block';
 
     fetch(`/GrapeMind/components/wine_map/search_bar_server.php?query=${encodeURIComponent(query)}`)
         .then(response => response.json())

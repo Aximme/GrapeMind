@@ -2,7 +2,6 @@
 include __DIR__ . '/../db.php';
 ?>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,10 +12,10 @@ include __DIR__ . '/../db.php';
 </head>
 <body>
 
-<div class="search-bar-container">
+<div class="search-box">
     <form action="/GrapeMind/components/search_results.php" method="get">
-    <input type="text" name="query" class="search-bar" placeholder="Rechercher un vin..." onkeyup="fetchSuggestions(this.value)">
-        <button type="submit" class="search-button">Rechercher</button>
+        <div class="search-icon"></div>
+        <input type="text" name="query" class="search-form" placeholder="Rechercher un vin..." onkeyup="fetchSuggestions(this.value)">
     </form>
     <div id="search-suggestions" class="search-suggestions"></div>
 </div>

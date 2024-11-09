@@ -12,16 +12,19 @@ include 'components/header.php';
 <body>
 
 <main class="about-container">
-    <h1 class="about-title">A PROPOS</h1>
+    <h1 class="about-title">A PROPOS DE NOUS</h1>
 
     <div class="cards">
         <!-- Carte "Notre Équipe" -->
         <div class="card">
             <h2 class="card-title">Notre Équipe</h2>
             <p>
-                Étudiants en Licence MIASHS à l’université Paul Valéry.<br>
+                Étudiants en 3ème année de licence MIASHS à l’université Paul Valéry.<br>
                 Dans le cadre de notre enseignement "Gestion de Projet" nous avons élaboré ce site internet de recommandation et de suggestions autour du vin.
             </p>
+            <div class="team-picture">
+                <img src="/GrapeMind/assets/images/team-degustation.jpg" alt="Team Picture" class="team-photo">
+            </div>
         </div>
 
         <!-- Carte "Nous Contacter" -->
