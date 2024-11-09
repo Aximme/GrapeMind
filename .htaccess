@@ -1,0 +1,2 @@
+ErrorDocument 404 /components/errors/404.php
+ErrorDocument 500 /components/errors/500.php

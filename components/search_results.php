@@ -39,7 +39,8 @@ $conn->close();
     <meta charset="UTF-8">
     <title>Résultats de recherche pour "<?php echo htmlspecialchars($query); ?>"</title>
     <link rel="stylesheet" href="/GrapeMind/css/search_results.css">
-</head>
+    <!--LOADER-->
+    <script defer src="/GrapeMind/js/loader.js"></script>
 <body>
 <h1>Résultats pour "<?php echo htmlspecialchars($query); ?>"</h1>
 

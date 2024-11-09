@@ -11,7 +11,6 @@ include 'components/header.php';
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/index-main.css">
     <link rel="stylesheet" href="css/checkAdult.css">
-
 </head>
 <body class="blur">
 
@@ -63,5 +62,6 @@ include 'components/header.php';
         });
     });
 </script>
+
 </body>
 </html>
