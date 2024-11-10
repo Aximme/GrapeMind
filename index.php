@@ -11,6 +11,11 @@ include 'components/header.php';
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/index-main.css">
     <link rel="stylesheet" href="css/checkAdult.css">
+    <link rel="stylesheet" href="css/filter-wine-index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.1/nouislider.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.1/nouislider.min.js"></script>
+
+
 </head>
 <body class="blur">
 
@@ -21,6 +26,32 @@ include 'components/header.php';
     <div class="search-bar-container">
         <?php include 'components/search_bar.php'; ?>
     </div>
+</div>
+<div class="wine-selection">
+    <h1>🍷 Trouver le vin qui me correspond</h1>
+
+    <div class="wine-options">
+        <label><input type="checkbox" value="Red"> Rouge <span class="red-circle"></span></label>
+        <label><input type="checkbox" value="Rosé"> Rosé <span class="rose-circle"></span></label>
+        <label><input type="checkbox" value="White"> Blanc <span class="white-circle"></span></label>
+        <label><input type="checkbox" value="Sparkling"> Bulle <span class="bubble-circle"></span></label>
+    </div>
+
+
+    <div class="price-range-wrapper">
+        <span>10</span>
+        <div id="price-slider" class="range-slider"></div>
+        <span>500+€</span>
+    </div>
+    <script src="js/price-filter.js"></script>
+
+
+
+    <div class="bio-option">
+        <label><input type="checkbox"> Agriculture biologique</label>
+    </div>
+
+    <button class="search-button_price" onclick="applyFilters()">Chercher selon mes goûts</button>
 </div>
 
 <div class="age-popup" id="age-popup">
