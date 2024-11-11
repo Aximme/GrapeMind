@@ -115,3 +115,54 @@ h1::after {
     color: #fff;
     cursor: default;
 }
+
+/* Style pour le formulaire de tri par prix */
+.sort-form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+    justify-content: flex-end;
+    margin-right: 400px;
+}
+
+.sort-form label {
+    font-size: 16px;
+    margin-right: 10px;
+    color: #333;
+}
+
+.sort-form select {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.sort-form select:hover {
+    border-color: #333;
+}
+
+.sort-form select:focus {
+    border-color: #555;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.sort-form button {
+    margin-left: 15px;
+    padding: 8px 16px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, box-shadow 0.3s;
+}
+
+.sort-form button:hover {
+    background-color: #555;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}

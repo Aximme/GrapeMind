@@ -19,7 +19,7 @@ if (!empty($query)) {
     $total_results = $count_result->fetch_assoc()['total'];
 
     // Requête pour obtenir les résultats de la page actuelle
-    $sql = "SELECT name, thumb, idwine FROM scrap WHERE name LIKE '%$query%' LIMIT $start, $results_per_page";
+    $sql = "SELECT name, thumb, idwine, price, flavorGroup_1, flavorGroup_2, flavorGroup_3 FROM scrap WHERE name LIKE '%$query%' LIMIT $start, $results_per_page";
     $result = $conn->query($sql);
 
     if ($result && $result->num_rows > 0) {
@@ -49,10 +49,39 @@ $conn->close();
         <?php foreach ($results as $wine): ?>
             <div class="result-item">
                 <img src="<?php echo htmlspecialchars($wine['thumb']); ?>" alt="<?php echo htmlspecialchars($wine['name']); ?>" class="wine-thumbnail">
-                <h2><?php echo htmlspecialchars($wine['name']); ?></h2>
-                <a href="javascript:void(0);" onclick="setVinId(<?php echo $wine['idwine']; ?>)" class="details-link">Voir les détails</a>
+                <div class="wine-details">
+                    <h2><?php echo htmlspecialchars($wine['name']); ?></h2>
+                    <p class="wine-price">Prix : <?php echo htmlspecialchars($wine['price']); ?> €</p>
+                    <p class="wine-taste">Goûts : <?php echo htmlspecialchars($wine['flavorGroup_1']); ?>, <?php echo htmlspecialchars($wine['flavorGroup_2']); ?>, <?php echo htmlspecialchars($wine['flavorGroup_3']); ?></p>
+                    <div class="wine-flavors">
+                        <?php
+                        // Flavor Group 1
+                        if (!empty($wine['flavorGroup_1'])) {
+                            $flavor = trim($wine['flavorGroup_1']);
+                            $flavor = str_replace(["'", "-", "’", " "], "_", strtolower($flavor));
+                            $flavorImagePath = '/GrapeMind/assets/gouts/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
+                            echo '<img class="icon-flavor" src="' . htmlspecialchars($flavorImagePath) . '" alt="' . htmlspecialchars($flavor) . '"> ';
+                        }
 
+                        // Flavor Group 2
+                        if (!empty($wine['flavorGroup_2'])) {
+                            $flavor = trim($wine['flavorGroup_2']);
+                            $flavor = str_replace(["'", "-", "’", " "], "_", strtolower($flavor));
+                            $flavorImagePath = '/GrapeMind/assets/gouts/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
+                            echo '<img class="icon-flavor" src="' . htmlspecialchars($flavorImagePath) . '" alt="' . htmlspecialchars($flavor) . '"> ';
+                        }
 
+                        // Flavor Group 3
+                        if (!empty($wine['flavorGroup_3'])) {
+                            $flavor = trim($wine['flavorGroup_3']);
+                            $flavor = str_replace(["'", "-", "’", " "], "_", strtolower($flavor));
+                            $flavorImagePath = '/GrapeMind/assets/gouts/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
+                            echo '<img class="icon-flavor" src="' . htmlspecialchars($flavorImagePath) . '" alt="' . htmlspecialchars($flavor) . '"> ';
+                        }
+                        ?>
+                    </div>
+                    <a href="javascript:void(0);" onclick="setVinId(<?php echo $wine['idwine']; ?>)" class="details-link">Voir les détails</a>
+                </div>
             </div>
         <?php endforeach; ?>
     <?php else: ?>
@@ -80,4 +109,4 @@ $conn->close();
             .catch(error => console.error("Erreur lors de l'envoi de l'ID :", error));
     }
 </script>
-
+<link rel="stylesheet" href="/GrapeMind/css/flavor_icons.css">

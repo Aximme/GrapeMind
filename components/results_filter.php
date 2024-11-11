@@ -7,6 +7,7 @@ global $conn;
 $wineTypes = isset($_GET['wineTypes']) ? $_GET['wineTypes'] : [];
 $minPrice = isset($_GET['minPrice']) ? (int)$_GET['minPrice'] : 10;
 $maxPrice = isset($_GET['maxPrice']) ? (int)$_GET['maxPrice'] : 500;
+$sortOrder = isset($_GET['sortOrder']) && in_array($_GET['sortOrder'], ['asc', 'desc']) ? $_GET['sortOrder'] : 'asc';
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $results_per_page = 10;
 $start = ($page - 1) * $results_per_page;
@@ -51,7 +52,7 @@ $sql = "SELECT scrap.name, scrap.thumb, scrap.idwine, scrap.price, descriptifs.T
 if (!empty($sql_conditions_str)) {
     $sql .= " WHERE " . $sql_conditions_str;
 }
-$sql .= " LIMIT ? OFFSET ?";
+$sql .= " ORDER BY scrap.price $sortOrder LIMIT ? OFFSET ?";
 $params[] = $results_per_page;
 $params[] = $start;
 $types .= 'ii';
@@ -74,6 +75,24 @@ $results = $result->fetch_all(MYSQLI_ASSOC);
 <body>
 
 <h1>Résultats de recherche</h1>
+<script defer src="/GrapeMind/js/loader.js"></script>
+
+<!-- Formulaire de tri par prix -->
+<form method="get" class="sort-form">
+    <label for="sortOrder">Trier par prix :</label>
+    <select name="sortOrder" id="sortOrder" onchange="this.form.submit()">
+        <option value="asc" <?php echo $sortOrder === 'asc' ? 'selected' : ''; ?>>Croissant</option>
+        <option value="desc" <?php echo $sortOrder === 'desc' ? 'selected' : ''; ?>>Décroissant</option>
+    </select>
+    <?php
+    // Garder les autres filtres dans le formulaire
+    foreach ($wineTypes as $wineType) {
+        echo '<input type="hidden" name="wineTypes[]" value="' . htmlspecialchars($wineType) . '">';
+    }
+    echo '<input type="hidden" name="minPrice" value="' . htmlspecialchars($minPrice) . '">';
+    echo '<input type="hidden" name="maxPrice" value="' . htmlspecialchars($maxPrice) . '">';
+    ?>
+</form>
 
 <div class="search-results">
     <?php if (!empty($results)): ?>
@@ -111,8 +130,6 @@ $results = $result->fetch_all(MYSQLI_ASSOC);
             .catch(error => console.error("Erreur lors de l'envoi de l'ID :", error));
     }
 </script>
-
-
 
 </body>
 </html>

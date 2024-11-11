@@ -1,88 +1,147 @@
 /* Conteneur principal pour les résultats de recherche */
 .search-results {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: 1fr;
+    gap: 15px;
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
+    background: #f8f8f8;
+    border-radius: 10px;
+    border: 1px solid #ddd;
 }
 
 /* Style pour chaque carte de résultat */
 .result-item {
-    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    background: #ffffff;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
-    text-align: center;
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-bottom: 15px;
 }
 
 .result-item:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* Image de vignette du vin */
 .wine-thumbnail {
-    width: 100%;
+    width: 120px;
     height: auto;
-    max-height: 200px;
-    object-fit: cover;
-    border-bottom: 1px solid #ddd;
+    object-fit: contain;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+/* Conteneur pour les détails du vin */
+.wine-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    padding: 0 10px;
 }
 
 /* Titre du vin */
-.result-item h2 {
+.wine-details h2 {
     font-size: 18px;
     font-weight: bold;
-    color: #333;
-    margin: 10px 0;
-    padding: 0 10px;
+    margin: 0;
+    padding: 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
+/* Prix du vin */
+.wine-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #555;
+    margin-left: auto;
+    align-self: flex-end;
+}
+
+/* Goût du vin */
+.wine-taste {
+    font-size: 13px;
+    color: #666;
+    margin-top: 5px;
+    opacity: 0.9;
+}
+
+/* Conteneur pour les icônes des goûts */
+.wine-flavors {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* Icône pour chaque goût */
+.icon-flavor {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Nom du goût sous l'icône */
+.flavor-label {
+    font-size: 11px;
+    color: #333;
+    text-align: center;
+}
+
 /* Lien vers les détails */
 .details-link {
-    display: inline-block;
-    margin: 10px 0 20px;
-    padding: 8px 16px;
-    background-color: #900; /* Couleur principale en accord avec la base */
+    align-self: flex-start;
+    margin-top: 10px;
+    padding: 6px 12px;
+    background-color: #333;
     color: #fff;
     border-radius: 4px;
     text-decoration: none;
     font-weight: bold;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, box-shadow 0.3s;
 }
 
 .details-link:hover {
-    background-color: #700;
+    background-color: #555;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
 /* Style pour le titre principal */
 h1 {
-    font-size: 2.5em;
+    font-size: 2.2em;
     color: #333;
     font-weight: bold;
     text-align: center;
     margin-top: 30px;
     margin-bottom: 40px;
     position: relative;
-    font-family: 'Poppins', sans-serif; /* Utilisez une police cohérente avec votre site */
+    font-family: 'Arial', sans-serif;
 }
 
 /* Ajout d'une ligne décorative en dessous du titre */
 h1::after {
     content: "";
     display: block;
-    width: 80px;
+    width: 100px;
     height: 4px;
-    background-color: #900; /* Couleur principale */
-    margin: 10px auto 0;
+    background-color: #333;
+    margin: 15px auto 0;
     border-radius: 2px;
 }
+
 /* Conteneur de la pagination */
 .pagination {
     display: flex;
@@ -93,24 +152,24 @@ h1::after {
 /* Liens de pagination */
 .pagination-link {
     margin: 0 5px;
-    padding: 8px 12px;
+    padding: 6px 10px;
     color: #333;
     background-color: #f8f8f8;
     border: 1px solid #ddd;
     border-radius: 4px;
     text-decoration: none;
     font-weight: bold;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .pagination-link:hover {
-    background-color: #900;
+    background-color: #333;
     color: #fff;
 }
 
 /* Lien actif */
 .pagination-link.active {
-    background-color: #900;
+    background-color: #333;
     color: #fff;
     cursor: default;
 }
