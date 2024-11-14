@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
         query.append('maxPrice', filters.priceRange[1]);
 
         // Rediriger vers la page de résultats avec les paramètres de filtre
-        window.location.href = '/GrapeMind/components/results_filter.php?' + query.toString();
+        window.location.href = '/GrapeMind/components/search_results.php?' + query.toString();
     }
 
     // Associer l'événement de clic au bouton pour lancer `applyFilters`
