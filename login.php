@@ -15,13 +15,23 @@ include 'components/header.php';
 <main>
     <div class="form-container">
         <h2>Connectez-vous</h2>
-        <form action="" method="post">
+
+        <?php
+        $email = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '';
+        $password = isset($_POST['password']) ? ($_POST['password']) : '';
+
+        if (isset($_GET['error'])) {
+            echo '<p style="color:red;">' . htmlspecialchars($_GET['error']) . '</p>';
+        }
+        ?>
+
+        <form action="user_login.php" method="post">
             <label for="email">Adresse mail ou nom utilisateur</label>
-            <input type="text" id="email" name="email" required>
+            <input type="email" id="email" name="email" value="<?php echo $email; ?>" ><br>
+
 
             <label for="password">Mot de passe</label>
-            <input type="password" id="password" name="password" required>
-
+            <input type="password" id="password" name="password" value="<?php echo $password; ?>">
             <div class="remember-me">
                 <input type="checkbox" id="remember" name="remember">
                 <label for="remember">Se souvenir de moi</label>

@@ -1,7 +1,9 @@
 <?php
+session_start();
 require_once 'db.php';
 include 'components/header.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -16,21 +18,32 @@ include 'components/header.php';
     <div class="form-container">
         <h2>Créer un compte</h2>
         <p>Pour profiter pleinement de l'expérience !</p>
+
+        <?php
+        $username = isset($_GET['username']) ? htmlspecialchars($_GET['username']) : '';
+        $email = isset($_GET['mail']) ? htmlspecialchars($_GET['mail']) : '';
+        $address = isset($_GET['address']) ? htmlspecialchars($_GET['address']) : '';
+        $erreur = isset($_GET['erreur']) ? htmlspecialchars($_GET['erreur']) : '';
+
+        if (!empty($erreur)) {
+            echo "<p style='color:red;'>$erreur</p>";
+        }
+        ?>
         <form action="user_registration.php" method="post">
             <label for="username">Nom d'Utilisateur</label>
-            <input type="text" id="username" name="username" required><br>
+            <input type="text" id="username" name="username" value="<?php echo $username; ?>"><br>
 
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" required><br>
+            <input type="email" id="email" name="email" value="<?php echo $email; ?>"><br>
 
             <label for="address">Adresse Postale</label>
-            <input type="text" id="address" name="address" required><br>
+            <input type="text" id="address" name="address" value="<?php echo $address; ?>"><br>
 
             <label for="password">Mot de passe</label>
-            <input type="password" id="password" name="password" required><br>
+            <input type="password" id="password" name="password" ><br>
 
             <label for="confirm_password">Confirmation mot de passe</label>
-            <input type="password" id="confirm_password" name="confirm_password" required><br>
+            <input type="password" id="confirm_password" name="confirm_password" ><br>
 
             <button type="submit">Nous Rejoindre</button>
 
