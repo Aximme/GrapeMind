@@ -30,9 +30,9 @@
         <span id="menu-toggle">&#9776;</span>
     </div>
     <div id="dropdown-menu" class="dropdown-menu">
-        <a href="#">MON PROFIL</a>
-        <a href="#">STATISTIQUES</a>
-        <a href="#">PARAMÈTRES DU COMPTE</a>
+        <a href="#">👤 Mon Profil</a>
+        <a href="#">📊 Statistiques</a>
+        <a href="/GrapeMind/components/user/user-settings.php">⚙️ Paramètres Du Compte</a>
     </div>
     <script src="js/menu_header.js"></script>
 </header>
