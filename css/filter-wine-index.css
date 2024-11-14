@@ -1,0 +1,116 @@
+/* Style principal de la section de sélection de vin */
+.wine-selection {
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 320px;
+}
+
+.wine-selection h1 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+/* Options de sélection de type de vin */
+.wine-options {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+}
+
+.wine-options label {
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+}
+
+.red-circle, .rose-circle, .white-circle, .bubble-circle {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-left: 5px;
+}
+
+.red-circle {
+    background-color: #d32f2f;
+}
+
+.rose-circle {
+    background-color: #000000; /* Couleur noire pour remplacer le rose */
+}
+
+.white-circle {
+    background-color: #fff9c4;
+    border: 1px solid #ccc;
+}
+
+/* Slider de prix */
+.price-range-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.range-slider {
+    width: 100%;
+    margin: 0 10px;
+}
+
+/* Styles spécifiques pour le slider noUiSlider */
+#price-slider .noUi-connect {
+    background-color: #000000 !important; /* Couleur noire pour la barre connectée */
+}
+
+#price-slider .noUi-handle {
+    background-color: black !important; /* Couleur rouge pour les poignées */
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+}
+
+#price-slider .noUi-target {
+    background: #e0e0e0; /* Couleur gris clair pour la piste */
+    border-radius: 5px;
+}
+
+/* Tooltips du slider */
+#price-slider .noUi-tooltip {
+    background-color: #ffffff;
+    color: #333;
+    font-size: 0.85em;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Option de sélection biologique */
+.bio-option {
+    margin-bottom: 20px;
+    font-size: 0.9em;
+}
+
+.search-button_price {
+    background-color: #d32f2f;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-block; /* Assurez-vous que le bouton est en mode bloc-inline */
+    margin-top: 20px; /* Espace au-dessus pour éviter que le bouton soit collé */
+}
+
+.search-button_price:hover {
+    background-color: #c62828;
+}
+
