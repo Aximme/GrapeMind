@@ -1,0 +1,163 @@
+.parametres {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: #fbfbfb;
+    color: #000;
+    overflow: auto;
+    padding: 2rem;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 1.5rem;
+    width: 80%;
+}
+
+.page-title {
+    font-size: 48px;
+    margin: 0;
+}
+
+.form-container {
+    display: flex;
+    gap: 200px;
+    width: 80%;
+    max-width: 1000px;
+    margin-top: 2rem;
+    justify-content: space-between;
+}
+
+.form-fields {
+    flex: 1;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.text-field {
+    border-radius: 8px;
+    border: 1px solid rgba(102, 102, 102, 0.35);
+    height: 48px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+
+.button-component {
+    box-shadow: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    background-color: #efefef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.button-component:active {
+    background-color: #f0f0f0;
+}
+
+.button-component:hover {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.button-component:active {
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.d-avatars-26-parent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 16px 32px -8px rgba(12, 12, 13, 0.4);
+    border-radius: 24px;
+    background-color: rgba(17, 17, 17, 0.02);
+    padding: 2rem;
+    color: #767676;
+    text-align: center;
+    width: 400px;
+    height: 400px;
+    margin-left: 3rem;
+}
+
+.d-avatars-26 {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #000;
+    margin-bottom: 1rem;
+}
+
+.label3 {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.label3:hover {
+    text-decoration: underline;
+}
+
+.settings-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.d-avatars-26 {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #000;
+    margin-bottom: 1rem;
+}
+
+.upload-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.5rem;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+}
+
+
+.delete-account {
+    border-radius: 8px;
+    background-color: #ec221f;
+    border: 1px solid #c00f0c;
+    padding: 12px;
+    color: #fee9e7;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 2rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.delete-account:hover {
+    background-color: #9c0b09;
+    transform: scale(1.05);
+}
+
+.delete-account:active {
+    background-color: #c00f0c;
+    transform: scale(0.95);
+}

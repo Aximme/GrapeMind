@@ -1,7 +1,7 @@
 <?php
-
 include 'components/header.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
