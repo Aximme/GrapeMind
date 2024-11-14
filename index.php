@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'components/header.php';
 ?>
 
@@ -12,7 +13,7 @@ include 'components/header.php';
     <link rel="stylesheet" href="css/index-main.css">
     <link rel="stylesheet" href="css/checkAdult.css">
 </head>
-<body class="blur">
+<body class="<?= isset($_SESSION['age_verified']) ? '' : 'blur' ?>">
 
 <div id="scene-container">
     <div id="loading">Chargement du modèle...</div>
@@ -23,15 +24,16 @@ include 'components/header.php';
     </div>
 </div>
 
-<div class="age-popup" id="age-popup">
-    <div class="age-popup-content">
-        <p>Ce site contient des informations sur des produits alcoolisés.<br><br>Vous devez avoir 18 ans ou plus pour accéder à ce site, conformément à la législation en vigueur.<br></p>
-        <h2>Avez-vous plus de 18 ans ?</h2>
-        <button class="button-yes" id="yes-button">Oui</button>
-        <button class="button-no" id="no-button">Non</button>
+<?php if (!isset($_SESSION['age_verified'])): ?>
+    <div class="age-popup" id="age-popup">
+        <div class="age-popup-content">
+            <p>Ce site contient des informations sur des produits alcoolisés.<br><br>Vous devez avoir 18 ans ou plus pour accéder à ce site, conformément à la législation en vigueur.<br></p>
+            <h2>Avez-vous plus de 18 ans ?</h2>
+            <button class="button-yes" id="yes-button">Oui</button>
+            <button class="button-no" id="no-button">Non</button>
+        </div>
     </div>
-</div>
-
+<?php endif; ?>
 
 <script async src="https://unpkg.com/es-module-shims/dist/es-module-shims.js"></script>
 <script type="importmap">
@@ -50,11 +52,16 @@ include 'components/header.php';
         const yesButton = document.getElementById('yes-button');
         const noButton = document.getElementById('no-button');
 
+        <?php if (!isset($_SESSION['age_verified'])): ?>
         agePopup.style.display = 'flex';
+        <?php endif; ?>
 
         yesButton.addEventListener('click', function () {
-            agePopup.style.display = 'none';
-            document.body.classList.remove('blur');
+            fetch('user-verify_age.php')
+                .then(() => {
+                    agePopup.style.display = 'none';
+                    document.body.classList.remove('blur');
+                });
         });
 
         noButton.addEventListener('click', function () {
