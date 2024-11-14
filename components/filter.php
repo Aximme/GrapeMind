@@ -1,15 +1,14 @@
 <?php
-// Vérifiez si la variable $query est définie, sinon utilisez une valeur par défaut
 $query = isset($query) ? $query : '';
 ?>
 <link rel="stylesheet" href="/GrapeMind/css/filter.css">
 <aside class="filter-panel">
     <h2>Filtres</h2>
     <form method="get" class="filter-form">
-        <!-- Champ caché pour garder la requête de recherche -->
+
         <input type="hidden" name="query" value="<?= htmlspecialchars($query); ?>">
 
-        <!-- Filtre par prix -->
+
         <div class="filter-section">
             <h3>Prix</h3>
             <label for="minPrice">Prix minimum :</label>
@@ -18,7 +17,7 @@ $query = isset($query) ? $query : '';
             <input type="number" name="maxPrice" id="maxPrice" value="<?= isset($_GET['maxPrice']) ? htmlspecialchars($_GET['maxPrice']) : ''; ?>" min="0">
         </div>
 
-        <!-- Filtre par notation -->
+
         <div class="filter-section">
             <h3>Notation minimum :</h3>
             <div class="rating-stars">
@@ -30,7 +29,7 @@ $query = isset($query) ? $query : '';
             </div>
         </div>
 
-        <!-- Filtre par couleur de vin -->
+
         <div class="filter-section">
             <h3>Couleur du vin :</h3>
             <?php $wineColors = isset($_GET['wineColor']) ? $_GET['wineColor'] : []; ?>

@@ -18,14 +18,12 @@ $results = [];
 $total_results = 0;
 
 if (!empty($query) || !empty($wineColors) || $minRating > 0 || $minPrice > 0 || $maxPrice < PHP_INT_MAX) {
-    // Construire la clause WHERE pour les couleurs de vin sélectionnées
     $colorCondition = "";
     if (!empty($wineColors)) {
         $placeholders = implode(',', array_fill(0, count($wineColors), '?'));
         $colorCondition = " AND descriptifs.Type IN ($placeholders)";
     }
 
-    // Récupérer le nombre total de résultats pour calculer le nombre de pages
     $count_sql = "SELECT COUNT(*) as total 
                   FROM scrap 
                   INNER JOIN descriptifs ON scrap.idwine = descriptifs.idwine 
@@ -41,7 +39,6 @@ if (!empty($query) || !empty($wineColors) || $minRating > 0 || $minPrice > 0 || 
 
     $count_stmt = $conn->prepare($count_sql);
 
-    // Lier les paramètres à la requête
     $params = [];
     if (!empty($query)) {
         $query_param = "%$query%";
@@ -59,7 +56,6 @@ if (!empty($query) || !empty($wineColors) || $minRating > 0 || $minPrice > 0 || 
     $count_result = $count_stmt->get_result();
     $total_results = $count_result->fetch_assoc()['total'];
 
-    // Requête pour obtenir les résultats de la page actuelle
     $sql = "SELECT scrap.name, scrap.thumb, scrap.idwine, scrap.price, 
                    scrap.flavorGroup_1, scrap.flavorGroup_2, scrap.flavorGroup_3, 
                    scrap.average_rating, descriptifs.Type 
@@ -111,17 +107,14 @@ $conn->close();
     <meta charset="UTF-8">
     <title>Résultats de recherche pour "<?php echo htmlspecialchars($query); ?>"</title>
     <link rel="stylesheet" href="/GrapeMind/css/search_results.css">
-    <!--LOADER-->
     <script defer src="/GrapeMind/js/loader.js"></script>
 </head>
 <body>
 <h1>Résultats pour "<?php echo htmlspecialchars($query); ?>"</h1>
 
 <div class="search-container">
-    <!-- Panneau de filtre inclus -->
     <?php include __DIR__ . '/../components/filter.php'; ?>
 
-    <!-- Résultats de recherche -->
     <div class="search-results">
         <?php if (!empty($results)): ?>
             <?php foreach ($results as $wine): ?>
@@ -133,7 +126,6 @@ $conn->close();
                             <p class="wine-price">Prix : <?php echo htmlspecialchars($wine['price']); ?> €</p>
                             <p class="wine-taste">Goûts : <?php echo htmlspecialchars($wine['flavorGroup_1']); ?>, <?php echo htmlspecialchars($wine['flavorGroup_2']); ?>, <?php echo htmlspecialchars($wine['flavorGroup_3']); ?></p>
                             <div class="wine-flavors">
-                                <!-- Icônes de goûts si présentes -->
                             </div>
                             <div class="stars_notation">
                                 Note :
@@ -176,8 +168,8 @@ $conn->close();
         })
             .then(response => response.text())
             .then(data => {
-                console.log(data); // Affiche un message de confirmation
-                window.location.href = "/GrapeMind/components/wine/wine-details.php"; // Redirige vers la page de détails
+                console.log(data);
+                window.location.href = "/GrapeMind/components/wine/wine-details.php";
             })
             .catch(error => console.error("Erreur lors de l'envoi de l'ID :", error));
     }
