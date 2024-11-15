@@ -22,8 +22,12 @@
         <a href="/GrapeMind/about.php">À propos</a>
     </nav>
     <div class="auth">
-        <a href="/GrapeMind/login.php" class="login">Se connecter</a>
-        <a href="/GrapeMind/registration.php" class="signup">S'inscrire</a>
+        <?php if (!isset($_SESSION['user'])): ?>
+            <a href="/GrapeMind/login.php" class="login">Se connecter</a>
+            <a href="/GrapeMind/registration.php" class="signup">S'inscrire</a>
+        <?php else: ?>
+            <a href="/GrapeMind/logout.php" class="logout">Se déconnecter</a>
+        <?php endif; ?>
     </div>
     <!-- Menu Déroulant -->
     <div class="menu-icon">

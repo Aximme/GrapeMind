@@ -42,7 +42,7 @@ body {
     align-items: center;
 }
 
-.login {
+.login, .logout {
     margin-right: 10px;
     text-decoration: none;
     color: #333;
@@ -60,7 +60,8 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Style pour le bouton de menu hamburger */
+
+/* Style pour le bouton de menu déroulant */
 .menu-icon {
     display: flex;
     align-items: center;
