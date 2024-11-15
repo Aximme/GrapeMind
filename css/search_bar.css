@@ -2,12 +2,12 @@
     display: flex;
     justify-content: left;
     align-items: center;
-    height: 100vh;
+    height: auto;
     position: fixed;
     width: 30%;
     top: 0;
     left: 100px;
-    margin-top: 100px;
+    margin-top: 500px;
 }
 
 

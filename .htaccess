@@ -1,2 +1,2 @@
-ErrorDocument 404 /components/errors/404.php
-ErrorDocument 500 /components/errors/500.php
+ErrorDocument 404 /GrapeMind/components/errors/404.php
+ErrorDocument 500 /GrapeMind/components/errors/500.php
