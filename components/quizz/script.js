@@ -1,4 +1,4 @@
-// DOM
+
 const swiper = document.querySelector('#swiper');
 const like = document.querySelector('#like');
 const dislike = document.querySelector('#dislike');
@@ -16,12 +16,12 @@ const urls = [
     
 ];
 
-// variables
+
 let cardCount = 0;
 
-// functions
+
 function appendNewCard() {
-  if (cardCount >= urls.length) { // Arrête de générer de nouvelles cartes si toutes ont été affichées
+  if (cardCount >= urls.length) {
     checkForRemainingCards();
     return;
   }
@@ -48,58 +48,52 @@ function appendNewCard() {
 }
 
 
-// Fonction pour vérifier s'il reste des cartes
+
 function checkForRemainingCards() {
   const cards = swiper.querySelectorAll('.card:not(.dismissing)');
   if (cards.length === 0 && cardCount >= urls.length) {
-    message.style.display = 'block'; // Affiche le message
-    like.style.display = 'none'; // Cache les boutons
+    message.style.display = 'block';
+    like.style.display = 'none';
     dislike.style.display = 'none';
   } else {
-    message.style.display = 'none'; // Cache le message si des cartes existent
+    message.style.display = 'none';
   }
 }
 
 
-// Fonction pour simuler le swipe lors d'un clic sur "like"
+
 function likeCard() {
   const cards = swiper.querySelectorAll('.card:not(.dismissing)');
   if (cards.length === 0) return;
 
   const currentCard = cards[0];
-  currentCard.style.transition = 'transform 1s';
-  currentCard.style.transform = `translate(${window.innerWidth}px, -100px) rotate(45deg)`;
-  currentCard.classList.add('dismissing');
+  currentCard.classList.add('like', 'dismissing');
 
   setTimeout(() => {
     currentCard.remove();
-    appendNewCard();
     checkForRemainingCards();
-  }, 1000);
+  }, 500);
 }
 
-// Fonction pour simuler le swipe lors d'un clic sur "dislike"
+
 function dislikeCard() {
   const cards = swiper.querySelectorAll('.card:not(.dismissing)');
   if (cards.length === 0) return;
 
   const currentCard = cards[0];
-  currentCard.style.transition = 'transform 1s';
-  currentCard.style.transform = `translate(-${window.innerWidth}px, -100px) rotate(-45deg)`;
-  currentCard.classList.add('dismissing');
+  currentCard.classList.add('dislike', 'dismissing');
 
   setTimeout(() => {
     currentCard.remove();
-    appendNewCard();
     checkForRemainingCards();
-  }, 1000);
+  }, 500);
 }
 
-// Ajouter des événements de clic sur les boutons "like" et "dislike"
+
+
 like.addEventListener('click', likeCard);
 dislike.addEventListener('click', dislikeCard);
 
-// Générer les 5 premières cartes
 for (let i = 0; i < 5; i++) {
   appendNewCard();
 }
