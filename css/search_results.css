@@ -7,6 +7,7 @@
     margin: 0 auto;
 
 
+
     border-radius: 20px;
 
 }
@@ -162,7 +163,7 @@ h1::after {
 }
 .search-container {
     display: grid;
-    grid-template-columns: 300px 1fr; /* Panneau de filtre à gauche, résultats à droite */
+    grid-template-columns: 300px 1fr;
     gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
@@ -177,6 +178,44 @@ h1::after {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     font-family: 'Arial', sans-serif;
     color: #333;
-    height: fit-content; /* Empêche le filtre de prendre toute la hauteur */
-    width: 250px; /* Fixe une largeur pour éviter l'étalement */
+    height: fit-content;
+    width: 250px;
+    margin-left: -90px;
+}
+.sort-form {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+    padding: 10px;
+    gap: 10px;
+    margin-top: -80px;
+}
+
+.sort-form label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+}
+
+.sort-form select {
+    font-size: 14px;
+    color: #333;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.sort-form select:hover {
+    border-color: #aaa;
+}
+
+.sort-form select:focus {
+    outline: none;
+    border-color: #ff9800;
+    box-shadow: 0 0 8px rgba(255, 152, 0, 0.4);
 }

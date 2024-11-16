@@ -2,15 +2,15 @@
 include __DIR__ . '/../db.php';
 include '../components/header.php';
 
-
 global $conn;
 
 $query = isset($_GET['query']) ? $_GET['query'] : '';
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-$minRating = isset($_GET['minRating']) ? (int)$_GET['minRating'] : 0; // Notation minimum
+$minRating = isset($_GET['minRating']) ? (int)$_GET['minRating'] : 0;
 $minPrice = isset($_GET['minPrice']) && $_GET['minPrice'] !== '' ? (float)$_GET['minPrice'] : 0;
 $maxPrice = isset($_GET['maxPrice']) && $_GET['maxPrice'] !== '' ? (float)$_GET['maxPrice'] : PHP_INT_MAX;
 $wineColors = isset($_GET['wineColor']) ? $_GET['wineColor'] : [];
+$sort = isset($_GET['sort']) ? $_GET['sort'] : '';
 
 $results_per_page = 10;
 $start = ($page - 1) * $results_per_page;
@@ -57,6 +57,22 @@ if (!empty($query) || !empty($wineColors) || $minRating > 0 || $minPrice > 0 || 
     $count_result = $count_stmt->get_result();
     $total_results = $count_result->fetch_assoc()['total'];
 
+    $orderBy = ""; // Pas de tri par défaut
+    switch ($sort) {
+        case 'price_asc':
+            $orderBy = "scrap.price ASC";
+            break;
+        case 'price_desc':
+            $orderBy = "scrap.price DESC";
+            break;
+        case 'rating_asc':
+            $orderBy = "scrap.average_rating ASC";
+            break;
+        case 'rating_desc':
+            $orderBy = "scrap.average_rating DESC";
+            break;
+    }
+
     $sql = "SELECT scrap.name, scrap.thumb, scrap.idwine, scrap.price, 
                    scrap.flavorGroup_1, scrap.flavorGroup_2, scrap.flavorGroup_3, 
                    scrap.average_rating, descriptifs.Type 
@@ -70,8 +86,14 @@ if (!empty($query) || !empty($wineColors) || $minRating > 0 || $minPrice > 0 || 
 
     $sql .= " AND scrap.average_rating >= ? 
               AND scrap.price >= ? AND scrap.price <= ?"
-        . $colorCondition . " 
-            LIMIT ?, ?";
+        . $colorCondition;
+
+    if (!empty($orderBy)) {
+        $sql .= " ORDER BY $orderBy";
+    }
+
+    $sql .= " LIMIT ?, ?";
+
     $stmt = $conn->prepare($sql);
 
     $params = [];
@@ -109,6 +131,7 @@ $conn->close();
     <title>Résultats de recherche pour "<?php echo htmlspecialchars($query); ?>"</title>
     <link rel="stylesheet" href="/GrapeMind/css/search_results.css">
     <script defer src="/GrapeMind/js/loader.js"></script>
+    <script defer src="/GrapeMind/js/sort_filter.js"></script>
 </head>
 <body>
 <h1>Résultats pour "<?php echo htmlspecialchars($query); ?>"</h1>
@@ -117,6 +140,27 @@ $conn->close();
     <?php include __DIR__ . '/../components/filter.php'; ?>
 
     <div class="search-results">
+        <div class="sort-section">
+            <form method="get" class="sort-form">
+                <input type="hidden" name="query" value="<?php echo htmlspecialchars($query); ?>">
+                <input type="hidden" name="minPrice" value="<?php echo htmlspecialchars($minPrice); ?>">
+                <input type="hidden" name="maxPrice" value="<?php echo htmlspecialchars($maxPrice); ?>">
+                <input type="hidden" name="minRating" value="<?php echo htmlspecialchars($minRating); ?>">
+                <?php foreach ($wineColors as $color): ?>
+                    <input type="hidden" name="wineColor[]" value="<?php echo htmlspecialchars($color); ?>">
+                <?php endforeach; ?>
+
+                <label for="sort">Trier par :</label>
+                <select name="sort" id="sort" onchange="this.form.submit()">
+                    <option value="" <?php echo empty($sort) ? 'selected' : ''; ?>>Aucun Tri</option>
+                    <option value="price_asc" <?php echo $sort === 'price_asc' ? 'selected' : ''; ?>>Prix : croissant</option>
+                    <option value="price_desc" <?php echo $sort === 'price_desc' ? 'selected' : ''; ?>>Prix : décroissant</option>
+                    <option value="rating_asc" <?php echo $sort === 'rating_asc' ? 'selected' : ''; ?>>Note : croissante</option>
+                    <option value="rating_desc" <?php echo $sort === 'rating_desc' ? 'selected' : ''; ?>>Note : décroissante</option>
+                </select>
+            </form>
+        </div>
+
         <?php if (!empty($results)): ?>
             <?php foreach ($results as $wine): ?>
                 <a href="javascript:void(0);" onclick="setVinId(<?php echo $wine['idwine']; ?>)" class="result-item-link">
@@ -126,8 +170,6 @@ $conn->close();
                             <h2><?php echo htmlspecialchars($wine['name']); ?></h2>
                             <p class="wine-price">Prix : <?php echo htmlspecialchars($wine['price']); ?> €</p>
                             <p class="wine-taste">Goûts : <?php echo htmlspecialchars($wine['flavorGroup_1']); ?>, <?php echo htmlspecialchars($wine['flavorGroup_2']); ?>, <?php echo htmlspecialchars($wine['flavorGroup_3']); ?></p>
-                            <div class="wine-flavors">
-                            </div>
                             <div class="stars_notation">
                                 Note :
                                 <?php
@@ -175,4 +217,3 @@ $conn->close();
             .catch(error => console.error("Erreur lors de l'envoi de l'ID :", error));
     }
 </script>
-<link rel="stylesheet" href="/GrapeMind/css/flavor_icons.css">

@@ -220,9 +220,28 @@
     top: 61px;
     left: 136px;
     border-radius: 50%;
-    background-color: #b01f1f;
+    transition: background-color 0.3s ease;
     width: 32px;
     height: 30px;
+}
+.frame-red {
+    background-color: #8B0000; /* Rouge pour vin rouge */
+}
+
+.frame-white {
+    background-color: #FFFACD;
+}
+
+.frame-sparkling {
+    background-color: #FFD700;
+}
+
+.frame-rose {
+    background-color: #f08080;
+}
+
+.frame-default {
+    background-color: #CCCCCC;
 }
 .frame-inner {
     position: absolute;

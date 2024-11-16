@@ -8,15 +8,25 @@ $query = isset($query) ? $query : '';
 
         <input type="hidden" name="query" value="<?= htmlspecialchars($query); ?>">
 
-
         <div class="filter-section">
             <h3>Prix</h3>
             <label for="minPrice">Prix minimum :</label>
-            <input type="number" name="minPrice" id="minPrice" value="<?= isset($_GET['minPrice']) ? htmlspecialchars($_GET['minPrice']) : ''; ?>" min="0">
+            <input
+                    type="number"
+                    name="minPrice"
+                    id="minPrice"
+                    value="<?= isset($_GET['minPrice']) && $_GET['minPrice'] !== '' ? htmlspecialchars($_GET['minPrice']) : ''; ?>"
+                    min="0"
+            >
             <label for="maxPrice">Prix maximum :</label>
-            <input type="number" name="maxPrice" id="maxPrice" value="<?= isset($_GET['maxPrice']) ? htmlspecialchars($_GET['maxPrice']) : ''; ?>" min="0">
+            <input
+                    type="number"
+                    name="maxPrice"
+                    id="maxPrice"
+                    value="<?= isset($_GET['maxPrice']) && $_GET['maxPrice'] !== '' && $_GET['maxPrice'] < PHP_INT_MAX ? htmlspecialchars($_GET['maxPrice']) : ''; ?>"
+                    min="0"
+            >
         </div>
-
 
         <div class="filter-section">
             <h3>Notation minimum :</h3>
@@ -28,7 +38,6 @@ $query = isset($query) ? $query : '';
                 <?php endfor; ?>
             </div>
         </div>
-
 
         <div class="filter-section">
             <h3>Couleur du vin :</h3>

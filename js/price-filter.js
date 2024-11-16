@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const slider = document.getElementById('price-slider');
     const searchButton = document.querySelector('.search-button_price');
 
-    // Initialisation de noUiSlider
     noUiSlider.create(slider, {
         start: [16, 500],
         connect: true,
@@ -18,39 +17,33 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Fonction pour récupérer les valeurs des filtres
-    function getFilterValues() {
-        // Récupérer les valeurs sélectionnées des cases à cocher pour les types de vin
-        const wineTypes = Array.from(document.querySelectorAll('.wine-options input:checked'))
-            .map(input => input.value); // Utilise `value` au lieu de texte
 
-        // Valeur de la plage de prix
+    function getFilterValues() {
+
+        const wineColors = Array.from(document.querySelectorAll('.wine-options input:checked'))
+            .map(input => input.value); // Collecte les valeurs des couleurs sélectionnées
+
+
         const priceRange = slider.noUiSlider.get().map(price => Number(price.replace('€', '')));
 
         return {
-            wineTypes,
-            priceRange
+            wineColors,
+            minPrice: priceRange[0],
+            maxPrice: priceRange[1]
         };
     }
 
-
-
-    // Fonction pour appliquer les filtres et rediriger
     function applyFilters() {
         const filters = getFilterValues();
         const query = new URLSearchParams();
 
-        // Ajouter les types de vin sélectionnés
-        filters.wineTypes.forEach(type => query.append('wineTypes[]', type));
+        filters.wineColors.forEach(color => query.append('wineColor[]', color));
 
-        // Ajouter la plage de prix
-        query.append('minPrice', filters.priceRange[0]);
-        query.append('maxPrice', filters.priceRange[1]);
+        query.append('minPrice', filters.minPrice);
+        query.append('maxPrice', filters.maxPrice);
 
-        // Rediriger vers la page de résultats avec les paramètres de filtre
         window.location.href = '/GrapeMind/components/search_results.php?' + query.toString();
     }
 
-    // Associer l'événement de clic au bouton pour lancer `applyFilters`
     searchButton.addEventListener('click', applyFilters);
 });

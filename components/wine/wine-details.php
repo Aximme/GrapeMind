@@ -1,7 +1,25 @@
 <?php
 include '../header.php';
 include 'wine-details-2.php';
-
+$typeClass = '';
+if (isset($row['Type'])) {
+    switch (strtolower($row['Type'])) {
+        case 'red':
+            $typeClass = 'frame-red';
+            break;
+        case 'white':
+            $typeClass = 'frame-white';
+            break;
+        case 'sparkling':
+            $typeClass = 'frame-sparkling';
+            break;
+        case 'rosé':
+            $typeClass = 'frame-rose';
+            break;
+        default:
+            $typeClass = 'frame-default';
+    }
+}
 ?>
 
 
@@ -88,8 +106,9 @@ include 'wine-details-2.php';
             <p class="sous-titre">Avec quoi le manger?</p>
             <p class="p">                 </p>
         </b>
-        <div class="frame-item">
+        <div class="frame-item <?php echo htmlspecialchars($typeClass); ?>">
         </div>
+
         <div class="frame-inner">
         </div>
         <div class="new-vertical-bar"></div>
