@@ -10,7 +10,8 @@ $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $minRating = isset($_GET['minRating']) ? (int)$_GET['minRating'] : 0; // Notation minimum
 $minPrice = isset($_GET['minPrice']) && $_GET['minPrice'] !== '' ? (float)$_GET['minPrice'] : 0;
 $maxPrice = isset($_GET['maxPrice']) && $_GET['maxPrice'] !== '' ? (float)$_GET['maxPrice'] : PHP_INT_MAX;
-$wineColors = isset($_GET['wineTypes']) ? $_GET['wineTypes'] : []; // Liste des couleurs de vin sélectionnées
+$wineColors = isset($_GET['wineColor']) ? $_GET['wineColor'] : [];
+
 $results_per_page = 10;
 $start = ($page - 1) * $results_per_page;
 
