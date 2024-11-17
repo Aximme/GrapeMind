@@ -6,6 +6,7 @@ const message = document.querySelector('#message'); // Nouveau DOM pour le messa
 
 // constants
 const urls = [
+  'test.png',
   
   'quizz_agrumes.png',
   'quizz_floral.png' ,
@@ -63,31 +64,33 @@ function checkForRemainingCards() {
 
 
 function likeCard() {
-  const cards = swiper.querySelectorAll('.card:not(.dismissing)');
-  if (cards.length === 0) return;
+  const cards = Array.from(swiper.querySelectorAll('.card:not(.dismissing)')); // Récupérer toutes les cartes visibles
+  const currentCard = cards[cards.length - 1]; // Sélectionner la dernière carte (celle du dessus)
+  if (!currentCard) return; // Aucun carte disponible
 
-  const currentCard = cards[0];
   currentCard.classList.add('like', 'dismissing');
 
   setTimeout(() => {
     currentCard.remove();
+    appendNewCard();
     checkForRemainingCards();
   }, 500);
 }
 
-
 function dislikeCard() {
-  const cards = swiper.querySelectorAll('.card:not(.dismissing)');
-  if (cards.length === 0) return;
+  const cards = Array.from(swiper.querySelectorAll('.card:not(.dismissing)')); // Récupérer toutes les cartes visibles
+  const currentCard = cards[cards.length - 1]; // Sélectionner la dernière carte (celle du dessus)
+  if (!currentCard) return; // Aucun carte disponible
 
-  const currentCard = cards[0];
   currentCard.classList.add('dislike', 'dismissing');
 
   setTimeout(() => {
     currentCard.remove();
+    appendNewCard();
     checkForRemainingCards();
   }, 500);
 }
+
 
 
 
