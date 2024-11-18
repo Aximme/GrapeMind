@@ -1,34 +1,43 @@
+
 class Card {
   constructor({
-    imageUrl,
-    onDismiss,
-    onLike,
-    onDislike
-  }) {
+                imageUrl,
+                onDismiss,
+                onLike,
+                onDislike,
+                text
+              }) {
     this.imageUrl = imageUrl;
+    this.text = text;
     this.onDismiss = onDismiss;
     this.onLike = onLike;
     this.onDislike = onDislike;
     this.#init();
   }
 
-  // private properties
   #startPoint;
   #offsetX;
   #offsetY;
 
   #isTouchDevice = () => {
     return (('ontouchstart' in window) ||
-      (navigator.maxTouchPoints > 0) ||
-      (navigator.msMaxTouchPoints > 0));
+        (navigator.maxTouchPoints > 0) ||
+        (navigator.msMaxTouchPoints > 0));
   }
 
   #init = () => {
     const card = document.createElement('div');
     card.classList.add('card');
+
     const img = document.createElement('img');
     img.src = this.imageUrl;
     card.append(img);
+
+    const cardText = document.createElement('div');
+    cardText.classList.add('card-text');
+    cardText.textContent = this.text;
+    card.append(cardText);
+
     this.element = card;
     if (this.#isTouchDevice()) {
       this.#listenToTouchEvents();
@@ -61,7 +70,6 @@ class Card {
 
     document.addEventListener('mouseup', this.#handleMoveUp);
 
-    // prevent card from being dragged
     this.element.addEventListener('dragstart', (e) => {
       e.preventDefault();
     });
@@ -72,13 +80,11 @@ class Card {
     this.#offsetY = y - this.#startPoint.y;
     const rotate = this.#offsetX * 0.1;
     this.element.style.transform = `translate(${this.#offsetX}px, ${this.#offsetY}px) rotate(${rotate}deg)`;
-    // dismiss card
     if (Math.abs(this.#offsetX) > this.element.clientWidth * 0.7) {
       this.#dismiss(this.#offsetX > 0 ? 1 : -1);
     }
   }
 
-  // mouse event handlers
   #handleMouseMove = (e) => {
     e.preventDefault();
     if (!this.#startPoint) return;
@@ -92,7 +98,6 @@ class Card {
     this.element.style.transform = '';
   }
 
-  // touch event handlers
   #handleTouchMove = (e) => {
     if (!this.#startPoint) return;
     const touch = e.changedTouches[0];
@@ -129,4 +134,34 @@ class Card {
       this.onDislike();
     }
   }
+}
+
+
+
+function appendNewCard() {
+  if (cardCount >= urls.length) {
+    checkForRemainingCards();
+    return;
+  }
+
+  const card = new Card({
+    imageUrl: urls[cardCount % urls.length],
+    text: `Card number ${cardCount + 1}`,
+    onDismiss: checkForRemainingCards,
+    onLike: () => {
+      like.style.animationPlayState = 'running';
+      like.classList.toggle('trigger');
+    },
+    onDislike: () => {
+      dislike.style.animationPlayState = 'running';
+      dislike.classList.toggle('trigger');
+    }
+  });
+  swiper.append(card.element);
+  cardCount++;
+
+  const cards = swiper.querySelectorAll('.card:not(.dismissing)');
+  cards.forEach((card, index) => {
+    card.style.setProperty('--i', index);
+  });
 }
