@@ -34,7 +34,7 @@
         <span id="menu-toggle">&#9776;</span>
     </div>
     <div id="dropdown-menu" class="dropdown-menu">
-        <a href="#">👤 Mon Profil</a>
+        <a href="/GrapeMind/profile_user.php">👤 Mon Profil</a>
         <a href="#">📊 Statistiques</a>
         <a href="/GrapeMind/components/user/user-settings.php">⚙️ Paramètres Du Compte</a>
     </div>

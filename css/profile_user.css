@@ -1,439 +1,105 @@
-.header-child {
-    position: absolute;
-    height: 77.19%;
-    width: 99.31%;
-    top: 10.53%;
-    right: 0%;
-    bottom: 12.28%;
-    left: 0.69%;
-    box-shadow: 0px 6px 12px -6px rgba(24, 39, 75, 0.12), 0px 8px 24px -4px rgba(24, 39, 75, 0.08);
-    background-color: #f3f4f6;
-}
-.vnements {
-    position: absolute;
-    top: 36.84%;
-    left: 52.07%;
-    cursor: pointer;
-}
-.header-item {
-    position: absolute;
-    height: 87.72%;
-    width: 6.9%;
-    top: 12.28%;
-    right: 17.03%;
-    bottom: 0%;
-    left: 76.07%;
-    overflow: hidden;
-}
-.sitelogo {
-    position: absolute;
-    height: 61.59%;
-    width: 9.17%;
-    top: 0%;
-    right: 90.83%;
-    bottom: 38.41%;
-    left: 0%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    text-align: left;
-    font-size: 22px;
-    color: #111;
-}
-.accueil {
-    position: relative;
-    cursor: pointer;
-}
-.menu {
-    position: absolute;
-    height: 87.92%;
-    width: 36.03%;
-    top: 12.08%;
-    right: 44.62%;
-    bottom: 0%;
-    left: 19.35%;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 70px;
-}
-.register {
-    position: relative;
-}
-.buttonregistration {
-    position: absolute;
-    height: 52.66%;
-    width: 8.34%;
-    top: 10.54%;
-    right: 0%;
-    bottom: 36.8%;
-    left: 91.66%;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 50px;
-    background-color: #e5e7eb;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 5px 26px;
+* {
     box-sizing: border-box;
-    cursor: pointer;
-    color: #9e1414;
-}
-.se-connecter {
-    position: absolute;
-    height: 43.96%;
-    width: 7.92%;
-    top: 10.54%;
-    left: 82.4%;
-    display: inline-block;
-    cursor: pointer;
-}
-.sitelogo-parent {
-    position: absolute;
-    height: 36.32%;
-    width: 82.69%;
-    top: 33.33%;
-    right: 10.62%;
-    bottom: 30.35%;
-    left: 6.69%;
-}
-.image-header-icon {
-    position: absolute;
-    height: 95.61%;
-    width: 9.17%;
-    top: 0%;
-    right: 90.83%;
-    bottom: 4.39%;
-    left: 0%;
-    max-width: 100%;
-    overflow: hidden;
-    max-height: 100%;
-    object-fit: cover;
-}
-.loupe {
-    position: absolute;
-    height: 30.7%;
-    width: 2.41%;
-    top: 32.46%;
-    right: 34.41%;
-    bottom: 36.84%;
-    left: 63.17%;
-    overflow: hidden;
-}
-.menufilled-icon {
-    position: absolute;
-    height: 32.46%;
-    width: 2.55%;
-    top: 33.33%;
-    right: 3.17%;
-    bottom: 34.21%;
-    left: 94.28%;
-    max-width: 100%;
-    overflow: hidden;
-    max-height: 100%;
-}
-.header {
-    position: absolute;
-    top: -12px;
-    left: -11px;
-    width: 1450px;
-    height: 114px;
-    text-align: center;
-    font-family: Baloo;
-}
-.footer-icon {
-    position: absolute;
-    top: 875px;
-    left: -7px;
-    width: 1452px;
-    height: 195px;
-}
-.settingsfilled-icon {
-    position: absolute;
-    top: 136px;
-    left: 49px;
-    width: 74px;
-    height: 65px;
-    overflow: hidden;
-}
-.parametres1 {
-    position: absolute;
-    top: 131px;
-    left: -7px;
-    font-size: 48px;
-    font-family: Baloo;
-    text-align: center;
-    display: inline-block;
-    width: 603px;
-    height: 75px;
-}
-.icon {
-    width: 24px;
-    position: relative;
-    height: 24px;
-}
-.state-layer {
-    background-color: #fff;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-}
-.fab {
-    position: absolute;
-    top: 281px;
-    left: 685px;
-    box-shadow: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3);
-    border-radius: 16px;
-    background-color: #ece6f0;
-    overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-.fab1 {
-    position: absolute;
-    top: 400px;
-    left: 685px;
-    box-shadow: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3);
-    border-radius: 16px;
-    background-color: #ece6f0;
-    overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-.user-username {
-    position: absolute;
-    top: 299px;
-    left: 104px;
-}
-.examplemailgooglecom {
-    position: absolute;
-    top: 419px;
-    left: 104px;
-}
-.d-avatars-26 {
-    position: absolute;
-    top: 138px;
-    left: 98px;
-    width: 223px;
-    height: 230px;
-    object-fit: cover;
-}
-.upload-icon {
-    position: absolute;
-    top: 437px;
-    left: 19px;
-    width: 48px;
-    height: 48px;
-    overflow: hidden;
-}
-.d-avatars-26-parent {
-    position: absolute;
-    top: 230px;
-    left: 976px;
-    box-shadow: 0px 16px 32px -8px rgba(12, 12, 13, 0.4);
-    border-radius: 24px;
-    background-color: rgba(17, 17, 17, 0.02);
-    width: 420px;
-    height: 507px;
-    overflow: hidden;
-}
-.fab4 {
-    position: absolute;
-    top: 524px;
-    left: 685px;
-    box-shadow: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3);
-    border-radius: 16px;
-    background-color: #ece6f0;
-    overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-.label {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-}
-.label-wrapper {
-    align-self: stretch;
-    position: relative;
-    height: 27px;
-}
-.text-field {
-    align-self: stretch;
-    position: relative;
-    border-radius: 12px;
-    border: 1px solid rgba(102, 102, 102, 0.35);
-    box-sizing: border-box;
-    height: 56px;
-    overflow: hidden;
-    flex-shrink: 0;
-}
-.username {
-    position: absolute;
-    top: 252px;
-    left: 75px;
-    width: 580px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 4px;
-    color: #666;
-}
-.password {
-    position: absolute;
-    top: 493px;
-    left: 75px;
-    width: 580px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 4px;
-    color: #666;
-}
-.email {
-    position: absolute;
-    top: 372px;
-    left: 75px;
-    width: 580px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 4px;
-    color: #666;
-}
-.button {
-    position: relative;
-    line-height: 100%;
-}
-.delete-account {
-    position: absolute;
-    top: 816px;
-    left: 583px;
-    border-radius: 8px;
-    background-color: #ec221f;
-    border: 1px solid #c00f0c;
-    overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 12px;
-    color: #fee9e7;
-    font-family: Inter;
-}
-.div {
-    position: absolute;
-    top: 542px;
-    left: 104px;
-    font-size: 20px;
-    display: inline-block;
-    width: 248px;
-    height: 28px;
-}
-.label3 {
-    position: relative;
-    line-height: 140%;
-}
-.tab {
-    position: absolute;
-    top: 449px;
-    left: 104px;
-    border-radius: 4px 4px 0px 0px;
-    border-bottom: 1px solid #b2b2b2;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 4px 12px;
-}
-.name-surname {
-    position: absolute;
-    top: 20px;
-    left: -83px;
-    font-size: 36px;
-    font-family: Baloo;
-    color: #000;
-    white-space: pre-wrap;
-    text-align: center;
-    display: inline-block;
-    width: 603px;
-    height: 75px;
-}
-.upload-parent {
-    position: absolute;
-    top: 230px;
-    left: 976px;
-    box-shadow: 0px 16px 32px -8px rgba(12, 12, 13, 0.4);
-    border-radius: 24px;
-    background-color: rgba(17, 17, 17, 0.02);
-    width: 420px;
-    height: 507px;
-    overflow: hidden;
-    color: #767676;
-    font-family: Inter;
-}
-.parametres {
-    width: 100%;
-    position: relative;
-    background-color: #fbfbfb;
-    height: 1070px;
-    overflow: hidden;
-    text-align: left;
-    font-size: 16px;
-    color: #000;
-    font-family: Poppins;
-}
-
-
-.mon-profil {
-    position: absolute;
-    top: 25px;
-    left: 37px;
-    font-weight: 900;
-    cursor: pointer;
-}
-.statistiques {
-    position: absolute;
-    top: 72px;
-    left: 30px;
-    font-weight: 900;
-    cursor: pointer;
-}
-.parametres-du {
     margin: 0;
-}
-.parametres-du-compte {
-    position: absolute;
-    top: 119px;
-    left: 22px;
-    font-weight: 900;
-    cursor: pointer;
-}
-.dropdown {
-    width: 149px;
-    position: relative;
-    background-color: #fff;
-    height: 168px;
-    overflow: hidden;
-    max-width: 90%;
-    max-height: 90%;
-    text-align: center;
-    font-size: 12px;
-    color: #000;
-    font-family: Inter;
+    padding: 0;
+    font-family: Arial, sans-serif;
 }
 
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.profile-container {
+    margin: 80px auto;
+    width: 90%;
+    max-width: 1000px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+}
+
+
+.welcome-section {
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.content-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.recent-searches, .quick-access {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.search-item, .access-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.search-item img, .access-item .icon-container img {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+}
+
+.access-item a {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    background-color:pink ;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+    width: 410px;
+}
+
+
+.access-item:last-child a {
+    background-color: #8d6e63;
+}
+
+.access-item a:hover {
+    transform: translateY(-5px);
+}
+
+.recommendation-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #b23a48;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #9c2d3d;
+}
