@@ -1,130 +1,57 @@
 <?php
+session_start();
+require_once('db.php');
 include 'components/header.php';
+
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$username = $_SESSION['user']['username'];
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, width=device-width">
-    <link rel="stylesheet"  href="css/main.css" />
-    <link rel="stylesheet"  href="css/profile_user.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo:wght@400&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap" />
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Profil</title>
+    <link rel="stylesheet" href="/GrapeMind/css/profile_user.css">
 
 </head>
-<header>
-    <h1> Se connecter</h1>
-</header>
 <body>
-
-<div class="parametres">
-
+<div class="profile-container">
+    <div class="welcome-section">
+        <h3>Bienvenue, <?php echo htmlspecialchars($username); ?></h3>
     </div>
-
-
-    <img class="settingsfilled-icon" alt="" src="SettingsFilled.svg">
-
-    <div class="parametres1">PARAMETRES</div>
-    <div class="fab">
-        <div class="state-layer">
-            <img class="icon" alt="" src="icon.svg">
-
+    <div class="content-section">
+        <div class="recent-searches">
+            <h4>Recherche récente</h4>
+        </div>
+        <div class="quick-access">
+            <h4>Accès Rapide</h4>
+            <div class="access-item">
+                <a href="ma_cave.php">
+                    <div class="icon-container">
+                        <img src="assets/images/cave-logo.png" alt="Icone Cave">
+                    </div>
+                    <p>Ma Cave</p>
+                </a>
+            </div>
+            <div class="access-item">
+                <a href="mon_grenier.php">
+                    <div class="icon-container">
+                        <img src="assets/images/winecavestock-logo.png" alt="Icone Grenier">
+                    </div>
+                    <p>Mon Grenier</p>
+                </a>
+            </div>
         </div>
     </div>
-    <div class="fab1">
-        <div class="state-layer">
-            <img class="icon" alt="" src="icon.svg">
-
-        </div>
-    </div>
-    <div class="user-username">user username</div>
-    <div class="examplemailgooglecom">examplemail@google.com</div>
-    <div class="d-avatars-26-parent">
-        <img class="d-avatars-26" alt="" src="3D Avatars / 26.png">
-
-        <img class="upload-icon" alt="" src="Upload.svg">
-
-    </div>
-
-    </div>
-    <div class="parametres1">PARAMETRES</div>
-    <img class="settingsfilled-icon" alt="" src="SettingsFilled.svg">
-
-    <div class="fab">
-        <div class="state-layer">
-            <img class="icon" alt="" src="icon.svg">
-
-        </div>
-    </div>
-    <div class="fab1">
-        <div class="state-layer">
-            <img class="icon" alt="" src="icon.svg">
-
-        </div>
-    </div>
-    <div class="fab4">
-        <div class="state-layer">
-            <img class="icon" alt="" src="icon.svg">
-
-        </div>
-    </div>
-
-
-    <div class="username">
-        <div class="label-wrapper">
-            <div class="label">Nom d’Utilisateur</div>
-        </div>
-        <div class="text-field">
-        </div>
-    </div>
-    <div class="password">
-        <div class="label-wrapper">
-            <div class="label"> Mot de passe : </div>
-        </div>
-        <div class="text-field">
-        </div>
-    </div>
-    <div class="email">
-        <div class="label-wrapper">
-            <div class="label"> Adresse Mail : </div>
-        </div>
-        <div class="text-field">
-        </div>
-    </div>
-    <div class="delete-account">
-        <div class="button">Supprimer mon Compte</div>
-    </div>
-    <div class="div">********************</div>
-    <div class="upload-parent">
-        <img class="upload-icon" alt="" src="Upload.svg">
-
-        <div class="tab">
-            <div class="label3">Modifier ma photo de profil</div>
-        </div>
-        <div class="name-surname">NAME  -  SURNAME</div>
+    <div class="recommendation-button">
+        <button>Affiner mes recommandations</button>
     </div>
 </div>
-
-<div id="dropdownContainer" class="popup-overlay" style="display:none">
-
-    <div class="dropdown">
-        <div class="mon-profil" id="popupmONPROFILText">MON PROFIL</div>
-        <div class="statistiques" id="popupsTATISTIQUESText">STATISTIQUES</div>
-        <div class="parametres-du-compte" id="popuppARAMETRESDUCOMPTEText">
-            <p class="parametres-du">PARAMETRES DU</p>
-            <p class="parametres-du">COMPTE</p>
-        </div>
-    </div>
-
-
-</div>
-
-
-
 </body>
 </html>
