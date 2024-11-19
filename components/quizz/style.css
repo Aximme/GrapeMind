@@ -1,5 +1,4 @@
-/* CSS for Card Swiper with Text */
-
+/* Global Styles */
 * {
   margin: 0;
   padding: 0;
@@ -19,8 +18,9 @@ body {
   background: linear-gradient(0deg, rgb(248, 242, 242), rgb(83, 2, 2)) no-repeat;
 }
 
+/* Swiper Styles */
 #swiper {
-  height: 70vh; /* Increased the size of the swiper */
+  height: 70vh; /* Swiper height */
   aspect-ratio: 2 / 3;
   perspective: 1000px;
   perspective-origin: center 50%;
@@ -28,10 +28,11 @@ body {
   position: relative;
 }
 
+/* Card Styles */
 .card {
   position: absolute;
-  width: 85%; /* Adjusted width of the card */
-  height: 85%; /* Adjusted height of the card */
+  width: 85%;
+  height: 85%;
   border-radius: 20px;
   overflow: hidden;
   background: linear-gradient(0deg, rgb(248, 242, 242), rgb(175, 57, 57)) no-repeat;
@@ -47,7 +48,6 @@ body {
   width: 90%;
   height: 250px;
   border-radius: 15px;
-
   object-fit: cover;
   align-self: center;
   margin-top: 70px;
@@ -64,6 +64,7 @@ body {
   line-height: 1.4;
 }
 
+/* Card Animation States */
 .card.like {
   transform: translate(150%, -20%) rotate(20deg);
   opacity: 0;
@@ -78,36 +79,46 @@ body {
   pointer-events: none;
 }
 
+/* Like and Dislike Buttons */
 #like,
 #dislike {
   font-size: 14vh;
   border-radius: 50%;
   padding: 15px;
-  position: relative;
+  position: absolute; /* For flexible positioning */
   z-index: 2;
+  cursor: pointer;
   animation-name: animation1;
   animation-duration: 1s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: both;
   animation-play-state: paused;
-  cursor: pointer;
 }
 
+/* Specific Positioning for Buttons */
+#like {
+  color: #ccc;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 50%; /* Position at the middle of the screen */
+  right: 25%; /* Positioned to the right */
+  transform: translateY(-50%); /* Center vertically */
+}
+
+#dislike {
+  color: red;
+  background-color: rgba(255, 255, 255, 0.5);
+  top: 50%; /* Position at the middle of the screen */
+  left: 25%; /* Positioned to the left */
+  transform: translateY(-50%); /* Center vertically */
+}
+
+/* Trigger States for Buttons */
 #like.trigger,
 #dislike.trigger {
   animation-name: animation2;
 }
 
-#like {
-  color: red;
-  background-color: rgba(255, 255, 255, 0.5);
-}
-
-#dislike {
-  color: #ccc;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
+/* Keyframes */
 @keyframes animation1 {
   0%, 100% {
     opacity: 0.2;

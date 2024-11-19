@@ -5,11 +5,11 @@ const dislike = document.querySelector('#dislike');
 const message = document.querySelector('#message');
 
 const urls = [
-  '/assets/gouts/agrume.jpeg',
-  '/assets/gouts/floral.jpeg',
-  '/assets/gouts/fruit_rouge.jpeg',
-  '/assets/gouts/boise.jpeg',
-  '/assets/gouts/fruit_noir.jpeg'
+  '/GrapeMind/assets/gouts/agrume.jpeg',
+  '/GrapeMind/assets/gouts/floral.jpeg',
+  '/GrapeMind/assets/gouts/fruit_rouge.jpeg',
+  '/GrapeMind/assets/gouts/boisé.jpeg',
+  '/GrapeMind/assets/gouts/fruit_noir.jpeg'
 ];
 
 const texts = [
