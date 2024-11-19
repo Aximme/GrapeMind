@@ -5,7 +5,7 @@
 	},
 	"dependencies": {
 		"fs-extra": "^9.0.1",
-		"minimist": "^1.2.5",
+		"minimist": "^1.2.8",
 		"puppeteer": "^5.5.0"
 	},
 	"devDependencies": {
