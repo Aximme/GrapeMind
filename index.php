@@ -1,7 +1,24 @@
 <?php
 session_start();
 include 'components/header.php';
+include 'db.php';
+
+global $conn;
+
+// Selection de 15 vins random pour le caroussel
+$sql = "SELECT name, thumb, price FROM scrap ORDER BY RAND() LIMIT 15";
+$result = $conn->query($sql);
+
+$wines = [];
+if ($result && $result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $wines[] = $row;
+    }
+}
+
+$conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -10,7 +27,6 @@ include 'components/header.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/index-main.css">
     <link rel="stylesheet" href="css/checkAdult.css">
     <link rel="stylesheet" href="css/filter-wine-index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.1/nouislider.min.css">
@@ -54,6 +70,8 @@ include 'components/header.php';
 
     <button class="search-button_price" onclick="applyFilters()">Chercher selon mes goûts</button>
 </div>
+
+
 
 <?php if (!isset($_SESSION['age_verified'])): ?>
     <div class="age-popup" id="age-popup">
@@ -100,6 +118,28 @@ include 'components/header.php';
         });
     });
 </script>
+
+
+
+<script src="js/index_carrousel.js"></script>
+<h2 class="carousel-title">Recommandations Personnalisées</h2>
+<div class="carousel-container">
+    <button class="carousel-button left" onclick="previousSlide()">❮</button>
+    <div class="carousel">
+        <div class="carousel-track">
+            <?php foreach ($wines as $wine): ?>
+                <div class="carousel-item">
+                    <img src="<?php echo htmlspecialchars($wine['thumb']); ?>" alt="<?php echo htmlspecialchars($wine['name']); ?>" class="wine-thumbnail">
+                    <div class="wine-details">
+                        <h3><?php echo htmlspecialchars($wine['name']); ?></h3>
+                        <p class="wine-price"><?php echo htmlspecialchars($wine['price']); ?> €</p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <button class="carousel-button right" onclick="nextSlide()">❯</button>
+</div>
 
 </body>
 </html>

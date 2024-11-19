@@ -3,7 +3,7 @@
     justify-content: left;
     align-items: center;
     height: auto;
-    position: fixed;
+    position: absolute;
     width: 30%;
     top: 0;
     left: 100px;
@@ -48,6 +48,7 @@
     border-radius: 50%;
     transform: rotate(135deg);
 }
+
 
 .search-icon:before {
     content: '';
