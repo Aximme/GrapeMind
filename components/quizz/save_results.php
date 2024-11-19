@@ -1,59 +1,41 @@
 <?php
+session_start();
+require_once('../../db.php');
 global $conn;
+header('Content-Type: application/json');
 
-// Affiche les erreurs pour débogage (désactivez en production)
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-include __DIR__ . '/../../db.php';
-
-header('Content-Type: application/json'); // Retour JSON
-
-ob_start(); // Commence un tampon de sortie
-
+// Log les données reçues pour débogage
 $data = json_decode(file_get_contents('php://input'), true);
+file_put_contents('debug_log.txt', print_r($data, true), FILE_APPEND);
 
-if (!$data || !isset($data['results']) || !isset($data['user_id'])) {
-    ob_end_clean(); // Vide le tampon
-    echo json_encode(['error' => 'Données JSON invalides ou absentes.']);
+if (!isset($data['user_id'])) {
+    echo json_encode(['error' => 'ID utilisateur manquant']);
     exit;
 }
 
-$results = json_encode($data['results']); // Encode les résultats en JSON
+$validColumns = ['agrumes', 'floral', 'fruit_rouge', 'boisé', 'fruit_noir'];
+$quizResults = array_fill_keys($validColumns, null);
+
+foreach ($data as $key => $value) {
+    if (in_array($key, $validColumns)) {
+        $quizResults[$key] = $value === 'oui' ? 'oui' : 'non';
+    }
+}
+
 $userId = $data['user_id'];
 
-// Étape 1 : Supprimer les résultats précédents de l'utilisateur, s'ils existent
-$delete_sql = "DELETE FROM quiz_results WHERE user_id = ?";
-$stmt = $conn->prepare($delete_sql);
-if (!$stmt) {
-    ob_end_clean(); // Vide le tampon
-    echo json_encode(['error' => 'Erreur dans la préparation de la requête pour suppression : ' . $conn->error]);
-    exit;
-}
-$stmt->bind_param("i", $userId);
-$stmt->execute();
-$stmt->close();
+try {
+    $sql = "REPLACE INTO quiz_results (user_id, agrumes, floral, fruit_rouge, boisé, fruit_noir, created_at) 
+            VALUES (?, ?, ?, ?, ?, ?, NOW())";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("isssss", $userId, $quizResults['agrumes'], $quizResults['floral'],
+        $quizResults['fruit_rouge'], $quizResults['boisé'], $quizResults['fruit_noir']);
+    $stmt->execute();
+    $stmt->close();
 
-// Étape 2 : Insérer les nouveaux résultats du quiz
-$insert_sql = "INSERT INTO quiz_results (user_id, results, created_at) VALUES (?, ?, NOW())";
-$stmt = $conn->prepare($insert_sql);
-if (!$stmt) {
-    ob_end_clean(); // Vide le tampon
-    echo json_encode(['error' => 'Erreur dans la préparation de la requête pour insertion : ' . $conn->error]);
-    exit;
+    echo json_encode(['success' => 'Résultats enregistrés avec succès.']);
+} catch (Exception $e) {
+    echo json_encode(['error' => $e->getMessage()]);
 }
-$stmt->bind_param("is", $userId, $results);
-
-if (!$stmt->execute()) {
-    ob_end_clean(); // Vide le tampon
-    echo json_encode(['error' => 'Erreur lors de l\'insertion : ' . $stmt->error]);
-    exit;
-}
-
-$stmt->close();
 $conn->close();
-
-ob_end_clean(); // Vide le tampon avant de retourner le JSON
-echo json_encode(['success' => 'Résultats enregistrés avec succès.']);
 ?>

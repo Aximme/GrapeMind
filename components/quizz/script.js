@@ -1,11 +1,12 @@
+// Sélection des éléments DOM
 const swiper = document.querySelector('#swiper');
 const like = document.querySelector('#like');
 const dislike = document.querySelector('#dislike');
 const message = document.querySelector('#message');
 const finishContainer = document.getElementById('finish-container');
 const finishButton = document.getElementById('finish-btn');
-const statusMessage = document.getElementById('status');
 
+// URLs des images des goûts
 const urls = [
   '/GrapeMind/assets/gouts/agrume.jpeg',
   '/GrapeMind/assets/gouts/floral.jpeg',
@@ -14,18 +15,27 @@ const urls = [
   '/GrapeMind/assets/gouts/fruit_noir.jpeg'
 ];
 
+// Textes des cartes correspondant aux goûts
 const texts = [
-  'Est ce que vous aimez les gouts agrumes ?',
-  'Est ce que vous aimez les gouts floraux ?',
-  'Est ce que vous aimez les gouts fruits rouges ?',
-  'Est ce que vous aimez les gouts boisé ?',
-  'Est ce que vous aimez les gouts fruits noirs ?'
+  'Est-ce que vous aimez les goûts agrumes ?',
+  'Est-ce que vous aimez les goûts floraux ?',
+  'Est-ce que vous aimez les goûts fruits rouges ?',
+  'Est-ce que vous aimez les goûts boisés ?',
+  'Est-ce que vous aimez les goûts fruits noirs ?'
 ];
 
-let cardCount = 0; // Compteur de cartes
-let quizResults = []; // Stocke les résultats du quiz (like/dislike)
+// Résultats du quiz avec les colonnes correspondant aux goûts
+let quizResults = {
+  agrumes: null,
+  floral: null,
+  fruit_rouge: null,
+  boisé: null,
+  fruit_noir: null
+};
 
-// Fonction pour créer une nouvelle carte
+let cardCount = 0; // Compteur de cartes
+
+// Fonction pour ajouter une nouvelle carte
 function appendNewCard() {
   if (cardCount >= urls.length) {
     checkForRemainingCards();
@@ -33,18 +43,21 @@ function appendNewCard() {
   }
 
   const card = new Card({
-    imageUrl: urls[cardCount % urls.length],
-    text: texts[cardCount % texts.length],
+    imageUrl: urls[cardCount],
+    text: texts[cardCount],
+    cardIndex: cardCount, // Ajout de l'index pour identification
     onDismiss: checkForRemainingCards,
     onLike: () => {
+      console.log(`Card ${cardCount} liked`);
+      saveResult(cardCount, 'like');
       like.style.animationPlayState = 'running';
       like.classList.toggle('trigger');
-      saveResult(cardCount, 'like'); // Enregistre le like
     },
     onDislike: () => {
+      console.log(`Card ${cardCount} disliked`);
+      saveResult(cardCount, 'dislike');
       dislike.style.animationPlayState = 'running';
       dislike.classList.toggle('trigger');
-      saveResult(cardCount, 'dislike'); // Enregistre le dislike
     }
   });
 
@@ -58,12 +71,21 @@ function appendNewCard() {
   });
 }
 
-// Fonction pour enregistrer les résultats du quiz
+// Fonction pour enregistrer les résultats dans `quizResults`
 function saveResult(cardIndex, action) {
-  quizResults.push({
-    card: texts[cardIndex % texts.length], // Question associée
-    action: action                         // Action : "like" ou "dislike"
-  });
+  const keyMap = ['agrumes', 'floral', 'fruit_rouge', 'boisé', 'fruit_noir'];
+  console.log(`Saving result for card index: ${cardIndex}`);
+
+  if (cardIndex < 0 || cardIndex >= keyMap.length) {
+    console.error(`Index invalide : ${cardIndex}`);
+    return;
+  }
+
+  const key = keyMap[cardIndex];
+  quizResults[key] = action === 'like' ? 'oui' : 'non';
+
+  console.log(`Result saved: { key: ${key}, action: ${action} }`);
+  console.log('Updated quizResults:', quizResults);
 }
 
 // Vérifie s'il reste des cartes et affiche le bouton de fin si nécessaire
@@ -73,8 +95,6 @@ function checkForRemainingCards() {
     message.style.display = 'block';
     like.style.display = 'none';
     dislike.style.display = 'none';
-
-    // Affiche le bouton pour envoyer les résultats
     finishContainer.style.display = 'block';
   } else {
     message.style.display = 'none';
@@ -89,16 +109,14 @@ function sendResultsToDatabase() {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      user_id: 1,
-      results: quizResults
+      user_id: 1, // Remplacez par l'ID utilisateur réel
+      ...quizResults
     })
   })
       .then(response => response.json())
       .then(data => {
-        console.log('Réponse JSON:', data);
         if (data.success) {
           console.log('Résultats sauvegardés avec succès !');
-          // Redirige vers index.php après succès
           window.location.href = '/GrapeMind/index.php';
         } else {
           console.error('Erreur :', data.error);
@@ -107,52 +125,33 @@ function sendResultsToDatabase() {
       .catch(error => {
         console.error('Erreur lors de l\'envoi des résultats :', error);
       });
-
-
 }
-
 
 // Gestion des boutons "like" et "dislike"
-function likeCard() {
-  const cards = Array.from(swiper.querySelectorAll('.card:not(.dismissing)'));
-  const currentCard = cards[cards.length - 1];
+like.addEventListener('click', () => {
+  const currentCard = Array.from(swiper.querySelectorAll('.card:not(.dismissing)')).pop();
   if (!currentCard) return;
-
   currentCard.classList.add('like', 'dismissing');
-  saveResult(cardCount - cards.length, 'like'); // Enregistre le like
-
-  setTimeout(() => {
-    currentCard.remove();
-    appendNewCard();
-    checkForRemainingCards();
-  }, 500);
-}
-
-function dislikeCard() {
-  const cards = Array.from(swiper.querySelectorAll('.card:not(.dismissing)'));
-  const currentCard = cards[cards.length - 1];
-  if (!currentCard) return;
-
-  currentCard.classList.add('dislike', 'dismissing');
-  saveResult(cardCount - cards.length, 'dislike'); // Enregistre le dislike
-
-  setTimeout(() => {
-    currentCard.remove();
-    appendNewCard();
-    checkForRemainingCards();
-  }, 500);
-}
-
-// Gestion des clics sur les boutons
-like.addEventListener('click', likeCard);
-dislike.addEventListener('click', dislikeCard);
-
-// Gestion du bouton de fin
-finishButton.addEventListener('click', () => {
-  sendResultsToDatabase();
+  saveResult(cardCount - swiper.querySelectorAll('.card').length, 'like');
+  currentCard.remove();
+  appendNewCard();
+  checkForRemainingCards();
 });
 
+dislike.addEventListener('click', () => {
+  const currentCard = Array.from(swiper.querySelectorAll('.card:not(.dismissing)')).pop();
+  if (!currentCard) return;
+  currentCard.classList.add('dislike', 'dismissing');
+  saveResult(cardCount - swiper.querySelectorAll('.card').length, 'dislike');
+  currentCard.remove();
+  appendNewCard();
+  checkForRemainingCards();
+});
+
+// Gestion du bouton de fin
+finishButton.addEventListener('click', sendResultsToDatabase);
+
 // Génération initiale des cartes
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < urls.length; i++) {
   appendNewCard();
 }
