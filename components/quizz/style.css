@@ -6,9 +6,8 @@
 }
 
 html, body {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  height: 100%; /* Utilise 100% de la hauteur pour centrer les éléments */
+  margin: 0;
 }
 
 body {
@@ -16,7 +15,9 @@ body {
   justify-content: center;
   align-items: center;
   background: linear-gradient(0deg, rgb(248, 242, 242), rgb(83, 2, 2)) no-repeat;
+  font-family: Arial, sans-serif;
 }
+
 
 /* Swiper Styles */
 #swiper {
@@ -135,4 +136,35 @@ body {
   50% {
     opacity: 1;
   }
+}
+#finish-container {
+  display: flex;
+  flex-direction: column; /* Pour empiler le message et le bouton verticalement */
+  align-items: center; /* Centre horizontalement */
+  justify-content: center; /* Centre verticalement */
+  margin-left: -350px;
+  z-index: 10;
+}
+
+#message {
+  display: block;
+  text-align: center;
+  font-size: 24px;
+  color: white;
+  margin-bottom: 20px; /* Espacement entre le message et le bouton */
+}
+
+#finish-btn {
+  background-color: #b23a48;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2em; /* Taille du texte pour être bien visible */
+  transition: background-color 0.3s;
+}
+
+#finish-btn:hover {
+  background-color: #8a2a3a; /* Changement de couleur au survol */
 }
