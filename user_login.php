@@ -22,12 +22,22 @@ try {
         $user = $result->fetch_assoc();
 
         if (password_verify($password, $user['password'])) {
+            $current_time = date('Y-m-d H:i:s');
+            $user_id = $user['id'];
+
+
             $_SESSION['user'] = array(
                 'id' => $user['id'],
                 'username' => $user['username'],
                 'email' => $user['email'],
                 'address' => $user['address'],
+                'last_login' => $current_time,
             );
+
+            $update_sql = "UPDATE users SET last_login = NOW() WHERE email = ?";
+            $update_stmt = $conn->prepare($update_sql);
+            $update_stmt->bind_param("s", $email);
+            $update_stmt->execute();
 
             header("Location: index.php");
             exit();
