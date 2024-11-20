@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+#content {
+    display: flex;
+    height: calc(100vh - 60px); /* Laisse de la place pour le header */
+}
+
+#map {
+    width: 60%; /* La carte occupe 60% de la largeur */
+    height: 100%; /* Prend toute la hauteur disponible */
+    background: #f4f4f4;
+}
+
+#info-panel {
+    width: 40%; /* Le panneau d'infos occupe 40% */
+    height: 100%;
+    background: #ffffff;
+    border-left: 1px solid #ddd;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.info-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.info-card h2 {
+    margin-top: 0;
+}
