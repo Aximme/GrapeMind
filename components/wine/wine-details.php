@@ -46,7 +46,7 @@ if (isset($row['Type'])) {
 
 
 <div class="dtails-sur-un-vin">
-    <img class="image-detail-vin-icon" alt="" src="<?php echo htmlspecialchars(isset($row['thumb']) ? $row['thumb'] : 'image_detail_vin.png'); ?>">
+    <img class="image-detail-vin-icon" alt="" src="<?php echo (isset($row['thumb']) ? $row['thumb'] : 'image_detail_vin.png'); ?>">
 
 
     <div class="group-parent">
@@ -59,7 +59,7 @@ if (isset($row['Type'])) {
             <div class="tooltip">
 
 
-                <b class="title">  <?php echo htmlspecialchars(isset($row['Acidity']) ? $row['Acidity'] : ''); ?></b>
+                <b class="title">  <?php echo (isset($row['Acidity']) ? $row['Acidity'] : ''); ?></b>
 
                 <div class="body-text">
                 </div>
@@ -67,7 +67,7 @@ if (isset($row['Type'])) {
         </div>
         <div class="degrs-alcool-parent">
             <b class="degrs-alcool">DEGRÈS ALCOOL</b>
-            <b class="ABV"><?php echo htmlspecialchars(isset($row['ABV']) ? $row['ABV'] : ''); ?>°</b>
+            <b class="ABV"><?php echo (isset($row['ABV']) ? $row['ABV'] : ''); ?>°</b>
 
 
             <div class="container1">
@@ -98,7 +98,7 @@ if (isset($row['Type'])) {
             <span>🌱</span>
 
         </b>
-        <b class="composition-100">Composition : <?php echo htmlspecialchars(isset($row['Elaborate']) ? $row['Elaborate'] : '100% variété'); ?></b>
+        <b class="composition-100">Composition : <?php echo (isset($row['Elaborate']) ? $row['Elaborate'] : '100% variété'); ?></b>
 
         <div class="frame-child">
         </div>
@@ -106,7 +106,7 @@ if (isset($row['Type'])) {
             <p class="sous-titre">Avec quoi le manger?</p>
             <p class="p">                 </p>
         </b>
-        <div class="frame-item <?php echo htmlspecialchars($typeClass); ?>">
+        <div class="frame-item <?php echo ($typeClass); ?>">
         </div>
 
         <div class="frame-inner">
@@ -127,7 +127,7 @@ if (isset($row['Type'])) {
                 $harmonizeArray = explode(',', str_replace(array('[', ']', "'"), '', $row['Harmonize']));
                 $item1 = isset($harmonizeArray[0]) ? trim($harmonizeArray[0]) : '';
                 if (!empty($item1)) {
-                    echo '<img class="plat_1" src="/GrapeMind/assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . htmlspecialchars($item1) . '">';
+                    echo '<img class="plat_1" src="/GrapeMind/assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . ($item1) . '">';
                 }
             }
             ?>
@@ -137,7 +137,7 @@ if (isset($row['Type'])) {
                 $harmonizeArray = explode(',', str_replace(array('[', ']', "'"), '', $row['Harmonize']));
                 $item1 = isset($harmonizeArray[2]) ? trim($harmonizeArray[2]) : '';
                 if (!empty($item1)) {
-                    echo '<img class="plat_3" src="/GrapeMind/assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . htmlspecialchars($item1) . '">';
+                    echo '<img class="plat_3" src="/GrapeMind/assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . ($item1) . '">';
                 }
             }
             ?>
@@ -147,7 +147,7 @@ if (isset($row['Type'])) {
                 $harmonizeArray = explode(',', str_replace(array('[', ']', "'"), '', $row['Harmonize']));
                 $item1 = isset($harmonizeArray[1]) ? trim($harmonizeArray[1]) : '';
                 if (!empty($item1)) {
-                    echo '<img class="plat_2" src="/GrapeMind/assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . htmlspecialchars($item1) . '">';
+                    echo '<img class="plat_2" src="/GrapeMind/assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . ($item1) . '">';
                 }
             }
             ?>
@@ -173,15 +173,15 @@ if (isset($row['Type'])) {
 
         <!-- Afficher les éléments avec les classes appropriées -->
         <b class="plats1">
-            <?php echo htmlspecialchars($item1); ?>
+            <?php echo ($item1); ?>
         </b>
 
         <b class="plats2">
-            <?php echo htmlspecialchars($item2); ?>
+            <?php echo ($item2); ?>
         </b>
 
         <b class="plats3">
-            <?php echo htmlspecialchars($item3); ?>
+            <?php echo ($item3); ?>
         </b>
 
 
@@ -189,7 +189,7 @@ if (isset($row['Type'])) {
 
 
 
-        <b class="prix-90">Prix <?php echo htmlspecialchars(isset($row['price']) ? $row['price'] : '90'); ?> €</b>
+        <b class="prix-90">Prix <?php echo (isset($row['price']) ? $row['price'] : '90'); ?> €</b>
 
 
         <?php
@@ -197,21 +197,21 @@ if (isset($row['Type'])) {
         if (!empty($row['flavorGroup_1'])) {
             $flavor = trim($row['flavorGroup_1']);
             $flavorImagePath = '/GrapeMind/assets/gouts/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
-            echo '<img class="icon-flavor1" src="' . htmlspecialchars($flavorImagePath) . '" alt="' . htmlspecialchars($flavor) . '"> ';
+            echo '<img class="icon-flavor1" src="' . ($flavorImagePath) . '" alt="' . ($flavor) . '"> ';
         }
 
         // Flavor Group 2
         if (!empty($row['flavorGroup_2'])) {
             $flavor = trim($row['flavorGroup_2']);
             $flavorImagePath = '/GrapeMind/assets/gouts/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
-            echo '<img class="icon-flavor2" src="' . htmlspecialchars($flavorImagePath) . '" alt="' . htmlspecialchars($flavor) . '"> ';
+            echo '<img class="icon-flavor2" src="' . ($flavorImagePath) . '" alt="' . ($flavor) . '"> ';
         }
 
         // Flavor Group 3
         if (!empty($row['flavorGroup_3'])) {
             $flavor = trim($row['flavorGroup_3']);
             $flavorImagePath = '/GrapeMind/assets/gouts/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
-            echo '<img class="icon-flavor3" src="' . htmlspecialchars($flavorImagePath) . '" alt="' . htmlspecialchars($flavor) . '"> ';
+            echo '<img class="icon-flavor3" src="' . ($flavorImagePath) . '" alt="' . ($flavor) . '"> ';
         }
         ?>
 
@@ -221,13 +221,13 @@ if (isset($row['Type'])) {
 
         <div class="armes">ARÔMES</div>
         <div class="flavor-1">
-            <?php echo htmlspecialchars(isset($row['flavorGroup_1']) ? $row['flavorGroup_1'] : ''); ?>
+            <?php echo (isset($row['flavorGroup_1']) ? $row['flavorGroup_1'] : ''); ?>
         </div>
         <div class="flavor-2">
-            <?php echo htmlspecialchars(isset($row['flavorGroup_2']) ? $row['flavorGroup_2'] : ''); ?>
+            <?php echo (isset($row['flavorGroup_2']) ? $row['flavorGroup_2'] : ''); ?>
         </div>
         <div class="flavor-3">
-            <?php echo htmlspecialchars(isset($row['flavorGroup_3']) ? $row['flavorGroup_3'] : ''); ?>
+            <?php echo (isset($row['flavorGroup_3']) ? $row['flavorGroup_3'] : ''); ?>
         </div>
 
 
@@ -275,14 +275,14 @@ if (isset($row['Type'])) {
     <div class="titre-vin">
 
         <p class="sous-titre">
-            <?php echo htmlspecialchars(isset($row['WineryName']) ? $row['WineryName'] : ''); ?>
+            <?php echo (isset($row['WineryName']) ? $row['WineryName'] : ''); ?>
         </p>
         <p class="pays-region">
             <span>
                 <span>
                     <?php
-                    echo htmlspecialchars(isset($row['Country']) ? $row['Country'] : '') . ', ' .
-                        htmlspecialchars(isset($row['RegionName']) ? $row['RegionName'] : '');
+                    echo (isset($row['Country']) ? $row['Country'] : '') . ', ' .
+                        (isset($row['RegionName']) ? $row['RegionName'] : '');
                     ?>
                 </span>
 

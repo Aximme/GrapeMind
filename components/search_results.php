@@ -165,11 +165,11 @@ $conn->close();
             <?php foreach ($results as $wine): ?>
                 <a href="javascript:void(0);" onclick="setVinId(<?php echo $wine['idwine']; ?>)" class="result-item-link">
                     <div class="result-item">
-                        <img src="<?php echo htmlspecialchars($wine['thumb']); ?>" alt="<?php echo htmlspecialchars($wine['name']); ?>" class="wine-thumbnail">
+                        <img src="<?php echo ($wine['thumb']); ?>" alt="<?php echo ($wine['name']); ?>" class="wine-thumbnail">
                         <div class="wine-details">
-                            <h2><?php echo htmlspecialchars($wine['name']); ?></h2>
-                            <p class="wine-price">Prix : <?php echo htmlspecialchars($wine['price']); ?> €</p>
-                            <p class="wine-taste">Goûts : <?php echo htmlspecialchars($wine['flavorGroup_1']); ?>, <?php echo htmlspecialchars($wine['flavorGroup_2']); ?>, <?php echo htmlspecialchars($wine['flavorGroup_3']); ?></p>
+                            <h2><?php echo ($wine['name']); ?></h2>
+                            <p class="wine-price">Prix : <?php echo ($wine['price']); ?> €</p>
+                            <p class="wine-taste">Goûts : <?php echo ($wine['flavorGroup_1']); ?>, <?php echo ($wine['flavorGroup_2']); ?>, <?php echo ($wine['flavorGroup_3']); ?></p>
                             <div class="stars_notation">
                                 Note :
                                 <?php
