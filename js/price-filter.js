@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
         start: [16, 500],
         connect: true,
         range: {
-            'min': 10,
+            'min': 0,
             'max': 1000
         },
         step: 1,
