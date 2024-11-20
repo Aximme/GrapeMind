@@ -1,50 +1,88 @@
-/* Style principal de la section de sélection de vin */
+/* Container principal du filtre */
 .wine-selection {
-    text-align: center;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 320px;
+    text-align: left;
+    background: linear-gradient(135deg, #ffffff, #f9f9f9);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    width: 600px; /* Taille légèrement augmentée pour l’aération */
+    margin: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ajout d’un effet visuel derrière */
+.wine-selection::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+
+    z-index: 0;
 }
 
 .wine-selection h1 {
-    font-size: 1.5em;
+    font-size: 1.6em;
+    font-weight: 700;
     margin-bottom: 20px;
+    color: #222;
+    text-align: center;
+    position: relative;
+    z-index: 1;
 }
 
-/* Options de sélection de type de vin */
+/* Style des options de vin */
 .wine-options {
     display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
     justify-content: space-around;
-    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
 }
 
 .wine-options label {
     display: flex;
     align-items: center;
-    font-size: 0.9em;
+    font-size: 1em;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
+.wine-options label:hover {
+    color: #d32f2f;
+    transform: scale(1.05);
+}
+
+/* Amélioration visuelle des cercles */
 .red-circle, .rose-circle, .white-circle, .bubble-circle {
     display: inline-block;
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    margin-left: 5px;
+    margin-left: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .red-circle {
-    background-color: #d32f2f;
+    background-color: #b71c1c;
 }
 
 .rose-circle {
-    background-color: #000000; /* Couleur noire pour remplacer le rose */
+    background-color: #e57373;
 }
 
 .white-circle {
-    background-color: #fff9c4;
-    border: 1px solid #ccc;
+    background-color: #f5f5f5;
+    border: 1px solid #bbb;
+}
+
+.bubble-circle {
+    background-color: #ffcc80;
 }
 
 /* Slider de prix */
@@ -53,64 +91,82 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    margin-bottom: 25px;
+    font-size: 1em;
+    position: relative;
+    z-index: 1;
 }
 
 .range-slider {
     width: 100%;
-    margin: 0 10px;
+    margin-top: 15px;
 }
 
-/* Styles spécifiques pour le slider noUiSlider */
+/* noUiSlider améliorations */
 #price-slider .noUi-connect {
-    background-color: #000000 !important; /* Couleur noire pour la barre connectée */
+    background-color: #d32f2f !important;
+    border-radius: 10px;
 }
 
 #price-slider .noUi-handle {
-    background-color: black !important; /* Couleur rouge pour les poignées */
+    background-color: #222 !important;
     border-radius: 50%;
-    width: 15px;
-    height: 15px;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    width: 18px;
+    height: 18px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
 }
 
-#price-slider .noUi-target {
-    background: #e0e0e0; /* Couleur gris clair pour la piste */
-    border-radius: 5px;
+#price-slider .noUi-handle:hover {
+    transform: scale(1.1);
 }
 
-/* Tooltips du slider */
 #price-slider .noUi-tooltip {
     background-color: #ffffff;
     color: #333;
     font-size: 0.85em;
-    padding: 5px;
-    border: 1px solid black;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* Option de sélection biologique */
+/* Option biologique */
 .bio-option {
-    margin-bottom: 20px;
-    font-size: 0.9em;
+    margin-bottom: 25px;
+    font-size: 1em;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
+.bio-option input[type="checkbox"] {
+    transform: scale(1.2);
+    cursor: pointer;
+    accent-color: #d32f2f;
+}
+
+/* Bouton amélioré */
 .search-button_price {
-    background-color: #d32f2f;
+    background: linear-gradient(135deg, #d32f2f, #b71c1c);
     color: #ffffff;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 12px 25px;
+    border-radius: 8px;
     font-size: 1em;
     cursor: pointer;
-    transition: background-color 0.3s;
-    display: inline-block; /* Assurez-vous que le bouton est en mode bloc-inline */
-    margin-top: 20px; /* Espace au-dessus pour éviter que le bouton soit collé */
+    transition: background-color 0.3s, box-shadow 0.3s;
+    display: inline-block;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .search-button_price:hover {
-    background-color: #c62828;
+    background: linear-gradient(135deg, #b71c1c, #d32f2f);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
+.search-button_price:active {
+    transform: scale(0.98);
+}

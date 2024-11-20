@@ -58,15 +58,13 @@ $conn->close();
     <div class="price-range-wrapper">
         <span>10</span>
         <div id="price-slider" class="range-slider"></div>
-        <span>500+€</span>
+        <span>1000+€</span>
     </div>
     <script src="js/price-filter.js"></script>
 
 
 
-    <div class="bio-option">
-        <label><input type="checkbox"> Agriculture biologique</label>
-    </div>
+
 
     <button class="search-button_price" onclick="applyFilters()">Chercher selon mes goûts</button>
 </div>
