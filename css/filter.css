@@ -200,3 +200,41 @@
         transform: scale(1);
     }
 }
+
+
+
+.suggestions div {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.suggestions div:hover {
+    background-color: #f0f0f0;
+}
+
+/* Mini-étiquettes des régions sélectionnées */
+.selected-tags {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.selected-tags .tag {
+    background-color: #008CBA;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.selected-tags .tag span {
+    cursor: pointer;
+}
+
+.selected-tags .tag:hover {
+    background-color: #005f73;
+}
+
