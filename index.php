@@ -130,7 +130,7 @@ $conn->close();
                     <img src="<?php echo htmlspecialchars($wine['thumb']); ?>" alt="<?php echo htmlspecialchars($wine['name']); ?>" class="wine-thumbnail">
                     <div class="wine-details">
                         <h3><?php echo htmlspecialchars($wine['name']); ?></h3>
-                        <p class="wine-price"><?php echo htmlspecialchars($wine['price']); ?> €</p>
+                        <p class="wine-price"><?php echo ($wine['price']); ?> €</p>
                     </div>
                 </div>
             <?php endforeach; ?>

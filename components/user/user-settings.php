@@ -5,8 +5,8 @@ if (!isset($_SESSION['user'])) {
     header("Location: /GrapeMind/login.php");
     exit();
 }
-require_once __DIR__ . '/../../db.php'; // Chemin relatif vers db.php
-include __DIR__ . '/../header.php'; // Chemin relatif vers header.php
+require_once __DIR__ . '/../../db.php';
+include __DIR__ . '/../header.php';
 
 $userId = $_SESSION['user']['id'];
 

@@ -11,14 +11,17 @@ $confirmPassword = isset($_POST['confirm_password']) ? $_POST['confirm_password'
 
 function rediriger($username, $email, $address, $erreur = '')
 {
-    $url = 'nouveau.php?username=' . urlencode($username) . '&email=' . urlencode($email) . '&address=' . urlencode($address);
+    $url = 'registration.php?username=' . urlencode($username) . '&email=' . urlencode($email) . '&address=' . urlencode($address);
     if (!empty($erreur)) {
         $url .= '&erreur=' . urlencode($erreur);
     }
     echo '<meta http-equiv="refresh" content="0;url=' . $url . '">';
     exit();
 }
-
+function verifierEmailFormat($email)
+{
+    return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
+}
 function verifierEmailUnique($conn, $email)
 {
     $stmt = $conn->prepare("SELECT COUNT(*) FROM users WHERE email = ?");
@@ -44,6 +47,9 @@ function enregistrer($conn, $username, $email, $address, $password)
 }
 
 if (!empty($username) && !empty($email) && !empty($address) && !empty($password) && !empty($confirmPassword)) {
+    if (!verifierEmailFormat($email)) {
+        rediriger($username, $email, $address, "L'adresse e-mail n'est pas valide.");
+    }
     if (verifierEmailUnique($conn, $email)) {
         rediriger($username, $email, $address, "L'adresse e-mail est déjà utilisée.");
     }

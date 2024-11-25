@@ -32,7 +32,7 @@ $username = $_SESSION['user']['username'];
         <div class="quick-access">
             <h4>Accès Rapide</h4>
             <div class="access-item">
-                <a href="ma_cave.php">
+                <a href="cave.php">
                     <div class="icon-container">
                         <img src="assets/images/cave-logo.png" alt="Icone Cave">
                     </div>
@@ -40,7 +40,7 @@ $username = $_SESSION['user']['username'];
                 </a>
             </div>
             <div class="access-item">
-                <a href="mon_grenier.php">
+                <a href="grenier.php">
                     <div class="icon-container">
                         <img src="assets/images/winecavestock-logo.png" alt="Icone Grenier">
                     </div>
