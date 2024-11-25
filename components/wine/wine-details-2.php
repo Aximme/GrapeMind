@@ -4,6 +4,7 @@ session_start();
 global $conn;
 require_once '../../db.php';
 
+
 $vin_id = isset($_SESSION['vin_id']) ? $_SESSION['vin_id'] : 111630;
 
 $sql = "
@@ -48,7 +49,4 @@ if ($result && $result->num_rows > 0) {
 } else {
     echo "Aucun vin trouvé avec cet ID.";
 }
-
-// Fermer la connexion
-$conn->close();
 ?>
