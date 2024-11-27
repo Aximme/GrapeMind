@@ -133,17 +133,17 @@
 
 .cepages {
     position: absolute;
-    top: 107px;
+    top: 95px;
     left: 54px;
     font-size: 24px;
     display: inline-block;
     font-family: 'Baloo 2';
-    width: 240px;
+    width: 350px;
     height: 39px;
 }
 .type {
     position: absolute;
-    top: 57px;
+    top: 40px;
     left: 54px;
     font-size: 24px;
     display: inline-block;
@@ -163,12 +163,12 @@
 }
 .composition-100 {
     position: absolute;
-    top: 180px;
+    top: 200px;
     left: 54px;
     font-size: 24px;
     display: inline-block;
     font-family: 'Baloo 2';
-    width: 325px;
+    width: 420px;
     height: 39px;
 }
 .frame-child {
@@ -198,7 +198,7 @@
 }
 .frame-item {
     position: absolute;
-    top: 61px;
+    top: 44px;
     left: 136px;
     border-radius: 50%;
     transition: background-color 0.3s ease;
