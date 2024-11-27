@@ -38,5 +38,5 @@
         <a href="/GrapeMind/statistic.php">📊 Statistiques</a>
         <a href="/GrapeMind/components/user/user-settings.php">⚙️ Paramètres Du Compte</a>
     </div>
-    <script src="js/menu_header.js"></script>
+    <script src="/GrapeMind/js/menu_header.js"></script>
 </header>
