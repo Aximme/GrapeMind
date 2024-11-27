@@ -105,3 +105,12 @@ Array
     [boisé] => non
     [fruit_noir] => oui
 )
+Array
+(
+    [user_id] => 1
+    [agrumes] => 
+    [floral] => 
+    [fruit_rouge] => 
+    [boisé] => 
+    [fruit_noir] => 
+)

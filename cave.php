@@ -12,19 +12,45 @@ if (!isset($_SESSION['user']['id'])) {
 
 $id_user = $_SESSION['user']['id'];
 
+
+$results_per_page = 4;
+$page = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
+$start = ($page - 1) * $results_per_page;
+
+
+$total_results_query = $conn->prepare("
+    SELECT COUNT(*) as total
+    FROM cave
+    JOIN descriptifs ON cave.idwine = descriptifs.idwine
+    JOIN scrap ON scrap.idwine = descriptifs.idwine
+    WHERE cave.id_user = ?
+");
+if (!$total_results_query) {
+    echo "<p>Erreur dans la préparation de la requête pour le comptage : " . $conn->error . "</p>";
+    exit;
+}
+
+$total_results_query->bind_param("i", $id_user);
+$total_results_query->execute();
+$total_results_result = $total_results_query->get_result();
+$total_results = $total_results_result->fetch_assoc()['total'];
+$total_results_query->close();
+
+
 $query = $conn->prepare("
     SELECT descriptifs.idwine, scrap.thumb, scrap.name, scrap.price, scrap.flavorGroup_1, scrap.flavorGroup_2, scrap.flavorGroup_3, scrap.average_rating 
     FROM cave 
     JOIN descriptifs ON cave.idwine = descriptifs.idwine 
     JOIN scrap ON scrap.idwine = descriptifs.idwine
     WHERE cave.id_user = ?
+    LIMIT ? OFFSET ?
 ");
 if (!$query) {
     echo "<p>Erreur dans la préparation de la requête : " . $conn->error . "</p>";
     exit;
 }
 
-$query->bind_param("i", $id_user);
+$query->bind_param("iii", $id_user, $results_per_page, $start);
 $query->execute();
 $result = $query->get_result();
 ?>
@@ -34,7 +60,7 @@ $result = $query->get_result();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ma Cave</title>
+    <title>Ma cave</title>
     <link rel="stylesheet" href="css/search_results.css">
     <link rel="stylesheet" href="css/cave.css">
 </head>
@@ -86,6 +112,9 @@ $result = $query->get_result();
                     </div>
                 </div>
             <?php endwhile; ?>
+
+            <?php include __DIR__ . '/components/pagination.php'; ?>
+
         <?php else: ?>
             <p>Aucun vin dans votre cave pour le moment.</p>
         <?php endif; ?>

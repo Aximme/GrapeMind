@@ -23,45 +23,66 @@ if (isset($row['Type'])) {
     }
 }
 
+$message = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cave'])) {
-    $idwine = $_POST['idwine'];
-    $id_user = $_SESSION['user']['id'];
+    $idwine = isset($_POST['idwine']) ? $_POST['idwine'] : null;
+    $id_user = isset($_SESSION['user']['id']) ? $_SESSION['user']['id'] : null;
 
-    $checkQuery = $conn->prepare("SELECT * FROM cave WHERE idwine = ? AND id_user = ?");
-    $checkQuery->bind_param("ii", $idwine, $id_user);
-    $checkQuery->execute();
-    $result = $checkQuery->get_result();
+    if ($idwine && $id_user) {
+        $checkGrenier = $conn->prepare("SELECT * FROM grenier WHERE idwine = ? AND id_user = ?");
+        $checkGrenier->bind_param("ii", $idwine, $id_user);
+        $checkGrenier->execute();
+        $resultGrenier = $checkGrenier->get_result();
 
-    if ($result->num_rows > 0) {
-        echo "<p>Ce vin est déjà dans votre cave.</p>";
-    } else {
-        $query = $conn->prepare("INSERT INTO cave (idwine, id_user) VALUES (?, ?)");
-        $query->bind_param("ii", $idwine, $id_user);
+        if ($resultGrenier->num_rows > 0) {
+            $message = "Impossible d'ajouter à la cave : ce vin est déjà dans le grenier.";
+        } else {
+            $checkQuery = $conn->prepare("SELECT * FROM cave WHERE idwine = ? AND id_user = ?");
+            $checkQuery->bind_param("ii", $idwine, $id_user);
+            $checkQuery->execute();
+            $result = $checkQuery->get_result();
+
+            if ($result->num_rows > 0) {
+                $message = "Ce vin est déjà dans votre cave.";
+            } else {
+                $query = $conn->prepare("INSERT INTO cave (idwine, id_user) VALUES (?, ?)");
+                $query->bind_param("ii", $idwine, $id_user);
+                $query->execute();
+            }
+        }
     }
 }
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_grenier'])) {
-    $idwine = $_POST['idwine'];
-    $id_user = $_SESSION['user']['id'];
+    $idwine = isset($_POST['idwine']) ? $_POST['idwine'] : null;
+    $id_user = isset($_SESSION['user']['id']) ? $_SESSION['user']['id'] : null;
 
+    if ($idwine && $id_user) {
+        $checkCave = $conn->prepare("SELECT * FROM cave WHERE idwine = ? AND id_user = ?");
+        $checkCave->bind_param("ii", $idwine, $id_user);
+        $checkCave->execute();
+        $resultCave = $checkCave->get_result();
 
-    $checkQuery = $conn->prepare("SELECT * FROM grenier WHERE idwine = ? AND id_user = ?");
-    $checkQuery->bind_param("ii", $idwine, $id_user);
-    $checkQuery->execute();
-    $result = $checkQuery->get_result();
+        if ($resultCave->num_rows > 0) {
+            $message = "Impossible d'ajouter au grenier : ce vin est déjà dans la cave.";
+        } else {
+            $checkQuery = $conn->prepare("SELECT * FROM grenier WHERE idwine = ? AND id_user = ?");
+            $checkQuery->bind_param("ii", $idwine, $id_user);
+            $checkQuery->execute();
+            $result = $checkQuery->get_result();
 
-    if ($result->num_rows > 0) {
-        echo "<p>Ce vin est déjà dans votre grenier.</p>";
-    } else {
-        $query = $conn->prepare("INSERT INTO grenier (idwine, id_user) VALUES (?, ?)");
-        $query->bind_param("ii", $idwine, $id_user);
+            if ($result->num_rows > 0) {
+                $message = "Ce vin est déjà dans votre grenier.";
+            } else {
+                $query = $conn->prepare("INSERT INTO grenier (idwine, id_user) VALUES (?, ?)");
+                $query->bind_param("ii", $idwine, $id_user);
+                $query->execute();
+            }
+        }
     }
 }
 ?>
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,11 +97,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_grenier'])) {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aclonica:wght@400&display=swap"/>
     <!--LOADER-->
     <script defer src="/GrapeMind/js/loader.js"></script>
+    <style>
+        .message {
+            color: red;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+        }
 
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const message = document.getElementById("message");
+            if (message) {
+                setTimeout(() => {
+                    message.classList.add("hidden");
+                }, 5000);
+            }
+        });
+    </script>
 
 </head>
 <body>
-
+<?php if (!empty($message)): ?>
+    <div id="message" class="message"><?php echo htmlspecialchars($message); ?></div>
+<?php endif; ?>
 
 <div class="dtails-sur-un-vin">
     <img class="image-detail-vin-icon" alt=""
