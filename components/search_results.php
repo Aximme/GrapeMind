@@ -247,7 +247,7 @@ $conn->close();
 
 <script>
     function setVinId(vinId) {
-        fetch("components/wine/set_vin_id.php", {
+        fetch("/wine/set_vin_id.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
@@ -257,7 +257,7 @@ $conn->close();
             .then(response => response.text())
             .then(data => {
                 console.log(data);
-                window.location.href = "components/wine/wine-details.php";
+                window.location.href = "/wine/wine-details.php";
             })
             .catch(error => console.error("Erreur lors de l'envoi de l'ID :", error));
     }
