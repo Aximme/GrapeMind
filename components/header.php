@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GrapeMind</title>
-    <link rel="stylesheet" href="/GrapeMind/css/main.css">
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
 <header class="header">
     <div class="logo">
 
-        <img src="/GrapeMind/assets/images/image_header.png" alt="GrapeMind Logo">
+        <img src="/assets/images/image_header.png" alt="GrapeMind Logo">
 
         <span class="logo-text">GrapeMind</span>
     </div>
     <nav class="navigation">
 
-        <a href=/index.php">Accueil</a>
+        <a href=../index.php">Accueil</a>
         <a href="wine_map/map-main.php">Carte</a>
         <a href="/events.php">Événements</a>
         <a href="/about.php">À propos</a>

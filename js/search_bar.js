@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault(); // Empêche le rechargement de la page
             const query = document.querySelector('.search-bar').value;
             if (query) {
-                window.location.href = `/GrapeMind/components/wine_map/search_results.php?query=${encodeURIComponent(query)}`;
+                window.location.href = `/components/wine_map/search_results.php?query=${encodeURIComponent(query)}`;
             }
         });
     } else {

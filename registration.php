@@ -48,7 +48,7 @@ include 'components/header.php';
             <button type="submit">Nous Rejoindre</button>
 
             <p class="log-in">
-                Déjà un compte ?<a href="/GrapeMind/login.php"> Connectez-vous</a>
+                Déjà un compte ?<a href="/login.php"> Connectez-vous</a>
             </p>
         </form>
     </div>

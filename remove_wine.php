@@ -32,7 +32,7 @@ if (!$query) {
 $query->bind_param("ii", $idwine, $id_user);
 
 if ($query->execute()) {
-    header("Location: /GrapeMind/$context.php?success=1");
+    header("Location: $context.php?success=1");
     exit;
 } else {
     echo "<p>Erreur lors de la suppression : " . $query->error . "</p>";

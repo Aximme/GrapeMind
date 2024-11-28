@@ -17,7 +17,7 @@
 <!-- Finish Container -->
 <div id="finish-container" style="display: none;">
     <div id="message">Test terminé</div>
-    <a href="/GrapeMind/index.php">
+    <a href="/index.php">
         <button id="finish-btn">Revenir à l'accueil</button>
     </a>
 </div>

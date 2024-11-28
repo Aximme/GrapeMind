@@ -8,11 +8,11 @@ const finishButton = document.getElementById('finish-btn');
 
 // URLs des images des goûts
 const urls = [
-  '/GrapeMind/assets/gouts/agrume.jpeg',
-  '/GrapeMind/assets/gouts/floral.jpeg',
-  '/GrapeMind/assets/gouts/fruit_rouge.jpeg',
-  '/GrapeMind/assets/gouts/boisé.jpeg',
-  '/GrapeMind/assets/gouts/fruit_noir.jpeg'
+  '/assets/gouts/agrume.jpeg',
+  '/assets/gouts/floral.jpeg',
+  '/assets/gouts/fruit_rouge.jpeg',
+  '/assets/gouts/boisé.jpeg',
+  '/assets/gouts/fruit_noir.jpeg'
 ];
 
 // Textes des cartes correspondant aux goûts
@@ -117,7 +117,7 @@ function sendResultsToDatabase() {
       .then(data => {
         if (data.success) {
           console.log('Résultats sauvegardés avec succès !');
-          window.location.href = '/GrapeMind/index.php';
+          window.location.href = '/index.php';
         } else {
           console.error('Erreur :', data.error);
         }

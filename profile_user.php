@@ -17,7 +17,7 @@ $username = $_SESSION['user']['username'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Profil</title>
-    <link rel="stylesheet" href="/GrapeMind/css/profile_user.css">
+    <link rel="stylesheet" href="/css/profile_user.css">
 
 </head>
 <body>

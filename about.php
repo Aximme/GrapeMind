@@ -9,7 +9,7 @@ include 'components/header.php';
     <title>À propos</title>
     <link rel="stylesheet" href="css/main.css">
     <!--LOADER-->
-    <script defer src="/GrapeMind/js/loader.js"></script>
+    <script defer src="/js/loader.js"></script>
 </head>
 <body>
 

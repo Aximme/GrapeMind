@@ -43,7 +43,7 @@ include 'components/header.php';
                 <a href="#">Mot de passe oublié?</a>
             </p>
             <p class="sign-up">
-                Vous n'avez pas de compte ? <a href="/GrapeMind/registration.php">Inscrivez-vous ici</a>
+                Vous n'avez pas de compte ? <a href="/registration.php">Inscrivez-vous ici</a>
             </p>
         </form>
     </div>
