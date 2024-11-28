@@ -7,19 +7,19 @@ include __DIR__ . '/../db.php';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, width=device-width">
-    <link rel="stylesheet" href="css/search_bar.css" />
+    <link rel="stylesheet" href="/css/search_bar.css" />
     <title>Recherche de vin</title>
 </head>
 <body>
 
 <div class="search-box">
-    <form action="components/search_results.php" method="get">
+    <form action="/components/search_results.php" method="get">
         <button type="submit" class="search-icon" aria-label="Rechercher"></button>
         <input type="text" name="query" class="search-form" placeholder="Rechercher un vin..." onkeyup="fetchSuggestions(this.value)">
     </form>
     <div id="search-suggestions" class="search-suggestions"></div>
 </div>
 
-<script src="js/search_bar.js" defer></script>
+<script src="/js/search_bar.js" defer></script>
 </body>
 </html>

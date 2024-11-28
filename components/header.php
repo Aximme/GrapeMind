@@ -16,17 +16,17 @@
     </div>
     <nav class="navigation">
 
-        <a href=../index.php">Accueil</a>
-        <a href="components/wine_map/map-main.php">Carte</a>
-        <a href="events.php">Événements</a>
-        <a href="about.php">À propos</a>
+        <a href=/index.php">Accueil</a>
+        <a href="wine_map/map-main.php">Carte</a>
+        <a href="/events.php">Événements</a>
+        <a href="/about.php">À propos</a>
     </nav>
     <div class="auth">
         <?php if (!isset($_SESSION['user'])): ?>
-            <a href="login.php" class="login">Se connecter</a>
-            <a href="registration.php" class="signup">S'inscrire</a>
+            <a href="/login.php" class="login">Se connecter</a>
+            <a href="/registration.php" class="signup">S'inscrire</a>
         <?php else: ?>
-            <a href="logout.php" class="logout">Se déconnecter</a>
+            <a href="/logout.php" class="logout">Se déconnecter</a>
         <?php endif; ?>
     </div>
     <!-- Menu Déroulant -->
@@ -34,9 +34,9 @@
         <span id="menu-toggle">&#9776;</span>
     </div>
     <div id="dropdown-menu" class="dropdown-menu">
-        <a href="profile_user.php">👤 Mon Profil</a>
-        <a href="statistic.php">📊 Statistiques</a>
-        <a href="components/user/user-settings.php">⚙️ Paramètres Du Compte</a>
+        <a href="/profile_user.php">👤 Mon Profil</a>
+        <a href="/statistic.php">📊 Statistiques</a>
+        <a href="/components/user/user-settings.php">⚙️ Paramètres Du Compte</a>
     </div>
-    <script src="js/menu_header.js"></script>
+    <script src="/js/menu_header.js"></script>
 </header>

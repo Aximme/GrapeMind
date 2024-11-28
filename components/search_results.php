@@ -174,9 +174,9 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <title>Résultats de recherche pour "<?php echo htmlspecialchars($query); ?>"</title>
-    <link rel="stylesheet" href="css/search_results.css">
-    <script defer src="js/loader.js"></script>
-    <script defer src="js/sort_filter.js"></script>
+    <link rel="stylesheet" href="/css/search_results.css">
+    <script defer src="/js/loader.js"></script>
+    <script defer src="/js/sort_filter.js"></script>
 </head>
 <body>
 <h1>Résultats pour "<?php echo htmlspecialchars($query); ?>"</h1>

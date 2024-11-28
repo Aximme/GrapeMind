@@ -88,15 +88,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_grenier'])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, width=device-width">
-    <link rel="stylesheet" href="/GrapeMind/css/main.css"/>
-    <link rel="stylesheet" href="/GrapeMind/css/wine-details.css"/>
+    <link rel="stylesheet" href="../../css/main.css"/>
+    <link rel="stylesheet" href="../../css/wine-details.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo 2:wght@400;700&display=swap"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo:wght@400&display=swap"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aclonica:wght@400&display=swap"/>
     <!--LOADER-->
-    <script defer src="/GrapeMind/js/loader.js"></script>
+    <script defer src="../../js/loader.js"></script>
     <style>
         .message {
             color: red;
@@ -137,7 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_grenier'])) {
             <b class="acidit">ACIDITÉ</b>
             <div class="container">
             </div>
-            <img class="group-child" alt="" src="/GrapeMind/assets/images/Group%209.png">
+            <img class="group-child" alt="" src="../../assets/images/Group%209.png">
 
             <div class="tooltip">
 
@@ -202,7 +202,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_grenier'])) {
                 $harmonizeArray = explode(',', str_replace(array('[', ']', "'"), '', $row['Harmonize']));
                 $item1 = isset($harmonizeArray[0]) ? trim($harmonizeArray[0]) : '';
                 if (!empty($item1)) {
-                    echo '<img class="plat_1" src="/GrapeMind/assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . ($item1) . '">';
+                    echo '<img class="plat_1" src="../../assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . ($item1) . '">';
                 }
             }
             ?>
@@ -212,7 +212,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_grenier'])) {
                 $harmonizeArray = explode(',', str_replace(array('[', ']', "'"), '', $row['Harmonize']));
                 $item1 = isset($harmonizeArray[2]) ? trim($harmonizeArray[2]) : '';
                 if (!empty($item1)) {
-                    echo '<img class="plat_3" src="/GrapeMind/assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . ($item1) . '">';
+                    echo '<img class="plat_3" src="/../../assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . ($item1) . '">';
                 }
             }
             ?>
@@ -222,7 +222,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_grenier'])) {
                 $harmonizeArray = explode(',', str_replace(array('[', ']', "'"), '', $row['Harmonize']));
                 $item1 = isset($harmonizeArray[1]) ? trim($harmonizeArray[1]) : '';
                 if (!empty($item1)) {
-                    echo '<img class="plat_2" src="/GrapeMind/assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . ($item1) . '">';
+                    echo '<img class="plat_2" src="/../../assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . ($item1) . '">';
                 }
             }
             ?>
@@ -266,21 +266,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_grenier'])) {
         <?php
         if (!empty($row['flavorGroup_1'])) {
             $flavor = trim($row['flavorGroup_1']);
-            $flavorImagePath = '/GrapeMind/assets/gouts/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
+            $flavorImagePath = '/../../assets/gouts/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
             echo '<img class="icon-flavor1" src="' . ($flavorImagePath) . '" alt="' . ($flavor) . '"> ';
         }
 
 
         if (!empty($row['flavorGroup_2'])) {
             $flavor = trim($row['flavorGroup_2']);
-            $flavorImagePath = '/GrapeMind/assets/gouts/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
+            $flavorImagePath = '/../../assets/gouts/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
             echo '<img class="icon-flavor2" src="' . ($flavorImagePath) . '" alt="' . ($flavor) . '"> ';
         }
 
 
         if (!empty($row['flavorGroup_3'])) {
             $flavor = trim($row['flavorGroup_3']);
-            $flavorImagePath = '/GrapeMind/assets/gouts/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
+            $flavorImagePath = '/../../assets/gouts/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
             echo '<img class="icon-flavor3" src="' . ($flavorImagePath) . '" alt="' . ($flavor) . '"> ';
         }
         ?>
