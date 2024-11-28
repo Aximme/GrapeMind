@@ -45,7 +45,7 @@ if ($resultGrapes && $resultGrapes->num_rows > 0) {
 $conn->close();
 ?>
 
-<link rel="stylesheet" href="/GrapeMind/css/filter.css">
+<link rel="stylesheet" href="css/filter.css">
 
 <aside class="filter-panel">
     <h2>Filtres</h2>

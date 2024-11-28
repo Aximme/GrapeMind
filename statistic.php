@@ -45,22 +45,22 @@ $total_vins_grenier = $row_grenier['total_vins_grenier'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vos Statistiques</title>
-    <link rel="stylesheet" href="/GrapeMind/css/statistic.css">
+    <link rel="stylesheet" href="css/statistic.css">
 </head>
 <body>
 <div class="stats-container">
     <h2>Vos Statistiques</h2>
     <div class="stats-box">
         <div class="stat-item">
-            <img src="/GrapeMind/assets/images/default-pp.png" alt="Vins consultés">
+            <img src="assets/images/default-pp.png" alt="Vins consultés">
             <p><strong>Vins consultés:</strong> <?php echo $total_vins_consultes; ?></p>
         </div>
         <div class="stat-item">
-            <img src="/GrapeMind/assets/images/cave-logo.png" alt="Vins à la cave">
+            <img src="assets/images/cave-logo.png" alt="Vins à la cave">
             <p><strong>Vins à la cave:</strong> <?php echo $total_vins_cave; ?></p>
         </div>
         <div class="stat-item">
-            <img src="/GrapeMind/assets/images/winecavestock-logo.png" alt="Vins au grenier">
+            <img src="assets/images/winecavestock-logo.png" alt="Vins au grenier">
             <p><strong>Vins au Grenier:</strong> <?php echo $total_vins_grenier; ?></p>
         </div>
     </div>

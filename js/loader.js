@@ -40,7 +40,7 @@ loadjQuery(function() {
 
     const loaderHTML = `
         <div class="loader-wrapper">
-            <img src="/GrapeMind/assets/images/loader.gif" alt="Chargement...">
+            <img src="assets/images/loader.gif" alt="Chargement...">
         </div>
     `;
     document.body.insertAdjacentHTML('afterbegin', loaderHTML);

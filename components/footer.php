@@ -1,7 +1,7 @@
 <footer class="footer">
     <div class="footer-container">
         <div class="footer-logo">
-            <img src="/GrapeMind/assets/images/image_header.png" size="1000" alt="Logo du site" class="logo-image">
+            <img src="assets/images/image_header.png" size="1000" alt="Logo du site" class="logo-image">
             <h2>GrapeMind</h2>
         </div>
 

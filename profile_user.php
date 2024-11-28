@@ -50,7 +50,7 @@ $username = $_SESSION['user']['username'];
         </div>
     </div>
     <div class="recommendation-button">
-        <a href="/GrapeMind/components/quizz/index.php">
+        <a href="components/quizz/index.php">
             <button>Affiner mes recommandations</button>
         </a>
     </div>
