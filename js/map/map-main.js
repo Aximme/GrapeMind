@@ -1,64 +1,52 @@
-// Initialisation de la carte
-am5.ready(function () {
-    let root = am5.Root.new("map");
+document.addEventListener("DOMContentLoaded", function () {
+    const map = L.map("map").setView([46.603354, 1.888334], 6); // Centré sur la France
 
-    root.setThemes([am5themes_Animated.new(root)]);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
 
-    let chart = root.container.children.push(
-        am5map.MapChart.new(root, {
-            projection: am5map.geoMercator()
-        })
-    );
+    const regionSelect = document.getElementById("region-select");
+    const regionDetails = document.getElementById("region-details");
 
-// Modifier l'arrière-plan
-    chart.seriesContainer.set("background", am5.Rectangle.new(root, {
-        fill: am5.color("#ffffff") // Couleur blanche
-    }));
+    // Charger les données des régions depuis le fichier JSON
+    fetch("/GrapeMind/components/wine_map/regions.json")
+        .then(response => response.json())
+        .then(regions => {
+            // Ajouter les régions au menu déroulant
+            regions.forEach((region, index) => {
+                const option = document.createElement("option");
+                option.value = index;
+                option.textContent = region.name;
+                regionSelect.appendChild(option);
+            });
 
-    // Charger la carte des départements français
-    let polygonSeries = chart.series.push(
-        am5map.MapPolygonSeries.new(root, {
-            geoJSON: am5geodata_franceDepartmentsLow
-        })
-    );
+            // Gérer la sélection d'une région
+            regionSelect.addEventListener("change", function () {
+                const selectedIndex = this.value;
+                if (selectedIndex === "") {
+                    regionDetails.innerHTML = `
+                        <div class="info-card">
+                            <h2>Aucune région sélectionnée</h2>
+                            <p>Sélectionnez une région dans le menu déroulant pour voir ses détails.</p>
+                        </div>
+                    `;
+                    map.setView([46.603354, 1.888334], 6); // Recentrer sur la France
+                    return;
+                }
 
-    // Configuration des régions
-    polygonSeries.mapPolygons.template.setAll({
-        interactive: true,
-        tooltipText: "{name}",
-        fill: am5.color(0x74b3ce)
-    });
-
-    polygonSeries.mapPolygons.template.states.create("hover", {
-        fill: am5.color(0x003f5c)
-    });
-
-    // Zoom et affichage des infos
-    polygonSeries.mapPolygons.template.events.on("click", function (ev) {
-        const regionName = ev.target.dataItem.dataContext.name || "Région inconnue";
-
-        // Convertir les coordonnées de la souris en coordonnées géographiques
-        const geoPoint = chart.invert({ x: ev.point.x, y: ev.point.y });
-
-        if (geoPoint) {
-            // Zoomer sur l'emplacement cliqué
-            chart.zoomToGeoPoint(geoPoint, 5); // Ajuste le niveau de zoom
-        } else {
-            console.warn("Impossible de déterminer les coordonnées géographiques du clic.");
-        }
-
-        // Met à jour les informations sur la région
-        showRegionInfo(regionName);
-    });
-
-    // Afficher les informations de la région
-    function showRegionInfo(regionName) {
-        const infoPanel = document.getElementById("info-panel");
-        infoPanel.innerHTML = `
+                const selectedRegion = regions[selectedIndex];
+                map.setView(selectedRegion.coords, 7); // Zoomer sur la région
+                regionDetails.innerHTML = `
                     <div class="info-card">
-                        <h2>${regionName}</h2>
-                        <p>Cette région est connue pour ses vins uniques.</p>
+                        <img src="${selectedRegion.image}" alt="${selectedRegion.name}">
+                        <h2>${selectedRegion.name}</h2>
+                        <p>${selectedRegion.description}</p>
                     </div>
                 `;
-    }
+            });
+        })
+        .catch(error => {
+            console.error("Erreur lors du chargement des régions :", error);
+        });
 });
