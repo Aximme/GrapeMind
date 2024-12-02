@@ -1,5 +1,6 @@
 <?php
 include 'components/header.php';
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -42,6 +43,7 @@ include 'components/header.php';
         </div>
     </div>
 </main>
+<?php include __DIR__ . '/components/footer.php'; ?>
 </body>
 </html>
 

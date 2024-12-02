@@ -53,5 +53,6 @@ include 'components/header.php';
         </form>
     </div>
 </main>
+<?php include __DIR__ . '/components/footer.php'; ?>
 </body>
 </html>

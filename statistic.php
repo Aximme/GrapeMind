@@ -73,5 +73,6 @@ $total_vins_grenier = $row_grenier['total_vins_grenier'];
                 Connexion:</strong> <?php echo date('d/m/Y à H:i', strtotime($_SESSION['user']['last_login'])); ?></p>
     </div>
 </div>
+<?php include __DIR__ . '/components/footer.php'; ?>
 </body>
 </html>

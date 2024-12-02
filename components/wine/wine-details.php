@@ -352,7 +352,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_grenier'])) {
     </div>
 
 
-    <img class="footer-icon" alt="" src="../../assets/images/footer/rectangle_83.svg">
+
 
     <img class="favorite-icon" alt="" src="../../assets/images/winecavestock-logo.png">
 
@@ -362,7 +362,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_grenier'])) {
 
 
 <script src="../../js/cursor_acidity.js"></script>
-
+<?php include __DIR__ . '/../footer.php'; ?>
 
 </body>
 </html>

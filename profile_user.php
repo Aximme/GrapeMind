@@ -57,5 +57,6 @@ $username = $_SESSION['user']['username'];
 
 
 </div>
+<?php include __DIR__ . '/components/footer.php'; ?>
 </body>
 </html>

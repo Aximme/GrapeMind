@@ -138,6 +138,6 @@ $conn->close();
     </div>
     <button class="carousel-button right" onclick="nextSlide()">❯</button>
 </div>
-
+<?php include __DIR__ . '/components/footer.php'; ?>
 </body>
 </html>
