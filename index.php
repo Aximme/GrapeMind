@@ -6,7 +6,7 @@ include 'db.php';
 global $conn;
 
 // Selection de 15 vins random pour le caroussel
-$sql = "SELECT name, thumb, price FROM scrap ORDER BY RAND() LIMIT 15";
+$sql = "SELECT name, thumb, price,idwine FROM scrap ORDER BY RAND() LIMIT 15";
 $result = $conn->query($sql);
 
 $wines = [];
@@ -127,6 +127,7 @@ $conn->close();
         <div class="carousel-track">
             <?php foreach ($wines as $wine): ?>
                 <div class="carousel-item">
+                    <a href="components/wine/set_vin_id.php?id=<?php echo htmlspecialchars($wine['idwine']); ?>" class="carousel-item-link">
                     <img src="<?php echo htmlspecialchars($wine['thumb']); ?>" alt="<?php echo htmlspecialchars($wine['name']); ?>" class="wine-thumbnail">
                     <div class="wine-details">
                         <h3><?php echo htmlspecialchars($wine['name']); ?></h3>

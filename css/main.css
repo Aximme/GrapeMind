@@ -300,14 +300,29 @@ iframe {
 }
 
 .carousel-button.left {
-    left: -30px;
+    left: -20px;
 }
 
 .carousel-button.right {
-    right: -30px;
+    right: -20px;
 }
 
 .carousel-button:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
+.carousel-item-link {
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.carousel-item-link:hover .wine-details h3 {
+
+    transform: scale(1.1);
+}
+
+.carousel-item-link:hover .wine-price {
+
+    transform: scale(1.1);
+}
