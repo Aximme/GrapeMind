@@ -11,7 +11,6 @@ include __DIR__ . '/../header.php';
 $userId = $_SESSION['user']['id'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
     if ($conn->connect_error) {
         die("Erreur de connexion : " . $conn->connect_error);
     }
@@ -55,7 +54,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         $stmt->close();
     }
-    // delete acount
+    // maj photo de profil
+    elseif (isset($_POST['update_profile_picture']) && isset($_FILES['profile_picture'])) {
+        $file = $_FILES['profile_picture'];
+
+        if ($file['error'] === UPLOAD_ERR_OK) {
+            $uploadDir = __DIR__ . '/../../assets/images/profile_pictures/';
+            $fileName = $userId . '_' . basename($file['name']);
+            $uploadFilePath = $uploadDir . $fileName;
+
+            $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+            if (in_array($file['type'], $allowedTypes)) {
+                if (move_uploaded_file($file['tmp_name'], $uploadFilePath)) {
+                    $profilePicturePath = "/GrapeMind/assets/images/profile_pictures/" . $fileName;
+
+                    $stmt = $conn->prepare("UPDATE users SET profile_picture = ? WHERE id = ?");
+                    $stmt->bind_param("si", $profilePicturePath, $userId);
+                    if ($stmt->execute()) {
+                        $_SESSION['user']['profile_picture'] = $profilePicturePath;
+                        echo "<script>alert('Photo de profil mise à jour avec succès !');</script>";
+                    } else {
+                        echo "<script>alert('Erreur lors de la mise à jour dans la base de données.');</script>";
+                    }
+                    $stmt->close();
+                } else {
+                    echo "<script>alert('Erreur lors du téléchargement du fichier.');</script>";
+                }
+            } else {
+                echo "<script>alert('Type de fichier non autorisé.');</script>";
+            }
+        } else {
+            echo "<script>alert('Erreur lors de l\'upload de la photo.');</script>";
+        }
+    }
+    // delete account
     elseif (isset($_POST['delete_account'])) {
         $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
         $stmt->bind_param("i", $userId);
@@ -139,17 +171,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                     </div>
                 </form>
+
             </div>
         </div>
 
         <div class="d-avatars-26-parent">
-            <img class="d-avatars-26" alt="default-profile-picture" src="../../assets/images/default-pp.png">
+            <img class="d-avatars-26" alt="photo de profil"
+                 src="<?php echo isset($_SESSION['user']['profile_picture']) ? htmlspecialchars($_SESSION['user']['profile_picture']) : '../../assets/images/default-pp.png'; ?>">
             <h2><?php echo htmlspecialchars($_SESSION['user']['username']); ?></h2>
-            <div class="label3">
-                <img class="upload-icon" alt="upload-icon" src="../../assets/images/upload.png">
-                Modifier ma photo de profil
-            </div>
+            <form method="POST" enctype="multipart/form-data">
+                <div class="photo-upload-section">
+                    <label for="profile_picture" class="upload-label">
+                        <img class="upload-icon" alt="upload-icon" src="../../assets/images/upload.png">
+                        Modifier ma photo de profil
+                    </label>
+                    <input type="file" id="profile_picture" name="profile_picture" accept="image/*" style="display: none;" onchange="this.form.submit();">
+                    <input type="hidden" name="update_profile_picture">
+                </div>
+            </form>
+
+
         </div>
+
+
     </div>
     <form id="delete-account-form" method="POST">
         <input type="hidden" name="delete_account" value="1">
