@@ -1,13 +1,14 @@
 <?php
 global $conn;
-session_start();
 require_once('db.php');
+
+header('Content-Type: application/json');
 
 $email = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '';
 $password = isset($_POST['password']) ? $_POST['password'] : '';
 
 if (empty($email) || empty($password)) {
-    header("Location: login.php?error=Champs requis manquants");
+    echo json_encode(['success' => false, 'error' => 'Champs requis manquants']);
     exit();
 }
 
@@ -25,33 +26,26 @@ try {
             $current_time = date('Y-m-d H:i:s');
             $user_id = $user['id'];
 
-
-            $_SESSION['user'] = array(
+            $_SESSION['user'] = [
                 'id' => $user['id'],
                 'username' => $user['username'],
                 'email' => $user['email'],
                 'address' => $user['address'],
                 'last_login' => $current_time,
-            );
+            ];
 
             $update_sql = "UPDATE users SET last_login = NOW() WHERE email = ?";
             $update_stmt = $conn->prepare($update_sql);
             $update_stmt->bind_param("s", $email);
             $update_stmt->execute();
 
-            header("Location: index.php");
-            exit();
+            echo json_encode(['success' => true]);
         } else {
-            header("Location: login.php?error=Adresse e-mail ou mot de passe incorrect");
-            exit();
+            echo json_encode(['success' => false, 'error' => 'Adresse e-mail ou mot de passe incorrect']);
         }
     } else {
-        header("Location: login.php?error=Adresse mail introuvable");
-        exit();
+        echo json_encode(['success' => false, 'error' => 'Adresse mail introuvable']);
     }
-
 } catch (Exception $e) {
-    echo "Erreur lors de la connexion : " . $e->getMessage();
-    exit();
+    echo json_encode(['success' => false, 'error' => "Erreur : " . $e->getMessage()]);
 }
-?>

@@ -11,48 +11,45 @@ include 'components/header.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Créer un compte</title>
     <link rel="stylesheet" href="css/registration.css">
-    <script defer src="/GrapeMind/js/loader.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/registration.js"></script>
 </head>
 <body>
 <main>
     <div class="form-container">
         <h2>Créer un compte</h2>
-        <p>Pour profiter pleinement de l'expérience !</p>
+        <p>Pour profiter pleinement de l'expérience!</p>
 
-        <?php
-        $username = isset($_GET['username']) ? htmlspecialchars($_GET['username']) : '';
-        $email = isset($_GET['mail']) ? htmlspecialchars($_GET['mail']) : '';
-        $address = isset($_GET['address']) ? htmlspecialchars($_GET['address']) : '';
-        $erreur = isset($_GET['erreur']) ? htmlspecialchars($_GET['erreur']) : '';
-
-        if (!empty($erreur)) {
-            echo "<p style='color:red;'>$erreur</p>";
-        }
-        ?>
-        <form action="user_registration.php" method="post">
-            <label for="username">Nom d'Utilisateur</label>
-            <input type="text" id="username" name="username" value="<?php echo $username; ?>"><br>
+        <form id="registration-form">
+            <label for="username">Nom d'utilisateur</label>
+            <input type="text" id="username" name="username" required>
+            <span id="username-error" class="error-message"></span><br>
 
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" value="<?php echo $email; ?>"><br>
+            <input type="email" id="email" name="email" required>
+            <span id="email-error" class="error-message"></span><br>
 
-            <label for="address">Adresse Postale</label>
-            <input type="text" id="address" name="address" value="<?php echo $address; ?>"><br>
+            <label for="address">Adresse postale</label>
+            <input type="text" id="address" name="address" required>
+            <span id="address-error" class="error-message"></span><br>
 
             <label for="password">Mot de passe</label>
-            <input type="password" id="password" name="password" ><br>
+            <input type="password" id="password" name="password" required>
+            <span id="password-error" class="error-message"></span><br>
 
             <label for="confirm_password">Confirmation mot de passe</label>
-            <input type="password" id="confirm_password" name="confirm_password" ><br>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+            <span id="confirm-password-error" class="error-message"></span><br>
 
-            <button type="submit">Nous Rejoindre</button>
+            <button type="submit" disabled>Nous Rejoindre</button>
 
-            <p class="log-in">
-                Déjà un compte ?<a href="/GrapeMind/login.php"> Connectez-vous</a>
-            </p>
         </form>
+        <p class="log-in">
+            Déjà un compte?<a href="login.php"> Connectez-vous</a>
+        </p>
     </div>
 </main>
-<?php include __DIR__ . '/components/footer.php'; ?>
+
+
 </body>
 </html>
