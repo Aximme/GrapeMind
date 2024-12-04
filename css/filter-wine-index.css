@@ -1,64 +1,68 @@
-/* Container principal du filtre */
 .wine-selection {
+    margin-left: 50px;
+    margin-top: 50px;
     text-align: left;
-    background: linear-gradient(135deg, #ffffff, #f9f9f9);
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    width: 600px; /* Taille légèrement augmentée pour l’aération */
-    margin: 20px;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Ajout d’un effet visuel derrière */
-.wine-selection::before {
-    content: '';
-    position: absolute;
-    top: -50px;
-    right: -50px;
-    width: 150px;
-    height: 150px;
-
-    z-index: 0;
-}
-
-.wine-selection h1 {
-    font-size: 1.6em;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: #222;
-    text-align: center;
-    position: relative;
+    background: linear-gradient(135deg, #ffffff, #f2f2f2);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: all 0.3s ease;
     z-index: 1;
 }
 
-/* Style des options de vin */
+
+
+.wine-selection:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+
+.wine-selection h1 {
+    font-size: 1.8em;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: left;
+    line-height: 1.4;
+    border-left: 5px solid #d32f2f;
+    padding-left: 10px;
+}
+
+
 .wine-options {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
-    margin-bottom: 25px;
-    justify-content: space-around;
-    position: relative;
-    z-index: 1;
+    gap: 10px;
+    margin-bottom: 10px;
+    justify-content: flex-start;
 }
 
 .wine-options label {
     display: flex;
     align-items: center;
     font-size: 1em;
+    font-weight: 600;
     color: #555;
     cursor: pointer;
     transition: all 0.3s ease;
+    background: #ffffff;
+    padding: 5px 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .wine-options label:hover {
-    color: #d32f2f;
+    background: #d32f2f;
+    color: #fff;
     transform: scale(1.05);
 }
 
-/* Amélioration visuelle des cercles */
+
 .red-circle, .rose-circle, .white-circle, .bubble-circle {
     display: inline-block;
     width: 20px;
@@ -68,105 +72,81 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.red-circle {
-    background-color: #b71c1c;
-}
+.red-circle { background-color: #b71c1c; }
+.rose-circle { background-color: #e57373; }
+.white-circle { background-color: #f5f5f5; border: 1px solid #bbb; }
+.bubble-circle { background-color: #ffcc80; }
 
-.rose-circle {
-    background-color: #e57373;
-}
 
-.white-circle {
-    background-color: #f5f5f5;
-    border: 1px solid #bbb;
-}
-
-.bubble-circle {
-    background-color: #ffcc80;
-}
-
-/* Slider de prix */
-.price-range-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 25px;
-    font-size: 1em;
+#price-slider {
+    margin: 20px 0;
+    height: 8px;
+    border-radius: 10px;
+    background: #e0e0e0;
     position: relative;
-    z-index: 1;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
 }
 
-.range-slider {
-    width: 100%;
-    margin-top: 15px;
-}
-
-/* noUiSlider améliorations */
 #price-slider .noUi-connect {
     background-color: #d32f2f !important;
     border-radius: 10px;
+    height: 100%;
 }
 
 #price-slider .noUi-handle {
-    background-color: #222 !important;
+    background: #fff;
+    border: 2px solid #d32f2f;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
-    width: 18px;
-    height: 18px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-#price-slider .noUi-handle:hover {
-    transform: scale(1.1);
+#price-slider .noUi-handle::before,
+#price-slider .noUi-handle::after {
+    display: none !important;
 }
 
 #price-slider .noUi-tooltip {
-    background-color: #ffffff;
+    background: #fff;
     color: #333;
-    font-size: 0.85em;
-    padding: 6px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 0.9em;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    text-align: center;
 }
 
-/* Option biologique */
-.bio-option {
-    margin-bottom: 25px;
-    font-size: 1em;
-    color: #555;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+
+.price-range-wrapper span:first-child,
+.price-range-wrapper span:last-child {
+    display: none;
 }
 
-.bio-option input[type="checkbox"] {
-    transform: scale(1.2);
-    cursor: pointer;
-    accent-color: #d32f2f;
-}
 
-/* Bouton amélioré */
 .search-button_price {
-    background: linear-gradient(135deg, #d32f2f, #b71c1c);
+    align-self: flex-start;
+    background: linear-gradient(135deg, #b71c1c, #d32f2f);
     color: #ffffff;
     border: none;
-    padding: 12px 25px;
+    padding: 12px 20px;
     border-radius: 8px;
     font-size: 1em;
+    font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s, box-shadow 0.3s;
-    display: inline-block;
-    margin-top: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .search-button_price:hover {
-    background: linear-gradient(135deg, #b71c1c, #d32f2f);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #d32f2f, #b71c1c);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .search-button_price:active {
     transform: scale(0.98);
 }
+

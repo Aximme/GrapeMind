@@ -45,7 +45,9 @@ $conn->close();
     </div>
 </div>
 <div class="wine-selection">
-    <h1>🍷 Trouver le vin qui me correspond</h1>
+    <h1>Trouvez votre vin idéal en quelques clics !</h1>
+    <p style="font-size: 1em; color: #555;">Sélectionnez un type de vin et ajustez votre budget pour affiner vos préférences.</p>
+
 
     <div class="wine-options">
         <label><input type="checkbox" value="Red"> Rouge <span class="red-circle"></span></label>
