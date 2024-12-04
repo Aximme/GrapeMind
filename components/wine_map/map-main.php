@@ -24,8 +24,8 @@
         </select>
         <div id="region-details">
             <div class="info-card">
-                <h2>Aucune région sélectionnée</h2>
-                <p>Sélectionnez une région dans le menu déroulant pour voir ses détails.</p>
+                <h2>🇫🇷 Aucune région sélectionnée</h2>
+                <p>🗺️ Sélectionnez une région dans le menu déroulant pour voir ses détails.</p>
             </div>
         </div>
     </div>
