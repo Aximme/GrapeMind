@@ -1,5 +1,7 @@
 <?php
+session_start();
 include 'components/header.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">

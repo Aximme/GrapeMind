@@ -1,4 +1,5 @@
 <?php
+session_start();
 global $conn;
 require_once('db.php');
 
