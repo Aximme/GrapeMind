@@ -1,0 +1,101 @@
+/* Reset de base */
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+
+.calendar-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+
+h1 {
+    text-align: center;
+    color: #4CAF50;
+}
+
+.rappel-card {
+    display: flex;
+    align-items: center; 
+    justify-content: flex-start; 
+    background: #f9f9f9;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rappel-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.rappel-image {
+    width: 120px; 
+    height: 120px;
+    object-fit: cover; 
+    border-radius: 8px;
+    margin-right: 20px; 
+}
+.rappel-content {
+    flex: 1; 
+}
+
+.rappel-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.rappel-date {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.rappel-details {
+    font-size: 1rem;
+    color: #555;
+}
+
+.no-rappels {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #777;
+    margin: 20px 0;
+}
+
+@media (max-width: 768px) {
+    .calendar-container {
+        padding: 15px;
+    }
+
+    .rappel-card {
+        flex-direction: column;
+        align-items: flex-start; 
+    }
+
+    .rappel-image {
+        margin-right: 0; 
+        margin-bottom: 10px; 
+    }
+
+    .rappel-title {
+        font-size: 1.2rem;
+    }
+
+    .rappel-details {
+        font-size: 1rem;
+    }
+}

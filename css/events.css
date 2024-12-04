@@ -11,6 +11,64 @@ h1 {
     color: #333;
 }
 
+.calendar-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: #555; 
+    font-size: 1rem;
+    font-weight: bold;
+    margin-left: 10px;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.calendar-link:hover {
+    color: #333; 
+    transform: scale(1.1); 
+}
+
+
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.button {
+    flex: 1;
+    text-align: center;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button.primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+.button.primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.button.secondary {
+    background-color: #28a745;
+    color: white;
+    border: none;
+}
+
+.button.secondary:hover {
+    background-color: #1e7e34;
+    transform: scale(1.05);
+}
+
+
 .events-list {
     display: flex;
     flex-wrap: wrap;
@@ -61,3 +119,4 @@ h1 {
     border-radius: 5px;
     margin-bottom: 10px;
 }
+

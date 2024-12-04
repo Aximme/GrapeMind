@@ -114,3 +114,21 @@ Array
     [boisé] => 
     [fruit_noir] => 
 )
+Array
+(
+    [user_id] => 1
+    [agrumes] => oui
+    [floral] => oui
+    [fruit_rouge] => non
+    [boisé] => non
+    [fruit_noir] => oui
+)
+Array
+(
+    [user_id] => 1
+    [agrumes] => oui
+    [floral] => non
+    [fruit_rouge] => non
+    [boisé] => oui
+    [fruit_noir] => oui
+)
