@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const northEast = bounds.getNorthEast();
         const southWest = bounds.getSouthWest();
 
-        fetch(`/GrapeMind/components/wine_map/get_winery_coordinates.php?ne_lat=${northEast.lat}&ne_lng=${northEast.lng}&sw_lat=${southWest.lat}&sw_lng=${southWest.lng}`)
+        fetch(`/components/wine_map/get_winery_coordinates.php?ne_lat=${northEast.lat}&ne_lng=${northEast.lng}&sw_lat=${southWest.lat}&sw_lng=${southWest.lng}`)
             .then(response => response.json())
             .then(wineries => {
                 markers.clearLayers();

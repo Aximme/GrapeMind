@@ -1,7 +1,7 @@
 <footer class="footer">
     <div class="footer-container">
         <div class="footer-logo">
-            <img src="/GrapeMind/assets/images/image_header.png" size="1000" alt="Logo du site" class="logo-image">
+            <img src="/assets/images/image_header.png" size="1000" alt="Logo du site" class="logo-image">
             <h2>GrapeMind</h2>
         </div>
 
@@ -17,8 +17,8 @@
         <div class="footer-legal">
             <h4>Informations</h4>
             <ul>
-                <li><a href="/GrapeMind/components/legal/cookies-legal.php">Mentions légales</a></li>
-                <li><a href="/GrapeMind/components/legal/cookies-legal.php">Politique des cookies</a></li>
+                <li><a href="/components/legal/cookies-legal.php">Mentions légales</a></li>
+                <li><a href="/components/legal/cookies-legal.php">Politique des cookies</a></li>
             </ul>
         </div>
 

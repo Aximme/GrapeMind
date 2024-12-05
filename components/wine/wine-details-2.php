@@ -15,6 +15,7 @@ $sql = "
         d.Grapes,
         d.Harmonize,
         d.ABV,
+        d.ABV,
         d.Body,
         d.Acidity,
         d.Country,

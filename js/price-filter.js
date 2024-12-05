@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
         query.append('minPrice', filters.minPrice);
         query.append('maxPrice', filters.maxPrice);
 
-        window.location.href = '/GrapeMind/components/search_results.php?' + query.toString();
+        window.location.href = '/components/search_results.php?' + query.toString();
     }
 
     searchButton.addEventListener('click', applyFilters);
