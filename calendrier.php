@@ -1,14 +1,13 @@
 <?php
+global $conn;
 session_start();
 include 'db.php';
 require_once __DIR__ . '/components/header.php';
 
-// Vérifie si la connexion à la base de données est établie
 if (!$conn) {
     die("La connexion à la base de données n'est pas établie. Vérifiez `db.php`.");
 }
 
-// Vérifie si l'utilisateur est connecté
 if (!isset($_SESSION['user']['id'])) {
     echo "Vous devez être connecté pour voir vos rappels.";
     exit;
@@ -16,7 +15,6 @@ if (!isset($_SESSION['user']['id'])) {
 
 $user_id = $_SESSION['user']['id'];
 
-// Récupérer les rappels de l'utilisateur
 $stmt = $conn->prepare("
     SELECT er.reminder_date, er.event_title, e.name AS event_name, e.date AS event_date 
     FROM event_reminders er
@@ -33,8 +31,7 @@ while ($row = $result->fetch_assoc()) {
     $rappels[] = $row;
 }
 
-// Récupérer les données des événements de l'API
-$events = $_SESSION['events'] ?? []; // Les données doivent être stockées dans $_SESSION['events']
+$events = $_SESSION['events'] ?? [];
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -54,7 +51,6 @@ $events = $_SESSION['events'] ?? []; // Les données doivent être stockées dan
         <?php else: ?>
             <?php foreach ($rappels as $rappel): ?>
                 <?php
-                // Trouver l'image associée dans les données de l'API
                 $event = array_filter($events, function ($e) use ($rappel) {
                     return $e['title'] === $rappel['event_name'];
                 });

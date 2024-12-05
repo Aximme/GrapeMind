@@ -18,6 +18,7 @@
 }
 
 .event-description {
+    text-align: center;
     font-size: 1.2rem;
     color: #666;
     margin-bottom: 20px;
@@ -26,13 +27,14 @@
 }
 
 .form-container {
+    margin-bottom: 200px;
+    text-align: center;
     background: #f9f9f9;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
-    text-align: center;
 }
 
 .form-container label {
@@ -52,7 +54,7 @@
 
 .form-container button {
     width: 100%;
-    background: #4CAF50; 
+    background: #a12b2b;
     color: white;
     padding: 10px;
     font-size: 1rem;
@@ -63,6 +65,6 @@
 }
 
 .form-container button:hover {
-    background: #45a049; 
+    background: #a12b2b;
     transform: scale(1.02); 
 }
