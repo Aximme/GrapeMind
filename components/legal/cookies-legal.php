@@ -83,7 +83,7 @@ include __DIR__ . '/../header.php';
     <p>
         <strong>Éditeur du site :</strong>Infomaniak : grapemind.fr<br>
         <strong>Adresse :</strong> 1340 Route de Mende, 34000 Montpellier, France<br>
-        <strong>Email :</strong> <a href="mailto:contact@votresite.com">contact@grapedmind.fr</a><br>
+        <strong>Email :</strong> <a href="mailto:info@grapemind.fr">info@grapemind.fr</a><br>
     </p>
     <p>
         <strong>Hébergeur :</strong><br>
