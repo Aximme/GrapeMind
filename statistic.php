@@ -21,7 +21,7 @@ $row_vins_consultes = $result_vins_consultes->fetch_assoc();
 $total_vins_consultes = $row_vins_consultes['total_vins_consultes'];
 
 // nb vins dans la cave
-$query_cave = "SELECT COUNT(*) AS total_vins_cave FROM cave WHERE user_id = ?";
+$query_cave = "SELECT COUNT(*) AS total_vins_cave FROM cave WHERE id_user = ?";
 $stmt_cave = $conn->prepare($query_cave);
 $stmt_cave->bind_param("i", $user_id);
 $stmt_cave->execute();
@@ -30,7 +30,7 @@ $row_cave = $result_cave->fetch_assoc();
 $total_vins_cave = $row_cave['total_vins_cave'];
 
 // nb vins au grenier
-$query_grenier = "SELECT COUNT(*) AS total_vins_grenier FROM grenier WHERE user_id = ?";
+$query_grenier = "SELECT COUNT(*) AS total_vins_grenier FROM grenier WHERE id_user = ?";
 $stmt_grenier = $conn->prepare($query_grenier);
 $stmt_grenier->bind_param("i", $user_id);
 $stmt_grenier->execute();
