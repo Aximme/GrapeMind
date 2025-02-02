@@ -1,4 +1,5 @@
 <?php
+session_start();
 include __DIR__ . '/../db.php';
 include '../components/header.php';
 
@@ -10,6 +11,8 @@ $minRating = isset($_GET['minRating']) ? (int)$_GET['minRating'] : 0;
 $minPrice = isset($_GET['minPrice']) && $_GET['minPrice'] !== '' ? (float)$_GET['minPrice'] : 0;
 $maxPrice = isset($_GET['maxPrice']) && $_GET['maxPrice'] !== '' ? (float)$_GET['maxPrice'] : PHP_INT_MAX;
 $wineColors = isset($_GET['wineColor']) ? $_GET['wineColor'] : [];
+$regions = isset($_GET['region']) ? $_GET['region'] : [];
+$grapes = isset($_GET['grapes']) ? $_GET['grapes'] : [];
 $sort = isset($_GET['sort']) ? $_GET['sort'] : '';
 
 $results_per_page = 10;
@@ -18,11 +21,29 @@ $start = ($page - 1) * $results_per_page;
 $results = [];
 $total_results = 0;
 
-if (!empty($query) || !empty($wineColors) || $minRating > 0 || $minPrice > 0 || $maxPrice < PHP_INT_MAX) {
+if (!empty($query) || !empty($wineColors) || $minRating > 0 || $minPrice > 0 || $maxPrice < PHP_INT_MAX || !empty($regions) || !empty($grapes)) {
     $colorCondition = "";
     if (!empty($wineColors)) {
         $placeholders = implode(',', array_fill(0, count($wineColors), '?'));
         $colorCondition = " AND descriptifs.Type IN ($placeholders)";
+    }
+
+    $regionCondition = "";
+    if (!empty($regions)) {
+        $regionConditions = [];
+        foreach ($regions as $region) {
+            $regionConditions[] = "descriptifs.RegionName LIKE ?";
+        }
+        $regionCondition = " AND (" . implode(" OR ", $regionConditions) . ")";
+    }
+
+    $grapeCondition = "";
+    if (!empty($grapes)) {
+        $grapeConditions = [];
+        foreach ($grapes as $grape) {
+            $grapeConditions[] = "descriptifs.grapes LIKE ?";
+        }
+        $grapeCondition = " AND (" . implode(" OR ", $grapeConditions) . ")";
     }
 
     $count_sql = "SELECT COUNT(*) as total 
@@ -36,7 +57,9 @@ if (!empty($query) || !empty($wineColors) || $minRating > 0 || $minPrice > 0 || 
 
     $count_sql .= " AND scrap.average_rating >= ? 
                     AND scrap.price >= ? AND scrap.price <= ?"
-        . $colorCondition;
+        . $colorCondition
+        . $regionCondition
+        . $grapeCondition;
 
     $count_stmt = $conn->prepare($count_sql);
 
@@ -51,13 +74,23 @@ if (!empty($query) || !empty($wineColors) || $minRating > 0 || $minPrice > 0 || 
             $params[] = $color;
         }
     }
+    if (!empty($regions)) {
+        foreach ($regions as $region) {
+            $params[] = "%" . $region . "%";
+        }
+    }
+    if (!empty($grapes)) {
+        foreach ($grapes as $grape) {
+            $params[] = "%" . $grape . "%";
+        }
+    }
 
     $count_stmt->bind_param(str_repeat('s', count($params)), ...$params);
     $count_stmt->execute();
     $count_result = $count_stmt->get_result();
     $total_results = $count_result->fetch_assoc()['total'];
 
-    $orderBy = ""; // Pas de tri par défaut
+    $orderBy = "";
     switch ($sort) {
         case 'price_asc':
             $orderBy = "scrap.price ASC";
@@ -86,7 +119,9 @@ if (!empty($query) || !empty($wineColors) || $minRating > 0 || $minPrice > 0 || 
 
     $sql .= " AND scrap.average_rating >= ? 
               AND scrap.price >= ? AND scrap.price <= ?"
-        . $colorCondition;
+        . $colorCondition
+        . $regionCondition
+        . $grapeCondition;
 
     if (!empty($orderBy)) {
         $sql .= " ORDER BY $orderBy";
@@ -104,6 +139,16 @@ if (!empty($query) || !empty($wineColors) || $minRating > 0 || $minPrice > 0 || 
     if (!empty($wineColors)) {
         foreach ($wineColors as $color) {
             $params[] = $color;
+        }
+    }
+    if (!empty($regions)) {
+        foreach ($regions as $region) {
+            $params[] = "%" . $region . "%";
+        }
+    }
+    if (!empty($grapes)) {
+        foreach ($grapes as $grape) {
+            $params[] = "%" . $grape . "%";
         }
     }
     $params[] = $start;
@@ -165,11 +210,11 @@ $conn->close();
             <?php foreach ($results as $wine): ?>
                 <a href="javascript:void(0);" onclick="setVinId(<?php echo $wine['idwine']; ?>)" class="result-item-link">
                     <div class="result-item">
-                        <img src="<?php echo htmlspecialchars($wine['thumb']); ?>" alt="<?php echo htmlspecialchars($wine['name']); ?>" class="wine-thumbnail">
+                        <img src="<?php echo ($wine['thumb']); ?>" alt="<?php echo ($wine['name']); ?>" class="wine-thumbnail">
                         <div class="wine-details">
-                            <h2><?php echo htmlspecialchars($wine['name']); ?></h2>
-                            <p class="wine-price">Prix : <?php echo htmlspecialchars($wine['price']); ?> €</p>
-                            <p class="wine-taste">Goûts : <?php echo htmlspecialchars($wine['flavorGroup_1']); ?>, <?php echo htmlspecialchars($wine['flavorGroup_2']); ?>, <?php echo htmlspecialchars($wine['flavorGroup_3']); ?></p>
+                            <h2><?php echo ($wine['name']); ?></h2>
+                            <p class="wine-price">Prix : <?php echo ($wine['price']); ?> €</p>
+                            <p class="wine-taste">Goûts : <?php echo ($wine['flavorGroup_1']); ?>, <?php echo ($wine['flavorGroup_2']); ?>, <?php echo ($wine['flavorGroup_3']); ?></p>
                             <div class="stars_notation">
                                 Note :
                                 <?php

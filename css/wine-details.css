@@ -63,26 +63,7 @@
     line-height: 140%;
     z-index: 3;
 }
-.tooltip {
-    position: absolute;
-    top: 40px;
-    left: 151.68px;
-    box-shadow: 0px 1px 4px rgba(12, 12, 13, 0.1), 0px 1px 4px rgba(12, 12, 13, 0.05);
-    border-radius: 8px;
-    background-color: #fff;
-    border: 1px solid #d9d9d9;
-    box-sizing: border-box;
-    width: 74.1px;
-    height: 32.2px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 8px 12px;
-    text-align: center;
-    font-size: 16px;
-    font-family: Inter;
-}
+
 .acidit-parent {
     position: absolute;
     top: 316px;
@@ -152,17 +133,17 @@
 
 .cepages {
     position: absolute;
-    top: 107px;
+    top: 95px;
     left: 54px;
     font-size: 24px;
     display: inline-block;
     font-family: 'Baloo 2';
-    width: 240px;
+    width: 350px;
     height: 39px;
 }
 .type {
     position: absolute;
-    top: 57px;
+    top: 40px;
     left: 54px;
     font-size: 24px;
     display: inline-block;
@@ -182,12 +163,12 @@
 }
 .composition-100 {
     position: absolute;
-    top: 180px;
+    top: 200px;
     left: 54px;
     font-size: 24px;
     display: inline-block;
     font-family: 'Baloo 2';
-    width: 325px;
+    width: 420px;
     height: 39px;
 }
 .frame-child {
@@ -201,6 +182,7 @@
 }
 .sous-titre {
     margin: 0;
+
 }
 .p {
     margin: 0;
@@ -217,7 +199,7 @@
 }
 .frame-item {
     position: absolute;
-    top: 61px;
+    top: 44px;
     left: 136px;
     border-radius: 50%;
     transition: background-color 0.3s ease;
@@ -543,23 +525,7 @@
     object-fit: contain;
     z-index: 1;
 }
-.tooltip1 {
-    position: absolute;
-    top: 192px;
-    left: 243px;
-    box-shadow: 0px 1px 4px rgba(12, 12, 13, 0.1), 0px 1px 4px rgba(12, 12, 13, 0.05);
-    border-radius: 8px;
-    background-color: #fff;
-    border: 1px solid #d9d9d9;
-    box-sizing: border-box;
-    width: 133px;
-    height: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 8px 12px;
-}
+
 .beak-icon2 {
     width: 11.3px;
     position: absolute;
@@ -580,23 +546,7 @@
     object-fit: contain;
     z-index: 1;
 }
-.tooltip2 {
-    position: absolute;
-    top: 192px;
-    left: 12px;
-    box-shadow: 0px 1px 4px rgba(12, 12, 13, 0.1), 0px 1px 4px rgba(12, 12, 13, 0.05);
-    border-radius: 8px;
-    background-color: #fff;
-    border: 1px solid #d9d9d9;
-    box-sizing: border-box;
-    width: 154px;
-    height: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 8px 12px;
-}
+
 .span {
     font-size: 36px;
 }
@@ -607,11 +557,13 @@
 }
 .titre-vin {
     position: absolute;
-    top: 95px;
-    left: 758px;
+    top: 15px;
+    left: 800px;
     font-size: 40px;
+    width: 500px;
     font-family: Aclonica;
 }
+
 .footer-icon {
     position: absolute;
     top: 829px;
@@ -635,6 +587,7 @@
     height: 41px;
     object-fit: cover;
 }
+
 .dtails-sur-un-vin {
     width: 100%;
     position: relative;
@@ -647,3 +600,83 @@
     font-family: Inter;
 }
 
+
+.button-cave, .button-grenier {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 10px 8px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 150px;
+}
+
+.button-cave {
+    background-color: #8B0000;
+    color: white;
+}
+
+.button-cave:hover {
+    background-color: #A40000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button-grenier {
+    background-color: #DAA520;
+    color: white;
+}
+
+.button-grenier:hover {
+    background-color: #FFD700;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button-cave:active, .button-grenier:active {
+    transform: scale(0.95);
+    box-shadow: none;
+}
+.tooltip {
+    position: absolute;
+    top: 40px;
+    left: 151.68px;
+    box-sizing: border-box;
+    width: 74.1px;
+    height: 32.2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px 12px;
+    text-align: center;
+    font-size: 16px;
+
+}
+
+.tooltip1 {
+    position: absolute;
+    top: 192px;
+    left: 243px;
+    box-sizing: border-box;
+    width: 133px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px 12px;
+}
+.tooltip2 {
+    position: absolute;
+    top: 192px;
+    left: 12px;
+    box-sizing: border-box;
+    width: 154px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px 12px;
+}

@@ -8,23 +8,23 @@
         <div class="footer-links">
             <h4>Navigation rapide</h4>
             <ul>
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#apropos">À propos / Contact</a></li>
-                <li><a href="#monprofil">Mon profil</a></li>
+                <li><a href="../index.php">Accueil</a></li>
+                <li><a href="../about.php">À propos / Contact</a></li>
+                <li><a href="user/user-profile.php">Mon profil</a></li>
             </ul>
         </div>
 
         <div class="footer-legal">
             <h4>Informations</h4>
             <ul>
-                <li><a href="#mentions-legales">Mentions légales</a></li>
-                <li><a href="#cookies">Politique des cookies</a></li>
+                <li><a href="/GrapeMind/components/legal/cookies-legal.php">Mentions légales</a></li>
+                <li><a href="/GrapeMind/components/legal/cookies-legal.php">Politique des cookies</a></li>
             </ul>
         </div>
 
         <div class="footer-contact">
             <h4>Contact</h4>
-            <p>Email : <a href="mailto:grapemind.upv3@gmail.com">grapemind.upv3@gmail.com</a></p>
+            <p>Email : <a href="mailto:info@grapemind.fr">info@grapemind.fr</a></p>
             <p>GitHub : <a href="https://github.com/Aximme/GrapeMind" target="_blank">GrapeMind</a></p>
             <div class="footer-social">
                 <a href="https://github.com/Aximme/GrapeMind" target="_blank" class="github-icon">

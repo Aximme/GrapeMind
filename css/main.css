@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+    background-color: #ffffff;
 }
 
 .header {
@@ -193,8 +193,136 @@ iframe {
 
                             /*              Bouteille 3D INDEX                */
 #scene-container {
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
+    top: 70px;
+    right: 0;
+    left:800px;
+    width: 50vw;
+    height: 600px;
+    background-color: transparent;
+    position: absolute;
 }
 
+#loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    font-family: Arial, sans-serif;
+}
+
+
+                            /*              Carrousel INDEX                */
+
+.carousel-title {
+    padding-top:250px;
+    font-size: 2rem;
+    padding-left: 200px;
+    text-align: left;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: bold;
+}
+
+.carousel-container {
+    padding-top:100px;
+    position: relative;
+    max-width: 1200px;
+    margin: auto;
+    overflow: visible;
+    padding: 30px 0;
+}
+
+.carousel {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 3px;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+
+.carousel-item {
+    flex: 0 0 25%; /* Bouger pour le nb de vins a afficher */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    box-sizing: border-box;
+    text-align: center;
+    gap: 5px;
+}
+
+/* Image bouteille vin */
+.wine-thumbnail {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.wine-details h3 {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.wine-details .wine-price {
+    font-size: 1rem;
+    color: #777;
+}
+
+/* Boutons carousel */
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-button.left {
+    left: -20px;
+}
+
+.carousel-button.right {
+    right: -20px;
+}
+
+.carousel-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-item-link {
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.carousel-item-link:hover .wine-details h3 {
+
+    transform: scale(1.1);
+}
+
+.carousel-item-link:hover .wine-price {
+
+    transform: scale(1.1);
+}

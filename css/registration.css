@@ -94,5 +94,16 @@ button:disabled {
     gap: 5px;
     margin-bottom: 20px;
 }
+input.valid {
+    background-color: #e6ffe6;
+}
+
+input.invalid {
+    background-color: #ffe6e6;
+}
+button[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
 
 

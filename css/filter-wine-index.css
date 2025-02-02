@@ -1,116 +1,152 @@
-/* Style principal de la section de sélection de vin */
 .wine-selection {
-    text-align: center;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 320px;
+    margin-left: 50px;
+    margin-top: 50px;
+    text-align: left;
+    background: linear-gradient(135deg, #ffffff, #f2f2f2);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: all 0.3s ease;
+    z-index: 1;
 }
+
+
+
+.wine-selection:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
 
 .wine-selection h1 {
-    font-size: 1.5em;
-    margin-bottom: 20px;
+    font-size: 1.8em;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: left;
+    line-height: 1.4;
+    border-left: 5px solid #d32f2f;
+    padding-left: 10px;
 }
 
-/* Options de sélection de type de vin */
+
 .wine-options {
     display: flex;
-    justify-content: space-around;
-    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+    justify-content: flex-start;
 }
 
 .wine-options label {
     display: flex;
     align-items: center;
-    font-size: 0.9em;
+    font-size: 1em;
+    font-weight: 600;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #ffffff;
+    padding: 5px 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
+.wine-options label:hover {
+    background: #d32f2f;
+    color: #fff;
+    transform: scale(1.05);
+}
+
 
 .red-circle, .rose-circle, .white-circle, .bubble-circle {
     display: inline-block;
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    margin-left: 5px;
+    margin-left: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.red-circle {
-    background-color: #d32f2f;
+.red-circle { background-color: #b71c1c; }
+.rose-circle { background-color: #e57373; }
+.white-circle { background-color: #f5f5f5; border: 1px solid #bbb; }
+.bubble-circle { background-color: #ffcc80; }
+
+
+#price-slider {
+    margin: 20px 0;
+    height: 8px;
+    border-radius: 10px;
+    background: #e0e0e0;
+    position: relative;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
 }
 
-.rose-circle {
-    background-color: #000000; /* Couleur noire pour remplacer le rose */
-}
-
-.white-circle {
-    background-color: #fff9c4;
-    border: 1px solid #ccc;
-}
-
-/* Slider de prix */
-.price-range-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 20px;
-    margin-top: 20px;
-}
-
-.range-slider {
-    width: 100%;
-    margin: 0 10px;
-}
-
-/* Styles spécifiques pour le slider noUiSlider */
 #price-slider .noUi-connect {
-    background-color: #000000 !important; /* Couleur noire pour la barre connectée */
+    background-color: #d32f2f !important;
+    border-radius: 10px;
+    height: 100%;
 }
 
 #price-slider .noUi-handle {
-    background-color: black !important; /* Couleur rouge pour les poignées */
+    background: #fff;
+    border: 2px solid #d32f2f;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
-    width: 15px;
-    height: 15px;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-#price-slider .noUi-target {
-    background: #e0e0e0; /* Couleur gris clair pour la piste */
-    border-radius: 5px;
+#price-slider .noUi-handle::before,
+#price-slider .noUi-handle::after {
+    display: none !important;
 }
 
-/* Tooltips du slider */
 #price-slider .noUi-tooltip {
-    background-color: #ffffff;
+    background: #fff;
     color: #333;
-    font-size: 0.85em;
-    padding: 5px;
-    border: 1px solid black;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-size: 0.9em;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    text-align: center;
 }
 
-/* Option de sélection biologique */
-.bio-option {
-    margin-bottom: 20px;
-    font-size: 0.9em;
+
+.price-range-wrapper span:first-child,
+.price-range-wrapper span:last-child {
+    display: none;
 }
+
 
 .search-button_price {
-    background-color: #d32f2f;
+    align-self: flex-start;
+    background: linear-gradient(135deg, #b71c1c, #d32f2f);
     color: #ffffff;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 12px 20px;
+    border-radius: 8px;
     font-size: 1em;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s;
-    display: inline-block; /* Assurez-vous que le bouton est en mode bloc-inline */
-    margin-top: 20px; /* Espace au-dessus pour éviter que le bouton soit collé */
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin-top: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .search-button_price:hover {
-    background-color: #c62828;
+    background: linear-gradient(135deg, #d32f2f, #b71c1c);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.search-button_price:active {
+    transform: scale(0.98);
 }
 

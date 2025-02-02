@@ -14,7 +14,7 @@ include __DIR__ . '/../db.php';
 
 <div class="search-box">
     <form action="/GrapeMind/components/search_results.php" method="get">
-        <div class="search-icon"></div>
+        <button type="submit" class="search-icon" aria-label="Rechercher"></button>
         <input type="text" name="query" class="search-form" placeholder="Rechercher un vin..." onkeyup="fetchSuggestions(this.value)">
     </form>
     <div id="search-suggestions" class="search-suggestions"></div>

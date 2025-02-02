@@ -43,7 +43,7 @@ let bottle;
 const mtlLoader = new MTLLoader();
 const objLoader = new OBJLoader();
 
-const rotationSpeed = 0.05; // Ajuste cette valeur pour contrôler la douceur du mouvement
+const rotationSpeed = 0.05; // controle la douceur du mouvement
 const targetRotation = { x: -2, y: 0.05 }; // Initialiser targetRotation à la position de départ
 let initialRotation = { x: -2, y: 0.05 }; // Position initiale de la bouteille
 

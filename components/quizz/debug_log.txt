@@ -1,0 +1,134 @@
+Array
+(
+    [user_id] => 1
+    [agrumes] => 
+    [floral] => 
+    [fruit_rouge] => 
+    [boisé] => 
+    [fruit_noir] => 
+    [undefined] => non
+)
+Array
+(
+    [user_id] => 1
+    [agrumes] => 
+    [floral] => 
+    [fruit_rouge] => 
+    [boisé] => 
+    [fruit_noir] => 
+    [undefined] => non
+)
+Array
+(
+    [user_id] => 1
+    [agrumes] => 
+    [floral] => 
+    [fruit_rouge] => 
+    [boisé] => 
+    [fruit_noir] => 
+    [undefined] => non
+)
+Array
+(
+    [user_id] => 1
+    [agrumes] => 
+    [floral] => 
+    [fruit_rouge] => 
+    [boisé] => 
+    [fruit_noir] => 
+    [undefined] => non
+)
+Array
+(
+    [user_id] => 1
+    [agrumes] => 
+    [floral] => 
+    [fruit_rouge] => 
+    [boisé] => 
+    [fruit_noir] => 
+    [undefined] => non
+)
+Array
+(
+    [user_id] => 1
+    [agrumes] => 
+    [floral] => 
+    [fruit_rouge] => 
+    [boisé] => 
+    [fruit_noir] => 
+    [undefined] => non
+)
+Array
+(
+    [user_id] => 1
+    [agrumes] => 
+    [floral] => 
+    [fruit_rouge] => 
+    [boisé] => 
+    [fruit_noir] => 
+    [undefined] => non
+)
+Array
+(
+    [user_id] => 1
+    [agrumes] => oui
+    [floral] => oui
+    [fruit_rouge] => oui
+    [boisé] => oui
+    [fruit_noir] => oui
+)
+Array
+(
+    [user_id] => 1
+    [agrumes] => 
+    [floral] => 
+    [fruit_rouge] => 
+    [boisé] => 
+    [fruit_noir] => 
+    [undefined] => non
+)
+Array
+(
+    [user_id] => 1
+    [agrumes] => 
+    [floral] => 
+    [fruit_rouge] => 
+    [boisé] => 
+    [fruit_noir] => 
+)
+Array
+(
+    [user_id] => 1
+    [agrumes] => oui
+    [floral] => non
+    [fruit_rouge] => oui
+    [boisé] => non
+    [fruit_noir] => oui
+)
+Array
+(
+    [user_id] => 1
+    [agrumes] => 
+    [floral] => 
+    [fruit_rouge] => 
+    [boisé] => 
+    [fruit_noir] => 
+)
+Array
+(
+    [user_id] => 1
+    [agrumes] => oui
+    [floral] => oui
+    [fruit_rouge] => non
+    [boisé] => non
+    [fruit_noir] => oui
+)
+Array
+(
+    [user_id] => 1
+    [agrumes] => oui
+    [floral] => non
+    [fruit_rouge] => non
+    [boisé] => oui
+    [fruit_noir] => oui
+)

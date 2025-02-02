@@ -1,0 +1,80 @@
+[
+  {
+    "name": "Grand Est",
+    "coords": [48.5794, 7.7519],
+    "description": "Le Grand Est est célèbre pour ses vins d'Alsace et ses paysages pittoresques.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Grand_Est_region_locator_map.svg/1024px-Grand_Est_region_locator_map.svg.png"
+  },
+  {
+    "name": "Occitanie",
+    "coords": [43.6045, 1.444],
+    "description": "L'Occitanie est connue pour ses vins robustes, comme ceux du Languedoc et de Cahors.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Occitanie_region_locator_map.svg/1024px-Occitanie_region_locator_map.svg.png"
+  },
+  {
+    "name": "Nouvelle-Aquitaine",
+    "coords": [45.8372, -0.57918],
+    "description": "La Nouvelle-Aquitaine abrite les célèbres vignobles de Bordeaux.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Nouvelle-Aquitaine_region_locator_map.svg/1024px-Nouvelle-Aquitaine_region_locator_map.svg.png"
+  },
+  {
+    "name": "Provence-Alpes-Côte d'Azur",
+    "coords": [43.9357, 6.0674],
+    "description": "Cette région est réputée pour ses vins rosés et ses paysages méditerranéens.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Provence-Alpes-C%C3%B4te_d%27Azur_region_locator_map.svg/1024px-Provence-Alpes-C%C3%B4te_d%27Azur_region_locator_map.svg.png"
+  },
+  {
+    "name": "Auvergne-Rhône-Alpes",
+    "coords": [45.7600, 4.8357],
+    "description": "Auvergne-Rhône-Alpes est connue pour ses vins de la vallée du Rhône et ses montagnes magnifiques.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Auvergne-Rh%C3%B4ne-Alpes_region_locator_map.svg/1024px-Auvergne-Rh%C3%B4ne-Alpes_region_locator_map.svg.png"
+  },
+  {
+    "name": "Bretagne",
+    "coords": [48.1173, -1.6778],
+    "description": "La Bretagne est célèbre pour ses paysages marins et ses cidres artisanaux.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Bretagne_region_locator_map.svg/1024px-Bretagne_region_locator_map.svg.png"
+  },
+  {
+    "name": "Centre-Val de Loire",
+    "coords": [47.7516, 1.6751],
+    "description": "Le Centre-Val de Loire est renommé pour ses vins blancs, notamment le Sauvignon Blanc.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Centre-Val_de_Loire_region_locator_map.svg/1024px-Centre-Val_de_Loire_region_locator_map.svg.png"
+  },
+  {
+    "name": "Bourgogne-Franche-Comté",
+    "coords": [47.0525, 4.3835],
+    "description": "La Bourgogne-Franche-Comté produit des vins de classe mondiale comme le Pinot Noir et le Chardonnay.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Bourgogne-Franche-Comt%C3%A9_region_locator_map.svg/1024px-Bourgogne-Franche-Comt%C3%A9_region_locator_map.svg.png"
+  },
+  {
+    "name": "Hauts-de-France",
+    "coords": [50.6292, 3.0573],
+    "description": "Hauts-de-France est une région riche en culture et patrimoine, bien que moins connue pour ses vins.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Hauts-de-France_region_locator_map.svg/1024px-Hauts-de-France_region_locator_map.svg.png"
+  },
+  {
+    "name": "Normandie",
+    "coords": [49.1829, -0.3707],
+    "description": "La Normandie est réputée pour son cidre et son calvados.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Normandie_region_locator_map.svg/1024px-Normandie_region_locator_map.svg.png"
+  },
+  {
+    "name": "Pays de la Loire",
+    "coords": [47.2184, -1.5536],
+    "description": "Les Pays de la Loire produisent des vins élégants comme le Muscadet.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Pays_de_la_Loire_region_locator_map.svg/1024px-Pays_de_la_Loire_region_locator_map.svg.png"
+  },
+  {
+    "name": "Île-de-France",
+    "coords": [48.8566, 2.3522],
+    "description": "L'Île-de-France est plus connue pour Paris, mais produit également des vins locaux en petite quantité.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/%C3%8Ele-de-France_region_locator_map.svg/1024px-%C3%8Ele-de-France_region_locator_map.svg.png"
+  },
+  {
+    "name": "Corse",
+    "coords": [42.0396, 9.0129],
+    "description": "La Corse est célèbre pour ses vins uniques et ses paysages à couper le souffle.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Corse_region_locator_map.svg/1024px-Corse_region_locator_map.svg.png"
+  }
+]

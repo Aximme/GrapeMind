@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', function () {
         start: [16, 500],
         connect: true,
         range: {
-            'min': 10,
-            'max': 500
+            'min': 0,
+            'max': 1000
         },
         step: 1,
         tooltips: [true, true],

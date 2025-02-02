@@ -1,13 +1,14 @@
 .search-bar-wrapper {
+    margin-left: 30px;
     display: flex;
     justify-content: left;
     align-items: center;
     height: auto;
-    position: fixed;
+    position: absolute;
     width: 30%;
     top: 0;
     left: 100px;
-    margin-top: 500px;
+    margin-top: 600px;
 }
 
 
@@ -48,6 +49,7 @@
     border-radius: 50%;
     transform: rotate(135deg);
 }
+
 
 .search-icon:before {
     content: '';

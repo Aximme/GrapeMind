@@ -1,6 +1,8 @@
 <?php
-include '../header.php';
+global $conn;
 include 'wine-details-2.php';
+include __DIR__ . '/../header.php';
+
 $typeClass = '';
 if (isset($row['Type'])) {
     switch (strtolower($row['Type'])) {
@@ -20,33 +22,114 @@ if (isset($row['Type'])) {
             $typeClass = 'frame-default';
     }
 }
+
+$message = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cave'])) {
+    $idwine = isset($_POST['idwine']) ? $_POST['idwine'] : null;
+    $id_user = isset($_SESSION['user']['id']) ? $_SESSION['user']['id'] : null;
+
+    if ($idwine && $id_user) {
+        $checkGrenier = $conn->prepare("SELECT * FROM grenier WHERE idwine = ? AND id_user = ?");
+        $checkGrenier->bind_param("ii", $idwine, $id_user);
+        $checkGrenier->execute();
+        $resultGrenier = $checkGrenier->get_result();
+
+        if ($resultGrenier->num_rows > 0) {
+            $message = "Impossible d'ajouter à la cave : ce vin est déjà dans le grenier.";
+        } else {
+            $checkQuery = $conn->prepare("SELECT * FROM cave WHERE idwine = ? AND id_user = ?");
+            $checkQuery->bind_param("ii", $idwine, $id_user);
+            $checkQuery->execute();
+            $result = $checkQuery->get_result();
+
+            if ($result->num_rows > 0) {
+                $message = "Ce vin est déjà dans votre cave.";
+            } else {
+                $query = $conn->prepare("INSERT INTO cave (idwine, id_user) VALUES (?, ?)");
+                $query->bind_param("ii", $idwine, $id_user);
+                $query->execute();
+            }
+        }
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_grenier'])) {
+    $idwine = isset($_POST['idwine']) ? $_POST['idwine'] : null;
+    $id_user = isset($_SESSION['user']['id']) ? $_SESSION['user']['id'] : null;
+
+    if ($idwine && $id_user) {
+        $checkCave = $conn->prepare("SELECT * FROM cave WHERE idwine = ? AND id_user = ?");
+        $checkCave->bind_param("ii", $idwine, $id_user);
+        $checkCave->execute();
+        $resultCave = $checkCave->get_result();
+
+        if ($resultCave->num_rows > 0) {
+            $message = "Impossible d'ajouter au grenier : ce vin est déjà dans la cave.";
+        } else {
+            $checkQuery = $conn->prepare("SELECT * FROM grenier WHERE idwine = ? AND id_user = ?");
+            $checkQuery->bind_param("ii", $idwine, $id_user);
+            $checkQuery->execute();
+            $result = $checkQuery->get_result();
+
+            if ($result->num_rows > 0) {
+                $message = "Ce vin est déjà dans votre grenier.";
+            } else {
+                $query = $conn->prepare("INSERT INTO grenier (idwine, id_user) VALUES (?, ?)");
+                $query->bind_param("ii", $idwine, $id_user);
+                $query->execute();
+            }
+        }
+    }
+}
 ?>
-
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, width=device-width">
-    <link rel="stylesheet"  href="/GrapeMind/css/main.css" />
-    <link rel="stylesheet"  href="/GrapeMind/css/wine-details.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo 2:wght@400;700&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo:wght@400&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aclonica:wght@400&display=swap" />
+    <link rel="stylesheet" href="/GrapeMind/css/main.css"/>
+    <link rel="stylesheet" href="/GrapeMind/css/wine-details.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo 2:wght@400;700&display=swap"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo:wght@400&display=swap"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aclonica:wght@400&display=swap"/>
     <!--LOADER-->
     <script defer src="/GrapeMind/js/loader.js"></script>
+    <style>
+        .message {
+            color: red;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+        }
 
-
-
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const message = document.getElementById("message");
+            if (message) {
+                setTimeout(() => {
+                    message.classList.add("hidden");
+                }, 5000);
+            }
+        });
+    </script>
 
 </head>
 <body>
-
+<?php if (!empty($message)): ?>
+    <div id="message" class="message"><?php echo htmlspecialchars($message); ?></div>
+<?php endif; ?>
 
 <div class="dtails-sur-un-vin">
-    <img class="image-detail-vin-icon" alt="" src="<?php echo htmlspecialchars(isset($row['thumb']) ? $row['thumb'] : 'image_detail_vin.png'); ?>">
+    <img class="image-detail-vin-icon" alt=""
+         src="<?php echo(isset($row['thumb']) ? $row['thumb'] : 'image_detail_vin.png'); ?>">
 
 
     <div class="group-parent">
@@ -59,7 +142,7 @@ if (isset($row['Type'])) {
             <div class="tooltip">
 
 
-                <b class="title">  <?php echo htmlspecialchars(isset($row['Acidity']) ? $row['Acidity'] : ''); ?></b>
+                <b class="title">  <?php echo(isset($row['Acidity']) ? $row['Acidity'] : ''); ?></b>
 
                 <div class="body-text">
                 </div>
@@ -67,7 +150,7 @@ if (isset($row['Type'])) {
         </div>
         <div class="degrs-alcool-parent">
             <b class="degrs-alcool">DEGRÈS ALCOOL</b>
-            <b class="ABV"><?php echo htmlspecialchars(isset($row['ABV']) ? $row['ABV'] : ''); ?>°</b>
+            <b class="ABV"><?php echo(isset($row['ABV']) ? $row['ABV'] : ''); ?>°</b>
 
 
             <div class="container1">
@@ -77,11 +160,6 @@ if (isset($row['Type'])) {
                 <img alt="" src="../../assets/images/Group%209.png">
 
             </div>
-
-
-
-
-
 
 
         </div>
@@ -98,25 +176,22 @@ if (isset($row['Type'])) {
             <span>🌱</span>
 
         </b>
-        <b class="composition-100">Composition : <?php echo htmlspecialchars(isset($row['Elaborate']) ? $row['Elaborate'] : '100% variété'); ?></b>
+        <b class="composition-100">Composition
+            : <?php echo(isset($row['Elaborate']) ? $row['Elaborate'] : '100% variété'); ?></b>
 
         <div class="frame-child">
         </div>
         <b class="avec-quoi-le-container">
             <p class="sous-titre">Avec quoi le manger?</p>
-            <p class="p">                 </p>
+            <p class="p"></p>
         </b>
-        <div class="frame-item <?php echo htmlspecialchars($typeClass); ?>">
+        <div class="frame-item <?php echo($typeClass); ?>">
         </div>
 
         <div class="frame-inner">
         </div>
         <div class="new-vertical-bar"></div>
         <div class="new-horizontal-bar"></div>
-
-
-
-
 
 
         <div class="accord-mets">
@@ -127,7 +202,7 @@ if (isset($row['Type'])) {
                 $harmonizeArray = explode(',', str_replace(array('[', ']', "'"), '', $row['Harmonize']));
                 $item1 = isset($harmonizeArray[0]) ? trim($harmonizeArray[0]) : '';
                 if (!empty($item1)) {
-                    echo '<img class="plat_1" src="/GrapeMind/assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . htmlspecialchars($item1) . '">';
+                    echo '<img class="plat_1" src="/GrapeMind/assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . ($item1) . '">';
                 }
             }
             ?>
@@ -137,7 +212,7 @@ if (isset($row['Type'])) {
                 $harmonizeArray = explode(',', str_replace(array('[', ']', "'"), '', $row['Harmonize']));
                 $item1 = isset($harmonizeArray[2]) ? trim($harmonizeArray[2]) : '';
                 if (!empty($item1)) {
-                    echo '<img class="plat_3" src="/GrapeMind/assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . htmlspecialchars($item1) . '">';
+                    echo '<img class="plat_3" src="/GrapeMind/assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . ($item1) . '">';
                 }
             }
             ?>
@@ -147,7 +222,7 @@ if (isset($row['Type'])) {
                 $harmonizeArray = explode(',', str_replace(array('[', ']', "'"), '', $row['Harmonize']));
                 $item1 = isset($harmonizeArray[1]) ? trim($harmonizeArray[1]) : '';
                 if (!empty($item1)) {
-                    echo '<img class="plat_2" src="/GrapeMind/assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . htmlspecialchars($item1) . '">';
+                    echo '<img class="plat_2" src="/GrapeMind/assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . ($item1) . '">';
                 }
             }
             ?>
@@ -171,71 +246,61 @@ if (isset($row['Type'])) {
         }
         ?>
 
-        <!-- Afficher les éléments avec les classes appropriées -->
+
         <b class="plats1">
-            <?php echo htmlspecialchars($item1); ?>
+            <?php echo($item1); ?>
         </b>
 
         <b class="plats2">
-            <?php echo htmlspecialchars($item2); ?>
+            <?php echo($item2); ?>
         </b>
 
         <b class="plats3">
-            <?php echo htmlspecialchars($item3); ?>
+            <?php echo($item3); ?>
         </b>
 
 
-
-
-
-
-        <b class="prix-90">Prix <?php echo htmlspecialchars(isset($row['price']) ? $row['price'] : '90'); ?> €</b>
+        <b class="prix-90">Prix <?php echo(isset($row['price']) ? $row['price'] : '90'); ?> €</b>
 
 
         <?php
-        // Flavor Group 1
         if (!empty($row['flavorGroup_1'])) {
             $flavor = trim($row['flavorGroup_1']);
             $flavorImagePath = '/GrapeMind/assets/gouts/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
-            echo '<img class="icon-flavor1" src="' . htmlspecialchars($flavorImagePath) . '" alt="' . htmlspecialchars($flavor) . '"> ';
+            echo '<img class="icon-flavor1" src="' . ($flavorImagePath) . '" alt="' . ($flavor) . '"> ';
         }
 
-        // Flavor Group 2
+
         if (!empty($row['flavorGroup_2'])) {
             $flavor = trim($row['flavorGroup_2']);
             $flavorImagePath = '/GrapeMind/assets/gouts/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
-            echo '<img class="icon-flavor2" src="' . htmlspecialchars($flavorImagePath) . '" alt="' . htmlspecialchars($flavor) . '"> ';
+            echo '<img class="icon-flavor2" src="' . ($flavorImagePath) . '" alt="' . ($flavor) . '"> ';
         }
 
-        // Flavor Group 3
+
         if (!empty($row['flavorGroup_3'])) {
             $flavor = trim($row['flavorGroup_3']);
             $flavorImagePath = '/GrapeMind/assets/gouts/' . strtolower(str_replace(' ', '_', $flavor)) . '.jpeg';
-            echo '<img class="icon-flavor3" src="' . htmlspecialchars($flavorImagePath) . '" alt="' . htmlspecialchars($flavor) . '"> ';
+            echo '<img class="icon-flavor3" src="' . ($flavorImagePath) . '" alt="' . ($flavor) . '"> ';
         }
         ?>
 
 
-
-
-
         <div class="armes">ARÔMES</div>
         <div class="flavor-1">
-            <?php echo htmlspecialchars(isset($row['flavorGroup_1']) ? $row['flavorGroup_1'] : ''); ?>
+            <?php echo(isset($row['flavorGroup_1']) ? $row['flavorGroup_1'] : ''); ?>
         </div>
         <div class="flavor-2">
-            <?php echo htmlspecialchars(isset($row['flavorGroup_2']) ? $row['flavorGroup_2'] : ''); ?>
+            <?php echo(isset($row['flavorGroup_2']) ? $row['flavorGroup_2'] : ''); ?>
         </div>
         <div class="flavor-3">
-            <?php echo htmlspecialchars(isset($row['flavorGroup_3']) ? $row['flavorGroup_3'] : ''); ?>
+            <?php echo(isset($row['flavorGroup_3']) ? $row['flavorGroup_3'] : ''); ?>
         </div>
-
 
 
     </div>
     <div class="dtails-sur-un-vin-child">
         <?php
-        // Exemple d'initialisation de $rating
         $rating = isset($row['average_rating']) ? floatval($row['average_rating']) : 0;
 
         for ($i = 1; $i <= 5; $i++) {
@@ -248,41 +313,35 @@ if (isset($row['Type'])) {
             }
         }
         ?>
-        <!-- Affichage de la note moyenne en chiffres -->
         <span class="average-rating"><?php echo number_format($rating, 1); ?> / 5</span>
     </div>
 
 
-
     <div class="tooltip1">
-
-
-
-
-        <div class="title">Ajouter à la cave</div>
-        <div class="body-text">
-        </div>
+        <form method="post" action="">
+            <input type="hidden" name="idwine" value="<?php echo $row['idwine']; ?>">
+            <button type="submit" name="add_to_cave" class="button-cave">Ajouter à la cave</button>
+        </form>
     </div>
 
     <div class="tooltip2">
-
-
-
-        <div class="title">Ajouter au grenier</div>
-        <div class="body-text">
-        </div>
+        <form method="post" action="">
+            <input type="hidden" name="idwine" value="<?php echo $row['idwine']; ?>">
+            <button type="submit" name="add_to_grenier" class="button-grenier">Ajouter au grenier</button>
+        </form>
     </div>
+
     <div class="titre-vin">
 
         <p class="sous-titre">
-            <?php echo htmlspecialchars(isset($row['WineryName']) ? $row['WineryName'] : ''); ?>
+            <?php echo(isset($row['WineryName']) ? $row['WineryName'] : ''); ?>
         </p>
         <p class="pays-region">
             <span>
                 <span>
                     <?php
-                    echo htmlspecialchars(isset($row['Country']) ? $row['Country'] : '') . ', ' .
-                        htmlspecialchars(isset($row['RegionName']) ? $row['RegionName'] : '');
+                    echo (isset($row['Country']) ? $row['Country'] : '') . ', ' .
+                        (isset($row['RegionName']) ? $row['RegionName'] : '');
                     ?>
                 </span>
 
@@ -294,7 +353,6 @@ if (isset($row['Type'])) {
 
 
 
-    <img class="footer-icon" alt="" src="../../assets/images/footer/rectangle_83.svg">
 
     <img class="favorite-icon" alt="" src="../../assets/images/winecavestock-logo.png">
 
@@ -304,8 +362,7 @@ if (isset($row['Type'])) {
 
 
 <script src="../../js/cursor_acidity.js"></script>
-
-
+<?php include __DIR__ . '/../footer.php'; ?>
 
 </body>
 </html>

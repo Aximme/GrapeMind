@@ -1,5 +1,6 @@
 <?php
 include 'components/header.php';
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -33,7 +34,7 @@ include 'components/header.php';
         <div class="card">
             <h2 class="card-title">Nous Contacter</h2>
             <div class="contact-info">
-                <p><strong>Email :</strong> grapemind.upv3@gmail.com</p>
+                <p><strong>Email :</strong> info@grapemind.fr</p>
                 <p>Université Paul Valéry, Montpellier 3</p>
                 <hr class="separator">
                 <!-- Google Map Iframe -->
@@ -42,6 +43,7 @@ include 'components/header.php';
         </div>
     </div>
 </main>
+<?php include __DIR__ . '/components/footer.php'; ?>
 </body>
 </html>
 
