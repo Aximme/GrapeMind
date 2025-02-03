@@ -202,7 +202,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_grenier'])) {
                 $harmonizeArray = explode(',', str_replace(array('[', ']', "'"), '', $row['Harmonize']));
                 $item1 = isset($harmonizeArray[0]) ? trim($harmonizeArray[0]) : '';
                 if (!empty($item1)) {
-                    echo '<img class="plat_1" src="assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . ($item1) . '">';
+                    echo '<img class="plat_1" src="../../assets/images/logos-main2/' . strtolower(str_replace(' ', '_', $item1)) . '.png" alt="' . ($item1) . '">';
                 }
             }
             ?>
