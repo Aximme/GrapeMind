@@ -1,170 +1,149 @@
-/* Global Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.QUIZZ {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
 }
 
-html, body {
-  height: 100%; /* Utilise 100% de la hauteur pour centrer les éléments */
-  margin: 0;
+.QUIZZ .QUIZZ-q {
+    background-color: #ffffff;
+    width: 1440px;
+    height: 1024px;
+    position: relative;
 }
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(0deg, rgb(248, 242, 242), rgb(83, 2, 2)) no-repeat;
-  font-family: Arial, sans-serif;
+.QUIZZ .depth-frame {
+    height: 78px;
+    padding: 20px 0;
+    top: 104px;
+    left: 210px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    max-width: 960px;
+    width: 960px;
+    align-items: center;
+    position: absolute;
 }
 
-
-/* Swiper Styles */
-#swiper {
-  height: 70vh; /* Swiper height */
-  aspect-ratio: 2 / 3;
-  perspective: 1000px;
-  perspective-origin: center 50%;
-  transform-style: preserve-3d;
-  position: relative;
+.QUIZZ .div {
+    font-family: "Inter-Bold", Helvetica;
+    font-weight: 700;
+    color: #161111;
+    font-size: 24px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 30px;
 }
 
-/* Card Styles */
-.card {
-  position: absolute;
-  width: 85%;
-  height: 85%;
-  border-radius: 20px;
-  overflow: hidden;
-  background: linear-gradient(0deg, rgb(248, 242, 242), rgb(175, 57, 57)) no-repeat;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 15px;
+/* ✅ Styles des boutons avec amélioration du cliquable */
+.QUIZZ .depth-frame-wrapper,
+.QUIZZ .depth-frame-5,
+.QUIZZ .depth-frame-6{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 340px;
+    height: 50px; /* Augmenté pour un meilleur rendu */
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
-.card img {
-  width: 90%;
-  height: 250px;
-  border-radius: 15px;
-  object-fit: cover;
-  align-self: center;
-  margin-top: 70px;
+/* ✅ Bouton "OUI" (Vert) */
+.QUIZZ .depth-frame-wrapper {
+    background-color: #044d0d;
 }
 
-.card-text {
-  color: black;
-  font-weight: bold;
-  text-align: center;
-  font-size: 1.4em;
-  font-family: 'Georgia', serif;
-  margin-top: auto;
-  padding-top: 10px;
-  line-height: 1.4;
+.QUIZZ .depth-frame-wrapper:hover {
+    background-color: #036b14;
 }
 
-/* Card Animation States */
-.card.like {
-  transform: translate(150%, -20%) rotate(20deg);
-  opacity: 0;
+/* ✅ Bouton "PASSER LA QUESTION" (Blanc avec bordure noire) */
+.QUIZZ .depth-frame-5 {
+    background-color:gray;
+
 }
 
-.card.dislike {
-  transform: translate(-150%, -20%) rotate(-20deg);
-  opacity: 0;
+.QUIZZ .depth-frame-5:hover {
+    background-color: #e6e6e6;
 }
 
-.card.dismissing {
-  pointer-events: none;
+/* ✅ Bouton "NON" (Rouge) */
+.QUIZZ .depth-frame-6 {
+    background-color: #a80f0f;
 }
 
-/* Like and Dislike Buttons */
-#like,
-#dislike {
-  font-size: 14vh;
-  border-radius: 50%;
-  padding: 15px;
-  position: absolute; /* For flexible positioning */
-  z-index: 2;
-  cursor: pointer;
-  animation-name: animation1;
-  animation-duration: 1s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: both;
-  animation-play-state: paused;
+.QUIZZ .depth-frame-6:hover {
+    background-color: #890d0d;
 }
 
-/* Specific Positioning for Buttons */
-#like {
-  color: #ccc;
-  background-color: rgba(0, 0, 0, 0.5);
-  top: 50%; /* Position at the middle of the screen */
-  right: 25%; /* Positioned to the right */
-  transform: translateY(-50%); /* Center vertically */
+/* ✅ Texte bien centré dans les boutons */
+.QUIZZ .depth-frame-wrapper button,
+.QUIZZ .depth-frame-5 button,
+.QUIZZ .depth-frame-6 button {
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-align: center;
 }
 
-#dislike {
-  color: red;
-  background-color: rgba(255, 255, 255, 0.5);
-  top: 50%; /* Position at the middle of the screen */
-  left: 25%; /* Positioned to the left */
-  transform: translateY(-50%); /* Center vertically */
+.QUIZZ .depth-frame-5 button {
+    color: white; /* Texte noir pour "Passer la Question" */
 }
 
-/* Trigger States for Buttons */
-#like.trigger,
-#dislike.trigger {
-  animation-name: animation2;
+/* ✅ Réajustement de la position des boutons */
+.QUIZZ .depth-frame-wrapper {
+    position: absolute;
+    top: 577px;
+    left: 923px;
 }
 
-/* Keyframes */
-@keyframes animation1 {
-  0%, 100% {
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 1;
-  }
+.QUIZZ .depth-frame-5 {
+    position: absolute;
+    top: 577px;
+    left: 550px;
 }
 
-@keyframes animation2 {
-  0%, 100% {
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-#finish-container {
-  display: flex;
-  flex-direction: column; /* Pour empiler le message et le bouton verticalement */
-  align-items: center; /* Centre horizontalement */
-  justify-content: center; /* Centre verticalement */
-  margin-left: -350px;
-  z-index: 10;
+.QUIZZ .depth-frame-6 {
+    position: absolute;
+    top: 577px;
+    left: 175px;
 }
 
-#message {
-  display: block;
-  text-align: center;
-  font-size: 24px;
-  color: white;
-  margin-bottom: 20px; /* Espacement entre le message et le bouton */
+/* ✅ Style de l'image de la question */
+.QUIZZ .temp-image-b-gwh-ib {
+    position: absolute;
+    width: 220px;
+    height: 190px;
+    top: 246px;
+    left: 610px;
+    object-fit: cover;
+    border-radius: 12px;
 }
 
-#finish-btn {
-  background-color: #b23a48;
-  color: white;
-  border: none;
-  padding: 15px 30px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1.2em; /* Taille du texte pour être bien visible */
-  transition: background-color 0.3s;
+/* ✅ Style pour la progression */
+.QUIZZ .depth-frame-7 {
+    top: 685px;
+    left: 123px;
+    display: flex;
+    flex-direction: column;
+    max-width: 960px;
+    width: 960px;
+    align-items: center;
+    position: absolute;
 }
 
-#finish-btn:hover {
-  background-color: #8a2a3a; /* Changement de couleur au survol */
+.QUIZZ .text-wrapper-5 {
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #161111;
+    font-size: 16px;
+    text-align: center;
 }
