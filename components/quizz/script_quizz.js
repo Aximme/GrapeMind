@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     const quizData = [
-        { question: "Quelle couleur de vin préférez-vous ?", options: ["Rouge", "Blanc", "Rosé", "Je ne bois pas d'alcool"] },
-        { question: "Quels goûts aimez-vous ?", options: ["Sucré", "Salé", "Acide", "Amer", "Umami"] },
-        { question: "Quels fruits préférez-vous ?", options: ["Fraise", "Myrtille", "Framboise", "Cerise", "Mangue"] },
-        { question: "Entrez un mot qui vous décrit le mieux :", input: true } // Question avec champ texte
+        { id: 1, question: "Quelle couleur de vin préférez-vous ?", options: ["Rouge", "Blanc", "Rosé", "Je ne bois pas d'alcool"] },
+        { id: 2, question: "Quels goûts aimez-vous ?", options: ["Sucré", "Salé", "Acide", "Amer", "Umami"] },
+        { id: 3, question: "Quels fruits préférez-vous ?", options: ["Fraise", "Myrtille", "Framboise", "Cerise", "Mangue"] },
+        { id: 4, question: "Entrez un mot qui vous décrit le mieux :", input: true }
     ];
 
     let currentIndex = 0;
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         setTimeout(() => {
             if (index >= quizData.length) {
-                showResults();
+                sendResponses();
                 return;
             }
 
@@ -31,48 +31,49 @@ document.addEventListener("DOMContentLoaded", function () {
             answersContainer.innerHTML = "";
 
             if (question.input) {
-                let inputWrapper = document.createElement("div");
-                inputWrapper.style.width = "100%";
-                inputWrapper.style.display = "flex";
-                inputWrapper.style.justifyContent = "center";
-                inputWrapper.style.marginTop = "10px";
+                // Style spécifique pour la question avec input
+                answersContainer.style.cssText = `
+                    position: relative;
+                    width: 100%;
+                    min-height: 100px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 20px 0;
+                `;
 
-                let inputField = document.createElement("input");
+                const inputField = document.createElement("input");
                 inputField.type = "text";
-                inputField.name = "text";
                 inputField.classList.add("input");
                 inputField.placeholder = "Tapez ici...";
-                inputField.required = true;
-                inputField.setAttribute("autocomplete", "off");
-                inputField.setAttribute("spellcheck", "false");
-                inputField.style.width = "80%";
-                inputField.style.padding = "12px";
-                inputField.style.fontSize = "16px";
-                inputField.style.border = "2px solid #ccc";
-                inputField.style.borderRadius = "5px";
-                inputField.style.backgroundColor = "#fff";
-                inputField.style.textAlign = "center";
-                inputField.style.display = "block";
-                inputField.style.visibility = "visible";
-                inputField.addEventListener("input", checkUserInput);
-                inputField.addEventListener("focus", () => {
-                    inputField.style.borderColor = "#7b1c13";
-                });
-                inputField.addEventListener("blur", () => {
-                    inputField.style.borderColor = "#ccc";
-                });
+                inputField.style.cssText = `
+                    display: block;
+                    width: 80%;
+                    max-width: 400px;
+                    padding: 12px;
+                    margin: 20px auto;
+                    font-size: 16px;
+                    border: 2px solid #ccc;
+                    border-radius: 5px;
+                    background-color: #fff;
+                    text-align: center;
+                    position: static;
+                `;
 
-                inputWrapper.appendChild(inputField);
-                answersContainer.appendChild(inputWrapper);
+                inputField.addEventListener("input", checkUserInput);
+                answersContainer.appendChild(inputField);
                 setTimeout(() => inputField.focus(), 100);
             } else {
+                // Retour au style original pour les questions à choix multiples
+                answersContainer.style.cssText = ''; // Réinitialiser les styles
+
                 question.options.forEach((option, i) => {
                     let id = `value-${index}-${i}`;
 
                     let input = document.createElement("input");
                     input.type = "checkbox";
                     input.id = id;
-                    input.name = "value-checkbox";
                     input.value = option;
 
                     let label = document.createElement("label");
@@ -97,9 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function checkUserInput() {
         let userInput = document.querySelector(".input");
-        if (userInput) {
-            document.getElementById("next-btn").disabled = userInput.value.trim().length === 0;
-        }
+        document.getElementById("next-btn").disabled = userInput.value.trim().length === 0;
     }
 
     function saveSelection() {
@@ -108,9 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (currentQuestion.input) {
             let userInput = document.querySelector(".input").value.trim();
-            if (userInput) {
-                selectedOptions.push(userInput);
-            }
+            if (userInput) selectedOptions.push(userInput);
         } else {
             document.querySelectorAll("#answers-container input:checked").forEach(input => {
                 selectedOptions.push(input.value);
@@ -118,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         userPreferences.push({
-            question: currentQuestion.question,
+            question_id: currentQuestion.id,
             answers: selectedOptions
         });
 
@@ -126,24 +123,29 @@ document.addEventListener("DOMContentLoaded", function () {
         loadQuestion(currentIndex);
     }
 
-    function showResults() {
-        document.getElementById("quiz-container").innerHTML = `
-            <p class="question">Merci pour vos réponses ! Voici vos préférences :</p>
-            <div class="result-container fade-in">
-                ${userPreferences.map(pref => `
-                    <p><strong>${pref.question}</strong></p>
-                    <p>${pref.answers.join(", ")}</p>
-                `).join("")}
-            </div>
-            <button class="restart-button">Recommencer</button>
-        `;
+    function sendResponses() {
+        document.getElementById("quiz-container").innerHTML = "<p>Envoi en cours...</p>";
 
-        document.querySelector(".restart-button").addEventListener("click", () => {
-            location.reload();
-        });
+        fetch("save_quiz.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ responses: userPreferences })
+        })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("quiz-container").innerHTML = `<p>${data.message || data.error}</p>`;
+            })
+            .catch(error => {
+                console.error("Erreur :", error);
+                document.getElementById("quiz-container").innerHTML = "<p>Une erreur est survenue. Veuillez réessayer.</p>";
+            });
     }
 
-    document.getElementById("next-btn").addEventListener("click", saveSelection);
+    document.getElementById("next-btn").addEventListener("click", function () {
+        this.disabled = true;
+        saveSelection();
+        setTimeout(() => { this.disabled = false; }, 500);
+    });
 
     loadQuestion(currentIndex);
 });

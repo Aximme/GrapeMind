@@ -11,6 +11,7 @@ include  __DIR__."/../header.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Préférences</title>
     <link rel="stylesheet" href="style_quizz.css"> <!-- Lien vers le CSS -->
+    <link rel="stylesheet" href="style_quizz.css"> <!-- Lien vers le CSS -->
 </head>
 <body>
 

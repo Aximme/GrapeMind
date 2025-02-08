@@ -1,0 +1,50 @@
+Array
+(
+    [responses] => Array
+        (
+            [0] => Array
+                (
+                    [question_id] => 1
+                    [answers] => Array
+                        (
+                            [0] => Rosé
+                            [1] => Je ne bois pas d'alcool
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [question_id] => 2
+                    [answers] => Array
+                        (
+                            [0] => Acide
+                            [1] => Amer
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [question_id] => 3
+                    [answers] => Array
+                        (
+                            [0] => Framboise
+                            [1] => Cerise
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [question_id] => 4
+                    [answers] => Array
+                        (
+                            [0] => test
+                        )
+
+                )
+
+        )
+
+)
