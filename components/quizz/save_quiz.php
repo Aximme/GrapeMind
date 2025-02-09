@@ -11,11 +11,40 @@ if (!isset($conn)) {
     exit();
 }
 
-// Récupérer et décoder les données JSON
-$data = json_decode(file_get_contents("php://input"), true);
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    // Récupérer les questions depuis la base de données
+    $stmt = $conn->prepare("SELECT id, question, type, options FROM quiz_questions ORDER BY id ASC");
 
-// Debugging : log des données reçues
-file_put_contents("debug_log.txt", print_r($data, true));
+    if ($stmt->execute()) {
+        $result = $stmt->get_result();
+        $questions = [];
+
+        while ($row = $result->fetch_assoc()) {
+            // Convertir les options en tableau si elles existent, sinon une liste vide
+            if (!empty($row['options'])) {
+                $row['options'] = explode(',', $row['options']);
+            } else {
+                $row['options'] = [];
+            }
+
+            // Ajouter une clé "input" pour les questions de type "input"
+            $row['input'] = ($row['type'] === 'input');
+
+            $questions[] = $row;
+        }
+
+        echo json_encode($questions);
+    } else {
+        echo json_encode(["error" => "Erreur lors de la récupération des questions : " . $stmt->error]);
+    }
+
+    $stmt->close();
+    $conn->close();
+    exit();
+}
+
+// Si la méthode n'est pas GET, traiter comme une requête POST pour enregistrer les réponses
+$data = json_decode(file_get_contents("php://input"), true);
 
 if (!$data || !isset($data["responses"]) || !is_array($data["responses"])) {
     echo json_encode(["error" => "Données invalides"]);

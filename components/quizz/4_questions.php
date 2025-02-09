@@ -30,6 +30,8 @@ include  __DIR__."/../header.php";
     <button id="next-btn" class="next-button" disabled>Suivant</button>
 </div>
 
-<script src="script_quizz.js"></script> <!-- On met le JS dans un fichier à part -->
+<script src="quiz-loader.js"></script>
+
+<!-- On met le JS dans un fichier à part -->
 </body>
 </html>

@@ -1,18 +1,17 @@
 /* === Style du header === */
 header {
     position: fixed;
-    width: 100%;
     top: 0;
     left: 0;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
     background: #fff;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    z-index: 10;
 }
-
 
 /* === Conteneur principal === */
 body {
@@ -28,9 +27,9 @@ body {
 
 /* === Conteneur du quiz === */
 #quiz-container {
-    margin-top: 80px;
+    margin-top: 100px;
     width: 100%;
-    max-width: 450px;
+    max-width: 500px;
     padding: 20px;
     background: #fff;
     border-radius: 10px;
@@ -38,9 +37,7 @@ body {
     text-align: center;
     transition: opacity 0.5s ease-in-out;
     position: relative;
-    overflow: visible !important;
 }
-
 
 /* === Barre de progression === */
 .progress-bar-container {
@@ -67,51 +64,43 @@ body {
     justify-content: center;
     width: 100%;
     margin-top: 10px;
-    opacity: 1;
+    min-height: 50px;
     transition: opacity 0.3s ease-in-out;
-}
-
-/* === Questions et étapes === */
-.info {
-    margin-bottom: 10px;
-}
-
-.question {
-    font-size: 20px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 8px;
-}
-
-.steps {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 15px;
 }
 
 /* === Input texte pour réponse libre === */
 .input {
-    position: relative;
-    top: 0;
-    left: 0;
-    z-index: 30;
-    padding: 12px;
-    width: 80%;
-    background-color: yellow; /* Test temporaire */
+    width: 100%;
+    max-width: 450px;
+    min-height: 50px;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #333;
+    resize: none; /* Empêche le redimensionnement */
+    box-sizing: border-box;
+    transition: all 0.3s ease;
 }
-
-
 
 .input:focus {
     border-color: #7b1c13;
+    box-shadow: 0px 0px 10px rgba(123, 28, 19, 0.3);
     outline: none;
-    box-shadow: 0px 0px 10px rgba(123, 28, 19, 0.2);
+    transform: scale(1.02);
 }
+
+.input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
 
 /* === Bouton "Suivant" === */
 .next-button {
     margin-top: 15px;
-    padding: 12px;
+    padding: 12px 16px;
     font-size: 16px;
     font-weight: bold;
     background: linear-gradient(90deg, #7b1c13, #d32f2f);
@@ -119,14 +108,12 @@ body {
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     transition: 0.3s ease all;
 }
 
 .next-button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
-    box-shadow: none;
 }
 
 .next-button:hover:not(:disabled) {

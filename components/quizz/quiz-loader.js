@@ -1,24 +1,30 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const quizData = [
-        { id: 1, question: "Quelle couleur de vin préférez-vous ?", options: ["Rouge", "Blanc", "Rosé", "Je ne bois pas d'alcool"] },
-        { id: 2, question: "Quels goûts aimez-vous ?", options: ["Sucré", "Salé", "Acide", "Amer", "Umami"] },
-        { id: 3, question: "Quels fruits préférez-vous ?", options: ["Fraise", "Myrtille", "Framboise", "Cerise", "Mangue"] },
-        { id: 4, question: "Entrez un mot qui vous décrit le mieux :", input: true }
-    ];
-
+document.addEventListener("DOMContentLoaded", async function () {
+    let quizData = await fetchQuestions();
     let currentIndex = 0;
     let userPreferences = [];
 
+    async function fetchQuestions() {
+        try {
+            const response = await fetch("save_quiz.php"); // Remplace par l'URL de ton fichier PHP
+            if (!response.ok) throw new Error("Erreur lors de la récupération des questions.");
+            return await response.json();
+        } catch (error) {
+            console.error("Erreur :", error);
+            document.getElementById("quiz-container").innerHTML = "<p>Impossible de charger les questions. Veuillez réessayer plus tard.</p>";
+            return [];
+        }
+    }
+
     function loadQuestion(index) {
+        if (index >= quizData.length) {
+            sendResponses();
+            return;
+        }
+
         const quizContainer = document.getElementById("quiz-container");
         quizContainer.classList.add("fade-out");
 
         setTimeout(() => {
-            if (index >= quizData.length) {
-                sendResponses();
-                return;
-            }
-
             quizContainer.classList.remove("fade-out");
             quizContainer.classList.add("fade-in");
 
@@ -30,44 +36,14 @@ document.addEventListener("DOMContentLoaded", function () {
             const answersContainer = document.getElementById("answers-container");
             answersContainer.innerHTML = "";
 
-            if (question.input) {
-                // Style spécifique pour la question avec input
-                answersContainer.style.cssText = `
-                    position: relative;
-                    width: 100%;
-                    min-height: 100px;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    margin: 20px 0;
-                `;
-
-                const inputField = document.createElement("input");
-                inputField.type = "text";
-                inputField.classList.add("input");
-                inputField.placeholder = "Tapez ici...";
-                inputField.style.cssText = `
-                    display: block;
-                    width: 80%;
-                    max-width: 400px;
-                    padding: 12px;
-                    margin: 20px auto;
-                    font-size: 16px;
-                    border: 2px solid #ccc;
-                    border-radius: 5px;
-                    background-color: #fff;
-                    text-align: center;
-                    position: static;
-                `;
-
-                inputField.addEventListener("input", checkUserInput);
-                answersContainer.appendChild(inputField);
-                setTimeout(() => inputField.focus(), 100);
-            } else {
-                // Retour au style original pour les questions à choix multiples
-                answersContainer.style.cssText = ''; // Réinitialiser les styles
-
+            if (question.type === "input") {
+                const textareaField = document.createElement("textarea");
+                textareaField.classList.add("input");
+                textareaField.placeholder = "Tapez votre réponse ici...";
+                textareaField.rows = 4; // Nombre de lignes visibles
+                textareaField.addEventListener("input", checkUserInput);
+                answersContainer.appendChild(textareaField);
+            } else if (question.type === "multiple") {
                 question.options.forEach((option, i) => {
                     let id = `value-${index}-${i}`;
 
@@ -105,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let selectedOptions = [];
         const currentQuestion = quizData[currentIndex];
 
-        if (currentQuestion.input) {
+        if (currentQuestion.type === "input") {
             let userInput = document.querySelector(".input").value.trim();
             if (userInput) selectedOptions.push(userInput);
         } else {
@@ -147,5 +123,10 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(() => { this.disabled = false; }, 500);
     });
 
-    loadQuestion(currentIndex);
+    // Charger la première question
+    if (quizData.length > 0) {
+        loadQuestion(currentIndex);
+    } else {
+        document.getElementById("quiz-container").innerHTML = "<p>Aucune question trouvée.</p>";
+    }
 });
