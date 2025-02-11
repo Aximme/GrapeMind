@@ -31,3 +31,14 @@ Thumbs.db
 # Ignorer les fichiers de configuration spécifiques au système
 *.swp
 *~
+
+# Cache python du ML
+ML_chatbot/__pycache__/ 
+# je push pas les fichiers d'entrainement du ML c'est lourd mdrrrr
+ML_chatbot/food_label_vocab.json
+ML_chatbot/food_to_wine_model.pt
+ML_chatbot/text_vocab.json
+ML_chatbot/wine_label_vocab.json
+ML_chatbot/wine_to_food_model.pt
+
+
