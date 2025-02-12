@@ -1,0 +1,170 @@
+/* === Style du header === */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+/* === Conteneur principal === */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f5f5f5;
+    font-family: 'Arial', sans-serif;
+}
+
+/* === Conteneur du quiz === */
+#quiz-container {
+    margin-top: 100px;
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: opacity 0.5s ease-in-out;
+    position: relative;
+}
+
+/* === Barre de progression === */
+.progress-bar-container {
+    width: 100%;
+    background: #ddd;
+    height: 6px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #7b1c13, #d32f2f);
+    transition: width 0.7s ease-in-out;
+}
+
+/* === Conteneur des réponses === */
+#answers-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+    min-height: 50px;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* === Input texte pour réponse libre === */
+.input {
+    width: 100%;
+    max-width: 450px;
+    min-height: 50px;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #333;
+    resize: none; /* Empêche le redimensionnement */
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.input:focus {
+    border-color: #7b1c13;
+    box-shadow: 0px 0px 10px rgba(123, 28, 19, 0.3);
+    outline: none;
+    transform: scale(1.02);
+}
+
+.input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+
+/* === Bouton "Suivant" === */
+.next-button {
+    margin-top: 15px;
+    padding: 12px 16px;
+    font-size: 16px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #7b1c13, #d32f2f);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease all;
+}
+
+.next-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.next-button:hover:not(:disabled) {
+    background: linear-gradient(90deg, #a5271d, #d84315);
+    transform: translateY(-2px);
+}
+
+/* === Choix de réponse === */
+.radio-input label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 14px;
+    margin: 8px 0;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid #bbb;
+    color: #000;
+    transition: 0.3s ease all;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.radio-input label:hover {
+    background-color: #f1f1f1;
+    transform: scale(1.02);
+}
+
+.radio-input input {
+    display: none;
+}
+
+.radio-input input:checked + label {
+    color: #7b1c13;
+    border-color: #7b1c13;
+    box-shadow: 0px 0px 8px rgba(123, 28, 19, 0.3);
+}
+
+/* === Résultats === */
+.result-container {
+    margin-top: 20px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+/* === Gestion de la visibilité === */
+.hidden {
+    opacity: 0;
+    display: none;
+}
