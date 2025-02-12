@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     async function fetchQuestions() {
         try {
-            const response = await fetch("save_quiz.php"); // Remplace par l'URL de ton fichier PHP
+            const response = await fetch("save_quiz.php");
             if (!response.ok) throw new Error("Erreur lors de la récupération des questions.");
             return await response.json();
         } catch (error) {

@@ -3,7 +3,6 @@ session_start();
 global $conn;
 header('Content-Type: application/json');
 
-// Inclure la connexion à la base de données
 require_once '../../db.php';
 
 if (!isset($conn)) {
@@ -12,7 +11,6 @@ if (!isset($conn)) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    // Récupérer les questions depuis la base de données
     $stmt = $conn->prepare("SELECT id, question, type, options FROM quiz_questions ORDER BY id ASC");
 
     if ($stmt->execute()) {
@@ -20,14 +18,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $questions = [];
 
         while ($row = $result->fetch_assoc()) {
-            // Convertir les options en tableau si elles existent, sinon une liste vide
             if (!empty($row['options'])) {
                 $row['options'] = explode(',', $row['options']);
             } else {
                 $row['options'] = [];
             }
 
-            // Ajouter une clé "input" pour les questions de type "input"
             $row['input'] = ($row['type'] === 'input');
 
             $questions[] = $row;
@@ -43,7 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     exit();
 }
 
-// Si la méthode n'est pas GET, traiter comme une requête POST pour enregistrer les réponses
 $data = json_decode(file_get_contents("php://input"), true);
 
 if (!$data || !isset($data["responses"]) || !is_array($data["responses"])) {
@@ -51,17 +46,16 @@ if (!$data || !isset($data["responses"]) || !is_array($data["responses"])) {
     exit();
 }
 
-$user_id = $_SESSION['user_id'] ?? 0; // Mettre 0 si l'utilisateur n'est pas connecté
-
-// Initialisation des réponses
+$user_id = $_SESSION['user_id'] ?? 0;
+/*
 $answers = [
     "question1" => null,
     "question2" => null,
     "question3" => null,
     "question4" => null
 ];
+ */
 
-// Récupération des réponses du JSON
 foreach ($data["responses"] as $response) {
     if (!isset($response["question_id"]) || !is_numeric($response["question_id"])) {
         echo json_encode(["error" => "ID de question invalide"]);
@@ -75,13 +69,11 @@ foreach ($data["responses"] as $response) {
     $question_id = intval($response["question_id"]);
     $answer_text = htmlspecialchars(trim(implode(", ", $response["answers"])), ENT_QUOTES, 'UTF-8');
 
-    // Assigner la réponse à la bonne question
     if ($question_id >= 1 && $question_id <= 4) {
         $answers["question{$question_id}"] = $answer_text;
     }
 }
 
-// Préparer la requête pour insérer ou mettre à jour les réponses
 $stmt = $conn->prepare("
     INSERT INTO quiz_answers (user_id, question1_answer, question2_answer, question3_answer, question4_answer, updated_at)
     VALUES (?, ?, ?, ?, ?, NOW())
@@ -98,7 +90,6 @@ if (!$stmt) {
     exit();
 }
 
-// Lier les paramètres avec bind_param
 $stmt->bind_param(
     "issss",
     $user_id,
@@ -108,7 +99,6 @@ $stmt->bind_param(
     $answers["question4"]
 );
 
-// Exécuter la requête et vérifier le résultat
 if ($stmt->execute()) {
     echo json_encode(["message" => "Les réponses ont été enregistrées ou mises à jour avec succès."]);
 } else {
