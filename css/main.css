@@ -60,6 +60,21 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.navbar-nav {
+    margin-left: auto;
+}
+
+.nav-item {
+    margin: 0 15px;
+}
+
+.dropdown-menu {
+    min-width: 200px;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+}
 
 /* Style pour le bouton de menu déroulant */
 .menu-icon {
@@ -114,10 +129,6 @@ body {
     position: fixed;
     inset: 0;
 }
-
-
-
-
 
 
                                 /*               Page A Propos                */

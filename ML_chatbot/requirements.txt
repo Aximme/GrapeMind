@@ -1,0 +1,7 @@
+Flask
+mysql-connector-python
+python-dotenv
+torch
+transformers
+sentence-transformers
+ast

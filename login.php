@@ -36,7 +36,7 @@ include 'components/header.php';
         </form>
 
         <p class="forgot-password">
-            <a href="#">Mot de passe oublié?</a>
+            <a href="forgot_password.php">Mot de passe oublié?</a>
         </p>
         <p class="sign-up">
             Vous n'avez pas de compte ? <a href="registration.php">Inscrivez-vous ici</a>

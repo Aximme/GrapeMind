@@ -16,6 +16,12 @@ if (empty($email) || empty($password)) {
 try {
     $sql = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($sql);
+
+    if (!$stmt) {
+        echo json_encode(['success' => false, 'error' => 'Erreur dans la requête SQL : ' . $conn->error]);
+        exit();
+    }
+
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -37,6 +43,12 @@ try {
 
             $update_sql = "UPDATE users SET last_login = NOW() WHERE email = ?";
             $update_stmt = $conn->prepare($update_sql);
+
+            if (!$update_stmt) {
+                echo json_encode(['success' => false, 'error' => 'Erreur dans la requête de mise à jour : ' . $conn->error]);
+                exit();
+            }
+
             $update_stmt->bind_param("s", $email);
             $update_stmt->execute();
 
@@ -50,3 +62,4 @@ try {
 } catch (Exception $e) {
     echo json_encode(['success' => false, 'error' => "Erreur : " . $e->getMessage()]);
 }
+?>
