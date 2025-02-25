@@ -28,31 +28,25 @@ $message = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cave'])) {
     $idwine = isset($_POST['idwine']) ? $_POST['idwine'] : null;
     $id_user = isset($_SESSION['user']['id']) ? $_SESSION['user']['id'] : null;
+    $type = $_POST['add_to_cave']; // 'real' ou 'wishlist'
 
     if ($idwine && $id_user) {
-        $checkGrenier = $conn->prepare("SELECT * FROM grenier WHERE idwine = ? AND id_user = ?");
-        $checkGrenier->bind_param("ii", $idwine, $id_user);
-        $checkGrenier->execute();
-        $resultGrenier = $checkGrenier->get_result();
+        $checkQuery = $conn->prepare("SELECT * FROM cave WHERE idwine = ? AND id_user = ? AND type = ?");
+        $checkQuery->bind_param("iis", $idwine, $id_user, $type);
+        $checkQuery->execute();
+        $result = $checkQuery->get_result();
 
-        if ($resultGrenier->num_rows > 0) {
-            $message = "Impossible d'ajouter à la cave : ce vin est déjà dans le grenier.";
+        if ($result->num_rows > 0) {
+            $message = "Ce vin est déjà dans votre cave.";
         } else {
-            $checkQuery = $conn->prepare("SELECT * FROM cave WHERE idwine = ? AND id_user = ?");
-            $checkQuery->bind_param("ii", $idwine, $id_user);
-            $checkQuery->execute();
-            $result = $checkQuery->get_result();
-
-            if ($result->num_rows > 0) {
-                $message = "Ce vin est déjà dans votre cave.";
-            } else {
-                $query = $conn->prepare("INSERT INTO cave (idwine, id_user) VALUES (?, ?)");
-                $query->bind_param("ii", $idwine, $id_user);
-                $query->execute();
-            }
+            $query = $conn->prepare("INSERT INTO cave (idwine, id_user, type) VALUES (?, ?, ?)");
+            $query->bind_param("iis", $idwine, $id_user, $type);
+            $query->execute();
+            $message = "Vin ajouté avec succès !";
         }
     }
 }
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_grenier'])) {
     $idwine = isset($_POST['idwine']) ? $_POST['idwine'] : null;
@@ -109,15 +103,57 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_grenier'])) {
         .hidden {
             display: none;
         }
+        .modal {
+            position: fixed;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.4);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+        }
+        .close {
+            cursor: pointer;
+            font-size: 24px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const message = document.getElementById("message");
-            if (message) {
-                setTimeout(() => {
-                    message.classList.add("hidden");
-                }, 5000);
+            const modal = document.getElementById("caveModal");
+            const closeModal = document.querySelector("#caveModal .close");
+
+            function showCaveOptions() {
+                modal.style.display = "flex";
             }
+
+            function closeCaveOptions() {
+                modal.style.display = "none";
+            }
+
+            document.querySelector(".button-cave").addEventListener("click", function (event) {
+                event.preventDefault(); 
+                showCaveOptions();
+            });
+
+            closeModal.addEventListener("click", function () {
+                closeCaveOptions();
+            });
+
+            window.addEventListener("click", function (event) {
+                if (event.target === modal) {
+                    closeCaveOptions();
+                }
+            });
         });
     </script>
 
@@ -318,11 +354,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_grenier'])) {
 
 
     <div class="tooltip1">
-        <form method="post" action="">
-            <input type="hidden" name="idwine" value="<?php echo $row['idwine']; ?>">
-            <button type="submit" name="add_to_cave" class="button-cave">Ajouter à la cave</button>
-        </form>
+        <button type="button" class="button-cave" onclick="showCaveOptions()">Ajouter à la cave</button>
     </div>
+
+    <div id="caveModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Ajouter à la cave</h2>
+            <form method="post" action="">
+                <input type="hidden" name="idwine" value="<?php echo $row['idwine']; ?>">
+                <button type="submit" name="add_to_cave" value="real">Ajouter à ma cave réelle</button>
+                <button type="submit" name="add_to_cave" value="wishlist">Ajouter à ma liste d'envie</button>
+            </form>
+        </div>
+    </div>
+
+
 
     <div class="tooltip2">
         <form method="post" action="">

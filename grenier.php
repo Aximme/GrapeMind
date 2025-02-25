@@ -81,10 +81,10 @@ $result = $query->get_result();
                     <div class="delete-container">
                         <form method="POST" action="remove_wine.php" class="delete-form">
                             <input type="hidden" name="idwine" value="<?php echo htmlspecialchars($row['idwine']); ?>">
-                            <input type="hidden" name="context" value="cave">
+                            <input type="hidden" name="context" value="grenier">
                             <button type="submit" style="background: none; border: none; padding: 0; position: relative;">
                                 <img src="assets/images/cross.png" alt="Supprimer" class="delete-icon">
-                                <span class="tooltip">Supprimer le vin de la cave</span>
+                                <span class="tooltip">Supprimer le vin du grenier</span>
                             </button>
                         </form>
                     </div>
@@ -96,6 +96,17 @@ $result = $query->get_result();
     </div>
 </div>
 <?php include __DIR__ . '/components/footer.php'; ?>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const message = document.querySelector(".success-message");
+        if (message) {
+            setTimeout(() => {
+                message.style.opacity = "0";
+                setTimeout(() => message.style.display = "none", 500);
+            }, 3000);
+        }
+    });
+</script>
 
 </body>
 </html>
