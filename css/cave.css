@@ -47,3 +47,54 @@ button:hover .tooltip {
     visibility: visible;
     opacity: 1;
 }
+.success-message {
+    color: green;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+    border-radius: 5px;
+    width: 50%;
+    margin: 10px auto;
+}
+
+
+label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+
+#cave-type {
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #f8f8f8;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+}
+
+#cave-type:hover {
+    background-color: #e0e0e0;
+}
+
+#cave-type:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+#cave-type {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: white url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="black"><path d="M7 10l5 5 5-5H7z"></path></svg>') no-repeat right 10px center;
+    background-size: 16px;
+    padding-right: 30px;
+}
+

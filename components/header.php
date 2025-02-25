@@ -16,12 +16,10 @@
                 <img src="/GrapeMind/assets/images/image_header.png" alt="GrapeMind Logo" height="40">
                 <span class="ms-2 fw-bold">GrapeMind</span>
             </a>
-
             <!-- Bouton de menu responsive -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <!-- Menu de navigation -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
@@ -30,7 +28,6 @@
                     <li class="nav-item"><a class="nav-link fw-bold" href="/GrapeMind/events.php">Événements</a></li>
                     <li class="nav-item"><a class="nav-link fw-bold" href="/GrapeMind/about.php">À propos</a></li>
                 </ul>
-
                 <!-- Authentification + Menu déroulant du profil -->
                 <div class="d-flex align-items-center">
                     <?php if (!isset($_SESSION['user'])): ?>
@@ -55,7 +52,6 @@
         </div>
     </nav>
 </header>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
