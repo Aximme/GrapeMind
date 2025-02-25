@@ -28,8 +28,7 @@ $message = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cave'])) {
     $idwine = isset($_POST['idwine']) ? $_POST['idwine'] : null;
     $id_user = isset($_SESSION['user']['id']) ? $_SESSION['user']['id'] : null;
-    $type = $_POST['add_to_cave']; // 'real' ou 'wishlist'
-
+    $type = $_POST['add_to_cave'];
     if ($idwine && $id_user) {
         $checkQuery = $conn->prepare("SELECT * FROM cave WHERE idwine = ? AND id_user = ? AND type = ?");
         $checkQuery->bind_param("iis", $idwine, $id_user, $type);
