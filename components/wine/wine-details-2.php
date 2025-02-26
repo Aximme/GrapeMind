@@ -5,12 +5,8 @@ global $conn;
 require_once '../../db.php';
 
 
-$vin_id = isset($_GET['vin_id']) ? intval($_GET['vin_id']) : 0;
+$vin_id = isset($_SESSION['vin_id']) ? $_SESSION['vin_id'] : 111630;
 
-if ($vin_id == 0) {
-    echo "Aucun vin spécifié.";
-    exit;
-}
 
 $sql = "
     SELECT 
