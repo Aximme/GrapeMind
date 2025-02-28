@@ -34,6 +34,14 @@ $conn->close();
 
 
 </head>
+
+<?php
+if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+    include 'ML_chatbot/UI/chat_component.php';
+}
+?>
+
+
 <body class="<?= isset($_SESSION['age_verified']) ? '' : 'blur' ?>">
 
 <div id="scene-container">

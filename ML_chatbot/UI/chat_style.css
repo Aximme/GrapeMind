@@ -1,0 +1,133 @@
+#chatbot-container {
+    width: 320px;
+    height: 450px;
+    position: fixed;
+    bottom: 90px;
+    right: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: #fff;
+    color: #333;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    z-index: 9999;
+  }
+  
+  #chatbot-container.chatbot-closed {
+    display: none;
+  }
+  
+  #chatbot-header {
+    background: linear-gradient(25deg, #7b2336, #b43757);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+  }
+  
+  #chatbot-title {
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  #chatbot-close-button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  #chatbot-messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+  
+  .chatbot-message {
+    margin-bottom: 10px;
+    max-width: 80%;
+    clear: both;
+    word-wrap: break-word;
+    padding: 8px 12px;
+    border-radius: 12px;
+  }
+  
+  .chatbot-message.user {
+    background-color: #fff;
+    color: #333;
+    float: right;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 12px 0 12px 12px;
+  }
+  
+  .chatbot-message.bot {
+    background: linear-gradient(25deg, #7b2336, #b43757);
+    color: #fff;
+    float: left;
+    border-radius: 0 12px 12px 12px;
+  }
+  
+  #chatbot-input-container {
+    display: flex;
+    background: linear-gradient(25deg, #7b2336, #b43757);
+    padding: 10px;
+  }
+  
+  #chatbot-input {
+    flex: 1;
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    outline: none;
+  }
+  
+  #chatbot-send {
+    background-color: #fff;
+    color: #7b2336;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin-left: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  #chatbot-bubble {
+    width: 60px;
+    height: 60px;
+    background-color: #d4adb6;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+    text-align: center;
+    padding: 5px;
+    z-index: 9998;
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(123,35,54, 0.7);
+    }
+    70% {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px 20px rgba(123,35,54, 0);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(123,35,54, 0);
+    }
+  }  
