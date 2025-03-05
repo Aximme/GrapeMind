@@ -123,5 +123,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="submit">Enregistrer le rappel</button>
         </form>
     </div>
+</div>
     <?php include __DIR__ . '/components/footer.php'; ?>
 </html>

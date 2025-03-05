@@ -50,21 +50,21 @@ $result = $query->get_result();
         <?php if ($result->num_rows > 0): ?>
             <?php while ($row = $result->fetch_assoc()): ?>
                 <div class="result-item">
-                    <a href="components/wine/wine-details.php?vin_id=<?php echo $row['idwine']; ?>" class="result-item-link">
+                    <!-- Lien modifié pour envoyer l'ID via POST -->
+                    <a href="javascript:void(0);" onclick="setVinId(<?php echo $row['idwine']; ?>)" class="result-item-link">
                         <img src="<?php echo htmlspecialchars($row['thumb']); ?>" alt="<?php echo htmlspecialchars($row['name']); ?>" class="wine-thumbnail">
                         <div class="wine-details">
                             <h2><?php echo htmlspecialchars($row['name']); ?></h2>
                             <p class="wine-price">Prix : <?php echo htmlspecialchars(number_format($row['price'], 2)); ?> €</p>
                             <p class="wine-taste">Goûts :
-                                <?php echo ($row['flavorGroup_1']); ?>,
-                                <?php echo ($row['flavorGroup_2']); ?>,
-                                <?php echo ($row['flavorGroup_3']); ?>
+                                <?php echo $row['flavorGroup_1']; ?>,
+                                <?php echo $row['flavorGroup_2']; ?>,
+                                <?php echo $row['flavorGroup_3']; ?>
                             </p>
                             <div class="stars_notation">
                                 Note :
                                 <?php
                                 $rating = isset($row['average_rating']) ? floatval($row['average_rating']) : 0;
-
                                 for ($i = 1; $i <= 5; $i++) {
                                     if ($i <= floor($rating)) {
                                         echo '<img src="assets/images/StarFilled.png" alt="filled star" class="star">';
@@ -95,7 +95,10 @@ $result = $query->get_result();
         <?php endif; ?>
     </div>
 </div>
+
 <?php include __DIR__ . '/components/footer.php'; ?>
+
+<!-- Script pour masquer le message de succès -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const message = document.querySelector(".success-message");
@@ -106,6 +109,25 @@ $result = $query->get_result();
             }, 3000);
         }
     });
+</script>
+
+<!-- Fonction JavaScript pour envoyer l'ID du vin via POST et rediriger -->
+<script>
+    function setVinId(vinId) {
+        fetch("/GrapeMind/components/wine/set_vin_id.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: "vin_id=" + vinId
+        })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data);
+                window.location.href = "/GrapeMind/components/wine/wine-details.php";
+            })
+            .catch(error => console.error("Erreur lors de l'envoi de l'ID :", error));
+    }
 </script>
 
 </body>
