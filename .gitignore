@@ -42,3 +42,7 @@ ML_chatbot/wine_label_vocab.json
 ML_chatbot/wine_to_food_model.pt
 
 
+recommendations.json
+
+api/wine_events.json
+

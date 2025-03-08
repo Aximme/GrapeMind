@@ -33,6 +33,7 @@ $conn->close();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.1/nouislider.min.js"></script>
 
 
+
 </head>
 
 <?php
@@ -132,23 +133,14 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
 <script src="js/index_carrousel.js"></script>
 <h2 class="carousel-title">Recommandations Personnalisées</h2>
 <div class="carousel-container">
-    <button class="carousel-button left" onclick="previousSlide()">❮</button>
+    <button class="carousel-button left" onclick="previousSlide();">❮</button>
+    <button class="carousel-button right" onclick="nextSlide();">❯</button>
     <div class="carousel">
         <div class="carousel-track">
-            <?php foreach ($wines as $wine): ?>
-                <div class="carousel-item">
-                    <a href="components/wine/set_vin_id.php?id=<?php echo htmlspecialchars($wine['idwine']); ?>" class="carousel-item-link">
-                    <img src="<?php echo htmlspecialchars($wine['thumb']); ?>" alt="<?php echo htmlspecialchars($wine['name']); ?>" class="wine-thumbnail">
-                    <div class="wine-details">
-                        <h3><?php echo htmlspecialchars($wine['name']); ?></h3>
-                        <p class="wine-price"><?php echo ($wine['price']); ?> €</p>
-                    </div>
-                </div>
-            <?php endforeach; ?>
         </div>
     </div>
-    <button class="carousel-button right" onclick="nextSlide()">❯</button>
 </div>
+
 <?php include __DIR__ . '/components/footer.php'; ?>
 </body>
 </html>

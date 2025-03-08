@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #ffffff;
+    line-height: normal;
 }
 
 .header {
@@ -60,7 +61,6 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-
 .navbar-nav {
     margin-left: auto;
 }
@@ -71,6 +71,16 @@ body {
 
 .dropdown-menu {
     min-width: 200px;
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 10;
+    text-align: center;
 }
 
 .dropdown-item:hover {
@@ -90,20 +100,6 @@ body {
     color: #333;
 }
 
-/* Style du menu déroulant */
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    border-radius: 5px;
-    z-index: 10;
-    text-align: center;
-}
-
 /* Style des liens du menu déroulant */
 .dropdown-menu a {
     display: block;
@@ -119,11 +115,6 @@ body {
     border-radius: 5px;
 }
 
-body {
-    margin: 0;
-    line-height: normal;
-}
-
 .popup-overlay {
     display: flex;
     flex-direction: column;
@@ -131,8 +122,7 @@ body {
     inset: 0;
 }
 
-
-                                /*               Page A Propos                */
+/*               Page A Propos                */
 /* Container principal */
 .about-container {
     max-width: 1200px;
@@ -203,11 +193,11 @@ iframe {
     margin-top: 15px;
 }
 
-                            /*              Bouteille 3D INDEX                */
+/*              Bouteille 3D INDEX                */
 #scene-container {
     top: 70px;
     right: 0;
-    left:800px;
+    left: 800px;
     width: 50vw;
     height: 600px;
     background-color: transparent;
@@ -223,11 +213,17 @@ iframe {
     font-family: Arial, sans-serif;
 }
 
-
-                            /*              Carrousel INDEX                */
+/*              Carrousel INDEX                */
+/* Réinitialisation complète des styles Bootstrap pour le carrousel */
+.my-custom-carousel,
+.my-custom-carousel *:not(img) {
+    all: initial !important;
+    box-sizing: border-box !important;
+    font-family: Arial, sans-serif !important;
+}
 
 .carousel-title {
-    padding-top:250px;
+    padding-top: 250px;
     font-size: 2rem;
     padding-left: 200px;
     text-align: left;
@@ -237,104 +233,121 @@ iframe {
 }
 
 .carousel-container {
-    padding-top:100px;
-    position: relative;
+    padding-top: 100px;
+    position: relative !important;
     max-width: 1200px;
-    margin: auto;
-    overflow: visible;
-    padding: 30px 0;
+    margin: 0 auto !important;
+    overflow: visible !important;
+    padding: 30px 0 !important;
 }
 
 .carousel {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    overflow: hidden;
-    position: relative;
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    overflow: hidden !important;
+    position: relative !important;
+    width: 100% !important;
 }
 
 .carousel-track {
-    display: flex;
-    gap: 3px;
-    transition: transform 0.5s ease-in-out;
-    width: 100%;
+    display: flex !important;
+    gap: 20px !important;
+    transition: transform 0.5s ease-in-out !important;
+    width: 100% !important;
+    position: relative !important;
+    left: 0 !important;
 }
 
 .carousel-item {
-    flex: 0 0 25%; /* Bouger pour le nb de vins a afficher */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0px;
-    box-sizing: border-box;
-    text-align: center;
-    gap: 5px;
+    flex: 0 0 calc(25% - 15px) !important;
+    min-width: 200px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 10px !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
+    transform: none !important;
+    margin: 0 !important;
+    float: none !important;
 }
 
-/* Image bouteille vin */
 .wine-thumbnail {
     width: 100px;
     height: auto;
-    margin-bottom: 10px;
+    margin: 0 auto 10px auto !important;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: block !important;
+    position: static !important;
+}
+
+.wine-details {
+    width: 100% !important;
 }
 
 .wine-details h3 {
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 5px;
-    font-weight: bold;
+    font-size: 1rem !important;
+    color: #333 !important;
+    margin-bottom: 5px !important;
+    font-weight: bold !important;
+    text-align: center !important;
 }
 
 .wine-details .wine-price {
-    font-size: 1rem;
-    color: #777;
+    font-size: 1rem !important;
+    color: #777 !important;
+    text-align: center !important;
 }
 
 /* Boutons carousel */
 .carousel-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
-    z-index: 10;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    color: #fff !important;
+    border: none !important;
+    font-size: 2rem !important;
+    cursor: pointer !important;
+    z-index: 10 !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 .carousel-button.left {
-    left: -20px;
+    left: -20px !important;
 }
 
 .carousel-button.right {
-    right: -20px;
+    right: -20px !important;
 }
 
 .carousel-button:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.8) !important;
 }
 
 .carousel-item-link {
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.2s ease, color 0.2s ease;
+    text-decoration: none !important;
+    color: inherit !important;
+    transition: transform 0.2s ease, color 0.2s ease !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
 }
 
 .carousel-item-link:hover .wine-details h3 {
-
-    transform: scale(1.1);
+    transform: scale(1.1) !important;
 }
 
 .carousel-item-link:hover .wine-price {
-
-    transform: scale(1.1);
+    transform: scale(1.1) !important;
 }

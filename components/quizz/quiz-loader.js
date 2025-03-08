@@ -5,11 +5,13 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     async function fetchQuestions() {
         try {
-            const response = await fetch("save_quiz.php");
+            const response = await fetch("quiz_loader.php");
             if (!response.ok) throw new Error("Erreur lors de la récupération des questions.");
-            return await response.json();
+
+            const data = await response.json();
+            return data;
         } catch (error) {
-            console.error("Erreur :", error);
+            console.error("Erreur lors du chargement des questions :", error);
             document.getElementById("quiz-container").innerHTML = "<p>Impossible de charger les questions. Veuillez réessayer plus tard.</p>";
             return [];
         }
@@ -40,7 +42,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 const textareaField = document.createElement("textarea");
                 textareaField.classList.add("input");
                 textareaField.placeholder = "Tapez votre réponse ici...";
-                textareaField.rows = 4; // Nombre de lignes visibles
+                textareaField.rows = 4;
                 textareaField.addEventListener("input", checkUserInput);
                 answersContainer.appendChild(textareaField);
             } else if (question.type === "multiple") {
@@ -100,20 +102,27 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     function sendResponses() {
-        document.getElementById("quiz-container").innerHTML = "<p>Envoi en cours...</p>";
+        document.getElementById("quiz-container").innerHTML = `
+                <p>Merci pour vos réponses</p>
+                <button id="home-btn" class="next-button">Retour à l'accueil</button>
+            `
+        document.getElementById("home-btn").addEventListener("click", function () {
+            window.location.href = "/GrapeMind/index.php";
+        });
 
         fetch("save_quiz.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ responses: userPreferences })
         })
-            .then(response => response.json())
+            .then(response => response.text())
             .then(data => {
-                document.getElementById("quiz-container").innerHTML = `<p>${data.message || data.error}</p>`;
-            })
-            .catch(error => {
-                console.error("Erreur :", error);
-                document.getElementById("quiz-container").innerHTML = "<p>Une erreur est survenue. Veuillez réessayer.</p>";
+                try {
+                    const jsonData = JSON.parse(data);
+                } catch (error) {
+                    console.error("Erreur JSON :", error);
+                    document.getElementById("quiz-container").innerHTML = `<p>Erreur de réponse du serveur : ${data}</p>`;
+                }
             });
     }
 
@@ -123,7 +132,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         setTimeout(() => { this.disabled = false; }, 500);
     });
 
-    // Charger la première question
     if (quizData.length > 0) {
         loadQuestion(currentIndex);
     } else {
