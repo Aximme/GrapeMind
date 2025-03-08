@@ -23,13 +23,15 @@
             <option value="">-- Sélectionnez une région --</option>
         </select>
         <div id="region-details">
-            <div class="info-card">
-                <h2>🇫🇷 Aucune région sélectionnée</h2>
+            <h2>Informations sur la région</h2>
+            <div class="info-card" id="region-info">
                 <p>🗺️ Sélectionnez une région dans le menu déroulant pour voir ses détails.</p>
             </div>
+            <div id="wine-list"></div> <!-- Zone pour afficher les vins -->
         </div>
     </div>
 </div>
+
 
 <script src="/GrapeMind/js/map/map-main.js"></script>
 </body>
