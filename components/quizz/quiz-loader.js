@@ -7,9 +7,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         try {
             const response = await fetch("quiz_loader.php");
             if (!response.ok) throw new Error("Erreur lors de la récupération des questions.");
-
-            const data = await response.json();
-            return data;
+            return await response.json();
         } catch (error) {
             console.error("Erreur lors du chargement des questions :", error);
             document.getElementById("quiz-container").innerHTML = "<p>Impossible de charger les questions. Veuillez réessayer plus tard.</p>";
@@ -48,9 +46,9 @@ document.addEventListener("DOMContentLoaded", async function () {
             } else if (question.type === "multiple") {
                 question.options.forEach((option, i) => {
                     let id = `value-${index}-${i}`;
-
                     let input = document.createElement("input");
-                    input.type = "checkbox";
+                    input.type = (index === 0 || index === quizData.length - 1) ? "checkbox" : "radio";
+                    input.name = `question-${index}`;
                     input.id = id;
                     input.value = option;
 
@@ -63,8 +61,26 @@ document.addEventListener("DOMContentLoaded", async function () {
                     answersContainer.appendChild(input);
                     answersContainer.appendChild(label);
                 });
-            }
 
+                // Ajouter "Ne sais pas" sauf pour la première et la dernière question
+                if (index !== 0 && index !== quizData.length - 1) {
+                    let dontKnowId = `value-${index}-dontknow`;
+                    let dontKnowInput = document.createElement("input");
+                    dontKnowInput.type = "radio";
+                    dontKnowInput.name = `question-${index}`;
+                    dontKnowInput.id = dontKnowId;
+                    dontKnowInput.value = "Ne sais pas";
+
+                    let dontKnowLabel = document.createElement("label");
+                    dontKnowLabel.htmlFor = dontKnowId;
+                    dontKnowLabel.innerText = "Ne sais pas";
+
+                    dontKnowInput.addEventListener("change", checkSelection);
+
+                    answersContainer.appendChild(dontKnowInput);
+                    answersContainer.appendChild(dontKnowLabel);
+                }
+            }
             document.getElementById("next-btn").disabled = true;
         }, 300);
     }
@@ -103,9 +119,10 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     function sendResponses() {
         document.getElementById("quiz-container").innerHTML = `
-                <p>Merci pour vos réponses</p>
-                <button id="home-btn" class="next-button">Retour à l'accueil</button>
-            `
+            <p>Merci pour vos réponses</p>
+            <button id="home-btn" class="next-button">Retour à l'accueil</button>
+        `;
+
         document.getElementById("home-btn").addEventListener("click", function () {
             window.location.href = "/GrapeMind/index.php";
         });
@@ -118,7 +135,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             .then(response => response.text())
             .then(data => {
                 try {
-                    const jsonData = JSON.parse(data);
+                    JSON.parse(data);
                 } catch (error) {
                     console.error("Erreur JSON :", error);
                     document.getElementById("quiz-container").innerHTML = `<p>Erreur de réponse du serveur : ${data}</p>`;
