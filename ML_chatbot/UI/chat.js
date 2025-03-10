@@ -36,8 +36,8 @@ document.addEventListener('DOMContentLoaded', function() {
         displayMessage(userMessage, 'user');
         inputField.value = '';
       
-        // Modifier cette partie pour appeler votre API Flask
-        fetch('http://127.0.0.1:5000/chat', {
+        // Appel mistral preprocess a l'envoi du message
+        fetch('http://127.0.0.1:5001/chat', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

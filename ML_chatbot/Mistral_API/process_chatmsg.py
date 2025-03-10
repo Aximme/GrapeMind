@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import os
+import requests
 from dotenv import load_dotenv
 load_dotenv(dotenv_path="ML_chatbot/.env")
 from mistralai import Mistral
@@ -60,10 +61,22 @@ def chat():
             return jsonify({"reply": "Message vide"})
             
         try:
-            result = simplify_text_with_mistral(api_key, user_message, preprompt)
-            return jsonify({"reply": result})
+            user_input = simplify_text_with_mistral(api_key, user_message, preprompt)
+
+            ml_output = requests.post(
+                'http://127.0.0.1:5000/predict',
+                json={"query": user_input}
+            )
+
+            if ml_output.status_code == 200:
+                prediction_data = ml_output.json()
+                recommendations = prediction_data["recommendations"]
+                return jsonify({"reply": recommendations})
+            else:
+                return jsonify({"reply": f"Erreur lors de la prédiction: {ml_output.text}"})
+                
         except Exception as e:
             return jsonify({"reply": f"Erreur: {str(e)}"})
 
 if __name__ == "__main__":
-    app.run(host='127.0.0.1', port=5000, debug=True)
+    app.run(host='127.0.0.1', port=5001, debug=True) #Port 5000 : ML || Port 5001 : preprocess api Mistral

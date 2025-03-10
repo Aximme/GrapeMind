@@ -90,15 +90,14 @@ def determine_query_type(query):
 
     Si elle est perdue ca renvoie vers le modele aliments --> vins [food_to_wine] (cherchez pas de logique y en a pas)
     """
-    query_lower = query.lower()
-    wine_keywords = ['vin', 'red', 'white', 'sparkling', 'rosé']
-    food_keywords = ['pork', 'beef', 'fish', 'pasta', 'cheese', 'chicken', 'appetizer', 'snack', 'vegetarian', 'lamb', 'spicy']
-    if any(kw in query_lower for kw in wine_keywords) and not any(kw in query_lower for kw in food_keywords):
-        return 'wine'
-    elif any(kw in query_lower for kw in food_keywords):
-        return 'food'
+    query_lower = query.lower().strip()
+    first_word = query_lower.split()[0]
+    if first_word == "vin":
+        return "vin"
+    elif first_word == "aliment":
+        return "aliment"
     else:
-        return 'food'
+        return "aliment"
 
 @app.route('/predict', methods=['POST'])
 def predict_endpoint():
@@ -111,25 +110,46 @@ def predict_endpoint():
         return jsonify({"error": "Aucune query recue;"})
     
     query_type = determine_query_type(query)
-    if query_type == 'wine':
-        # Exemple : l'utilisateur indique un vin (ex: "vin rouge", "Chardonnay", etc.)
-        input_text = "vin " + query.lower()
+    if query_type is None:
+        return jsonify({"error": "Format de query invalide. Veuillez commencer par 'vin' ou 'aliment'."})
+    
+    input_text = query.lower()
+
+    if query_type == "vin":
         model = wine_to_food_model
         label_vocab = food_label_vocab
     else:
-        # Exemple : l'utilisateur indique un plat ou aliment (ex: "beef stew", "pasta")
-        input_text = "aliment " + query.lower()
         model = food_to_wine_model
         label_vocab = wine_label_vocab
-    
-    probs = predict(model, input_text, text_vocab, device)
-    threshold = 0.5
-    predicted_indices = [i for i, p in enumerate(probs) if p > threshold]
-    inv_label_vocab = {v: k for k, v in label_vocab.items()}
-    recommendations = [inv_label_vocab[i] for i in predicted_indices]
-    
-    return jsonify({"query": query, "recommendations": recommendations})
 
+    tokens = input_text.split()
+    tokens_in_vocab = [t for t in tokens if t in text_vocab]
+
+    probs = predict(model, input_text, text_vocab, device)
+    threshold = 0.4
+
+    inv_label_vocab = {v: k for k, v in label_vocab.items()}
+
+    # Recuperation du top 10 des sorties les + pertinentes
+    top10_indices = probs.argsort()[-10:][::-1]
+    recommendations = [inv_label_vocab[idx] for idx in top10_indices]
+
+    debug_info = {
+        "tokens_found": tokens_in_vocab,
+        "query_tokens": tokens,
+        "top_predictions": [
+            {"item": inv_label_vocab[idx], "probability": float(probs[idx])}
+            for idx in top10_indices
+        ],
+        "threshold_used": threshold
+    }
+    
+    return jsonify({
+        "query": query, 
+        "recommendations": recommendations,
+        "debug_info": debug_info
+    })
+    
 if __name__ == '__main__':
     if os.path.exists('wine_to_food_model.pt') and os.path.exists('food_to_wine_model.pt'):
         import json
