@@ -5,9 +5,13 @@ import requests
 from dotenv import load_dotenv
 load_dotenv(dotenv_path="ML_chatbot/.env")
 from mistralai import Mistral
+import mysql.connector
+from dotenv import load_dotenv
+load_dotenv(dotenv_path="ML_chatbot/.env")
+
 
 app = Flask(__name__)
-CORS(app)  # Permet les requêtes cross-origin
+CORS(app)
 
 def simplify_text_with_mistral(api_key, user_input, preprompt):
     client = Mistral(api_key=api_key)
@@ -53,30 +57,65 @@ Voici le message entré par l'utilisateur :
 
 @app.route('/chat', methods=['POST'])
 def chat():
-    if request.method == 'POST':
-        data = request.json
-        user_message = data.get('message', '')
+    data = request.json
+    user_message = data.get('message', '')
+    
+    if not user_message:
+        return jsonify({"reply": "Message vide"})
         
-        if not user_message:
-            return jsonify({"reply": "Message vide"})
+    try:
+        user_input = simplify_text_with_mistral(api_key, user_message, preprompt)
+#TODO : Si la reponse retournée est hors contexte alors renvoyer un message.
+        ml_output = requests.post(
+            'http://127.0.0.1:5000/predict',
+            json={"query": user_input}
+        )
+
+        if ml_output.status_code == 200:
+            prediction_data = ml_output.json()
+            reco = prediction_data.get("recommendations")
+            if reco is None:
+                return jsonify({"reply": "Aucune recommandation trouvée."})
             
-        try:
-            user_input = simplify_text_with_mistral(api_key, user_message, preprompt)
-
-            ml_output = requests.post(
-                'http://127.0.0.1:5000/predict',
-                json={"query": user_input}
-            )
-
-            if ml_output.status_code == 200:
-                prediction_data = ml_output.json()
-                recommendations = prediction_data["recommendations"]
-                return jsonify({"reply": recommendations})
+            if isinstance(reco, list):
+                wines = [wine.strip() for wine in reco]
             else:
-                return jsonify({"reply": f"Erreur lors de la prédiction: {ml_output.text}"})
+                wines = [wine.strip() for wine in reco.split(',')]
+            
+            response_message = "Voici des recommendations de vins en accord avec la nourriture que vous avez mentionnée :<br>"
+            for wine in wines:
+                wine_record = get_wine_id_by_name(wine)
+                if wine_record:
+                    wine_id, wine_name = wine_record
+                    link_html = f'<a href="#" onclick="selectSuggestion({wine_id})">Voir le vin</a>'
+                    response_message += f"- {wine_name}<br>{link_html}<br>"
+                else:
+                    response_message += f"- {wine}<br><em>ID non trouvé</em><br>"
+                        
+            return jsonify({"reply": response_message})
+        else:
+            return jsonify({"reply": f"Erreur lors de la prédiction: {ml_output.text}"})
                 
-        except Exception as e:
-            return jsonify({"reply": f"Erreur: {str(e)}"})
+    except Exception as e:
+        return jsonify({"reply": f"Erreur: {str(e)}"})
+
+
+def get_wine_id_by_name(wine_name):
+    import mysql.connector
+    conn = mysql.connector.connect(
+        host=os.getenv("DB_HOST"),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        database=os.getenv("DB_NAME")
+    )
+    cursor = conn.cursor()
+    query = "SELECT DISTINCT s.idwine, s.name FROM scrap AS s WHERE s.name LIKE %s LIMIT 1"
+    cursor.execute(query, (wine_name,))
+    result = cursor.fetchone()
+    cursor.close()
+    conn.close()
+    return result
+
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1', port=5001, debug=True) #Port 5000 : ML || Port 5001 : preprocess api Mistral
