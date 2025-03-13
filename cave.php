@@ -56,6 +56,56 @@ $result_wishlist = $query_wishlist->get_result();
         <option value="wishlist">Liste d'envie</option>
     </select>
 
+    <form method="POST" action="cave.php" class="search-bar">
+        <label for="food" class="search-label"> Que veux-tu manger ?</label>
+        <div class="search-input-container">
+            <input type="text" name="food" id="food" class="search-input" placeholder="Ex: Poulet rôti, fromage, sushi..." required>
+            <button type="submit" class="search-button">🔍 Trouver un vin</button>
+        </div>
+    </form>
+
+
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["food"])) {
+        $plat_saisi = $_POST["food"];
+
+        $query_wine = $conn->prepare("
+        SELECT * FROM cave 
+        JOIN descriptifs ON cave.idwine = descriptifs.idwine 
+        JOIN scrap ON scrap.idwine = descriptifs.idwine
+        WHERE cave.id_user = ? 
+        AND cave.type = 'real'
+        AND descriptifs.Harmonize_FR LIKE ?
+    ");
+        $like_plat = "%" . $plat_saisi . "%";
+        $query_wine->bind_param("is", $id_user, $like_plat);
+        $query_wine->execute();
+        $result_wine = $query_wine->get_result();
+
+        $num_vins = $result_wine->num_rows;
+
+        if ($num_vins > 0) {
+            echo '<div class="success-message">Recommandation pour ce plat :</div>';
+            while ($row = $result_wine->fetch_assoc()) {
+                echo '<div class="result-item">';
+                echo '<a href="javascript:void(0);" onclick="setVinId(' . $row['idwine'] . ')" class="result-item-link">';
+                echo '<img src="' . $row['thumb'] . '" alt="' . $row['name'] . '" class="wine-thumbnail">';
+                echo '<div class="wine-details">';
+                echo '<h2>' . $row['name'] . '</h2>';
+                echo '<p class="wine-price">Prix : ' . number_format($row['price'], 2) . ' €</p>';
+                echo '<p class="wine-taste">Goûts : ' . $row['flavorGroup_1'] . ', ' . $row['flavorGroup_2'] . ', ' . $row['flavorGroup_3'] . '</p>';
+                echo '</div>';
+                echo '</a>';
+                echo '</div>';
+            }
+        } else {
+            echo '<div class="error-message">Pas de vin dans votre cave pour ce plat</div>';
+        }
+
+    }
+    ?>
+
+
     <?php if (isset($_GET['success']) && $_GET['success'] == 'deleted'): ?>
         <p class="success-message">Le vin a été supprimé avec succès !</p>
     <?php endif; ?>
@@ -131,9 +181,8 @@ $result_wishlist = $query_wishlist->get_result();
 
 
         const urlParams = new URLSearchParams(window.location.search);
-        const selectedType = urlParams.get("type") || "real"; // Par défaut : real
+        const selectedType = urlParams.get("type") || "real";
 
-        // Appliquer la bonne vue
         if (selectedType === "wishlist") {
             realCave.style.display = "none";
             wishlistCave.style.display = "block";
@@ -154,15 +203,7 @@ $result_wishlist = $query_wishlist->get_result();
         });
     });
 
-    document.addEventListener("DOMContentLoaded", function () {
-        const message = document.querySelector(".success-message");
-        if (message) {
-            setTimeout(() => {
-                message.style.opacity = "0";
-                setTimeout(() => message.style.display = "none", 500);
-            }, 3000);
-        }
-    });
+
 </script>
 
 <!-- Fonction JavaScript pour envoyer l'ID du vin via POST et rediriger -->
@@ -173,7 +214,7 @@ $result_wishlist = $query_wishlist->get_result();
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
-            body: "vin_id=" + vinId
+            body: `vin_id=${vinId}`
         })
             .then(response => response.text())
             .then(data => {
@@ -183,6 +224,7 @@ $result_wishlist = $query_wishlist->get_result();
             .catch(error => console.error("Erreur lors de l'envoi de l'ID :", error));
     }
 </script>
+
 
 <?php include __DIR__ . '/components/footer.php'; ?>
 </body>
