@@ -174,9 +174,9 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <title>Résultats de recherche pour "<?php echo htmlspecialchars($query); ?>"</title>
-    <link rel="stylesheet" href="/GrapeMind/css/search_results.css">
-    <script defer src="/GrapeMind/js/loader.js"></script>
-    <script defer src="/GrapeMind/js/sort_filter.js"></script>
+    <link rel="stylesheet" href="/css/search_results.css">
+    <script defer src="/js/loader.js"></script>
+    <script defer src="/js/sort_filter.js"></script>
 </head>
 <body>
 <h1>Résultats pour "<?php echo htmlspecialchars($query); ?>"</h1>
@@ -247,7 +247,7 @@ $conn->close();
 
 <script>
     function setVinId(vinId) {
-        fetch("/GrapeMind/components/wine/set_vin_id.php", {
+        fetch("/components/wine/set_vin_id.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
@@ -257,7 +257,7 @@ $conn->close();
             .then(response => response.text())
             .then(data => {
                 console.log(data);
-                window.location.href = "/GrapeMind/components/wine/wine-details.php";
+                window.location.href = "/components/wine/wine-details.php";
             })
             .catch(error => console.error("Erreur lors de l'envoi de l'ID :", error));
     }
