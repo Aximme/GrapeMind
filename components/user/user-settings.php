@@ -2,7 +2,7 @@
 global $conn;
 session_start();
 if (!isset($_SESSION['user'])) {
-    header("Location: /GrapeMind/login.php");
+    header("Location: /../../login.php");
     exit();
 }
 require_once __DIR__ . '/../../db.php';
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
             if (in_array($file['type'], $allowedTypes)) {
                 if (move_uploaded_file($file['tmp_name'], $uploadFilePath)) {
-                    $profilePicturePath = "/GrapeMind/assets/images/profile_pictures/" . $fileName;
+                    $profilePicturePath = "/assets/images/profile_pictures/" . $fileName;
 
                     $stmt = $conn->prepare("UPDATE users SET profile_picture = ? WHERE id = ?");
                     $stmt->bind_param("si", $profilePicturePath, $userId);
@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("i", $userId);
         if ($stmt->execute()) {
             session_destroy();
-            echo "<script>alert('Compte supprimé avec succès !'); window.location.href = '/GrapeMind/index.php';</script>";
+            echo "<script>alert('Compte supprimé avec succès !'); window.location.href = '/../../index.php';</script>";
         } else {
             echo "<script>alert('Erreur lors de la suppression du compte.');</script>";
         }
@@ -109,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, width=device-width">
-    <link rel="stylesheet" href="/GrapeMind/css/user/user-settings.css"/>
+    <link rel="stylesheet" href="/css/user/user-settings.css"/>
     <script>
         function confirmDeletion() {
             if (confirm("Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.")) {
@@ -138,7 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <input type="text" id="username" name="username" class="text-field"
                                    placeholder="Entrez votre nouveau nom d'utilisateur">
                             <button type="submit" name="update_username" class="button-component">
-                                <img src="/GrapeMind/assets/images/edit.png" alt="Modifier" style="width:16px; height:16px;">
+                                <img src="/assets/images/edit.png" alt="Modifier" style="width:16px; height:16px;">
                             </button>
                         </div>
                     </div>
@@ -152,7 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <input type="email" id="email" name="email" class="text-field"
                                    placeholder="Entrez votre nouvelle adresse mail">
                             <button type="submit" name="update_email" class="button-component">
-                                <img src="/GrapeMind/assets/images/edit.png" alt="Modifier" style="width:16px; height:16px;">
+                                <img src="/assets/images/edit.png" alt="Modifier" style="width:16px; height:16px;">
                             </button>
                         </div>
                     </div>
@@ -166,7 +166,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <input type="password" id="password" name="password" class="text-field"
                                    placeholder="Entrez votre nouveau mot de passe">
                             <button type="submit" name="update_password" class="button-component">
-                                <img src="/GrapeMind/assets/images/edit.png" alt="Modifier" style="width:16px; height:16px;">
+                                <img src="/assets/images/edit.png" alt="Modifier" style="width:16px; height:16px;">
                             </button>
                         </div>
                     </div>

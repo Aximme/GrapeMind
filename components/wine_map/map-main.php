@@ -33,6 +33,6 @@
 </div>
 
 
-<script src="/GrapeMind/js/map/map-main.js"></script>
+<script src="/js/map/map-main.js"></script>
 </body>
 </html>
