@@ -9,7 +9,7 @@ function fetchSuggestions(query) {
 
     suggestionsContainer.style.display = 'block';
 
-    fetch(`/GrapeMind/components/wine_map/search_bar_server.php?query=${encodeURIComponent(query)}`)
+    fetch(`/components/wine_map/search_bar_server.php?query=${encodeURIComponent(query)}`)
         .then(response => response.json())
         .then(data => {
             let suggestions = "";
@@ -27,7 +27,7 @@ function fetchSuggestions(query) {
 
 function selectSuggestion(vinId) {
     // Envoie l'ID du vin sélectionné à `set_vin_id.php` pour le stocker en session
-    fetch("/GrapeMind/components/wine/set_vin_id.php", {
+    fetch("/components/wine/set_vin_id.php", {
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded"
@@ -37,7 +37,7 @@ function selectSuggestion(vinId) {
         .then(response => response.text())
         .then(data => {
             console.log(data);
-            window.location.href = "/GrapeMind/components/wine/wine-details.php";
+            window.location.href = "/components/wine/wine-details.php";
         })
         .catch(error => console.error("Erreur lors de l'envoi de l'ID :", error));
 }
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault(); // Empêche le rechargement de la page
             const query = document.querySelector('.search-bar').value;
             if (query) {
-                window.location.href = `/GrapeMind/components/wine_map/search_results.php?query=${encodeURIComponent(query)}`;
+                window.location.href = `/components/wine_map/search_results.php?query=${encodeURIComponent(query)}`;
             }
         });
     } else {
