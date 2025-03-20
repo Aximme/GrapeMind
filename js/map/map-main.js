@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const regionDetails = document.getElementById("region-details");
 
     function loadWineries() {
-        fetch("/GrapeMind/components/wine_map/get_winery_coordinates.php")
+        fetch("/components/wine_map/get_winery_coordinates.php")
             .then(response => response.json())
             .then(wineries => {
                 markers.clearLayers();
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function loadRegions() {
-        fetch("/GrapeMind/components/wine_map/regions.json")
+        fetch("/components/wine_map/regions.json")
             .then(response => response.json())
             .then(regions => {
                 regions.forEach((region, index) => {
@@ -64,7 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     map.setView(selectedRegion.coords, 7);
                     regionDetails.innerHTML = `
                         <div class="info-card">
-                            <img src="${selectedRegion.image}" alt="${selectedRegion.name}">
                             <h2>${selectedRegion.name}</h2>
                             <p>${selectedRegion.description}</p>
                         </div>
@@ -76,17 +75,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function selectSuggestion(vinId) {
-        fetch("/GrapeMind/components/wine/set_vin_id.php", {
+        fetch("/components/wine/set_vin_id.php", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: `vin_id=${encodeURIComponent(vinId)}`
         })
-            .then(() => window.location.href = "/GrapeMind/components/wine/wine-details.php")
+            .then(() => window.location.href = "/components/wine/wine-details.php")
             .catch(error => console.error("Erreur lors de l'envoi de l'ID :", error));
     }
 
     window.loadWines = function (wineryID) {
-        fetch(`/GrapeMind/components/wine_map/get_wines_by_winery.php?winery_id=${wineryID}`)
+        fetch(`/components/wine_map/get_wines_by_winery.php?winery_id=${wineryID}`)
             .then(response => response.json())
             .then(wines => {
                 let wineSection = document.getElementById("wine-list");
