@@ -64,7 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     map.setView(selectedRegion.coords, 7);
                     regionDetails.innerHTML = `
                         <div class="info-card">
-                            <img src="${selectedRegion.image}" alt="${selectedRegion.name}">
                             <h2>${selectedRegion.name}</h2>
                             <p>${selectedRegion.description}</p>
                         </div>
