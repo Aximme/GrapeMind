@@ -4,4 +4,8 @@ python-dotenv
 torch
 transformers
 sentence-transformers
-ast
+xgboost
+numpy
+pandas
+scikit-learn
+scipy
