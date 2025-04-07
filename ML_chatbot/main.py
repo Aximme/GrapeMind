@@ -249,8 +249,8 @@ if __name__ == '__main__':
         wine_to_food_model = joblib.load('wine_to_food_model.pkl')
         food_to_wine_model = joblib.load('food_to_wine_model.pkl')
         print("✅  Modèles pré-entraînés chargés.\n")
-    app.run(debug=False, port=5000, use_reloader=False)
 
+    app.run(host="0.0.0.0", port=5000, debug=False, use_reloader=False)
 
 
 
