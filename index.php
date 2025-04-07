@@ -38,7 +38,7 @@ $conn->close();
 
 <?php
 if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
-    include '/ML_chatbot/UI/chat_component.php';
+    include __DIR__ . '/ML_chatbot/UI/chat_component.php';
 }
 ?>
 
@@ -50,7 +50,7 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
 </div>
 <div class="search-bar-wrapper">
     <div class="search-bar-container">
-        <?php include '/components/search_bar.php'; ?>
+        <?php include __DIR__ . '/components/search_bar.php'; ?>
     </div>
 </div>
 <div class="wine-selection">
