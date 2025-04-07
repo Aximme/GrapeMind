@@ -2,7 +2,7 @@
 session_start();
 if (!isset($_SESSION['user'])) {
     // Redirection vers la page de connexion si l'utilisateur n'est pas connecté
-    header('Location: /GrapeMind/login.php');
+    header('Location: /login.php');
     exit;
 }
 include __DIR__ . '/../header.php';

@@ -1,4 +1,4 @@
-<?php include '../header.php'; ?>
+<?php include __DIR__ . '../header.php'; ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -8,7 +8,7 @@
     <title>Carte de France</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <link rel="stylesheet" href="/GrapeMind/css/map/map-main.css">
+    <link rel="stylesheet" href="/css/map/map-main.css">
 
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
@@ -33,6 +33,6 @@
 </div>
 
 
-<script src="/GrapeMind/js/map/map-main.js"></script>
+<script src="/js/map/map-main.js"></script>
 </body>
 </html>

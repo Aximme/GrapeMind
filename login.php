@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'components/header.php';
+include __DIR__ . '/components/header.php';
 
 ?>
 <!DOCTYPE html>

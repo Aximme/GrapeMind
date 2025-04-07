@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once('db.php');
-include 'components/header.php';
+require_once __DIR__ . ('/db.php');
+include __DIR__ . '/components/header.php';
 
 if (!isset($_SESSION['user'])) {
     header("Location: login.php");

@@ -1,7 +1,7 @@
 <?php
 
 global $conn;
-require_once('db.php');
+require_once __DIR__ . ('/db.php');
 
 if (isset($_GET['email'])) {
     $email = htmlspecialchars($_GET['email']);

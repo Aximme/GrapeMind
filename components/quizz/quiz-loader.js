@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         `;
 
         document.getElementById("home-btn").addEventListener("click", function () {
-            window.location.href = "/GrapeMind/index.php";
+            window.location.href = "/index.php";
         });
 
         fetch("save_quiz.php", {

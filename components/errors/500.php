@@ -29,10 +29,10 @@
 </head>
 <body>
 <div class="error">
-    <img src="/GrapeMind/assets/images/error.png" alt="Error image">
+    <img src="/assets/images/error.png" alt="Error image">
 <h1>500</h1>
 <p>Oups ! Quelque chose s'est mal passé de notre côté.</p>
-<p>Veuillez réessayer plus tard ou <a href="/GrapeMind/index.php">retourner à la page d'accueil</a>.</p>
+<p>Veuillez réessayer plus tard ou <a href="/index.php">retourner à la page d'accueil</a>.</p>
 </div>
 </body>
 </html>

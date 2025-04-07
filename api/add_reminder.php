@@ -1,5 +1,5 @@
 <?php
-include '../db.php'; // Connexion à la base de données
+include __DIR__ . '../db.php'; // Connexion à la base de données
 session_start();
 
 if (!isset($_SESSION['user_id'])) {

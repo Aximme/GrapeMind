@@ -115,7 +115,7 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
         <?php endif; ?>
 
         yesButton.addEventListener('click', function () {
-            fetch('user-verify_age.php')
+            fetch('/user-verify_age.php')
                 .then(() => {
                     agePopup.style.display = 'none';
                     document.body.classList.remove('blur');

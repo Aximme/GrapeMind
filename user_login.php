@@ -1,7 +1,7 @@
 <?php
 session_start();
 global $conn;
-require_once('db.php');
+require_once __DIR__ .('/db.php');
 
 header('Content-Type: application/json');
 

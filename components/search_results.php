@@ -1,7 +1,7 @@
 <?php
 session_start();
 include __DIR__ . '/../db.php';
-include '../components/header.php';
+include __DIR__ . '/header.php';
 
 global $conn;
 

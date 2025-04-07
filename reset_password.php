@@ -1,5 +1,6 @@
 <?php
-global$conn; require 'db.php';
+global$conn; 
+require __DIR__ . 'db.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $token = $_POST['token'];

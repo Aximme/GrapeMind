@@ -30,9 +30,9 @@
     </style>
 </head>
 <body>
-<img src="/GrapeMind/assets/images/error.png" alt="Error image">
+<img src="/assets/images/error.png" alt="Error image">
 <h1>404</h1>
 <p>Oups ! La page que vous cherchez n'existe pas.</p>
-<p><a href="/GrapeMind/index.php">Retour à la page d'accueil</a></p>
+<p><a href="/index.php">Retour à la page d'accueil</a></p>
 </body>
 </html>
