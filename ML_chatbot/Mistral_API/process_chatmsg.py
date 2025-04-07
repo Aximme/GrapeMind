@@ -3,11 +3,11 @@ from flask_cors import CORS
 import os
 import requests
 from dotenv import load_dotenv
-load_dotenv(dotenv_path="ML_chatbot/.env")
+load_dotenv(dotenv_path="../.env")
 from mistralai import Mistral
 import mysql.connector
 from dotenv import load_dotenv
-load_dotenv(dotenv_path="ML_chatbot/.env")
+load_dotenv(dotenv_path="../.env")
 
 
 app = Flask(__name__)
