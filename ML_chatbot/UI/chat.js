@@ -164,7 +164,7 @@ function createLoadingCard() {
   
   const gifContainer = document.createElement('img');
   gifContainer.className = 'loading-card-gif';
-  gifContainer.src = '/GrapeMind/assets/images/loader.gif';
+  gifContainer.src = '../../assets/images/loader.gif';
   gifContainer.alt = 'Loading';
   
   loadingCard.appendChild(textContainer);
@@ -183,12 +183,12 @@ function createLoadingCard() {
 });
 
 function selectSuggestion(vinId) {
-  fetch("/GrapeMind/components/wine/set_vin_id.php", {
+  fetch("components/wine/set_vin_id.php", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: "vin_id=" + encodeURIComponent(vinId)
   })
-  .then(() => window.location.href = "/GrapeMind/components/wine/wine-details.php")
+  .then(() => window.location.href = "components/wine/wine-details.php")
   .catch(error => console.error("Erreur lors de l'envoi de l'ID :", error));
 }
 
