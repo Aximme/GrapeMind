@@ -164,4 +164,4 @@ def get_wine_id_by_name(wine_name):
 
 
 if __name__ == "__main__":
-    app.run(host='127.0.0.1', port=5001, debug=True) #Port 5000 : ML || Port 5001 : preprocess api Mistral
+    app.run(host='127.0.0.1', port=5001, debug=False, use_reloader=False) #Port 5000 : ML || Port 5001 : preprocess api Mistral
