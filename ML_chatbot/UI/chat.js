@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let responseData = null;
     let responseReceived = false;
     
-    fetch('http://127.0.0.1:5001/chat', {
+    fetch('http://51.210.243.151:5001/chat', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
