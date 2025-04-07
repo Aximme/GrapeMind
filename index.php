@@ -1,7 +1,7 @@
 <?php
 session_start();
-include 'components/header.php';
-include 'db.php';
+include '/components/header.php';
+include '/db.php';
 
 global $conn;
 
@@ -26,9 +26,9 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/checkAdult.css">
-    <link rel="stylesheet" href="css/filter-wine-index.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/checkAdult.css">
+    <link rel="stylesheet" href="/css/filter-wine-index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.1/nouislider.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.1/nouislider.min.js"></script>
 
@@ -38,7 +38,7 @@ $conn->close();
 
 <?php
 if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
-    include 'ML_chatbot/UI/chat_component.php';
+    include '/ML_chatbot/UI/chat_component.php';
 }
 ?>
 
@@ -50,7 +50,7 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
 </div>
 <div class="search-bar-wrapper">
     <div class="search-bar-container">
-        <?php include 'components/search_bar.php'; ?>
+        <?php include '/components/search_bar.php'; ?>
     </div>
 </div>
 <div class="wine-selection">
@@ -71,7 +71,7 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
         <div id="price-slider" class="range-slider"></div>
         <span>1000+€</span>
     </div>
-    <script src="js/price-filter.js"></script>
+    <script src="/js/price-filter.js"></script>
 
 
 
@@ -103,7 +103,7 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
     }
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"></script>
-<script type="module" src="js/3d-winebottle.js"></script>
+<script type="module" src="/js/3d-winebottle.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const agePopup = document.getElementById('age-popup');
@@ -130,7 +130,7 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
 
 
 
-<script src="js/index_carrousel.js"></script>
+<script src="/js/index_carrousel.js"></script>
 <h2 class="carousel-title">Recommandations Personnalisées</h2>
 <div class="carousel-container">
     <button class="carousel-button left" onclick="previousSlide();">❮</button>
