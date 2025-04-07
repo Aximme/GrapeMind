@@ -3,6 +3,7 @@ import os
 import sys
 import signal
 import time
+from datetime import datetime
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 LOGS_DIR = os.path.join(BASE_DIR, "logs")
@@ -29,6 +30,11 @@ def start_server(name, config):
         return
 
     print(f"🚀 Lancement de {name}...")
+
+    now = datetime.now().strftime("[%Y-%m-%d %H:%M:%S]")
+    with open(config["log_file"], "a") as log_file:
+        log_file.write(f"\n{now} Démarrage de {name}\n")
+
     log_file = open(config["log_file"], "a")
     process = subprocess.Popen(
         config["command"],
