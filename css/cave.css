@@ -9,6 +9,7 @@
     border-radius: 8px;
     background-color: #fff;
     max-width: 1000px;
+    margin: auto;
 }
 
 
@@ -97,6 +98,7 @@ label {
     border-radius: 5px;
     text-align: center;
     width: 1000px;
+    margin: auto;
 }
 
 .error-message {

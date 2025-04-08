@@ -126,3 +126,40 @@
 .search-button {
     display: none;
 }
+@media (max-width: 850px) {
+    .search-box {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        padding: 0 10px;
+    }
+
+    .search-box form {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .search-icon {
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+    }
+
+    .search-form {
+        flex-grow: 1;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .search-suggestions {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+}
+

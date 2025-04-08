@@ -1,4 +1,6 @@
 body {
+    width: 100vw;
+    overflow-x: hidden;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
