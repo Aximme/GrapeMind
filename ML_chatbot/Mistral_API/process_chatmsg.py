@@ -55,6 +55,38 @@ Si une entrée d'utilisateur est hors le contexte de la recommendation d'accord 
 Voici le message entré par l'utilisateur :
 """
 
+# ------------------------------------------------------------------------------
+#           Traduction des aliments en FR avant de les envoyer a l'user
+# ------------------------------------------------------------------------------
+
+
+def translate_food(api_key, foods_list):
+    food_items = ", ".join(foods_list)
+    translation_prompt = f"""Traduis les aliments suivants de l'anglais vers le français. 
+Conserve le format simple, renvoie uniquement les noms traduits sans commentaires ni explications.
+Voici les aliments à traduire: {food_items}"""
+    
+    client = Mistral(api_key=api_key)
+    response = client.chat.complete(
+        model="mistral-small-latest", 
+        messages=[
+            {"role": "system", "content": "Tu es un traducteur précis qui traduit des termes culinaires de l'anglais vers le français."},
+            {"role": "user", "content": translation_prompt}
+        ]
+    )
+    
+    if response.choices:
+        translated_text = response.choices[0].message.content.strip()
+        translated_foods = [item.strip() for item in translated_text.split(',')]
+        if len(translated_foods) == len(foods_list):
+            return translated_foods
+        else:
+            translated_foods = [item.strip() for item in translated_text.splitlines()]
+            if len(translated_foods) == len(foods_list):
+                return translated_foods
+    print(f"Original : \n{foods_list}\n\n Traduit : \n{translated_foods}")
+    return foods_list
+
 @app.route('/chat', methods=['POST'])
 def chat():
     data = request.json
@@ -65,7 +97,12 @@ def chat():
         
     try:
         user_input = simplify_text_with_mistral(api_key, user_message, preprompt)
-#TODO : Si la reponse retournée est hors contexte alors renvoyer un message.
+        print(f"Sortie apres mistral : {user_input}")
+
+        if user_input == "Votre demande semble ne pas être en lien direct avec le site. Merci de préciser votre demande.":
+            return jsonify({"reply": user_input})
+        
+
         ml_output = requests.post(
             'http://127.0.0.1:5000/predict',
             json={"query": user_input}
@@ -82,19 +119,28 @@ def chat():
             else:
                 wines = [wine.strip() for wine in reco.split(',')]
             
-            response_message = "Voici des recommendations de vins en accord avec la nourriture que vous avez mentionnée :<br>"
-            for wine in wines:
-                wine_record = get_wine_id_by_name(wine)
-                if wine_record:
-                    wine_id, wine_name = wine_record
-                    link_html = f'<a href="#" onclick="selectSuggestion({wine_id})">Voir le vin</a>'
-                    response_message += f"- {wine_name}<br>{link_html}<br>"
-                else:
-                    response_message += f"- {wine}<br><em>ID non trouvé</em><br>"
+            # On recup le 1er mot de l'input pour savoir comment formuler
+            query_type = user_input.lower().split()[0] if user_input else ""
+            if query_type == "vin":
+                translated_foods = translate_food(api_key, wines[:5])
+                response_message = "<p>Voici des suggestions d'aliments qui se marient bien avec ce vin :</p><ul style='margin-top: 10px; margin-bottom: 10px;'>"
+                for item in translated_foods:
+                    response_message += f"<li style='margin-bottom: 10px;'>{item}</li>"
+                response_message += "</ul>"
+            else:
+                response_message = "Voici des recommendations de vins en accord avec la nourriture que vous avez mentionnée :<br>"
+                for wine in wines:
+                    wine_record = get_wine_id_by_name(wine)
+                    if wine_record:
+                        wine_id, wine_name = wine_record
+                        link_html = f'<a href="#" onclick="selectSuggestion({wine_id})">Voir le vin</a>'
+                        response_message += f"- {wine_name}<br>{link_html}<br>"
+                    else:
+                        response_message += f"- {wine}<br><em>Non trouvé dans notre base</em><br>"
                         
             return jsonify({"reply": response_message})
         else:
-            return jsonify({"reply": f"Erreur lors de la prédiction: {ml_output.text}"})
+            return jsonify({"reply": f"Une erreur est survenue : {ml_output.text}"})
                 
     except Exception as e:
         return jsonify({"reply": f"Erreur: {str(e)}"})
