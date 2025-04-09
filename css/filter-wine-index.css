@@ -150,3 +150,39 @@
     transform: scale(0.98);
 }
 
+@media(max-width: 900px){
+    .wine-options {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 850px) {
+
+    .wine-selection {
+        max-width: 90vw;
+        padding: 20px;
+        font-size: 0.95em;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    .carousel-title {
+        font-size: 1.3em;
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+
+    #scene-container {
+        display: none;
+    }
+
+    html, body {
+        overflow-x: hidden;
+        max-width: 100%;
+    }
+
+    .wine-options {
+        flex-direction: column;
+    }
+}
