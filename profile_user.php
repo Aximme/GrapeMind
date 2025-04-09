@@ -21,6 +21,7 @@ $username = $_SESSION['user']['username'];
     <link rel="stylesheet" href="/css/profile_user.css">
 
 
+
 </head>
 <body>
 
