@@ -1,15 +1,7 @@
 <?php
 include __DIR__ . '/../../db.php';
+
 header('Content-Type: application/json');
-
-
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-
-
-
 
 if (!isset($_GET['winery_id']) || !is_numeric($_GET['winery_id'])) {
     echo json_encode(["error" => "Invalid Winery ID"]);
