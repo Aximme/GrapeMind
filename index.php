@@ -48,11 +48,7 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
 <div id="scene-container">
     <div id="loading">Chargement du modèle...</div>
 </div>
-<div class="search-bar-wrapper">
-    <div class="search-bar-container">
-        <?php include 'components/search_bar.php'; ?>
-    </div>
-</div>
+
 <div class="wine-selection">
     <h1>Trouvez votre vin idéal en quelques clics !</h1>
     <p style="font-size: 1em; color: #555;">Sélectionnez un type de vin et ajustez votre budget pour affiner vos préférences.</p>
@@ -80,7 +76,11 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
     <button class="search-button_price" onclick="applyFilters()">Chercher selon mes goûts</button>
 </div>
 
-
+<div class="search-bar-wrapper">
+    <div class="search-bar-container">
+        <?php include 'components/search_bar.php'; ?>
+    </div>
+</div>
 
 <?php if (!isset($_SESSION['age_verified'])): ?>
     <div class="age-popup" id="age-popup">

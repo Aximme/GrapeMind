@@ -4,11 +4,11 @@
     justify-content: left;
     align-items: center;
     height: auto;
-    position: absolute;
+    position: relative;
     width: 30%;
     top: 0;
     left: 100px;
-    margin-top: 600px;
+    margin-top: 50px;
 }
 
 
@@ -160,6 +160,23 @@
     .search-suggestions {
         max-width: 100%;
         overflow-x: hidden;
+    }
+}
+
+@media (max-width: 704px) {
+    .search-box {
+        width: 200px;
+        max-width: 200px;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        padding: 0 10px;
+
+        margin: 0 auto !important;
+        display: flex;
+        justify-content: center;
+    }
+    .search-bar-wrapper {
+        left: 10px;
     }
 }
 

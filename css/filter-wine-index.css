@@ -156,53 +156,7 @@
     }
 }
 
-@media (max-width: 1000px) and (min-width: 900px) {
-    .search-bar-wrapper {
-        top: 50px !important;
-        margin-left: 50px !important;
-        width: 100%;
-    }
-}
-@media (max-width: 900px) and (min-width: 851px) {
-    .wine-options {
-        flex-direction: column;
-    }
-
-    .search-bar-wrapper {
-        top: 120px !important;
-        margin-left: 30px !important;
-        width: 100%;
-    }
-}
 @media (max-width: 850px) {
-
-    .search-bar-wrapper {
-        position: absolute;
-        top: 180px !important;
-        left: 0;
-        right: 0;
-        transform: none;
-        padding: 0 15px;
-        width: 100%;
-        box-sizing: border-box;
-        overflow-x: hidden;
-        z-index: 999;
-    }
-
-    .search-bar-container {
-        width: 100%;
-        max-width: 100%;
-        margin: 0 auto;
-        box-sizing: border-box;
-    }
-
-    .search-bar {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        box-sizing: border-box;
-    }
 
     .wine-selection {
         max-width: 90vw;
