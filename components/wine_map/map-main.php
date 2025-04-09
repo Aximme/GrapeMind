@@ -1,4 +1,4 @@
-<?php include __DIR__ . '../header.php'; ?>
+<?php include __DIR__ . '../../header.php'; ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -33,6 +33,6 @@
 </div>
 
 
-<script src="/js/map/map-main.js"></script>
+<script src="../../js/map/map-main.js"></script>
 </body>
 </html>

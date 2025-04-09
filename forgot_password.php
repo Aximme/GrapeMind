@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->setFrom('noreply@grapemind.fr', 'GrapeMind Support');
             $mail->addAddress($email);
             $mail->Subject = "Réinitialisation de votre mot de passe";
-            $mail->Body = "Cliquez ici pour réinitialiser votre mot de passe : http://localhost:8888/GrapeMind/reset_password.php?token=" . $token;
+            $mail->Body = "Cliquez ici pour réinitialiser votre mot de passe : http://51.210.243.151:8888/reset_password.php?token=" . $token;
 
             $mail->send();
             echo "✅ Un email a été envoyé avec un lien de réinitialisation.";

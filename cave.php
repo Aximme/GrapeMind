@@ -209,7 +209,7 @@ $result_wishlist = $query_wishlist->get_result();
 <!-- Fonction JavaScript pour envoyer l'ID du vin via POST et rediriger -->
 <script>
     function setVinId(vinId) {
-        fetch("/GrapeMind/components/wine/set_vin_id.php", {
+        fetch("/components/wine/set_vin_id.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
@@ -219,7 +219,7 @@ $result_wishlist = $query_wishlist->get_result();
             .then(response => response.text())
             .then(data => {
                 console.log(data);
-                window.location.href = "/GrapeMind/components/wine/wine-details.php";
+                window.location.href = "/components/wine/wine-details.php";
             })
             .catch(error => console.error("Erreur lors de l'envoi de l'ID :", error));
     }

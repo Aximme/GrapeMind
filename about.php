@@ -26,7 +26,7 @@ session_start();
                 Dans le cadre de notre enseignement "Gestion de Projet" nous avons élaboré ce site internet de recommandation et de suggestions autour du vin.
             </p>
             <div class="team-picture">
-                <img src="/GrapeMind/assets/images/team-degustation.jpg" alt="Team Picture" class="team-photo">
+                <img src="/assets/images/team-degustation.jpg" alt="Team Picture" class="team-photo">
             </div>
         </div>
 

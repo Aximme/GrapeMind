@@ -90,7 +90,7 @@ $wine_labels_json = json_encode(array_keys($wine_preferences));
 <head>
     <meta charset="UTF-8">
     <title>Vos Statistiques</title>
-    <link rel="stylesheet" href="/GrapeMind/css/statistic.css">
+    <link rel="stylesheet" href="/css/statistic.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
