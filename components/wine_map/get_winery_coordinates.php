@@ -5,7 +5,16 @@ include __DIR__ . '/../../db.php';
 header('Content-Type: application/json');
 
 try {
-    $query = "SELECT WineryID, WineryName, Website, winery_lat, winery_lon FROM descriptifs";
+    $query = "
+        SELECT WineryID, 
+               MAX(WineryName) AS WineryName, 
+               MAX(Website) AS Website, 
+               MAX(winery_lat) AS winery_lat, 
+               MAX(winery_lon) AS winery_lon
+        FROM descriptifs
+        WHERE winery_lat IS NOT NULL AND winery_lon IS NOT NULL
+        GROUP BY WineryID
+            ";
     $stmt = $conn->prepare($query);
     $stmt->execute();
 
