@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const markers = L.markerClusterGroup();
     const customIcon = L.icon({
-        iconUrl: '/GrapeMind/assets/images/map_winery_logo.png',
+        iconUrl: '/assets/images/map_winery_logo.png',
         iconSize: [45, 45],
         iconAnchor: [16, 32],
         popupAnchor: [0, -32]
