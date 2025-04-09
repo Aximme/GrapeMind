@@ -55,11 +55,32 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
 
 
     <div class="wine-options">
-        <label><input type="checkbox" value="Red"> Rouge <span class="red-circle"></span></label>
-        <label><input type="checkbox" value="Rosé"> Rosé <span class="rose-circle"></span></label>
-        <label><input type="checkbox" value="White"> Blanc <span class="white-circle"></span></label>
-        <label><input type="checkbox" value="Sparkling"> Bulle <span class="bubble-circle"></span></label>
+        <label class="wine-pill">
+            <input type="checkbox" name="wineColor[]" value="Red">
+            <span class="label-text">Rouge</span>
+            <span class="dot red"></span>
+        </label>
+
+        <label class="wine-pill">
+            <input type="checkbox" name="wineColor[]" value="Rosé">
+            <span class="label-text">Rosé</span>
+            <span class="dot rose"></span>
+        </label>
+
+        <label class="wine-pill">
+            <input type="checkbox" name="wineColor[]" value="White">
+            <span class="label-text">Blanc</span>
+            <span class="dot white"></span>
+        </label>
+
+        <label class="wine-pill">
+            <input type="checkbox" name="wineColor[]" value="Sparkling">
+            <span class="label-text">Bulle</span>
+            <span class="dot bubble"></span>
+        </label>
     </div>
+
+
 
 
     <div class="price-range-wrapper">
