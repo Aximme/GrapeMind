@@ -1,12 +1,13 @@
 <?php
 global $conn;
+
 include __DIR__ . '/../../db.php';
 
 header('Content-Type: application/json');
 
 try {
     $query = "
-        SELECT WineryID, 
+            SELECT WineryID, 
                MAX(WineryName) AS WineryName, 
                MAX(Website) AS Website, 
                MAX(winery_lat) AS winery_lat, 
@@ -15,6 +16,7 @@ try {
         WHERE winery_lat IS NOT NULL AND winery_lon IS NOT NULL
         GROUP BY WineryID
             ";
+
     $stmt = $conn->prepare($query);
     $stmt->execute();
 

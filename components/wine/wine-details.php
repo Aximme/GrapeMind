@@ -3,6 +3,20 @@ global $conn;
 include 'wine-details-2.php';
 include __DIR__ . '/../header.php';
 
+if (isset($_SESSION['user']) && isset($row['idwine'], $row['name'])) {
+    $userId = $_SESSION['user']['id'];
+    $wineId = $row['idwine'];
+    $wineName = $row['name'];
+
+    $delete = $conn->prepare("DELETE FROM recent_views WHERE user_id = ? AND wine_id = ?");
+    $delete->bind_param("ii", $userId, $wineId);
+    $delete->execute();
+
+    $insertView = $conn->prepare("INSERT INTO recent_views (user_id, wine_id, wine_name) VALUES (?, ?, ?)");
+    $insertView->bind_param("iis", $userId, $wineId, $wineName);
+    $insertView->execute();
+}
+
 $typeClass = '';
 if (isset($row['Type'])) {
     switch (strtolower($row['Type'])) {

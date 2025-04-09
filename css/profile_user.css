@@ -103,3 +103,6 @@ button {
 button:hover {
     background-color: #9c2d3d;
 }
+ul{
+    list-style-type: none;
+}

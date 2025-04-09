@@ -14,6 +14,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }).addTo(map);
 
     const markers = L.markerClusterGroup();
+    const customIcon = L.icon({
+        iconUrl: '/GrapeMind/assets/images/map_winery_logo.png',
+        iconSize: [45, 45],
+        iconAnchor: [16, 32],
+        popupAnchor: [0, -32]
+    });
     const regionSelect = document.getElementById("region-select");
     const regionDetails = document.getElementById("region-details");
 
@@ -25,7 +31,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 wineries.forEach(winery => {
                     if (winery.winery_lat && winery.winery_lon) {
-                        const marker = L.marker([winery.winery_lat, winery.winery_lon]);
+                        const marker = L.marker(
+                            [winery.winery_lat, winery.winery_lon],
+                            { icon: customIcon }
+                        );
+                        marker.bindPopup(`
+                            <strong>${winery.WineryName}</strong><br>
+                            <a href="${winery.Website}" target="_blank">${winery.Website}</a>
+                        `);
+                
                         marker.on("click", () => loadWines(winery.WineryID));
                         markers.addLayer(marker);
                     }

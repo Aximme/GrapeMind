@@ -104,10 +104,9 @@ $(document).ready(function () {
             dataType: "json",
             success: function (response) {
                 if (response.success) {
-                    alert("Compte créé avec succès!");
                     window.location.href = "index.php";
                 } else {
-                    alert(response.error || "Erreur lors de la création du compte.");
+                    alert("Erreur lors de la création du compte.");
                 }
             },
             error: function () {

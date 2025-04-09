@@ -48,22 +48,39 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
 <div id="scene-container">
     <div id="loading">Chargement du modèle...</div>
 </div>
-<div class="search-bar-wrapper">
-    <div class="search-bar-container">
-        <?php include __DIR__ . '/components/search_bar.php'; ?>
-    </div>
-</div>
+
 <div class="wine-selection">
     <h1>Trouvez votre vin idéal en quelques clics !</h1>
     <p style="font-size: 1em; color: #555;">Sélectionnez un type de vin et ajustez votre budget pour affiner vos préférences.</p>
 
 
     <div class="wine-options">
-        <label><input type="checkbox" value="Red"> Rouge <span class="red-circle"></span></label>
-        <label><input type="checkbox" value="Rosé"> Rosé <span class="rose-circle"></span></label>
-        <label><input type="checkbox" value="White"> Blanc <span class="white-circle"></span></label>
-        <label><input type="checkbox" value="Sparkling"> Bulle <span class="bubble-circle"></span></label>
+        <label class="wine-pill">
+            <input type="checkbox" name="wineColor[]" value="Red">
+            <span class="label-text">Rouge</span>
+            <span class="dot red"></span>
+        </label>
+
+        <label class="wine-pill">
+            <input type="checkbox" name="wineColor[]" value="Rosé">
+            <span class="label-text">Rosé</span>
+            <span class="dot rose"></span>
+        </label>
+
+        <label class="wine-pill">
+            <input type="checkbox" name="wineColor[]" value="White">
+            <span class="label-text">Blanc</span>
+            <span class="dot white"></span>
+        </label>
+
+        <label class="wine-pill">
+            <input type="checkbox" name="wineColor[]" value="Sparkling">
+            <span class="label-text">Bulle</span>
+            <span class="dot bubble"></span>
+        </label>
     </div>
+
+
 
 
     <div class="price-range-wrapper">
@@ -80,7 +97,11 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
     <button class="search-button_price" onclick="applyFilters()">Chercher selon mes goûts</button>
 </div>
 
-
+<div class="search-bar-wrapper">
+    <div class="search-bar-container">
+        <?php include 'components/search_bar.php'; ?>
+    </div>
+</div>
 
 <?php if (!isset($_SESSION['age_verified'])): ?>
     <div class="age-popup" id="age-popup">

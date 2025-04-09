@@ -27,11 +27,6 @@ include __DIR__ . '/components/header.php';
             <input type="password" id="password" name="password" required>
             <span id="password-error" class="error-message"></span><br>
 
-            <div class="remember-me">
-                <input type="checkbox" id="remember" name="remember">
-                <label for="remember">Se souvenir de moi</label>
-            </div>
-
             <button type="submit" disabled>Se connecter</button>
         </form>
 

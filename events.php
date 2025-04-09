@@ -7,7 +7,7 @@ require_once __DIR__ . '/components/header.php';
 $data = getWineEvents();
 
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-$results_per_page = 8;
+$results_per_page = 9;
 $total_results = count($data['objects'][0]['items']);
 $offset = ($page - 1) * $results_per_page;
 $events_paginated = array_slice($data['objects'][0]['items'], $offset, $results_per_page);
