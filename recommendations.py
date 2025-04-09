@@ -1,7 +1,10 @@
+import sys
+import os
 import mysql.connector
-import json
 from contextlib import closing
-
+import json
+from dotenv import load_dotenv
+load_dotenv(dotenv_path=".env")
 FLAVOR_TRANSLATIONS = {
     "Rouge": "Red", "Blanc": "White", "Rosé": "Rosé",
     "Sucré": "fruit rouge", "Salé": "épices", "Acide": "agrume",
@@ -22,8 +25,10 @@ PRICE_CATEGORIES = {
 
 def connect_db():
     return mysql.connector.connect(
-        host="localhost", user="root", password="root",
-        database="grape-mind", port=8889
+        host=os.getenv("DB_HOST"),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        database=os.getenv("DB_NAME")
     )
 
 def translate_flavor(text):
@@ -33,8 +38,8 @@ def translate_flavor(text):
 def get_price_range(price_answer):
     return PRICE_CATEGORIES.get(price_answer, (0, 1000))
 
-def get_user_answers(cursor):
-    cursor.execute("SELECT * FROM quiz_answers WHERE user_id = 0")
+def get_user_answers(cursor, user_id):
+    cursor.execute("SELECT * FROM quiz_answers WHERE user_id = %s", (user_id,))
     return cursor.fetchone()
 
 def get_filtered_wines(cursor, min_budget, max_budget):
@@ -133,31 +138,74 @@ def score_wines(user_answers, wines):
 
     scores.sort(key=lambda x: (-x["score"], x["price"]))
 
-    return scores[:20]
+    return scores[:60]
 
-def save_recommendations_json(recommendations):
-    data = {"recommendations": recommendations}
-    with open("recommendations.json", "w") as file:
-        json.dump(data, file, indent=4)
+def save_recommendations_to_db(user_id, recommendations):
+    try:
+        with closing(connect_db()) as db, closing(db.cursor()) as cursor:
+            cursor.execute("DELETE FROM wine_recommendations WHERE user_id = %s", (user_id,))
+
+            for recommendation in recommendations:
+                query = """
+                    INSERT INTO wine_recommendations (user_id, wine_id, name, price, score, thumb, details)
+                    VALUES (%s, %s, %s, %s, %s, %s, %s)
+                """
+                details_json = json.dumps(recommendation["details"])
+                cursor.execute(query, (
+                    user_id,
+                    recommendation["idwine"],
+                    recommendation["name"],
+                    recommendation["price"],
+                    recommendation["score"],
+                    recommendation["thumb"],
+                    details_json
+                ))
+            db.commit()
+            return True
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+        return False
 
 def recommend_wines():
     try:
+        user_id = int(sys.argv[1]) if len(sys.argv) > 1 else None
         with closing(connect_db()) as db, closing(db.cursor(dictionary=True)) as cursor:
-            user_answers = get_user_answers(cursor)
+            user_answers = get_user_answers(cursor, user_id)
+
             if not user_answers:
+                print(f"Aucune réponse trouvée pour l'utilisateur {user_id}")
                 return []
 
             min_budget, max_budget = get_price_range(user_answers.get("question15_answer"))
+            print(f"Plage de prix: {min_budget}-{max_budget}€")
+
             wines = get_filtered_wines(cursor, min_budget, max_budget)
+            print(f"Nombre de vins trouvés: {len(wines)}")
 
             if not wines:
+                print(f"Aucun vin trouvé dans la plage de prix {min_budget}-{max_budget}€")
                 return []
 
             recommendations = score_wines(user_answers, wines)
-            save_recommendations_json(recommendations)
+            print(f"Nombre de recommandations générées: {len(recommendations)}")
+
+            if not recommendations:
+                print("Aucune recommandation générée avec un score positif")
+                return []
+
+            if save_recommendations_to_db(user_id, recommendations):
+                print(f"Recommandations enregistrées avec succès pour l'utilisateur {user_id}.")
+            else:
+                print(f"Erreur lors de l'enregistrement des recommandations pour l'utilisateur {user_id}.")
+
 
             return recommendations
     except mysql.connector.Error as err:
+        print(f"Erreur de base de données: {err}")
+        return []
+    except Exception as e:
+        print(f"Erreur inattendue: {e}")
         return []
 
-recommend_wines()
+if __name__ == "__main__":
+    recommend_wines()

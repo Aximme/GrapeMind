@@ -4,6 +4,7 @@ global $conn;
 header('Content-Type: application/json');
 
 require_once '../../db.php';
+$user_id = $_SESSION['user']['id'];
 
 
 
@@ -24,7 +25,6 @@ if (!$data || !isset($data["responses"]) || !is_array($data["responses"])) {
     exit();
 }
 
-$user_id = $_SESSION['user_id'] ?? 0;
 
 $answers = array_fill(1, 15, null);
 
@@ -86,8 +86,10 @@ $stmt->bind_param($types, ...$params);
 if ($stmt->execute()) {
     echo json_encode(["message" => "Les réponses ont été enregistrées ou mises à jour avec succès."]);
 
-    $output = shell_exec('python3 ../../recommendations.py');
+    $command = escapeshellcmd("python ../../recommendations.py " . $user_id);
+    $output = shell_exec($command);
     echo $output;
+
 } else {
     echo json_encode(["error" => "Erreur SQL : " . $stmt->error]);
 }
