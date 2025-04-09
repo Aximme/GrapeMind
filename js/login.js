@@ -90,10 +90,9 @@ $(document).ready(function () {
             dataType: "json",
             success: function (response) {
                 if (response.success) {
-                    alert("Connexion réussie !");
                     window.location.href = "index.php";
                 } else {
-                    alert(response.error || "Erreur lors de la connexion.");
+                    alert("Erreur lors de la connexion.");
                 }
             },
             error: function () {
