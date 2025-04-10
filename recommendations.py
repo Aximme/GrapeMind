@@ -145,6 +145,8 @@ def save_recommendations_to_db(user_id, recommendations):
         with closing(connect_db()) as db, closing(db.cursor()) as cursor:
             cursor.execute("DELETE FROM wine_recommendations WHERE user_id = %s", (user_id,))
 
+            recommendations = recommendations[:20]
+
             for recommendation in recommendations:
                 query = """
                     INSERT INTO wine_recommendations (user_id, wine_id, name, price, score, thumb, details)
