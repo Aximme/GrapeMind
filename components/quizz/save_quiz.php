@@ -86,7 +86,7 @@ $stmt->bind_param($types, ...$params);
 if ($stmt->execute()) {
     echo json_encode(["message" => "Les réponses ont été enregistrées ou mises à jour avec succès."]);
 
-    $command = escapeshellcmd("python ../../recommendations.py " . $user_id);
+    $command = escapeshellcmd("python3 /../../recommendations.py " . $user_id);
     $output = shell_exec($command);
     echo $output;
 
