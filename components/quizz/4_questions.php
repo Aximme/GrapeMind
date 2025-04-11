@@ -36,3 +36,12 @@ include __DIR__ . '/../header.php';
 <script src="quiz-loader.js"></script>
 </body>
 </html>
+
+
+<?php
+
+$user_id = escapeshellarg($_SESSION['user']['id']);
+$python_script = '/../../recommandations.py';
+
+$output = shell_exec("python3 $python_script $user_id");
+?>
