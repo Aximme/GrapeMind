@@ -132,15 +132,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ responses: userPreferences })
         })
-            .then(response => response.text())
-            .then(data => {
-                try {
-                    JSON.parse(data);
-                } catch (error) {
-                    console.error("Erreur JSON :", error);
-                    document.getElementById("quiz-container").innerHTML = `<p>Erreur de réponse du serveur : ${data}</p>`;
-                }
-            });
+
     }
 
     document.getElementById("next-btn").addEventListener("click", function () {
