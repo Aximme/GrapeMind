@@ -46,7 +46,7 @@ function populateCarousel(wines) {
         wineItem.classList.add('carousel-item');
 
         wineItem.innerHTML = `
-            <a href="components/wine/set_vin_id.php?id=${wine.idwine}" class="carousel-item-link">
+            <a href="/components/wine/set_vin_id.php?id=${wine.idwine}" class="carousel-item-link">
                 <img src="${wine.thumb}" alt="${wine.name}" class="wine-thumbnail">
                 <div class="wine-details">
                     <h3>${wine.name}</h3>
