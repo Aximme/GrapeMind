@@ -37,16 +37,14 @@ function populateCarousel(wines) {
     }
 
     track.innerHTML = '';
-    console.log("🛠 Ajout des vins au carrousel...");
 
     wines.forEach(wine => {
-        console.log("🍷 Ajout du vin :", wine.name);
 
         const wineItem = document.createElement('div');
         wineItem.classList.add('carousel-item');
 
         wineItem.innerHTML = `
-            <a href="/components/wine/set_vin_id.php?id=${wine.idwine}" class="carousel-item-link">
+            <a href="/components/wine/set_vin_id.php?id=${wine.wine_id}" class="carousel-item-link">
                 <img src="${wine.thumb}" alt="${wine.name}" class="wine-thumbnail">
                 <div class="wine-details">
                     <h3>${wine.name}</h3>
@@ -72,8 +70,6 @@ function updateCarouselWidth() {
     const totalWidth = items.length * itemWidth;
 
     track.style.width = `${totalWidth}px`;
-
-    console.log("📏 Largeur mise à jour de .carousel-track:", totalWidth, "px");
 }
 
 function displaySlide() {
@@ -96,7 +92,6 @@ function displaySlide() {
     offset = Math.max(0, Math.min(offset, maxOffset));
 
     track.style.transform = `translateX(-${offset}px)`;
-    console.log(`Slide ${currentSlide}: offset=${offset}, itemWidth=${itemWidth}, totalWidth=${totalWidth}`);
 }
 
 function nextSlide() {
