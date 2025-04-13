@@ -5,6 +5,12 @@ Bienvenue dans **notre plateforme interactive** de recommandations de vins fran�
 
 ---
 
+## 🔗 Accéder au site
+
+👉 [Cliquez ici pour découvrir GrapeMind](grapemind.fr/index.php) 🍇🍷
+
+---
+
 ## 🌟 Fonctionnalités Clés
 
 ### 🎯 1. Quiz à l'Inscription & Algorithme de Recommandation
