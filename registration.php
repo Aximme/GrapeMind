@@ -13,6 +13,7 @@ include __DIR__ . '/components/header.php';
     <link rel="stylesheet" href="css/registration.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/registration.js"></script>
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="e8a3a120-6983-43d0-a4b1-002fecd99a70"></script>
 </head>
 <body>
 <main>

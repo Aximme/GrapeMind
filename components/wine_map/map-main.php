@@ -16,6 +16,7 @@ session_start();
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
     <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster-src.js"></script>
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="e8a3a120-6983-43d0-a4b1-002fecd99a70"></script>
 </head>
 <body>
 <div id="content">

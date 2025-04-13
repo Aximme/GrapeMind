@@ -31,9 +31,7 @@ $conn->close();
     <link rel="stylesheet" href="/css/filter-wine-index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.1/nouislider.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.1/nouislider.min.js"></script>
-
-
-
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="e8a3a120-6983-43d0-a4b1-002fecd99a70"></script>
 </head>
 
 <?php
