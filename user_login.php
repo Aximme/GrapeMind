@@ -1,3 +1,17 @@
+<!-- AJAX pour la connexion utilisateur
+
+Contenu :
+- Vérifie les identifiants (email + mdp)
+- Si ok, on crée la session utilisateur + update last_login.
+- Renvoie réponse JSON (succès ou erreur).
+
+Utilisation :
+- Appelé depuis login.js
+
+Dépendances :
+- db.php
+-->
+
 <?php
 session_start();
 global $conn;

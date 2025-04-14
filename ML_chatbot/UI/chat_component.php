@@ -1,3 +1,17 @@
+<!-- HTML du chatbot mets & vins
+
+Contenu :
+- Interface complète du chatbot (bulle flottante + fenêtre de dialogue).
+- Champs d’input, zone de messages, bouton envoi, fermeture
+- Chargement du CSS et JS (chat.js).
+
+Utilisation :
+- Inclure dans les pages pour intégrer le chatbot à l’UI.
+
+Dépendances :
+- chat_style.css, chat.js
+-->
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>

@@ -1,3 +1,21 @@
+"""
+Script de génération de recommandations de vins personnalisées avec réponses au quiz utilisateur.
+
+Contenu :
+- Récupère les réponses du quiz depuis la bdd (table quiz_answers).
+- Traduit les préférences (couleurs, arômes) en labels internes.
+- Filtre les vins selon le budget de l'utilisateur.
+- Calcule un score pour chaque vin en fonction des arômes aimés/détestés et du type préféré.
+- Trie les vins par pertinence et enregistre les 20 meilleurs dans la table wine_recommendations.
+
+Utilisation :
+- À exécuter en ligne de commande avec l’ID utilisateur : `python recommendations.py <user_id>`.
+- Utilisé pour afficher les recommandations sur l’accueil après inscription.
+
+Dépendances :
+- bdd MySQL, dotenv, json, sys
+"""
+
 import sys
 import os
 import mysql.connector

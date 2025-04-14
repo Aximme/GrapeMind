@@ -1,3 +1,17 @@
+<!-- Vérifier si un email est déjà utilisé.
+
+Contenu :
+- Reçoit un paramètre `email` en GET.
+- Vérifie sa présence dans la table users.
+- Renvoie une réponse JSON avec true/false selon la dispo ou non du mail.
+
+Utilisation :
+- Appelé côté client lors de l’inscription.
+
+Dépendances :
+- db.php
+-->
+
 <?php
 
 global $conn;

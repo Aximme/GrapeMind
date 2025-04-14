@@ -1,3 +1,16 @@
+<!-- Page de profil utilisateur
+
+Contenu :
+- Affiche un message de bienvenue + historique des derniers vins consultés.
+- Accès rapide vers cave, grenier, et quiz pour affiner les recommandations.
+
+Utilisation :
+- Accessible uniquement si l’utilisateur est connecté.
+
+Dépendances :
+- db.php, header/footer, profile_user.css
+-->
+
 <?php
 global $conn;
 session_start();

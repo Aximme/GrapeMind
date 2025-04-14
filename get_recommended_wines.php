@@ -1,3 +1,16 @@
+<!-- Récupération des vins recommandés
+
+Contenu :
+- Si l’utilisateur est connecté, on récup ses recommandations personnalisées générées par recommendations.py
+- Sinon on retourne 15 vins aléatoires.
+
+Utilisation :
+- Appelé via AJAX pour remplir le carrousel de vins sur la page d’accueil.
+
+Dépendances :
+- db.php, session utilisateur
+-->
+
 <?php
 require_once __DIR__ . '/db.php';
 session_start();

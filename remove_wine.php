@@ -1,3 +1,14 @@
+<!-- Backend de la suppression d'un vin de la cave/grenier
+
+Contenu :
+- Check si l'utilisateur est connecté.
+- Supprime le vin selon le contexte (cave ou grenier).
+- Redirige vers la bonne page avec message de succès ou d’erreur.
+
+Dépendances :
+- db.php
+-->
+
 <?php
 session_start();
 global $conn;

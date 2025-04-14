@@ -1,3 +1,21 @@
+"""
+API Flask chargée de prétraiter les messages utilisateur pour le chatbot.
+
+Contenu :
+- Analyse les messages utilisateur avec l'API Mistral pour générer un format compatible avec un modèle ML (vin ou aliment).
+- Traduit les résultats (aliments) en français.
+- Requête le serveur ML (port 5000) avec le format transformé.
+- Récupère les recommandations et les reformule selon le type d'entrée.
+- BDD MySQL pour associer un nom de vin à son ID pour affichage dynamique.
+
+Utilisation :
+- Lancer Flask (port 5001), en parallèle du modèle de ML.
+- Interagit avec une interface web côté utilisateur via requêtes POST sur /chat.
+
+Dépendances :
+- Flask, flask_cors, requests, mysql-connector, dotenv, Mistral SDK
+"""
+
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import os

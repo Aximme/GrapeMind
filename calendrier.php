@@ -1,3 +1,16 @@
+<!-- Page utilisateur affichant les rappels d’événements
+
+Contenu :
+- Récupère les rappels liés à l’utilisateur connecté via la bdd.
+- Affiche sous forme de cartes (avec image si dispo) les événements et dates de rappel.
+
+Utilisation :
+- Utilisateurs connectés uniquement afin de consulter leurs rappels.
+
+Dépendances :
+- db.php, components/header.php, components/footer.php, css/main.css, css/calendrier.css
+-->
+
 <?php
 global $conn;
 session_start();

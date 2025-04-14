@@ -1,3 +1,17 @@
+<!-- Page de réinitialisation de mot de passe
+
+Contenu :
+- Vérifie si l’email existe dans la bdd.
+- Génère un token unique pour la réinitialisation.
+- Envoie un mail avec un lien contenant le token (via PHPMailer).
+
+Utilisation :
+- Formulaire utilisateur déclenchant un mail de reset si l’adresse est valide.
+
+Dépendances :
+- db.php, PHPMailer, dotenv
+-->
+
 <?php
 global $conn;
 require 'db.php';

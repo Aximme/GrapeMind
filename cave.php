@@ -1,3 +1,19 @@
+<!-- Gestion de la cave personnelle de l’utilisateur
+
+Contenu :
+- Affiche deux listes de vins : cave réelle et wishlist (via select).
+- Permet la recherche de vins selon un plat donné.
+- Gère la suppression de vins et redirection vers leur fiche détaillée.
+- Récupération des vins depuis la bdd (tables cave, descriptifs, scrap).
+
+Utilisation :
+- Utilisateurs connectés uniquement.
+- JS pour basculer entre cave réelle et wishlist + redirection.
+
+Dépendances :
+- db.php, components/header.php/footer.php, css/cave.css, css/search_results.css
+-->
+
 <?php
 session_start();
 global $conn;

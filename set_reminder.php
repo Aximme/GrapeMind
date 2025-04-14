@@ -1,3 +1,14 @@
+<!-- Enregistrement d’un rappel pour un événement
+
+Contenu :
+- Récupère les infos d’un événement via POST/GET.
+- Permet à l’utilisateur de définir une date de rappel.
+- Enregistrement dans la table `event_reminders`.
+
+Dépendances :
+- db.php, api_requests.php, header/footer, add_event.css
+-->
+
 <?php
 global $conn;
 session_start();

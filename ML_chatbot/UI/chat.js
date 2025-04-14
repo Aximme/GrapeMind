@@ -1,3 +1,20 @@
+/* Script JS gérant l’interface du chatbot mets & vins.
+
+Contenu :
+- Affiche/masque le chatbot et gère l’envoi des messages utilisateur.
+- Envoie la requête à l’API Flask (port : 5001 endpoint : /chat).
+- Affiche les réponses de l'algo de ML et une animation de chargement.
+- Permet de cliquer sur une recommandation pour rediriger vers la fiche vin via set_vin_id.php.
+
+Utilisation :
+- Chargé dans chat_component.php pour gérer l’interaction utilisateur.
+
+Dépendances :
+- API Flask (process_chatmsg.py)
+- DOM HTML (ID fixes requis), CSS custom, GIF loader, endpoint PHP
+*/
+
+
 // Pour use le chat il faut démarrer flask (flemme de faire autre chose pour exec du python depuis js):
 // cd python3 ML_chatbot/Mistral_API/process_chatmsg.py
 

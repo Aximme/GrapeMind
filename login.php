@@ -1,3 +1,14 @@
+<!-- Page de connexion utilisateur
+
+Contenu :
+- Formulaire de connexion avec validation frontend (via login.js).
+- Redirection vers la page d’inscription et reinit mdp.
+- Affiche erreurs dynamiques (jQuerry) sur email/mot de passe.
+
+Dépendances :
+- login.js, registration.css, jQuery
+-->
+
 <?php
 session_start();
 include 'components/header.php';

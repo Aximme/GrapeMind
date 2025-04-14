@@ -1,3 +1,16 @@
+"""
+Calcul des métriques de performance pour un modèle multi-label.
+
+Contenu :
+- Précision, rappel, F1-score (micro/macro)
+- Subset accuracy, hamming loss, jaccard (micro/macro)
+- Génère la matrice de confusion multilabel (non retournée)
+
+Utilisation :
+- Appelé après l'entraînement pour évaluer les prédictions.
+- Importé par main.py
+"""
+
 from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score, hamming_loss, jaccard_score, multilabel_confusion_matrix
 
 def compute_metrics(Y_true, Y_pred):

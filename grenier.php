@@ -1,3 +1,17 @@
+<!-- Page affichant le grenier de l’utilisateur (vins non appréciés)
+
+Contenu :
+- Liste les vins stockés dans la table `grenier` pour un utilisateur connecté.
+- Affiche infos, notes, images, et propose suppression.
+- Redirige vers la fiche vin via set_vin_id.php.
+
+Utilisation :
+- Interface similaire à cave.php
+
+Dépendances :
+- db.php, header/footer, css/search_results.css, css/grenier.css
+-->
+
 <?php
 session_start();
 global $conn;

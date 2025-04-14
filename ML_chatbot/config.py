@@ -1,3 +1,14 @@
+"""
+Paramétrage global du modèle XGBoost
+
+Contenu :
+- Chemin vers le CSV nettoyé contenant les données vins/accords.
+- Dictionnaire XGB_PARAMS pour configurer l'entraînement du classifieur XGBoost (nb arbres, profondeur, learning rate, ...)
+
+Utilisation :
+- Appelé par les scripts d'entraînement/prédiction du modèle.
+"""
+
 # (pour RandomForest)
 #N_ESTIMATORS = 100
 #Chemin vers csv (W11)

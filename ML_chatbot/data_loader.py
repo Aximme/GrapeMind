@@ -1,3 +1,18 @@
+"""
+Préparation des données en entrée du modèle.
+
+Contenu :
+- Lit les données du CSV clean.
+- Parse les champs textuels ('Grapes', 'Harmonize') en listes interprétable par Python.
+- Construit les vocabulaires indexés pour les aliments ou les noms de vin.
+
+Utilisation :
+- Chargé par le script d'entraînement principal (main.py).
+
+Dépendances :
+- csv, json, ast, config
+"""
+
 import json
 import ast
 import csv

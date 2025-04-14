@@ -1,3 +1,16 @@
+<!-- Page de présentation du projet et de l'équipe de GrapeMind
+
+Contenu :
+- Informations sur l’équipe et le cadre universitaire du projet.
+- Coordonnées et carte d’emplacement de la fac (ifram Gmaps).
+
+Utilisation :
+- Accessible a tous sans connexion nécessaire.
+
+Dépendances :
+- components/header.php, components/footer.php, css/main.css, loader.js
+-->
+
 <?php
 include 'components/header.php';
 session_start();

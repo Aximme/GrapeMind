@@ -1,3 +1,20 @@
+"""
+API Flask pour entraîner et exploiter un modèle XGBoost multi-label.
+
+Contenu :
+Entrainement de 2 modèles :
+  - vin -> aliments (à partir type + cépages)
+  - aliment -> vins (à partir du nom de l'aliment)
+- Sauvegarde des modèles + vocabulaires (joblib/json).
+2 endpoints :
+  - /train pour entraîner depuis zéro
+  - /predict pour faire une prédiction à partir d’une requête
+- Donne les performances via compute_metrics
+
+Dépendances :
+- Flask, XGBoost, scikit-learn, joblib, data_loader, model, config
+"""
+
 from flask import Flask, request, jsonify
 import json, os
 import numpy as np

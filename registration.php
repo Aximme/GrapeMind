@@ -1,3 +1,14 @@
+<!-- Page d'inscription utilisateur
+ 
+Contenu :
+- Formulaire de création de compte avec validation JS.
+- Champs requis : nom, email, adresse, mot de passe + confirmation.
+- Redirige vers login si déjà inscrit.
+
+Dépendances :
+- db.php, registration.js, registration.css, jQuery, header/footer
+-->
+
 <?php
 session_start();
 require_once 'db.php';

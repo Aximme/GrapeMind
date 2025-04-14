@@ -1,3 +1,19 @@
+"""
+Nettoyage de données du fichier xlsx.
+
+Contenu :
+- Supprime les accents de tous les champs texte.
+- Supprime les lignes contenant des caractères non autorisés (hors alphabet, chiffres, ponctuation classique).
+- Lit le fichier 'ML_extract.xlsx' et écrit un fichier propre 'ML_extract_clean.xlsx'.
+
+Utilisation :
+- À lancer en tant que script principal.
+- Destiné à préparer des données textuelles avant exploitation (ex : ML ou traitement NLP).
+
+Dépendances :
+- pandas, unicodedata
+"""
+
 import pandas as pd
 import unicodedata
 

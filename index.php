@@ -1,3 +1,15 @@
+<!-- Page principale de GrapeMind 
+
+Contenu :
+- Affiche une sélection (aléatoire/reco si connecté) de 15 vins dans un carrousel.
+- Propose des filtres interactifs (couleurs, budget).
+- Gère la vérification de l'âge pour la première visite.
+- Charge le modèle 3D de bouteille + chatbot (si user connecté).
+
+Dépendances :
+- db.php, search_bar.php, chat_component.php, js/index_carrousel.js, 3D bottle, CSS variés
+-->
+
 <?php
 session_start();
 include 'components/header.php';

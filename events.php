@@ -1,3 +1,17 @@
+<!-- Page listant des événements viticoles en France (via une API externe)
+
+Contenu :
+- Récupère les événements depuis l'API diffbot -> api_requests.php
+- Paginateur avec 9 événements max / pages
+- Bouton "Mettre un rappel" qui envoie vers `set_reminder.php`.
+
+Utilisation :
+- Accessible aux utilisateurs connectés pour consulter et enregistrer des événements.
+
+Dépendances :
+- api_requests.php, header/footer, pagination.php, css/events.css
+-->
+
 <?php
 session_start();
 

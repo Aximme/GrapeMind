@@ -1,3 +1,14 @@
+<!-- Réinitialisation de mot de passe via un token
+
+Contenu :
+- Vérifie la validité du token reçu.
+- Si valide, on met à jour le mot de passe.
+- Affiche un message de confirmation/erreur.
+
+Utilisation :
+- Accès uniquement via lien reçu par email (forgot_password.php).
+-->
+
 <?php
 global $conn;
 require 'db.php';

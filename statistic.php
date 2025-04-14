@@ -1,3 +1,13 @@
+<!-- Stats personnelles de l’utilisateur
+
+Contenu :
+- Affiche dernière connexion, nombre de vins en cave et grenier.
+- Donne une répartition des types de vins (chart.js)
+
+Dépendances :
+- db.php, Chart.js, statistic.css
+-->
+
 <?php
 session_start();
 require_once('db.php');

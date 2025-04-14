@@ -1,3 +1,17 @@
+<!-- AJAX pour l’inscription d’un nouvel utilisateur
+
+Contenu :
+- Vérifie les champs, email unique, validité, confirmation mdp.
+- Hash le mot de passe et créé un nouvel utilisateur dans la bdd.
+- Confirmation JSON.
+
+Utilisation :
+- Appelé depuis registration.js
+
+Dépendances :
+- db.php
+-->
+
 <?php
 global $conn;
 require_once('db.php');
