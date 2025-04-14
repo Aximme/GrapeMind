@@ -1,3 +1,17 @@
+<!--
+    Page affichant une carte interactive avec les domaines viticoles en France.
+
+    Contenu :
+    - Carte Leaflet avec clustering + markers personnalisés.
+    - Panneau latéral d’infos sur les régions + liste dynamique des vins dispo.
+    - Interaction avec map-main.js pour le chargement et l'affichage.
+
+    Dépendances :
+    - Leaflet.js, MarkerCluster.js (carte interactive)
+    - CSS : map-main.css
+    - JS : map-main.js
+    - "API" internes : get_winery_coordinates.php, get_wines_by_winery.php, regions.json
+-->
 <?php include '../header.php'; ?>
 
 <!DOCTYPE html>

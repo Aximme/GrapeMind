@@ -1,3 +1,16 @@
+/*
+    Filtrage des résultats de vin par prix & couleur sur l'index.
+
+    Contenu :
+    - Initialise un noUiSlider pour sélectionner une plage de prix.
+    - Récupère les couleurs sélectionnées via les inputs.
+    - Construit l’URL de redirection avec les filtres appliqués.
+
+    Utilisation :
+    - Appelé sur la page de recherche avancée.
+    - Nécessite l’élément #price-slider et le bouton .search-button_price.
+*/
+
 document.addEventListener('DOMContentLoaded', function () {
     const slider = document.getElementById('price-slider');
     const searchButton = document.querySelector('.search-button_price');

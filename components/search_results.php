@@ -1,4 +1,23 @@
 <?php
+/*
+    Page principale d’affichage des résultats de recherche (acessible uniquement depuis la search bar de l'index).
+
+    Contenu :
+    - Affiche les résultats selon filtres (requête utilisateur, note, prix, couleur, région, cépage).
+    - Gestion complète du tri (prix/note), pagination, affichage dynamique.
+    - Appel de set_vin_id.php pour chaque fiche vin cliquée.
+
+    Utilisation :
+    - Accessible via la barre de recherche ou via filtres.
+    - Affiche les card des vins avec goûts, image, prix, note.
+
+    Dépendances :
+    - Bdd : `scrap`, `descriptifs`
+    - CSS : search_results.css
+    - JS : loader.js, sort_filter.js
+    - Composants : filter.php, pagination.php
+*/
+
 session_start();
 include __DIR__ . '/../db.php';
 include '../components/header.php';

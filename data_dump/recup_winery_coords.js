@@ -1,3 +1,16 @@
+/**
+ * Script qui met a jour les coordonnées GPS des domaines viticoles des vins de notre bdd.
+
+ * Fonction :
+ * - Récupère les domaines depuis la db dont les coordonnées sont nulles.
+ * - Utilise l’API Nominatim (OpenStreetMap) pour obtenir latitude/longitude à partir du nom du domaine.
+ * - Met à jour les champs `winery_lat` et `winery_lon` dans la table `descriptifs`.
+ * 
+ * Dépendances :
+ * - axios (requêtes HTTP)
+ * - mysql2/promise (connexion bdd)
+ */
+
 const axios = require('axios');
 const mysql = require('mysql2/promise');
 

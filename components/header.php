@@ -1,3 +1,16 @@
+<!--
+    Header du site
+
+    Contenu :
+    - Logo 
+    - Liens vers accueil, carte, évènements, profil,...
+
+    Utilisation :
+    - Inclure en haut des pages avec include 'header.php'.
+    - CSS : /css/main.css
+    - JS : Bootstrap pour le menu responsive
+-->
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>

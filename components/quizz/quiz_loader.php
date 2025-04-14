@@ -1,4 +1,18 @@
 <?php
+/*
+    Script backend qui permet de récupérer les questions du quiz depuis la bdd.
+
+    Description :
+    - Envoie les données JSON contenant les questions, types et options disponibles.
+    - Transforme les chaînes d'options en tableaux pour usage côté client.
+
+    Utilisation :
+    - Requis via AJAX dans quiz-loader.js pour alimenter le quiz.
+
+    Ressources utilisées :
+    - db.php (connexion a la bdd)
+    - Table : quiz_questions (id, question, type, options)
+*/
 session_start();
 header('Content-Type: application/json');
 

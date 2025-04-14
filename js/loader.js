@@ -1,3 +1,16 @@
+/*
+    Animation de chargement avant affichage complet du site.
+
+    Contenu :
+    - Affiche un écran avec un gif loader centré.
+    - Applique des styles CSS dynamiquement pour gérer l’effet fade-out.
+    - Supprime le loader après le chargement complet de la page.
+
+    Utilisation :
+    - Inclu dans toutes les pages nécessitant un effet de chargement.
+    - loader.gif dans /assets/images/.
+*/
+
 function loadjQuery(callback) {
     let script = document.createElement('script');
     script.src = "https://code.jquery.com/jquery-3.6.0.min.js";

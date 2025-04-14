@@ -1,4 +1,16 @@
-import pandas as pd
+"""
+Traitement et nettoyage des données prix issues de Vivino.
+
+Étapes :
+- Chargement du fichier CSV (scrap_vivino_4.csv).
+- Remplacement des valeurs manquantes dans 'price' par 'moyenne_price'.
+- Suppression de la colonne temporaire 'moyenne_price'.
+- Sauvegarde du fichier clean.
+
+Remarque :
+Un pré-traitement en amont convertit les virgules décimales en points
+dans 'moyenne_price' depuis un  autre fichier (scrap_vivino_3.csv).
+"""
 
 import pandas as pd
 

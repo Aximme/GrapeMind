@@ -1,4 +1,20 @@
 <?php
+/*
+    Récupère les données complètes d’un vin depuis la bdd via son id (stocké/recupéré en session).
+
+    Contenu :
+    - Jointure entre tables `descriptifs` et `scrap` pour récupérer tous les détails : (nom, type, cépages, arômes, prix, ...)
+    - Stocke le résultat dans $row pour affichage dans wine-details.php.
+
+    Utilisation :
+    - Inclus dans wine-details.php.
+    - Nécessite que $_SESSION['vin_id'] soit défini en amont.
+
+    Requiert :
+    - Connexion bdd via db.php
+    - Tables : `descriptifs`, `scrap`
+*/
+
 session_start();
 
 global $conn;

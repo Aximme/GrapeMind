@@ -1,3 +1,17 @@
+/*
+    Barre de recherche dynamique avec suggestions en live.
+
+    Contenu :
+    - Affiche des suggestions de vins en fonction des préférences de l’utilisateur (questionnaire).
+    - Récupère les résultats via search_bar_server.php.
+    - Envoie l’ID du vin sélectionné à set_vin_id.php.
+    - Redirige vers la fiche vin ou la page de résultats selon l’action.
+
+    Utilisation :
+    - Appelé avec entrer ou clic sur l’icône de recherche.
+    - Nécessite #search-suggestions et .search-bar.
+*/
+
 function fetchSuggestions(query) {
     const suggestionsContainer = document.getElementById("search-suggestions");
 

@@ -1,3 +1,17 @@
+/*
+    Validation du formulaire d’inscription utilisateur.
+
+    Contenu :
+    - Vérifie tous les champs : nom, email, adresse, mot de passe.
+    - Messages d’erreur en temps réel.
+    - Active le bouton uniquement si tout est ok.
+    - Envoie les données à user_registration.php via Ajax POST.
+
+    Utilisation :
+    - Appelé sur la page d’inscription.
+    - Nécessite des champs avec des IDs précis (ex : #username, #email...).
+*/
+
 $(document).ready(function () {
     let fieldsTouched = {};
 

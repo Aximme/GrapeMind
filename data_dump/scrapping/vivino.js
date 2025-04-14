@@ -1,3 +1,22 @@
+/**
+ * Scraping de Vivino avec Puppeteer.
+
+ * Fonction :
+ * - Lance une instance headless de Chrome pour visiter les pages de recherche Vivino.
+ * - Configure dynamiquement la destination pour accéder aux bons résultats.
+ * - Scrape les résultats : nom, lien, image, région, pays, note moyenne, nombre de votes, prix.
+ * - Fait une pagination automatique tant qu’il y a des résultats disponibles.
+ * - Applique des filtres (prix, nombre de votes, note moyenne).
+ * - Extraction des données finales -> vivino-out.json
+
+ * Utilisation :
+ * - Lancer via CLI avec arguments (--name, --minPrice, --maxRatings, etc.)
+ * 
+ * Dépendances :
+ * - puppeteer, minimist, fs-extra
+ * 
+ */
+
 import puppeteer from 'puppeteer';
 import minimist from 'minimist';
 import fs from 'fs-extra';

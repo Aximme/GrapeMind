@@ -1,3 +1,16 @@
+/*
+    Placement dynamique des curseurs sur la fiche vin (acidité, degré).
+
+    Contenu :
+    - Calcule et place le curseur du taux d’alcool (ABV) selon une valeur numérique.
+    - Calcule et place le curseur d’acidité selon une valeur textuelle (low/medium/high).
+    - Positionne un tooltip aligné avec le curseur d’acidité.
+
+    Utilisation :
+    - Appelé automatiquement au chargement de la fiche vin.
+    - Recupération des infos en  bdd
+*/
+
 document.addEventListener("DOMContentLoaded", function() {
     // ---- Code pour le degré d'alcool ----
     var abvElement = document.querySelector('.b');

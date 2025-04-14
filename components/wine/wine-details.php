@@ -1,3 +1,22 @@
+<!--
+    Affiche les infos détaillées d’un vin, avec possibilité d'interagir avec pour l'utilisateur.
+
+    Contenu :
+    - Données récupérées via wine-details-2.php (infos du vin selon id stocké en session et envoyé a la page).
+    - Affichage des arômes, cépages, prix, accords mets, notes, etc.
+    - Boutons pour ajouter le vin à la cave ou au grenier (bdd : `cave`, `grenier`, `recent_views`).
+
+    Utilisation :
+    - Nécessite que l’id du vin soit préalablement défini/envoyé via set_vin_id.php.
+    - Utilisation d'assets & images dynamiques selon les propriétés du vin.
+
+    Dépendances :
+    - header.php + footer.php
+    - CSS : wine-details.css / main.css
+    - JS : cursor_acidity.js + loader.js
+    - Bdd : `descriptifs`, `scrap`, `recent_views`, `cave`, `grenier`
+-->
+
 <?php
 global $conn;
 include 'wine-details-2.php';

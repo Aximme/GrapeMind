@@ -1,3 +1,16 @@
+<!--
+    Footer du site
+
+    Contenu :
+    - Liens de navigation rapide.
+    - Accès aux infos légales et contact.
+    - Icône GitHub du projet.
+
+    Utilisation :
+    - Inclu dans toutes les pages via include.
+    - CSS directement intégré -> footer responsive
+-->
+
 <footer class="footer">
     <div class="footer-container">
         <div class="footer-logo">

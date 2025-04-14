@@ -1,3 +1,15 @@
+<!--
+    Panneau latéral de filtres pour affiner la recherche de vins.
+
+    Contenu :
+    - Filtre possible par : prix, note, couleur, région, cépage.
+    - Génère les options régionales et cépages dynamiquement depuis la bdd.
+    
+    Dépendances :
+    - CSS : /css/filter.css
+    - Bdd : table `descriptifs`
+-->
+
 <?php
 $query = isset($query) ? $query : '';
 global $conn;

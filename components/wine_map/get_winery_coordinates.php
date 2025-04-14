@@ -1,4 +1,16 @@
 <?php
+/*
+    Retourne en JSON les coordonnées + infos des domaines présents dans la bdd.
+
+    Contenu :
+    - Sélectionne les domaines avec coordonnées GPS définies.
+    - Regroupe par WineryID avec les valeurs les + récentes.
+
+    Utilisation :
+    - Appelé avec AJAX via la carte (map-main.js) pour placer les marqueurs.
+    - Bdd : table `descriptifs`
+*/
+
 global $conn;
 include '../../db.php';
 

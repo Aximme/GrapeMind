@@ -1,3 +1,17 @@
+"""
+Extraction des plats associés à Harmonize.
+
+Fonctionnement :
+- Lecture CSV avec 'Harmonize' (liste de plats par vin).
+- Évalue chaque chaîne de liste en liste réelle (via eval).
+- Agrège et trie les noms de plats uniques.
+- Génère un fichier CSV contenant tous les plats distincts ('all_harmonize.csv').
+
+Utilisation :
+- Source : get_meals_name.csv
+- Sortie : all_harmonize.csv
+"""
+
 import pandas as pd
 
 input_file = '/Users/maxime/Desktop/Universite/Gestion de Projet/GrapeMind/data_dump/Python_cleanData/get_meals_name.csv'

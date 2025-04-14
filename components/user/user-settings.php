@@ -1,3 +1,22 @@
+<!--
+    Page de gestion des paramètres perso de l'user connecté.
+
+    Contenu :
+    - Permet de màj le nom d'utilisateur, email, mdp et photo de profil.
+    - Possibilité de supprimer définitivement le compte.
+
+    Utilisation :
+    - Accessible uniquement si l'user est connecté (check via session php).
+    - Requêtes vers la bdd pour appliquer les changements (table `users`).
+    - Possibilité d'upload une photo de profil.
+
+    Dépendances :
+    - Connexion via db.php
+    - header.php pour l'en-tête commun
+    - CSS : /css/user/user-settings.css
+    - Images : /assets/images
+-->
+
 <?php
 global $conn;
 session_start();

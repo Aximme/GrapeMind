@@ -1,3 +1,17 @@
+/*
+    Animation 3D d’une bouteille de vin avec Three.js.
+
+    Contenu :
+    - Charge le modèle3D .obj/.mtl avec MTLLoader et OBJLoader.
+    - Crée une scène avec caméra, lumière et contrôle d'orbit.
+    - Gère la rotation de la bouteille en fonction du mouvement de la souris.
+    - Adapte le rendu à la taille de la fenêtre.
+
+    Utilisation :
+    - Appelé dans une page avec un container #scene-container.
+    - Affiche une bouteille 3D stylisée avec une animation fluide au mvt de la souris.
+*/
+
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';

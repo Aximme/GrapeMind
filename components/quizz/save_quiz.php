@@ -1,4 +1,21 @@
 <?php
+/*
+    Backend afin de sauvegarder les réponses du quiz utilisateur en DB.
+
+    Description :
+    - Récupère les reponses depuis quiz-loader.js.
+    - Insère/màj les données dans la table quiz_answers.
+    - Appelle recommendations.py pour générer des recommandations personnalisées en fonction des réponses au quizz.
+
+    Utilisation :
+    - Appelé automatiquement à la fin du quiz depuis le client.
+
+    Ressources utilisées :
+    - db.php (connexion MySQL)
+    - Table : quiz_answers
+    - Script Python : recommendations.py
+*/
+
 session_start();
 global $conn;
 header('Content-Type: application/json');

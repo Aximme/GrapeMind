@@ -1,3 +1,19 @@
+<!--
+    Interface utilisateur du quiz de préférences en vin, accessible après connexion.
+
+    Description :
+    - Affiche les questions dynamiquement à l'aide de JavaScript.
+
+    Utilisation :
+    - Appelé lors du parcours d'inscription pour recueillir les préférences d'un nouvel utilisateur + possibilité d'affiner le quizz plus tard.
+    - Interagit avec quiz-loader.js pour le rendu dynamique.
+
+    Ressources utilisées :
+    - style_quizz.css (style personnalisé)
+    - quiz-loader.js (logique de gestion du quiz)
+    - header.php (template commun)
+-->
+
 <?php
 session_start();
 if (!isset($_SESSION['user'])) {

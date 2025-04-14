@@ -1,3 +1,17 @@
+/*
+    Carrousel de vins recommandés affichés sur l'index.
+
+    Contenu :
+    - Récupère les données de vins via fetch.
+    - Génère dynamiquement les cartes vin dans le carrousel.
+    - Gère les défilements gauche/droite avec pagination.
+    - Ajuste la largeur du carrousel en fonction du nombre d’éléments.
+
+    Utilisation :
+    - Appelé automatiquement au chargement de la page.
+    - Structure HTML avec .carousel, .carousel-track, .carousel-item.
+*/
+
 let currentSlide = 0;
 const itemsPerSlide = 4;
 

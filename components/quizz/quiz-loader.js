@@ -1,3 +1,16 @@
+/*
+    Script principal pour la gestion du quiz interactif des préférences utilisateur a propos du vin.
+
+    Description :
+    - Charge  les questions (requête AJAX).
+    - Gère les types de réponses (qcm ou texte libre).
+    - Envoie les réponses à save_quiz.php
+
+    Utilisation :
+    - Appelé automatiquement à l’ouverture de la page 4_question.php.
+    - a besoin de quiz_loader.php pour charger les questions et save_quiz.php pour stocker les réponses.
+*/
+
 document.addEventListener("DOMContentLoaded", async function () {
     let quizData = await fetchQuestions();
     let currentIndex = 0;

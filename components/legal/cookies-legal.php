@@ -1,3 +1,19 @@
+<!--
+    Page d’informations légales et de politique de gestion des cookies du site.
+
+    Description :
+    - Fournit les mentions légales obligatoires concernant l’éditeur et l’hébergeur.
+    - Détaille l’usage des cookies : définition, objectifs, types et gestion par l'utilisateur.
+
+    Utilisation :
+    - Accessible via le pied de page ou un lien légal obligatoire.
+    - Ne contient pas de logique serveur avancée, mais inclut l’en-tête et le pied de page communs via des includes PHP.
+
+    Ressources utilisées :
+    - header.php et footer.php (inclusion du gabarit global du site).
+    - Styles CSS internes pour un affichage simple et responsive.
+-->
+
 <?php
 include __DIR__ . '/../header.php';
 ?>

@@ -1,4 +1,16 @@
 <?php
+/*
+    Fournit les suggestions de recherche pour la barre de recherche AJAX.
+
+    Contenu :
+    - Recherche partielle dans `scrap` sur le nom du vin (via GET['query']).
+    - Retourne jusqu’à 4 résultats avec ID, nom et image.
+
+    Utilisation :
+    - Appelé en temps réel depuis la barre de recherche frontend.
+    - Bdd : table `scrap`
+*/
+
 include __DIR__ . '/../../db.php';
 global $conn;
 

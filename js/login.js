@@ -1,3 +1,16 @@
+/*
+    Validation du formulaire de connexion utilisateur.
+
+    Contenu :
+    - Valide les champs email et mot de passe (format, non vide,...).
+    - Applique un style visuel aux champs selon la validité (encadré +background vert).
+    - Active/Désactive le bouton de connexion.
+    - Envoie les données au script user_login.php en Ajax POST.
+
+    Utilisation :
+    - Appelé sur la page de login.
+*/
+
 $(document).ready(function () {
     let fieldsTouched = {};
 

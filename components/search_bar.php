@@ -1,3 +1,17 @@
+<!--
+    Affiche un champ de recherche avec des suggestions dynamiques.
+
+    Contenu :
+    - Intègre un champ `input` avec retour AJAX via search_bar_server.php.
+    - Redirige vers search_results.php après envoie de la requête.
+
+    Dépendances :
+    - JS : /js/search_bar.js
+    - CSS : /css/search_bar.css
+    - API : wine_map/search_bar_server.php
+-->
+
+
 <?php include __DIR__ . '/wine_map/search_bar_server.php';
 include __DIR__ . '/../db.php';
 ?>

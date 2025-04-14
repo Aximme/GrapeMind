@@ -1,3 +1,21 @@
+<!--
+    500.php
+
+    Page d’erreur affichée lorsqu'une erreur interne du serveur empêche le chargement de la ressource demandée.
+
+    Description :
+    - Signale une erreur 500 (Internal Server Error).
+    - Affiche un message clair à l’utilisateur avec un lien de retour vers l’accueil.
+
+    Utilisation :
+    - Utilisée par défaut lors d’une erreur critique du serveur.
+    - Peut être appelée manuellement en cas de panne côté backend.
+
+    Ressources utilisées :
+    - Image statique située dans /GrapeMind/assets/images/error.png
+    - Aucune interaction avec la base de données ou scripts côté serveur.
+-->
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>

@@ -1,4 +1,16 @@
 <?php
+/*
+    Génère les liens de pagination en fonction des résultats.
+
+    Contenu :
+    - Gère affichage des pages avec ellipses.
+    - Affiche précédent/suivant + mise en avant de la page active.
+
+    Utilisation :
+    - Inclus dans les pages avec résultats paginés (recherche de vins..).
+    - Requiert $total_results, $results_per_page, $page définis.
+*/
+
 if (!isset($total_results, $results_per_page, $page)) {
     die("Pagination: variables manquantes.");
 }

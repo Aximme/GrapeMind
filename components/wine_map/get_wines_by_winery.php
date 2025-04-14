@@ -1,4 +1,16 @@
 <?php
+/*
+    Retourne en JSON les vins d'un domaine donné (via son WineryID).
+
+    Contenu :
+    - Jointure descriptifs + scrap pour infos complètes (nom, type, prix, visuel).
+    - Filtrage par WineryID.
+
+    Utilisation :
+    - Appelé depuis map-main.js quand on clique sur un marqueur.
+    - Bdd : tables `descriptifs`, `scrap`
+*/
+
 include '../../db.php';
 
 header('Content-Type: application/json');

@@ -1,3 +1,17 @@
+/*
+    Script JS principal de la carte interactive Leaflet.
+
+    Contenu :
+    - Charge les domaines viticoles (markers) via get_winery_coordinates.php.
+    - Charge les régions depuis regions.json pour zooms + affichage.
+    - Gère la sélection d’un domaine et l’affichage des vins via get_wines_by_winery.php.
+    - Redirection dynamique vers la fiche vin via set_vin_id.php.
+
+    Utilisation :
+    - Appelé dans map-main.php.
+    - Affiche tous les éléments de la carte et du panneau info sur la droite.
+*/
+
 const WINE_TYPE_TRANSLATIONS = {
     "Red": "Rouge",
     "White": "Blanc",
