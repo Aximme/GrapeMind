@@ -63,7 +63,7 @@ try {
             $hostname = gethostbyaddr($ip) ?: 'Inconnue';
             $date = date("Y-m-d H:i:s");
 
-            $webhookUrl = $_ENV['DSWEBHOOK_NEWACC'] ?? null;
+            $webhookUrl = $_ENV['DSWEBHOOK_NEWLOG'];
 
             if ($webhookUrl) {
                 $embed = [
