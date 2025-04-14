@@ -1,6 +1,9 @@
 <?php
 global $conn;
 require_once __DIR__ . ('/db.php');
+require_once 'vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
 header('Content-Type: application/json');
 
@@ -43,6 +46,45 @@ $stmt->bind_param("ssss", $username, $email, $address, $hashedPassword);
 
 if ($stmt->execute()) {
     echo json_encode(['success' => true]);
+
+
+    /* WEBHOOK DISCORD */
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? 'Inconnu';
+    $hostname = gethostbyaddr($ip) ?: 'Inconnue';;
+    $date = date("Y-m-d H:i:s");
+    
+    $webhookUrl = $_ENV['DSWEBHOOK_NEWACC'];
+    
+    $embed = [
+        "title" => "🆕 Nouvel utilisateur inscrit",
+        "color" => hexdec("00ff99"),
+        "fields" => [
+            ["name" => "👤 Nom d'utilisateur", "value" => $username, "inline" => true],
+            ["name" => "📧 Email", "value" => $email, "inline" => true],
+            ["name" => "📍 Adresse", "value" => $address, "inline" => false],
+            ["name" => "🌐 Adresse IP", "value" => $ip, "inline" => true],
+            ["name" => "💻 Navigateur", "value" => substr($userAgent, 0, 100), "inline" => false],
+            ["name" => "🖥️ Hostname", "value" => $hostname, "inline" => false],
+            ["name" => "🕐 Date", "value" => $date, "inline" => false],
+        ],
+        "footer" => [
+            "text" => "Webhook de création de compte",
+        ],
+    ];
+    
+    $payload = json_encode(["embeds" => [$embed]]);
+    $ch = curl_init($webhookUrl);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $response = curl_exec($ch);
+    curl_close($ch);    
+
+
 } else {
     echo json_encode(['success' => false, 'error' => 'Erreur lors de la création du compte.']);
 }
