@@ -147,11 +147,10 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
     });
 </script>
 
-
-
 <script src="/js/index_carrousel.js"></script>
-<h2 class="carousel-title">Recommandations Personnalisées</h2>
-
+<?php if (isset($_SESSION['user'])): ?>
+    <h2 class="carousel-title">Recommandations Personnalisées</h2>
+<?php endif; ?>
 <?php if (!isset($_SESSION['user'])): ?>
 <h2 class="carousel-title">Apercu Vins Disponibles </h2>
 <?php endif; ?>
