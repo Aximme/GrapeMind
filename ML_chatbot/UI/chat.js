@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const progressBar = loadingCard.querySelector('.progress-bar');
     let width = 0;
-    const maxTime = 10000;
+    const maxTime = 15000;
     const minWidth = 95;
     const initialInterval = 100;
     let currentInterval = initialInterval;
