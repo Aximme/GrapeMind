@@ -32,7 +32,7 @@ function loadRecommendedWines() {
                     console.error("Aucune recommandation reçue.");
                     return;
                 }
-                console.log("Vins reçus : ", wines);
+                //console.log("Vins reçus : ", wines);
                 populateCarousel(wines);
             })
             .catch(error => console.error("Erreur lors du chargement des recommandations :", error));

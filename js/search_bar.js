@@ -67,7 +67,5 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.location.href = `/GrapeMind/components/wine_map/search_results.php?query=${encodeURIComponent(query)}`;
             }
         });
-    } else {
-        console.error("L'élément avec l'ID 'searchButton' est introuvable.");
     }
 });
