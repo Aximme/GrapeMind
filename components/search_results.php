@@ -27,8 +27,14 @@ global $conn;
 $query = isset($_GET['query']) ? $_GET['query'] : '';
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $minRating = isset($_GET['minRating']) ? (int)$_GET['minRating'] : 0;
-$minPrice = isset($_GET['minPrice']) && $_GET['minPrice'] !== '' ? (float)$_GET['minPrice'] : 0;
-$maxPrice = isset($_GET['maxPrice']) && $_GET['maxPrice'] !== '' ? (float)$_GET['maxPrice'] : PHP_INT_MAX;
+/*$minPrice = isset($_GET['minPrice']) && $_GET['minPrice'] !== '' ? (float)$_GET['minPrice'] : 0;
+$maxPrice = isset($_GET['maxPrice']) && $_GET['maxPrice'] !== '' ? (float)$_GET['maxPrice'] : PHP_INT_MAX;*/
+if ((isset($_GET['minPrice']) && (!is_numeric($_GET['minPrice']) || $_GET['minPrice'] < 0)) || 
+    (isset($_GET['maxPrice']) && (!is_numeric($_GET['maxPrice']) || $_GET['maxPrice'] < 0)) ||
+    ($minPrice > $maxPrice)) {
+    header("HTTP/1.1 400 Bad Request");
+    exit();
+}
 $wineColors = isset($_GET['wineColor']) ? $_GET['wineColor'] : [];
 $regions = isset($_GET['region']) ? $_GET['region'] : [];
 $grapes = isset($_GET['grapes']) ? $_GET['grapes'] : [];
