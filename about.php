@@ -34,7 +34,7 @@ session_start();
         <div class="card">
             <h2 class="card-title">Nous Contacter</h2>
             <div class="contact-info">
-                <p><strong>Email :</strong> info@grapemind.fr</p>
+                <p><strong>Email :</strong> info[at]grapemind.fr</p>
                 <p>Université Paul Valéry, Montpellier 3</p>
                 <hr class="separator">
                 <!-- Google Map Iframe -->
