@@ -13,7 +13,7 @@ $maxPrice = isset($_GET['maxPrice']) && $_GET['maxPrice'] !== '' ? (float)$_GET[
 if ((isset($_GET['minPrice']) && (!is_numeric($_GET['minPrice']) || $_GET['minPrice'] < 0)) || 
      (isset($_GET['maxPrice']) && (!is_numeric($_GET['maxPrice']) || $_GET['maxPrice'] < 0)) ||
      ($minPrice > $maxPrice)) {
-     header("HTTP/1.1 400 Bad Request");
+     header("Location: /components/errors/400.php");
      exit();
  }
 $wineColors = isset($_GET['wineColor']) ? $_GET['wineColor'] : [];
