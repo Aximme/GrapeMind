@@ -46,7 +46,7 @@
      <img src="/assets/images/error.png" alt="Error image">
      <h1>400</h1>
      <p>La requête envoyée est invalide ou mal formulée.</p>
-     <p>Merci de vérifier l’URL ou les données envoyées, ou <a href="/GrapeMind/index.php">retourner à l'accueil</a>.</p>
+     <p>Merci de vérifier l’URL ou les données envoyées, ou <a href="/index.php">retourner à l'accueil</a>.</p>
  </div>
  </body>
  </html>
