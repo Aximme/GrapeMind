@@ -140,6 +140,18 @@ body {
     background-color: #d83335;
 }
 
+.input-success {
+    color: #28a745;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.input-error {
+    color: #dc3545;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
 /* --- Responsive --- */
 @media (max-width: 768px) {
     .form-container {

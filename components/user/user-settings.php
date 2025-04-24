@@ -1,14 +1,42 @@
+<!--
+    Page de gestion des paramètres perso de l'user connecté.
+
+    Contenu :
+    - Permet de màj le nom d'utilisateur, email, mdp et photo de profil.
+    - Possibilité de supprimer définitivement le compte.
+
+    Utilisation :
+    - Accessible uniquement si l'user est connecté (check via session php).
+    - Requêtes vers la bdd pour appliquer les changements (table `users`).
+    - Possibilité d'upload une photo de profil.
+
+    Dépendances :
+    - Connexion via db.php
+    - header.php pour l'en-tête commun
+    - CSS : /css/user/user-settings.css
+    - Images : /assets/images
+-->
+
 <?php
 global $conn;
 session_start();
 if (!isset($_SESSION['user'])) {
-    header("Location: /login.php");
+    header("Location: /GrapeMind/login.php");
     exit();
 }
 require_once __DIR__ . '/../../db.php';
 include __DIR__ . '/../header.php';
 
 $userId = $_SESSION['user']['id'];
+
+
+$usernameMessage = '';
+$emailMessage = '';
+$passwordMessage = '';
+$pictureMessage = '';
+$deleteMessage = '';
+
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($conn->connect_error) {
@@ -22,9 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("si", $newUsername, $userId);
         if ($stmt->execute()) {
             $_SESSION['user']['username'] = $newUsername;
-            echo "<script>alert('Nom d\'utilisateur mis à jour avec succès !');</script>";
+            $usernameMessage = ['success' => "Nom d'utilisateur mis à jour avec succès !"];
         } else {
-            echo "<script>alert('Erreur lors de la mise à jour du nom d\'utilisateur.');</script>";
+            $usernameMessage = ['error' => "Erreur lors de la màj de votre username."];
         }
         $stmt->close();
     }
@@ -35,9 +63,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("si", $newEmail, $userId);
         if ($stmt->execute()) {
             $_SESSION['user']['email'] = $newEmail;
-            echo "<script>alert('Adresse e-mail mise à jour avec succès !');</script>";
+            $emailMessage = ['success' => "Email mis à jour avec succès !"];
         } else {
-            echo "<script>alert('Erreur lors de la mise à jour de l\'adresse e-mail.');</script>";
+            $emailMessage = ['error' => "Erreur lors de la màj de votre email."];
         }
         $stmt->close();
     }
@@ -48,9 +76,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $conn->prepare("UPDATE users SET password = ? WHERE id = ?");
         $stmt->bind_param("si", $hashedPassword, $userId);
         if ($stmt->execute()) {
-            echo "<script>alert('Mot de passe mis à jour avec succès !');</script>";
+            $_SESSION['user']['password'] = $hashedPassword;
+            $passwordMessage = ['success' => "Mot de passe mis à jour avec succès !"];
         } else {
-            echo "<script>alert('Erreur lors de la mise à jour du mot de passe.');</script>";
+            $passwordMessage = ['error' => "Erreur lors de la màj de votre mot de passe."];
         }
         $stmt->close();
     }
@@ -66,15 +95,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
             if (in_array($file['type'], $allowedTypes)) {
                 if (move_uploaded_file($file['tmp_name'], $uploadFilePath)) {
-                    $profilePicturePath = "/assets/images/profile_pictures/" . $fileName;
+                    $profilePicturePath = "/GrapeMind/assets/images/profile_pictures/" . $fileName;
 
                     $stmt = $conn->prepare("UPDATE users SET profile_picture = ? WHERE id = ?");
                     $stmt->bind_param("si", $profilePicturePath, $userId);
                     if ($stmt->execute()) {
                         $_SESSION['user']['profile_picture'] = $profilePicturePath;
-                        echo "<script>alert('Photo de profil mise à jour avec succès !');</script>";
+                        $pictureMessage = ['success' => "Photo de profil mise à jour avec succès !"];
                     } else {
-                        echo "<script>alert('Erreur lors de la mise à jour dans la base de données.');</script>";
+                        $pictureMessage = ['error' => "Erreur lors de la màj de votre photo de profil."];
                     }
                     $stmt->close();
                 } else {
@@ -93,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("i", $userId);
         if ($stmt->execute()) {
             session_destroy();
-            echo "<script>alert('Compte supprimé avec succès !'); window.location.href = '/index.php';</script>";
+            echo "<script>alert('Compte supprimé avec succès !'); window.location.href = '/GrapeMind/index.php';</script>";
         } else {
             echo "<script>alert('Erreur lors de la suppression du compte.');</script>";
         }
@@ -109,7 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, width=device-width">
-    <link rel="stylesheet" href="/css/user/user-settings.css"/>
+    <link rel="stylesheet" href="/GrapeMind/css/user/user-settings.css"/>
     <script>
         function confirmDeletion() {
             if (confirm("Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.")) {
@@ -136,13 +165,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                         <div class="input-wrapper">
                             <input type="text" id="username" name="username" class="text-field"
-                                   placeholder="Entrez votre nouveau nom d'utilisateur">
+                                placeholder="Entrez votre nouveau nom d'utilisateur">
                             <button type="submit" name="update_username" class="button-component">
-                                <img src="/assets/images/edit.png" alt="Modifier" style="width:16px; height:16px;">
+                                <img src="/GrapeMind/assets/images/edit.png" alt="Modifier" style="width:16px; height:16px;">
                             </button>
                         </div>
+                        <?php if (!empty($usernameMessage)): ?>
+                            <div class="<?= isset($usernameMessage['success']) ? 'input-success' : 'input-error' ?>">
+                                <?= htmlspecialchars($usernameMessage['success'] ?? $usernameMessage['error']) ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </form>
+
                 <form method="POST">
                     <div class="user-section">
                         <div class="label-wrapper">
@@ -150,13 +185,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                         <div class="input-wrapper">
                             <input type="email" id="email" name="email" class="text-field"
-                                   placeholder="Entrez votre nouvelle adresse mail">
+                                placeholder="Entrez votre nouvelle adresse mail">
                             <button type="submit" name="update_email" class="button-component">
-                                <img src="/assets/images/edit.png" alt="Modifier" style="width:16px; height:16px;">
+                                <img src="/GrapeMind/assets/images/edit.png" alt="Modifier" style="width:16px; height:16px;">
                             </button>
                         </div>
+                        <?php if (!empty($emailMessage)): ?>
+                            <div class="<?= isset($emailMessage['success']) ? 'input-success' : 'input-error' ?>">
+                                <?= htmlspecialchars($emailMessage['success'] ?? $emailMessage['error']) ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </form>
+
                 <form method="POST">
                     <div class="user-section">
                         <div class="label-wrapper">
@@ -164,35 +205,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                         <div class="input-wrapper">
                             <input type="password" id="password" name="password" class="text-field"
-                                   placeholder="Entrez votre nouveau mot de passe">
+                                placeholder="Entrez votre nouveau mot de passe">
                             <button type="submit" name="update_password" class="button-component">
-                                <img src="/assets/images/edit.png" alt="Modifier" style="width:16px; height:16px;">
+                                <img src="/GrapeMind/assets/images/edit.png" alt="Modifier" style="width:16px; height:16px;">
                             </button>
                         </div>
+                        <?php if (!empty($passwordMessage)): ?>
+                            <div class="<?= isset($passwordMessage['success']) ? 'input-success' : 'input-error' ?>">
+                                <?= htmlspecialchars($passwordMessage['success'] ?? $passwordMessage['error']) ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </form>
 
+                <div class="d-avatars-26-parent">
+                    <img class="d-avatars-26" alt="photo de profil"
+                        src="<?php echo isset($_SESSION['user']['profile_picture']) ? htmlspecialchars($_SESSION['user']['profile_picture']) : '../../assets/images/default-pp.png'; ?>">
+                    <h2><?php echo htmlspecialchars($_SESSION['user']['username']); ?></h2>
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="photo-upload-section">
+                            <label for="profile_picture" class="upload-label">
+                                <img class="upload-icon" alt="upload-icon" src="../../assets/images/upload.png">
+                                Modifier ma photo de profil
+                            </label>
+                            <input type="file" id="profile_picture" name="profile_picture" accept="image/*" style="display: none;" onchange="this.form.submit();">
+                            <input type="hidden" name="update_profile_picture">
+                        </div>
+                        <?php if (!empty($pictureMessage)): ?>
+                            <div class="<?= isset($pictureMessage['success']) ? 'input-success' : 'input-error' ?>">
+                                <?= htmlspecialchars($pictureMessage['success'] ?? $pictureMessage['error']) ?>
+                            </div>
+                        <?php endif; ?>
+                    </form>
+                </div>
+
+
             </div>
         </div>
-
-        <div class="d-avatars-26-parent">
-            <img class="d-avatars-26" alt="photo de profil"
-                 src="<?php echo isset($_SESSION['user']['profile_picture']) ? htmlspecialchars($_SESSION['user']['profile_picture']) : '../../assets/images/default-pp.png'; ?>">
-            <h2><?php echo htmlspecialchars($_SESSION['user']['username']); ?></h2>
-            <form method="POST" enctype="multipart/form-data">
-                <div class="photo-upload-section">
-                    <label for="profile_picture" class="upload-label">
-                        <img class="upload-icon" alt="upload-icon" src="../../assets/images/upload.png">
-                        Modifier ma photo de profil
-                    </label>
-                    <input type="file" id="profile_picture" name="profile_picture" accept="image/*" style="display: none;" onchange="this.form.submit();">
-                    <input type="hidden" name="update_profile_picture">
-                </div>
-            </form>
-
-
-        </div>
-
 
     </div>
     <form id="delete-account-form" method="POST">
