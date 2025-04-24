@@ -31,7 +31,7 @@
 </head>
 <body>
 <img src="/assets/images/error.png" alt="Error image">
-<h1>404</h1>
+<h1>403</h1>
 <p>Visiblement, tu n'as rien a faire la :)</p>
 <p><a href="/index.php">Retour à la page d'accueil</a></p>
 </body>
