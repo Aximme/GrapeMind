@@ -109,7 +109,8 @@ $(document).ready(function () {
                     alert("Erreur lors de la création du compte.");
                 }
             },
-            error: function () {
+            error: function (xhr, status, error) {
+                console.log("Erreur AJAX : ", status, error, xhr.responseText);
                 alert("Erreur serveur lors de l'inscription.");
             },
         });
